@@ -1,0 +1,58 @@
+<?php
+
+namespace Apifreaks\Types;
+
+use Apifreaks\Core\Json\JsonSerializableType;
+use Apifreaks\Core\Json\JsonProperty;
+
+class CommodityTimeSeriesResponseRatesValueValue extends JsonSerializableType
+{
+    /**
+     * @var float $open Opening price of the commodity on the given date.
+     */
+    #[JsonProperty('open')]
+    public float $open;
+
+    /**
+     * @var float $high Highest price of the commodity on the given date.
+     */
+    #[JsonProperty('high')]
+    public float $high;
+
+    /**
+     * @var float $low Lowest price of the commodity on the given date.
+     */
+    #[JsonProperty('low')]
+    public float $low;
+
+    /**
+     * @var float $close Closing price of the commodity on the given date.
+     */
+    #[JsonProperty('close')]
+    public float $close;
+
+    /**
+     * @param array{
+     *   open: float,
+     *   high: float,
+     *   low: float,
+     *   close: float,
+     * } $values
+     */
+    public function __construct(
+        array $values,
+    ) {
+        $this->open = $values['open'];
+        $this->high = $values['high'];
+        $this->low = $values['low'];
+        $this->close = $values['close'];
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->toJson();
+    }
+}

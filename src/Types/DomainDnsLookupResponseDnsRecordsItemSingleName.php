@@ -1,0 +1,82 @@
+<?php
+
+namespace Apifreaks\Types;
+
+use Apifreaks\Core\Json\JsonSerializableType;
+use Apifreaks\Core\Json\JsonProperty;
+
+class DomainDnsLookupResponseDnsRecordsItemSingleName extends JsonSerializableType
+{
+    /**
+     * @var string $name
+     */
+    #[JsonProperty('name')]
+    public string $name;
+
+    /**
+     * @var int $type
+     */
+    #[JsonProperty('type')]
+    public int $type;
+
+    /**
+     * @var value-of<DomainDnsLookupResponseDnsRecordsItemSingleNameDnsType> $dnsType
+     */
+    #[JsonProperty('dnsType')]
+    public string $dnsType;
+
+    /**
+     * @var int $ttl
+     */
+    #[JsonProperty('ttl')]
+    public int $ttl;
+
+    /**
+     * @var string $rawText
+     */
+    #[JsonProperty('rawText')]
+    public string $rawText;
+
+    /**
+     * @var int $rRsetType
+     */
+    #[JsonProperty('rRsetType')]
+    public int $rRsetType;
+
+    /**
+     * @var string $singleName Name server for the domain
+     */
+    #[JsonProperty('singleName')]
+    public string $singleName;
+
+    /**
+     * @param array{
+     *   name: string,
+     *   type: int,
+     *   dnsType: value-of<DomainDnsLookupResponseDnsRecordsItemSingleNameDnsType>,
+     *   ttl: int,
+     *   rawText: string,
+     *   rRsetType: int,
+     *   singleName: string,
+     * } $values
+     */
+    public function __construct(
+        array $values,
+    ) {
+        $this->name = $values['name'];
+        $this->type = $values['type'];
+        $this->dnsType = $values['dnsType'];
+        $this->ttl = $values['ttl'];
+        $this->rawText = $values['rawText'];
+        $this->rRsetType = $values['rRsetType'];
+        $this->singleName = $values['singleName'];
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->toJson();
+    }
+}
