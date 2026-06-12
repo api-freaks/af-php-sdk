@@ -1,13 +1,28 @@
 {
   "name": "apifreaks/sdk",
-  "version": "0.0.0",
-  "description": "Apifreaks PHP Library",
+  "type": "library",
+  "description": "Official PHP SDK for APIFreaks APIs",
   "keywords": [
     "apifreaks",
     "api",
-    "sdk"
+    "sdk",
+    "php",
+    "geolocation",
+    "whois"
   ],
-  "license": [],
+  "homepage": "https://github.com/api-freaks/af-php-sdk",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "APIFreaks",
+      "homepage": "https://apifreaks.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/api-freaks/af-php-sdk/issues",
+    "source": "https://github.com/api-freaks/af-php-sdk"
+  },
   "require": {
     "php": "^8.1",
     "ext-json": "*",
