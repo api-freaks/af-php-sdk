@@ -38,10 +38,10 @@ class AstronomyLookupResponseLocation extends JsonSerializableType
     public ?string $countryCode3;
 
     /**
-     * @var string $countryName
+     * @var ?string $countryName
      */
     #[JsonProperty('country_name')]
-    public string $countryName;
+    public ?string $countryName;
 
     /**
      * @var ?string $countryNameOfficial
@@ -56,10 +56,10 @@ class AstronomyLookupResponseLocation extends JsonSerializableType
     public ?bool $isEu;
 
     /**
-     * @var string $stateProv
+     * @var ?string $stateProv
      */
     #[JsonProperty('state_prov')]
-    public string $stateProv;
+    public ?string $stateProv;
 
     /**
      * @var ?string $stateCode
@@ -74,10 +74,10 @@ class AstronomyLookupResponseLocation extends JsonSerializableType
     public ?string $district;
 
     /**
-     * @var string $city
+     * @var ?string $city
      */
     #[JsonProperty('city')]
-    public string $city;
+    public ?string $city;
 
     /**
      * @var ?string $zipcode
@@ -86,48 +86,48 @@ class AstronomyLookupResponseLocation extends JsonSerializableType
     public ?string $zipcode;
 
     /**
-     * @var string $latitude
+     * @var ?string $latitude
      */
     #[JsonProperty('latitude')]
-    public string $latitude;
+    public ?string $latitude;
 
     /**
-     * @var string $longitude
+     * @var ?string $longitude
      */
     #[JsonProperty('longitude')]
-    public string $longitude;
+    public ?string $longitude;
 
     /**
-     * @var string $locality
+     * @var ?string $locality
      */
     #[JsonProperty('locality')]
-    public string $locality;
+    public ?string $locality;
 
     /**
-     * @var string $elevation
+     * @var ?string $elevation
      */
     #[JsonProperty('elevation')]
-    public string $elevation;
+    public ?string $elevation;
 
     /**
      * @param array{
-     *   countryName: string,
-     *   stateProv: string,
-     *   city: string,
-     *   latitude: string,
-     *   longitude: string,
-     *   locality: string,
-     *   elevation: string,
      *   locationString?: ?string,
      *   continentCode?: ?string,
      *   continentName?: ?string,
      *   countryCode2?: ?string,
      *   countryCode3?: ?string,
+     *   countryName?: ?string,
      *   countryNameOfficial?: ?string,
      *   isEu?: ?bool,
+     *   stateProv?: ?string,
      *   stateCode?: ?string,
      *   district?: ?string,
+     *   city?: ?string,
      *   zipcode?: ?string,
+     *   latitude?: ?string,
+     *   longitude?: ?string,
+     *   locality?: ?string,
+     *   elevation?: ?string,
      * } $values
      */
     public function __construct(
@@ -138,18 +138,18 @@ class AstronomyLookupResponseLocation extends JsonSerializableType
         $this->continentName = $values['continentName'] ?? null;
         $this->countryCode2 = $values['countryCode2'] ?? null;
         $this->countryCode3 = $values['countryCode3'] ?? null;
-        $this->countryName = $values['countryName'];
+        $this->countryName = $values['countryName'] ?? null;
         $this->countryNameOfficial = $values['countryNameOfficial'] ?? null;
         $this->isEu = $values['isEu'] ?? null;
-        $this->stateProv = $values['stateProv'];
+        $this->stateProv = $values['stateProv'] ?? null;
         $this->stateCode = $values['stateCode'] ?? null;
         $this->district = $values['district'] ?? null;
-        $this->city = $values['city'];
+        $this->city = $values['city'] ?? null;
         $this->zipcode = $values['zipcode'] ?? null;
-        $this->latitude = $values['latitude'];
-        $this->longitude = $values['longitude'];
-        $this->locality = $values['locality'];
-        $this->elevation = $values['elevation'];
+        $this->latitude = $values['latitude'] ?? null;
+        $this->longitude = $values['longitude'] ?? null;
+        $this->locality = $values['locality'] ?? null;
+        $this->elevation = $values['elevation'] ?? null;
     }
 
     /**

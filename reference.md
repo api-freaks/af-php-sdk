@@ -562,6 +562,7 @@ use Apifreaks\Requests\DomainDnsLookupRequest;
 $client = new ApifreaksClient();
 $request = new DomainDnsLookupRequest([
     'apiKey' => "apiKey",
+    'type' => ["A"],
 ]);
 
 $response = $client->domainDnsLookup($request);
@@ -577,7 +578,7 @@ $response = $client->domainDnsLookup($request);
 
 **ipAddress:** `?string` — optional. The IP address for requested DNS's PTR record. 'type' parameter must be set to 'all'.
 
-**type:** `?array<string>` — optional. A comma-separated list of DNS record types for lookup. Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, or all. When ipAddress is provided, type must be "all".
+**type:** `array<string>` — required. A comma-separated list of DNS record types for lookup. Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, or all. When ipAddress is provided, type must be "all".
 
 #### ↩️ Response
 
@@ -607,6 +608,7 @@ $client = new ApifreaksClient();
 $request = new BulkDomainDnsLookupRequest([
     'apiKey' => "apiKey",
     'domainNames' => ["example.com", "openai.com"],
+    'type' => ["A"],
 ]);
 
 $response = $client->bulkDomainDnsLookup($request);
@@ -618,9 +620,11 @@ $response = $client->bulkDomainDnsLookup($request);
 
 **format:** `?value-of<BulkDomainDnsLookupRequestFormat>` — optional. Format of the response.
 
-**type:** `?array<string>` — optional
+**type:** `array<string>` — required
 
 **domainNames:** `array<string>` — required. List of hostnames to lookup DNS records for
+
+**ipAddresses:** `?array<string>` — optional. List of IP addresses for requested DNS's PTR records. 'type' must be set to 'all'.
 
 #### ↩️ Response
 
@@ -650,6 +654,7 @@ $client = new ApifreaksClient();
 $request = new DomainDnsHistoryRequest([
     'apiKey' => "apiKey",
     'hostName' => "example.com",
+    'type' => ["A"],
 ]);
 
 $response = $client->domainDnsHistory($request);
@@ -663,7 +668,7 @@ $response = $client->domainDnsHistory($request);
 
 **hostName:** `string` — required. Hostname or URL whose historical DNS records are required
 
-**type:** `?array<string>` — optional
+**type:** `array<string>` — required
 
 **page:** `?int` — optional. Page number for paginated results
 
@@ -1161,6 +1166,8 @@ $response = $client->domainAvailabilitySuggestions($request);
 **source:** `?value-of<DomainAvailabilitySuggestionsRequestSource>` — optional. Specify the data source for domain availability checks. Use "dns" for DNS-based lookups or "whois" for WHOIS-based lookups. By default, "dns" is used.
 
 **count:** `?int` — optional. Number of suggestions to retrieve.
+
+**sug:** `?bool` — optional. Whether to include domain name suggestions in the response.
 
 #### ↩️ Response
 
@@ -2167,7 +2174,7 @@ $response = $client->pdfUploadResources($request);
 
 **format:** `?value-of<PdfUploadResourcesRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
 
-**file:** `?array<File>` — optional
+**file:** `array<File>` — required
 
 #### ↩️ Response
 
@@ -2761,7 +2768,7 @@ $response = $client->currencyConvertLatest($request);
 
 **to:** `string` — required. Target currency code
 
-**amount:** `?float` — optional. Amount to convert
+**amount:** `?string` — optional. Amount to convert
 
 **updates:** `?value-of<CurrencyConvertLatestRequestUpdates>` — optional. Exchange rates update period (1d=daily, 1h=hourly, 10m=10 minutes, 1m=1 minute)
 
@@ -2810,7 +2817,7 @@ $response = $client->currencyConvertHistorical($request);
 
 **to:** `string` — required. To currency symbol
 
-**amount:** `?float` — optional. The Amount to be converted
+**amount:** `?string` — optional. The Amount to be converted
 
 **date:** `DateTime` — required. specific date (format YYYY-MM-DD) of which exchange rates is used.
 
@@ -2953,7 +2960,7 @@ $response = $client->currencyConvertByIp($request);
 
 **ip:** `?string` — optional. IPv4 or IPv6 geolocated currency
 
-**amount:** `?float` — optional. Amount to convert
+**amount:** `?string` — optional. Amount to convert
 
 #### ↩️ Response
 
@@ -3097,6 +3104,9 @@ $client = new ApifreaksClient();
 $request = new CommodityLatestRatesRequest([
     'apiKey' => "apiKey",
     'updates' => "value",
+    'symbols' => [
+        "symbols",
+    ],
 ]);
 
 $response = $client->commodityLatestRates($request);
@@ -3108,7 +3118,7 @@ $response = $client->commodityLatestRates($request);
 
 **format:** `?value-of<CommodityLatestRatesRequestFormat>` — optional. Format of the Response
 
-**symbols:** `?array<string>` — optional. Comma separated list of desired commodities symbols *(e.g. XAU,XAG,WTI,BRENT)* **Required**
+**symbols:** `array<string>` — required. Comma separated list of desired commodities symbols *(e.g. XAU,XAG,WTI,BRENT)* **Required**
 
 **updates:** `value-of<CommodityLatestRatesRequestUpdates>` — required. Exchange rates update period. Possible values are: (1) `10m` - 10 minute update (2) `1m` - 1 minute update **Required**
 
@@ -3142,6 +3152,9 @@ $client = new ApifreaksClient();
 $request = new CommodityHistoricalRatesRequest([
     'apiKey' => "apiKey",
     'date' => "2024-01-01",
+    'symbols' => [
+        "symbols",
+    ],
 ]);
 
 $response = $client->commodityHistoricalRates($request);
@@ -3155,7 +3168,7 @@ $response = $client->commodityHistoricalRates($request);
 
 **date:** `DateTime` — required. Historical date (YYYY-MM-DD)
 
-**symbols:** `?array<string>` — optional. Comma-separated list of commodity symbols
+**symbols:** `array<string>` — required. Comma-separated list of commodity symbols
 
 #### ↩️ Response
 
@@ -3186,6 +3199,9 @@ $request = new CommodityFluctuationRequest([
     'apiKey' => "apiKey",
     'startDate' => "2024-01-01",
     'endDate' => "2024-01-31",
+    'symbols' => [
+        "symbols",
+    ],
 ]);
 
 $response = $client->commodityFluctuation($request);
@@ -3197,7 +3213,7 @@ $response = $client->commodityFluctuation($request);
 
 **format:** `?value-of<CommodityFluctuationRequestFormat>` — optional. Format of the response.
 
-**symbols:** `?array<string>` — optional. Comma-separated list of commodity symbols
+**symbols:** `array<string>` — required. Comma-separated list of commodity symbols
 
 **startDate:** `DateTime` — required. Start date (YYYY-MM-DD)
 
@@ -3232,6 +3248,9 @@ $request = new CommodityTimeSeriesRequest([
     'apiKey' => "apiKey",
     'startDate' => "2024-01-01",
     'endDate' => "2024-01-31",
+    'symbols' => [
+        "symbols",
+    ],
 ]);
 
 $response = $client->commodityTimeSeries($request);
@@ -3243,7 +3262,7 @@ $response = $client->commodityTimeSeries($request);
 
 **format:** `?value-of<CommodityTimeSeriesRequestFormat>` — optional. Format of the response.
 
-**symbols:** `?array<string>` — optional. Comma-separated list of commodity symbols
+**symbols:** `array<string>` — required. Comma-separated list of commodity symbols
 
 **startDate:** `DateTime` — required. Start date (YYYY-MM-DD)
 
@@ -4942,6 +4961,7 @@ use Apifreaks\Requests\UserAgentLookupRequest;
 $client = new ApifreaksClient();
 $request = new UserAgentLookupRequest([
     'apiKey' => "apiKey",
+    'userAgent' => "userAgent",
 ]);
 
 $response = $client->userAgentLookup($request);
@@ -4950,6 +4970,8 @@ $response = $client->userAgentLookup($request);
 #### ⚙️ Parameters
 
 **apiKey:** `string` — required. Your API key
+
+**userAgent:** `string` — required. The User-Agent string to parse, sent as the `User-Agent` HTTP header.
 
 **format:** `?value-of<UserAgentLookupRequestFormat>` — optional. Format of the response
 

@@ -26,10 +26,16 @@ class GetAdminUnitDetailsResponse extends JsonSerializableType
     public string $adminLevel;
 
     /**
-     * @var string $isoAlpha2
+     * @var string $adminIso31662
      */
-    #[JsonProperty('iso_alpha_2')]
-    public string $isoAlpha2;
+    #[JsonProperty('admin_iso3166_2')]
+    public string $adminIso31662;
+
+    /**
+     * @var string $countryIso31662
+     */
+    #[JsonProperty('country_iso3166_2')]
+    public string $countryIso31662;
 
     /**
      * @var string $countryName
@@ -42,7 +48,8 @@ class GetAdminUnitDetailsResponse extends JsonSerializableType
      *   name: string,
      *   adminCode: string,
      *   adminLevel: string,
-     *   isoAlpha2: string,
+     *   adminIso31662: string,
+     *   countryIso31662: string,
      *   countryName: string,
      * } $values
      */
@@ -52,7 +59,8 @@ class GetAdminUnitDetailsResponse extends JsonSerializableType
         $this->name = $values['name'];
         $this->adminCode = $values['adminCode'];
         $this->adminLevel = $values['adminLevel'];
-        $this->isoAlpha2 = $values['isoAlpha2'];
+        $this->adminIso31662 = $values['adminIso31662'];
+        $this->countryIso31662 = $values['countryIso31662'];
         $this->countryName = $values['countryName'];
     }
 

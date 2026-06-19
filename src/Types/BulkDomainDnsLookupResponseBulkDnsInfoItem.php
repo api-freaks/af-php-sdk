@@ -24,16 +24,22 @@ class BulkDomainDnsLookupResponseBulkDnsInfoItem extends JsonSerializableType
     public DateTime $queryTime;
 
     /**
-     * @var string $domainName Queried domain.
+     * @var ?string $domainName Queried domain.
      */
     #[JsonProperty('domainName')]
-    public string $domainName;
+    public ?string $domainName;
 
     /**
-     * @var bool $domainRegistered Indicates whether the domain is registered.
+     * @var ?bool $domainRegistered Indicates whether the domain is registered.
      */
     #[JsonProperty('domainRegistered')]
-    public bool $domainRegistered;
+    public ?bool $domainRegistered;
+
+    /**
+     * @var ?string $ipAddress
+     */
+    #[JsonProperty('ipAddress')]
+    public ?string $ipAddress;
 
     /**
      * @var BulkDomainDnsLookupResponseBulkDnsInfoItemDnsTypes $dnsTypes
@@ -58,8 +64,9 @@ class BulkDomainDnsLookupResponseBulkDnsInfoItem extends JsonSerializableType
      * @param array{
      *   status: bool,
      *   queryTime: DateTime,
-     *   domainName: string,
-     *   domainRegistered: bool,
+     *   domainName?: ?string,
+     *   domainRegistered?: ?bool,
+     *   ipAddress?: ?string,
      *   dnsTypes: BulkDomainDnsLookupResponseBulkDnsInfoItemDnsTypes,
      *   dnsRecords: array<(
      *    BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemAddress
@@ -76,8 +83,9 @@ class BulkDomainDnsLookupResponseBulkDnsInfoItem extends JsonSerializableType
     ) {
         $this->status = $values['status'];
         $this->queryTime = $values['queryTime'];
-        $this->domainName = $values['domainName'];
-        $this->domainRegistered = $values['domainRegistered'];
+        $this->domainName = $values['domainName'] ?? null;
+        $this->domainRegistered = $values['domainRegistered'] ?? null;
+        $this->ipAddress = $values['ipAddress'] ?? null;
         $this->dnsTypes = $values['dnsTypes'];
         $this->dnsRecords = $values['dnsRecords'];
     }

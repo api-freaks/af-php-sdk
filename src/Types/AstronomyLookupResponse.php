@@ -14,10 +14,10 @@ class AstronomyLookupResponse extends JsonSerializableType
     public ?string $ip;
 
     /**
-     * @var AstronomyLookupResponseLocation $location
+     * @var ?AstronomyLookupResponseLocation $location
      */
     #[JsonProperty('location')]
-    public AstronomyLookupResponseLocation $location;
+    public ?AstronomyLookupResponseLocation $location;
 
     /**
      * @var AstronomyLookupResponseAstronomy $astronomy
@@ -27,16 +27,16 @@ class AstronomyLookupResponse extends JsonSerializableType
 
     /**
      * @param array{
-     *   location: AstronomyLookupResponseLocation,
      *   astronomy: AstronomyLookupResponseAstronomy,
      *   ip?: ?string,
+     *   location?: ?AstronomyLookupResponseLocation,
      * } $values
      */
     public function __construct(
         array $values,
     ) {
         $this->ip = $values['ip'] ?? null;
-        $this->location = $values['location'];
+        $this->location = $values['location'] ?? null;
         $this->astronomy = $values['astronomy'];
     }
 

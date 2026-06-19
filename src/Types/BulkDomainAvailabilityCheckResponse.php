@@ -9,20 +9,20 @@ use Apifreaks\Core\Types\ArrayType;
 class BulkDomainAvailabilityCheckResponse extends JsonSerializableType
 {
     /**
-     * @var ?array<BulkDomainAvailabilityCheckResponseBulkDomainAvailableResponseItem> $bulkDomainAvailableResponse
+     * @var array<BulkDomainAvailabilityCheckResponseBulkDomainAvailableResponseItem> $bulkDomainAvailableResponse
      */
     #[JsonProperty('bulk_domain_available_response'), ArrayType([BulkDomainAvailabilityCheckResponseBulkDomainAvailableResponseItem::class])]
-    public ?array $bulkDomainAvailableResponse;
+    public array $bulkDomainAvailableResponse;
 
     /**
      * @param array{
-     *   bulkDomainAvailableResponse?: ?array<BulkDomainAvailabilityCheckResponseBulkDomainAvailableResponseItem>,
+     *   bulkDomainAvailableResponse: array<BulkDomainAvailabilityCheckResponseBulkDomainAvailableResponseItem>,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->bulkDomainAvailableResponse = $values['bulkDomainAvailableResponse'] ?? null;
+        $this->bulkDomainAvailableResponse = $values['bulkDomainAvailableResponse'];
     }
 
     /**

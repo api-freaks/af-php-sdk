@@ -29,9 +29,9 @@ class CurrencyConvertLatestRequest extends JsonSerializableType
     public string $to;
 
     /**
-     * @var ?float $amount Amount to convert
+     * @var ?string $amount Amount to convert
      */
-    public ?float $amount;
+    public ?string $amount;
 
     /**
      * @var ?value-of<CurrencyConvertLatestRequestUpdates> $updates Exchange rates update period (1d=daily, 1h=hourly, 10m=10 minutes, 1m=1 minute)
@@ -44,7 +44,7 @@ class CurrencyConvertLatestRequest extends JsonSerializableType
      *   from: string,
      *   to: string,
      *   format?: ?value-of<CurrencyConvertLatestRequestFormat>,
-     *   amount?: ?float,
+     *   amount?: ?string,
      *   updates?: ?value-of<CurrencyConvertLatestRequestUpdates>,
      * } $values
      */

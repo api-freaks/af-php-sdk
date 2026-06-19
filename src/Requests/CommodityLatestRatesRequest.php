@@ -19,9 +19,9 @@ class CommodityLatestRatesRequest extends JsonSerializableType
     public ?string $format;
 
     /**
-     * @var ?array<string> $symbols Comma separated list of desired commodities symbols *(e.g. XAU,XAG,WTI,BRENT)* **Required**
+     * @var array<string> $symbols Comma separated list of desired commodities symbols *(e.g. XAU,XAG,WTI,BRENT)* **Required**
      */
-    public ?array $symbols;
+    public array $symbols;
 
     /**
      * @var value-of<CommodityLatestRatesRequestUpdates> $updates Exchange rates update period. Possible values are: (1) `10m` - 10 minute update (2) `1m` - 1 minute update **Required**
@@ -37,8 +37,8 @@ class CommodityLatestRatesRequest extends JsonSerializableType
      * @param array{
      *   apiKey: string,
      *   updates: value-of<CommodityLatestRatesRequestUpdates>,
+     *   symbols: array<string>,
      *   format?: ?value-of<CommodityLatestRatesRequestFormat>,
-     *   symbols?: ?array<string>,
      *   quote?: ?string,
      * } $values
      */
@@ -47,7 +47,7 @@ class CommodityLatestRatesRequest extends JsonSerializableType
     ) {
         $this->apiKey = $values['apiKey'];
         $this->format = $values['format'] ?? null;
-        $this->symbols = $values['symbols'] ?? null;
+        $this->symbols = $values['symbols'];
         $this->updates = $values['updates'];
         $this->quote = $values['quote'] ?? null;
     }

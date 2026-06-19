@@ -51,10 +51,10 @@ class GeolocationLookupResponse extends JsonSerializableType
     public ?GeolocationLookupResponseSecurity $security;
 
     /**
-     * @var ?array<GeolocationLookupResponseAbuseItem> $abuse
+     * @var ?GeolocationLookupResponseAbuseItem $abuse
      */
-    #[JsonProperty('abuse'), ArrayType([GeolocationLookupResponseAbuseItem::class])]
-    public ?array $abuse;
+    #[JsonProperty('abuse')]
+    public ?GeolocationLookupResponseAbuseItem $abuse;
 
     /**
      * @var ?GeolocationLookupResponseTimeZone $timeZone
@@ -77,7 +77,7 @@ class GeolocationLookupResponse extends JsonSerializableType
      *   network?: ?GeolocationLookupResponseNetwork,
      *   currency?: ?GeolocationLookupResponseCurrency,
      *   security?: ?GeolocationLookupResponseSecurity,
-     *   abuse?: ?array<GeolocationLookupResponseAbuseItem>,
+     *   abuse?: ?GeolocationLookupResponseAbuseItem,
      *   timeZone?: ?GeolocationLookupResponseTimeZone,
      *   userAgent?: ?GeolocationLookupResponseUserAgent,
      * } $values

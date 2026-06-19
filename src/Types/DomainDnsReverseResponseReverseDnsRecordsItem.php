@@ -24,10 +24,10 @@ class DomainDnsReverseResponseReverseDnsRecordsItem extends JsonSerializableType
     public string $domainName;
 
     /**
-     * @var bool $domainRegistered
+     * @var ?bool $domainRegistered
      */
     #[JsonProperty('domainRegistered')]
-    public bool $domainRegistered;
+    public ?bool $domainRegistered;
 
     /**
      * @var DomainDnsReverseResponseReverseDnsRecordsItemDnsTypes $dnsTypes
@@ -52,7 +52,7 @@ class DomainDnsReverseResponseReverseDnsRecordsItem extends JsonSerializableType
      * @param array{
      *   queryTime: DateTime,
      *   domainName: string,
-     *   domainRegistered: bool,
+     *   domainRegistered?: ?bool,
      *   dnsTypes: DomainDnsReverseResponseReverseDnsRecordsItemDnsTypes,
      *   dnsRecords: array<(
      *    DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemAddress
@@ -69,7 +69,7 @@ class DomainDnsReverseResponseReverseDnsRecordsItem extends JsonSerializableType
     ) {
         $this->queryTime = $values['queryTime'];
         $this->domainName = $values['domainName'];
-        $this->domainRegistered = $values['domainRegistered'];
+        $this->domainRegistered = $values['domainRegistered'] ?? null;
         $this->dnsTypes = $values['dnsTypes'];
         $this->dnsRecords = $values['dnsRecords'];
     }

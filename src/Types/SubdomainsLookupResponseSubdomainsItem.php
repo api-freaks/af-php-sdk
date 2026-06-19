@@ -20,10 +20,10 @@ class SubdomainsLookupResponseSubdomainsItem extends JsonSerializableType
     public string $firstSeen;
 
     /**
-     * @var ?string $lastSeen
+     * @var string $lastSeen
      */
     #[JsonProperty('last_seen')]
-    public ?string $lastSeen;
+    public string $lastSeen;
 
     /**
      * @var ?string $inactiveFrom The date from which the subdomain is considered inactive. Appears only if the subdomain is no longer active.
@@ -35,7 +35,7 @@ class SubdomainsLookupResponseSubdomainsItem extends JsonSerializableType
      * @param array{
      *   subdomain: string,
      *   firstSeen: string,
-     *   lastSeen?: ?string,
+     *   lastSeen: string,
      *   inactiveFrom?: ?string,
      * } $values
      */
@@ -44,7 +44,7 @@ class SubdomainsLookupResponseSubdomainsItem extends JsonSerializableType
     ) {
         $this->subdomain = $values['subdomain'];
         $this->firstSeen = $values['firstSeen'];
-        $this->lastSeen = $values['lastSeen'] ?? null;
+        $this->lastSeen = $values['lastSeen'];
         $this->inactiveFrom = $values['inactiveFrom'] ?? null;
     }
 

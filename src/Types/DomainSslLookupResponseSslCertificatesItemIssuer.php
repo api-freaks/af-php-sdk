@@ -14,10 +14,10 @@ class DomainSslLookupResponseSslCertificatesItemIssuer extends JsonSerializableT
     public string $commonName;
 
     /**
-     * @var ?string $organization
+     * @var string $organization
      */
     #[JsonProperty('organization')]
-    public ?string $organization;
+    public string $organization;
 
     /**
      * @var ?string $organizationalUnit
@@ -38,10 +38,10 @@ class DomainSslLookupResponseSslCertificatesItemIssuer extends JsonSerializableT
     public ?string $state;
 
     /**
-     * @var ?string $country
+     * @var string $country
      */
     #[JsonProperty('country')]
-    public ?string $country;
+    public string $country;
 
     /**
      * @var ?string $incCountry
@@ -82,11 +82,11 @@ class DomainSslLookupResponseSslCertificatesItemIssuer extends JsonSerializableT
     /**
      * @param array{
      *   commonName: string,
-     *   organization?: ?string,
+     *   organization: string,
+     *   country: string,
      *   organizationalUnit?: ?string,
      *   locality?: ?string,
      *   state?: ?string,
-     *   country?: ?string,
      *   incCountry?: ?string,
      *   incState?: ?string,
      *   businessCategory?: ?string,
@@ -99,11 +99,11 @@ class DomainSslLookupResponseSslCertificatesItemIssuer extends JsonSerializableT
         array $values,
     ) {
         $this->commonName = $values['commonName'];
-        $this->organization = $values['organization'] ?? null;
+        $this->organization = $values['organization'];
         $this->organizationalUnit = $values['organizationalUnit'] ?? null;
         $this->locality = $values['locality'] ?? null;
         $this->state = $values['state'] ?? null;
-        $this->country = $values['country'] ?? null;
+        $this->country = $values['country'];
         $this->incCountry = $values['incCountry'] ?? null;
         $this->incState = $values['incState'] ?? null;
         $this->businessCategory = $values['businessCategory'] ?? null;

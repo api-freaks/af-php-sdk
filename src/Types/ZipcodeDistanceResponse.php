@@ -9,10 +9,10 @@ use Apifreaks\Core\Types\ArrayType;
 class ZipcodeDistanceResponse extends JsonSerializableType
 {
     /**
-     * @var ?string $resultsCount Number of distance results returned
+     * @var ?int $resultCount Number of distance results returned
      */
-    #[JsonProperty('results_count')]
-    public ?string $resultsCount;
+    #[JsonProperty('result_count')]
+    public ?int $resultCount;
 
     /**
      * @var ?array<ZipcodeDistanceResponseResultsItem> $results
@@ -22,14 +22,14 @@ class ZipcodeDistanceResponse extends JsonSerializableType
 
     /**
      * @param array{
-     *   resultsCount?: ?string,
+     *   resultCount?: ?int,
      *   results?: ?array<ZipcodeDistanceResponseResultsItem>,
      * } $values
      */
     public function __construct(
         array $values = [],
     ) {
-        $this->resultsCount = $values['resultsCount'] ?? null;
+        $this->resultCount = $values['resultCount'] ?? null;
         $this->results = $values['results'] ?? null;
     }
 

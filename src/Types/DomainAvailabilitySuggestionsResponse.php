@@ -9,20 +9,20 @@ use Apifreaks\Core\Types\ArrayType;
 class DomainAvailabilitySuggestionsResponse extends JsonSerializableType
 {
     /**
-     * @var ?array<DomainAvailabilitySuggestionsResponseDomainAvailableResponseItem> $domainAvailableResponse
+     * @var array<DomainAvailabilitySuggestionsResponseDomainAvailableResponseItem> $domainAvailableResponse
      */
     #[JsonProperty('domain_available_response'), ArrayType([DomainAvailabilitySuggestionsResponseDomainAvailableResponseItem::class])]
-    public ?array $domainAvailableResponse;
+    public array $domainAvailableResponse;
 
     /**
      * @param array{
-     *   domainAvailableResponse?: ?array<DomainAvailabilitySuggestionsResponseDomainAvailableResponseItem>,
+     *   domainAvailableResponse: array<DomainAvailabilitySuggestionsResponseDomainAvailableResponseItem>,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->domainAvailableResponse = $values['domainAvailableResponse'] ?? null;
+        $this->domainAvailableResponse = $values['domainAvailableResponse'];
     }
 
     /**

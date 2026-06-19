@@ -51,10 +51,10 @@ class BulkGeolocationLookupResponseItem extends JsonSerializableType
     public ?BulkGeolocationLookupResponseItemSecurity $security;
 
     /**
-     * @var ?array<BulkGeolocationLookupResponseItemAbuseItem> $abuse
+     * @var ?BulkGeolocationLookupResponseItemAbuseItem $abuse
      */
-    #[JsonProperty('abuse'), ArrayType([BulkGeolocationLookupResponseItemAbuseItem::class])]
-    public ?array $abuse;
+    #[JsonProperty('abuse')]
+    public ?BulkGeolocationLookupResponseItemAbuseItem $abuse;
 
     /**
      * @var ?BulkGeolocationLookupResponseItemTimeZone $timeZone
@@ -77,7 +77,7 @@ class BulkGeolocationLookupResponseItem extends JsonSerializableType
      *   network?: ?BulkGeolocationLookupResponseItemNetwork,
      *   currency?: ?BulkGeolocationLookupResponseItemCurrency,
      *   security?: ?BulkGeolocationLookupResponseItemSecurity,
-     *   abuse?: ?array<BulkGeolocationLookupResponseItemAbuseItem>,
+     *   abuse?: ?BulkGeolocationLookupResponseItemAbuseItem,
      *   timeZone?: ?BulkGeolocationLookupResponseItemTimeZone,
      *   userAgent?: ?BulkGeolocationLookupResponseItemUserAgent,
      * } $values

@@ -19,9 +19,9 @@ class CommodityFluctuationRequest extends JsonSerializableType
     public ?string $format;
 
     /**
-     * @var ?array<string> $symbols Comma-separated list of commodity symbols
+     * @var array<string> $symbols Comma-separated list of commodity symbols
      */
-    public ?array $symbols;
+    public array $symbols;
 
     /**
      * @var DateTime $startDate Start date (YYYY-MM-DD)
@@ -38,8 +38,8 @@ class CommodityFluctuationRequest extends JsonSerializableType
      *   apiKey: string,
      *   startDate: DateTime,
      *   endDate: DateTime,
+     *   symbols: array<string>,
      *   format?: ?value-of<CommodityFluctuationRequestFormat>,
-     *   symbols?: ?array<string>,
      * } $values
      */
     public function __construct(
@@ -47,7 +47,7 @@ class CommodityFluctuationRequest extends JsonSerializableType
     ) {
         $this->apiKey = $values['apiKey'];
         $this->format = $values['format'] ?? null;
-        $this->symbols = $values['symbols'] ?? null;
+        $this->symbols = $values['symbols'];
         $this->startDate = $values['startDate'];
         $this->endDate = $values['endDate'];
     }

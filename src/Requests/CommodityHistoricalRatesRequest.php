@@ -24,16 +24,16 @@ class CommodityHistoricalRatesRequest extends JsonSerializableType
     public DateTime $date;
 
     /**
-     * @var ?array<string> $symbols Comma-separated list of commodity symbols
+     * @var array<string> $symbols Comma-separated list of commodity symbols
      */
-    public ?array $symbols;
+    public array $symbols;
 
     /**
      * @param array{
      *   apiKey: string,
      *   date: DateTime,
+     *   symbols: array<string>,
      *   format?: ?value-of<CommodityHistoricalRatesRequestFormat>,
-     *   symbols?: ?array<string>,
      * } $values
      */
     public function __construct(
@@ -42,6 +42,6 @@ class CommodityHistoricalRatesRequest extends JsonSerializableType
         $this->apiKey = $values['apiKey'];
         $this->format = $values['format'] ?? null;
         $this->date = $values['date'];
-        $this->symbols = $values['symbols'] ?? null;
+        $this->symbols = $values['symbols'];
     }
 }

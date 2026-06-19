@@ -22,16 +22,16 @@ class VatValidateResponse extends JsonSerializableType
     public string $vatNumber;
 
     /**
-     * @var ?string $requesterCountryCode
+     * @var string $requesterCountryCode
      */
     #[JsonProperty('requester_country_code')]
-    public ?string $requesterCountryCode;
+    public string $requesterCountryCode;
 
     /**
-     * @var ?string $requesterVatNumber
+     * @var string $requesterVatNumber
      */
     #[JsonProperty('requester_vat_number')]
-    public ?string $requesterVatNumber;
+    public string $requesterVatNumber;
 
     /**
      * @var DateTime $requestedAt
@@ -55,11 +55,11 @@ class VatValidateResponse extends JsonSerializableType
      * @param array{
      *   countryCode: string,
      *   vatNumber: string,
+     *   requesterCountryCode: string,
+     *   requesterVatNumber: string,
      *   requestedAt: DateTime,
      *   validation: VatValidateResponseValidation,
      *   company: VatValidateResponseCompany,
-     *   requesterCountryCode?: ?string,
-     *   requesterVatNumber?: ?string,
      * } $values
      */
     public function __construct(
@@ -67,8 +67,8 @@ class VatValidateResponse extends JsonSerializableType
     ) {
         $this->countryCode = $values['countryCode'];
         $this->vatNumber = $values['vatNumber'];
-        $this->requesterCountryCode = $values['requesterCountryCode'] ?? null;
-        $this->requesterVatNumber = $values['requesterVatNumber'] ?? null;
+        $this->requesterCountryCode = $values['requesterCountryCode'];
+        $this->requesterVatNumber = $values['requesterVatNumber'];
         $this->requestedAt = $values['requestedAt'];
         $this->validation = $values['validation'];
         $this->company = $values['company'];

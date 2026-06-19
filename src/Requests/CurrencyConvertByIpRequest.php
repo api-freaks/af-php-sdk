@@ -34,9 +34,9 @@ class CurrencyConvertByIpRequest extends JsonSerializableType
     public ?string $ip;
 
     /**
-     * @var ?float $amount Amount to convert
+     * @var ?string $amount Amount to convert
      */
-    public ?float $amount;
+    public ?string $amount;
 
     /**
      * @param array{
@@ -45,7 +45,7 @@ class CurrencyConvertByIpRequest extends JsonSerializableType
      *   format?: ?value-of<CurrencyConvertByIpRequestFormat>,
      *   updates?: ?value-of<CurrencyConvertByIpRequestUpdates>,
      *   ip?: ?string,
-     *   amount?: ?float,
+     *   amount?: ?string,
      * } $values
      */
     public function __construct(

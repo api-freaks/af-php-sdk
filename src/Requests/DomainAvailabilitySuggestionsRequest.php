@@ -34,12 +34,18 @@ class DomainAvailabilitySuggestionsRequest extends JsonSerializableType
     public ?int $count;
 
     /**
+     * @var ?bool $sug Whether to include domain suggestions in the response.
+     */
+    public ?bool $sug;
+
+    /**
      * @param array{
      *   apiKey: string,
      *   domain: string,
      *   format?: ?value-of<DomainAvailabilitySuggestionsRequestFormat>,
      *   source?: ?value-of<DomainAvailabilitySuggestionsRequestSource>,
      *   count?: ?int,
+     *   sug?: ?bool,
      * } $values
      */
     public function __construct(
@@ -50,5 +56,6 @@ class DomainAvailabilitySuggestionsRequest extends JsonSerializableType
         $this->domain = $values['domain'];
         $this->source = $values['source'] ?? null;
         $this->count = $values['count'] ?? null;
+        $this->sug = $values['sug'] ?? null;
     }
 }

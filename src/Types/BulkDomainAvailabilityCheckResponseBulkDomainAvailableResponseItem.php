@@ -8,36 +8,36 @@ use Apifreaks\Core\Json\JsonProperty;
 class BulkDomainAvailabilityCheckResponseBulkDomainAvailableResponseItem extends JsonSerializableType
 {
     /**
-     * @var ?string $domain
+     * @var string $domain
      */
     #[JsonProperty('domain')]
-    public ?string $domain;
+    public string $domain;
 
     /**
-     * @var ?bool $domainAvailability
+     * @var bool $domainAvailability
      */
     #[JsonProperty('domainAvailability')]
-    public ?bool $domainAvailability;
+    public bool $domainAvailability;
 
     /**
-     * @var ?bool $status
+     * @var bool $status
      */
     #[JsonProperty('status')]
-    public ?bool $status;
+    public bool $status;
 
     /**
      * @param array{
-     *   domain?: ?string,
-     *   domainAvailability?: ?bool,
-     *   status?: ?bool,
+     *   domain: string,
+     *   domainAvailability: bool,
+     *   status: bool,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->domain = $values['domain'] ?? null;
-        $this->domainAvailability = $values['domainAvailability'] ?? null;
-        $this->status = $values['status'] ?? null;
+        $this->domain = $values['domain'];
+        $this->domainAvailability = $values['domainAvailability'];
+        $this->status = $values['status'];
     }
 
     /**

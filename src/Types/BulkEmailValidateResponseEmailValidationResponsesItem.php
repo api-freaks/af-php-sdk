@@ -62,10 +62,10 @@ class BulkEmailValidateResponseEmailValidationResponsesItem extends JsonSerializ
     public BulkEmailValidateResponseEmailValidationResponsesItemDns $dns;
 
     /**
-     * @var ?string $ip
+     * @var ?string $ipAddress
      */
-    #[JsonProperty('ip')]
-    public ?string $ip;
+    #[JsonProperty('ipAddress')]
+    public ?string $ipAddress;
 
     /**
      * @var ?BulkEmailValidateResponseEmailValidationResponsesItemAddress $address
@@ -84,7 +84,7 @@ class BulkEmailValidateResponseEmailValidationResponsesItem extends JsonSerializ
      *   dns: BulkEmailValidateResponseEmailValidationResponsesItemDns,
      *   name?: ?string,
      *   reason?: ?string,
-     *   ip?: ?string,
+     *   ipAddress?: ?string,
      *   address?: ?BulkEmailValidateResponseEmailValidationResponsesItemAddress,
      * } $values
      */
@@ -100,7 +100,7 @@ class BulkEmailValidateResponseEmailValidationResponsesItem extends JsonSerializ
         $this->domain = $values['domain'];
         $this->account = $values['account'];
         $this->dns = $values['dns'];
-        $this->ip = $values['ip'] ?? null;
+        $this->ipAddress = $values['ipAddress'] ?? null;
         $this->address = $values['address'] ?? null;
     }
 

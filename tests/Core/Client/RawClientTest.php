@@ -139,7 +139,7 @@ class RawClientTest extends TestCase
             'name' => 'john.doe'
         ]);
         $headers = [
-            'X-API-Version' => '1.0.0',
+            'X-API-Version' => '1.0.1',
         ];
         $request = new JsonApiRequest(
             $this->baseUrl,
@@ -174,7 +174,7 @@ class RawClientTest extends TestCase
             'name' => 'john.doe'
         ]);
         $headers = [
-            'X-API-Version' => '1.0.0',
+            'X-API-Version' => '1.0.1',
         ];
         $request = new JsonApiRequest(
             $this->baseUrl,

@@ -74,52 +74,28 @@ class TimezoneLookupResponseTimeZone extends JsonSerializableType
     public string $time12;
 
     /**
-     * @var float $week
+     * @var int $week
      */
     #[JsonProperty('week')]
-    public float $week;
+    public int $week;
 
     /**
-     * @var float $month
+     * @var int $month
      */
     #[JsonProperty('month')]
-    public float $month;
+    public int $month;
 
     /**
-     * @var float $year
+     * @var int $year
      */
     #[JsonProperty('year')]
-    public float $year;
+    public int $year;
 
     /**
      * @var string $yearAbbr
      */
     #[JsonProperty('year_abbr')]
     public string $yearAbbr;
-
-    /**
-     * @var string $currentTzAbbreviation
-     */
-    #[JsonProperty('current_tz_abbreviation')]
-    public string $currentTzAbbreviation;
-
-    /**
-     * @var string $currentTzFullName
-     */
-    #[JsonProperty('current_tz_full_name')]
-    public string $currentTzFullName;
-
-    /**
-     * @var string $standardTzAbbreviation
-     */
-    #[JsonProperty('standard_tz_abbreviation')]
-    public string $standardTzAbbreviation;
-
-    /**
-     * @var string $standardTzFullName
-     */
-    #[JsonProperty('standard_tz_full_name')]
-    public string $standardTzFullName;
 
     /**
      * @var bool $isDst
@@ -140,16 +116,16 @@ class TimezoneLookupResponseTimeZone extends JsonSerializableType
     public bool $dstExists;
 
     /**
-     * @var ?TimezoneLookupResponseTimeZoneDstStart $dstStart
+     * @var TimezoneLookupResponseTimeZoneDstStart $dstStart
      */
     #[JsonProperty('dst_start')]
-    public ?TimezoneLookupResponseTimeZoneDstStart $dstStart;
+    public TimezoneLookupResponseTimeZoneDstStart $dstStart;
 
     /**
-     * @var ?TimezoneLookupResponseTimeZoneDstEnd $dstEnd
+     * @var TimezoneLookupResponseTimeZoneDstEnd $dstEnd
      */
     #[JsonProperty('dst_end')]
-    public ?TimezoneLookupResponseTimeZoneDstEnd $dstEnd;
+    public TimezoneLookupResponseTimeZoneDstEnd $dstEnd;
 
     /**
      * @param array{
@@ -164,19 +140,15 @@ class TimezoneLookupResponseTimeZone extends JsonSerializableType
      *   dateTimeUnix: float,
      *   time24: string,
      *   time12: string,
-     *   week: float,
-     *   month: float,
-     *   year: float,
+     *   week: int,
+     *   month: int,
+     *   year: int,
      *   yearAbbr: string,
-     *   currentTzAbbreviation: string,
-     *   currentTzFullName: string,
-     *   standardTzAbbreviation: string,
-     *   standardTzFullName: string,
      *   isDst: bool,
      *   dstSavings: float,
      *   dstExists: bool,
-     *   dstStart?: ?TimezoneLookupResponseTimeZoneDstStart,
-     *   dstEnd?: ?TimezoneLookupResponseTimeZoneDstEnd,
+     *   dstStart: TimezoneLookupResponseTimeZoneDstStart,
+     *   dstEnd: TimezoneLookupResponseTimeZoneDstEnd,
      * } $values
      */
     public function __construct(
@@ -197,15 +169,11 @@ class TimezoneLookupResponseTimeZone extends JsonSerializableType
         $this->month = $values['month'];
         $this->year = $values['year'];
         $this->yearAbbr = $values['yearAbbr'];
-        $this->currentTzAbbreviation = $values['currentTzAbbreviation'];
-        $this->currentTzFullName = $values['currentTzFullName'];
-        $this->standardTzAbbreviation = $values['standardTzAbbreviation'];
-        $this->standardTzFullName = $values['standardTzFullName'];
         $this->isDst = $values['isDst'];
         $this->dstSavings = $values['dstSavings'];
         $this->dstExists = $values['dstExists'];
-        $this->dstStart = $values['dstStart'] ?? null;
-        $this->dstEnd = $values['dstEnd'] ?? null;
+        $this->dstStart = $values['dstStart'];
+        $this->dstEnd = $values['dstEnd'];
     }
 
     /**

@@ -1059,9 +1059,7 @@ class ApifreaksClient
         if ($request->ipAddress != null) {
             $query['ipAddress'] = $request->ipAddress;
         }
-        if ($request->type != null) {
-            $query['type'] = $request->type;
-        }
+        $query['type'] = $request->type;
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
@@ -1114,11 +1112,9 @@ class ApifreaksClient
         $options = array_merge($this->options, $options ?? []);
         $query = [];
         $query['apiKey'] = $request->apiKey;
+        $query['type'] = $request->type;
         if ($request->format != null) {
             $query['format'] = $request->format;
-        }
-        if ($request->type != null) {
-            $query['type'] = $request->type;
         }
         try {
             $response = $this->client->sendRequest(
@@ -1174,11 +1170,9 @@ class ApifreaksClient
         $query = [];
         $query['apiKey'] = $request->apiKey;
         $query['host-name'] = $request->hostName;
+        $query['type'] = $request->type;
         if ($request->format != null) {
             $query['format'] = $request->format;
-        }
-        if ($request->type != null) {
-            $query['type'] = $request->type;
         }
         if ($request->page != null) {
             $query['page'] = $request->page;
@@ -1837,6 +1831,9 @@ class ApifreaksClient
         }
         if ($request->count != null) {
             $query['count'] = $request->count;
+        }
+        if ($request->sug != null) {
+            $query['sug'] = $request->sug;
         }
         try {
             $response = $this->client->sendRequest(
@@ -4598,11 +4595,9 @@ class ApifreaksClient
         $query = [];
         $query['apiKey'] = $request->apiKey;
         $query['updates'] = $request->updates;
+        $query['symbols'] = $request->symbols;
         if ($request->format != null) {
             $query['format'] = $request->format;
-        }
-        if ($request->symbols != null) {
-            $query['symbols'] = $request->symbols;
         }
         if ($request->quote != null) {
             $query['quote'] = $request->quote;
@@ -4659,11 +4654,9 @@ class ApifreaksClient
         $query = [];
         $query['apiKey'] = $request->apiKey;
         $query['date'] = JsonSerializer::serializeDate($request->date);
+        $query['symbols'] = $request->symbols;
         if ($request->format != null) {
             $query['format'] = $request->format;
-        }
-        if ($request->symbols != null) {
-            $query['symbols'] = $request->symbols;
         }
         try {
             $response = $this->client->sendRequest(
@@ -4718,11 +4711,9 @@ class ApifreaksClient
         $query['apiKey'] = $request->apiKey;
         $query['startDate'] = JsonSerializer::serializeDate($request->startDate);
         $query['endDate'] = JsonSerializer::serializeDate($request->endDate);
+        $query['symbols'] = $request->symbols;
         if ($request->format != null) {
             $query['format'] = $request->format;
-        }
-        if ($request->symbols != null) {
-            $query['symbols'] = $request->symbols;
         }
         try {
             $response = $this->client->sendRequest(
@@ -4777,11 +4768,9 @@ class ApifreaksClient
         $query['apiKey'] = $request->apiKey;
         $query['startDate'] = JsonSerializer::serializeDate($request->startDate);
         $query['endDate'] = JsonSerializer::serializeDate($request->endDate);
+        $query['symbols'] = $request->symbols;
         if ($request->format != null) {
             $query['format'] = $request->format;
-        }
-        if ($request->symbols != null) {
-            $query['symbols'] = $request->symbols;
         }
         try {
             $response = $this->client->sendRequest(
@@ -7073,12 +7062,15 @@ class ApifreaksClient
         if ($request->format != null) {
             $query['format'] = $request->format;
         }
+        $headers = [];
+        $headers['User-Agent'] = $request->userAgent;
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
                     path: "v1.0/user-agent/lookup",
                     method: HttpMethod::GET,
+                    headers: $headers,
                     query: $query,
                 ),
                 $options,

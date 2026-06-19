@@ -13,6 +13,11 @@ class UserAgentLookupRequest extends JsonSerializableType
     public string $apiKey;
 
     /**
+     * @var string $userAgent The User-Agent string to parse
+     */
+    public string $userAgent;
+
+    /**
      * @var ?value-of<UserAgentLookupRequestFormat> $format Format of the response
      */
     public ?string $format;
@@ -20,6 +25,7 @@ class UserAgentLookupRequest extends JsonSerializableType
     /**
      * @param array{
      *   apiKey: string,
+     *   userAgent: string,
      *   format?: ?value-of<UserAgentLookupRequestFormat>,
      * } $values
      */
@@ -27,6 +33,7 @@ class UserAgentLookupRequest extends JsonSerializableType
         array $values,
     ) {
         $this->apiKey = $values['apiKey'];
+        $this->userAgent = $values['userAgent'];
         $this->format = $values['format'] ?? null;
     }
 }

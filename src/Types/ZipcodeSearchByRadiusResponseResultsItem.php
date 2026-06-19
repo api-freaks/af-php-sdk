@@ -20,12 +20,6 @@ class ZipcodeSearchByRadiusResponseResultsItem extends JsonSerializableType
     public ?string $region;
 
     /**
-     * @var ?string $regionCode
-     */
-    #[JsonProperty('region_code')]
-    public ?string $regionCode;
-
-    /**
      * @var ?string $city
      */
     #[JsonProperty('city')]
@@ -47,7 +41,6 @@ class ZipcodeSearchByRadiusResponseResultsItem extends JsonSerializableType
      * @param array{
      *   code?: ?string,
      *   region?: ?string,
-     *   regionCode?: ?string,
      *   city?: ?string,
      *   district?: ?string,
      *   distance?: ?float,
@@ -58,7 +51,6 @@ class ZipcodeSearchByRadiusResponseResultsItem extends JsonSerializableType
     ) {
         $this->code = $values['code'] ?? null;
         $this->region = $values['region'] ?? null;
-        $this->regionCode = $values['regionCode'] ?? null;
         $this->city = $values['city'] ?? null;
         $this->district = $values['district'] ?? null;
         $this->distance = $values['distance'] ?? null;

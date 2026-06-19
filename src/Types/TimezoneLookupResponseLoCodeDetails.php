@@ -8,76 +8,76 @@ use Apifreaks\Core\Json\JsonProperty;
 class TimezoneLookupResponseLoCodeDetails extends JsonSerializableType
 {
     /**
-     * @var string $loCode
+     * @var ?string $loCode
      */
     #[JsonProperty('lo_code')]
-    public string $loCode;
+    public ?string $loCode;
 
     /**
-     * @var string $city
+     * @var ?string $city
      */
     #[JsonProperty('city')]
-    public string $city;
+    public ?string $city;
 
     /**
-     * @var string $longitude
+     * @var ?float $longitude
      */
     #[JsonProperty('longitude')]
-    public string $longitude;
+    public ?float $longitude;
 
     /**
-     * @var string $latitude
+     * @var ?float $latitude
      */
     #[JsonProperty('latitude')]
-    public string $latitude;
+    public ?float $latitude;
 
     /**
-     * @var string $stateCode
+     * @var ?string $stateCode
      */
     #[JsonProperty('state_code')]
-    public string $stateCode;
+    public ?string $stateCode;
 
     /**
-     * @var string $countryCode
+     * @var ?string $countryCode
      */
     #[JsonProperty('country_code')]
-    public string $countryCode;
+    public ?string $countryCode;
 
     /**
-     * @var string $countryName
+     * @var ?string $countryName
      */
     #[JsonProperty('country_name')]
-    public string $countryName;
+    public ?string $countryName;
 
     /**
-     * @var string $locationType
+     * @var ?string $locationType
      */
     #[JsonProperty('location_type')]
-    public string $locationType;
+    public ?string $locationType;
 
     /**
      * @param array{
-     *   loCode: string,
-     *   city: string,
-     *   longitude: string,
-     *   latitude: string,
-     *   stateCode: string,
-     *   countryCode: string,
-     *   countryName: string,
-     *   locationType: string,
+     *   loCode?: ?string,
+     *   city?: ?string,
+     *   longitude?: ?float,
+     *   latitude?: ?float,
+     *   stateCode?: ?string,
+     *   countryCode?: ?string,
+     *   countryName?: ?string,
+     *   locationType?: ?string,
      * } $values
      */
     public function __construct(
         array $values,
     ) {
-        $this->loCode = $values['loCode'];
-        $this->city = $values['city'];
-        $this->longitude = $values['longitude'];
-        $this->latitude = $values['latitude'];
-        $this->stateCode = $values['stateCode'];
-        $this->countryCode = $values['countryCode'];
-        $this->countryName = $values['countryName'];
-        $this->locationType = $values['locationType'];
+        $this->loCode = $values['loCode'] ?? null;
+        $this->city = $values['city'] ?? null;
+        $this->longitude = $values['longitude'] ?? null;
+        $this->latitude = $values['latitude'] ?? null;
+        $this->stateCode = $values['stateCode'] ?? null;
+        $this->countryCode = $values['countryCode'] ?? null;
+        $this->countryName = $values['countryName'] ?? null;
+        $this->locationType = $values['locationType'] ?? null;
     }
 
     /**

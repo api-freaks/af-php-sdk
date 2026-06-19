@@ -12,19 +12,19 @@ class DomainWhoisReverseResponse extends JsonSerializableType
     /**
      * @var ?int $totalResult
      */
-    #[JsonProperty('totalResult')]
+    #[JsonProperty('total_Result')]
     public ?int $totalResult;
 
     /**
      * @var ?int $totalPages
      */
-    #[JsonProperty('totalPages')]
+    #[JsonProperty('total_Pages')]
     public ?int $totalPages;
 
     /**
      * @var ?int $currentPage
      */
-    #[JsonProperty('currentPage')]
+    #[JsonProperty('current_Page')]
     public ?int $currentPage;
 
     /**
