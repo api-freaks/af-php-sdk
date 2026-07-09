@@ -139,7 +139,7 @@ class RawClientTest extends TestCase
             'name' => 'john.doe'
         ]);
         $headers = [
-            'X-API-Version' => '1.0.1',
+            'X-API-Version' => '1.0.2',
         ];
         $request = new JsonApiRequest(
             $this->baseUrl,
@@ -162,7 +162,7 @@ class RawClientTest extends TestCase
         $lastRequest = $this->mockClient->getLastRequest();
         $this->assertInstanceOf(RequestInterface::class, $lastRequest);
         $this->assertEquals('application/json', $lastRequest->getHeaderLine('Content-Type'));
-        $this->assertEquals('1.0.1', $lastRequest->getHeaderLine('X-API-Version'));
+        $this->assertEquals('1.0.2', $lastRequest->getHeaderLine('X-API-Version'));
         $this->assertEquals('test', $lastRequest->getHeaderLine('X-Tenancy'));
     }
 
@@ -174,7 +174,7 @@ class RawClientTest extends TestCase
             'name' => 'john.doe'
         ]);
         $headers = [
-            'X-API-Version' => '1.0.1',
+            'X-API-Version' => '1.0.2',
         ];
         $request = new JsonApiRequest(
             $this->baseUrl,
