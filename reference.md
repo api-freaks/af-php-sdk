@@ -49,6 +49,54 @@ $response = $client->geolocationLookup($request);
 </dl>
 </details>
 
+<details><summary><code>$client->geolocationLookupV2($request) -> GeolocationLookupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+(v2.0) Get detailed geolocation data for an IP address including country, city, timezone, currency, and optional security and user-agent information. Uses the `v2.0/geolocation/lookup` endpoint.
+
+#### 🔌 Usage
+
+```php
+<?php
+
+use Apifreaks\ApifreaksClient;
+use Apifreaks\Requests\GeolocationLookupRequest;
+
+$client = new ApifreaksClient();
+$request = new GeolocationLookupRequest([
+    'apiKey' => "apiKey",
+]);
+
+$response = $client->geolocationLookupV2($request);
+```
+
+#### ⚙️ Parameters
+
+**apiKey:** `string` — required. Your API key
+
+**format:** `?value-of<GeolocationLookupRequestFormat>` — optional. Format of the response.
+
+**ip:** `?string` — optional. IPv4, IPv6, or hostname for geolocation lookup
+
+**lang:** `?value-of<GeolocationLookupRequestLang>` — optional. Response language for location fields
+
+**fields:** `?string` — optional. Comma separated list of fields to include in response
+
+**excludes:** `?string` — optional. Comma separated list of fields to exclude from response
+
+**include:** `?string` — optional. Additional data to include (location, network, security, currency, time_zone, user_agent, country_metadata , hostname, liveHostname, hostnameFallbackLivet)
+
+#### ↩️ Response
+
+`GeolocationLookupResponse`
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>$client->bulkGeolocationLookup($request) -> array</code></summary>
 <dl>
 <dd>
@@ -72,6 +120,55 @@ $request = new BulkGeolocationLookupRequest([
 ]);
 
 $response = $client->bulkGeolocationLookup($request);
+```
+
+#### ⚙️ Parameters
+
+**apiKey:** `string` — required. Your API key
+
+**format:** `?value-of<BulkGeolocationLookupRequestFormat>` — optional. Format of the response.
+
+**lang:** `?string` — optional. Language of the response.
+
+**fields:** `?string` — optional. Comma-separated list of fields to include in the response. Can include "geo".
+
+**excludes:** `?string` — optional. Comma-separated list of fields to exclude from the response (except "ip").
+
+**include:** `?string` — optional. Comma-separated list of additional information to include in the response.
+
+**ips:** `array<string>` — required. List of IP addresses or hostnames to lookup
+
+#### ↩️ Response
+
+`array`
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client->bulkGeolocationLookupV2($request) -> array</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+(v2.0) Retrieve detailed geolocation data for multiple IP addresses in a single request. Supports up to `50,000` IP-addresses/host-names per request. Uses the `v2.0/geolocation/lookup` endpoint.
+
+#### 🔌 Usage
+
+```php
+<?php
+
+use Apifreaks\ApifreaksClient;
+use Apifreaks\Requests\BulkGeolocationLookupRequest;
+
+$client = new ApifreaksClient();
+$request = new BulkGeolocationLookupRequest([
+    'apiKey' => "apiKey",
+    'ips' => ["8.8.8.8", "1.1.1.1"],
+]);
+
+$response = $client->bulkGeolocationLookupV2($request);
 ```
 
 #### ⚙️ Parameters
@@ -327,6 +424,47 @@ $response = $client->domainWhoisLookup($request);
 </dl>
 </details>
 
+<details><summary><code>$client->domainWhoisLookupV2($request) -> DomainWhoisLookupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+(v2.0) Retrieve current WHOIS information for a domain name. This endpoint provides detailed registration information including registrar details, dates, nameservers, and registrant information. Uses the `v2.0/domain/whois/live` endpoint.
+
+#### 🔌 Usage
+
+```php
+<?php
+
+use Apifreaks\ApifreaksClient;
+use Apifreaks\Requests\DomainWhoisLookupRequest;
+
+$client = new ApifreaksClient();
+$request = new DomainWhoisLookupRequest([
+    'apiKey' => "apiKey",
+    'domainName' => "example.com",
+]);
+
+$response = $client->domainWhoisLookupV2($request);
+```
+
+#### ⚙️ Parameters
+
+**apiKey:** `string` — required. Your API key
+
+**format:** `?value-of<DomainWhoisLookupRequestFormat>` — optional. Response format (defaults to json)
+
+**domainName:** `string` — required. Domain name for WHOIS lookup
+
+#### ↩️ Response
+
+`DomainWhoisLookupResponse`
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>$client->bulkDomainWhoisLookup($request) -> BulkDomainWhoisLookupResponse</code></summary>
 <dl>
 <dd>
@@ -350,6 +488,47 @@ $request = new BulkDomainWhoisLookupRequest([
 ]);
 
 $response = $client->bulkDomainWhoisLookup($request);
+```
+
+#### ⚙️ Parameters
+
+**apiKey:** `string` — required. Your API key
+
+**format:** `?value-of<BulkDomainWhoisLookupRequestFormat>` — optional. Format of the response.
+
+**domainNames:** `array<string>` — required. A list of domain names for which WHOIS data is requested.
+
+#### ↩️ Response
+
+`BulkDomainWhoisLookupResponse`
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client->bulkDomainWhoisLookupV2($request) -> BulkDomainWhoisLookupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+(v2.0) Retrieve WHOIS information for `100 Domains per Request`. Uses the `v2.0/domain/whois/live` endpoint.
+
+#### 🔌 Usage
+
+```php
+<?php
+
+use Apifreaks\ApifreaksClient;
+use Apifreaks\Requests\BulkDomainWhoisLookupRequest;
+
+$client = new ApifreaksClient();
+$request = new BulkDomainWhoisLookupRequest([
+    'apiKey' => "apiKey",
+    'domainNames' => ["example.com", "openai.com"],
+]);
+
+$response = $client->bulkDomainWhoisLookupV2($request);
 ```
 
 #### ⚙️ Parameters
@@ -4874,6 +5053,62 @@ $response = $client->timezoneLookup($request);
 </dl>
 </details>
 
+<details><summary><code>$client->timezoneLookupV2($request) -> TimezoneLookupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+(v2.0) Retrieve current time, date, and timezone-related information by specifying a timezone name, location address, location coordinates, IP address, or use the client IP address if no parameter is passed. Uses the `v2.0/geolocation/timezone` endpoint.
+
+#### 🔌 Usage
+
+```php
+<?php
+
+use Apifreaks\ApifreaksClient;
+use Apifreaks\Requests\TimezoneLookupRequest;
+
+$client = new ApifreaksClient();
+$request = new TimezoneLookupRequest([
+    'apiKey' => "apiKey",
+]);
+
+$response = $client->timezoneLookupV2($request);
+```
+
+#### ⚙️ Parameters
+
+**apiKey:** `string` — required. Your API key
+
+**format:** `?value-of<TimezoneLookupRequestFormat>` — optional. Format of the response
+
+**ip:** `?string` — optional. IPv4 or IPv6 address to extract timezone information.
+
+**tz:** `?string` — optional. Timezone name (e.g., "Asia/Kolkata") to retrieve information directly.
+
+**location:** `?string` — optional. Location string (preferably city and country) to extract timezone.
+
+**lat:** `?float` — optional. Latitude for geolocation lookup.
+
+**long:** `?float` — optional. Longitude for geolocation lookup.
+
+**lang:** `?value-of<TimezoneLookupRequestLang>` — optional. Language code for response localization (default is "en").
+
+**iataCode:** `?string` — optional. 3-letter IATA airport code (e.g., JFK).
+
+**icaoCode:** `?string` — optional. 4-letter ICAO airport code (e.g., KJFK).
+
+**loCode:** `?string` — optional. 5-letter UN/LO city code.
+
+#### ↩️ Response
+
+`TimezoneLookupResponse`
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>$client->timezoneConvert($request) -> TimezoneConvertResponse</code></summary>
 <dl>
 <dd>
@@ -5264,6 +5499,60 @@ $request = new AstronomyLookupRequest([
 ]);
 
 $response = $client->astronomyLookup($request);
+```
+
+#### ⚙️ Parameters
+
+**apiKey:** `string` — required. Your API key
+
+**format:** `?value-of<AstronomyLookupRequestFormat>` — optional. Format of the response.
+
+**location:** `?string` — optional. Location name or address
+
+**lat:** `?float` — optional. Latitude for location coordinates
+
+**long:** `?float` — optional. Longitude for location coordinates
+
+**ip:** `?string` — optional. IP address for location detection
+
+**lang:** `?string` — optional
+
+**date:** `?DateTime` — optional. Date for astronomy data (YYYY-MM-DD)
+
+**elevation:** `?float` — optional. Timezone of the location for which astronomy data is required
+
+**timeZone:** `?string` — optional
+
+#### ↩️ Response
+
+`AstronomyLookupResponse`
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client->astronomyLookupV2($request) -> AstronomyLookupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+(v2.0) Retrieve sunrise and sunset times, current position of the moon, and other related information by specifying a location address, location coordinates, IP address, or using the client IP address if no parameter is passed. Uses the `v2.0/geolocation/astronomy` endpoint.
+
+#### 🔌 Usage
+
+```php
+<?php
+
+use Apifreaks\ApifreaksClient;
+use Apifreaks\Requests\AstronomyLookupRequest;
+
+$client = new ApifreaksClient();
+$request = new AstronomyLookupRequest([
+    'apiKey' => "apiKey",
+]);
+
+$response = $client->astronomyLookupV2($request);
 ```
 
 #### ⚙️ Parameters
