@@ -56,12 +56,6 @@ class BulkDomainDnsLookupResponseBulkDnsInfoItemDnsTypes extends JsonSerializabl
     public ?float $spf;
 
     /**
-     * @var ?float $ptr
-     */
-    #[JsonProperty('PTR')]
-    public ?float $ptr;
-
-    /**
      * @param array{
      *   a?: ?float,
      *   aaaa?: ?float,
@@ -71,7 +65,6 @@ class BulkDomainDnsLookupResponseBulkDnsInfoItemDnsTypes extends JsonSerializabl
      *   soa?: ?float,
      *   txt?: ?float,
      *   spf?: ?float,
-     *   ptr?: ?float,
      * } $values
      */
     public function __construct(
@@ -85,7 +78,6 @@ class BulkDomainDnsLookupResponseBulkDnsInfoItemDnsTypes extends JsonSerializabl
         $this->soa = $values['soa'] ?? null;
         $this->txt = $values['txt'] ?? null;
         $this->spf = $values['spf'] ?? null;
-        $this->ptr = $values['ptr'] ?? null;
     }
 
     /**

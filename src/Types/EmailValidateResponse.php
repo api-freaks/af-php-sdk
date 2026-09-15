@@ -62,10 +62,10 @@ class EmailValidateResponse extends JsonSerializableType
     public EmailValidateResponseDns $dns;
 
     /**
-     * @var ?string $ipAddress
+     * @var ?string $ip
      */
-    #[JsonProperty('ipAddress')]
-    public ?string $ipAddress;
+    #[JsonProperty('ip')]
+    public ?string $ip;
 
     /**
      * @var ?EmailValidateResponseAddress $address
@@ -84,7 +84,7 @@ class EmailValidateResponse extends JsonSerializableType
      *   dns: EmailValidateResponseDns,
      *   name?: ?string,
      *   reason?: ?string,
-     *   ipAddress?: ?string,
+     *   ip?: ?string,
      *   address?: ?EmailValidateResponseAddress,
      * } $values
      */
@@ -100,7 +100,7 @@ class EmailValidateResponse extends JsonSerializableType
         $this->domain = $values['domain'];
         $this->account = $values['account'];
         $this->dns = $values['dns'];
-        $this->ipAddress = $values['ipAddress'] ?? null;
+        $this->ip = $values['ip'] ?? null;
         $this->address = $values['address'] ?? null;
     }
 

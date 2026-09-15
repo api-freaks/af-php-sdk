@@ -8,10 +8,10 @@ use Apifreaks\Core\Json\JsonProperty;
 class EmailValidateResponseAddressSecurity extends JsonSerializableType
 {
     /**
-     * @var int $threatScore
+     * @var float $threatScore
      */
     #[JsonProperty('threat_score')]
-    public int $threatScore;
+    public float $threatScore;
 
     /**
      * @var bool $isTor
@@ -75,7 +75,7 @@ class EmailValidateResponseAddressSecurity extends JsonSerializableType
 
     /**
      * @param array{
-     *   threatScore: int,
+     *   threatScore: float,
      *   isTor: bool,
      *   isProxy: bool,
      *   proxyType: string,

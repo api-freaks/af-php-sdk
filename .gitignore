@@ -1,0 +1,13 @@
+/vendor/
+composer.lock
+
+# Test / tooling caches
+.phpunit.result.cache
+.php-cs-fixer.cache
+
+# IDE
+.idea/
+.vscode/
+
+# OS cruft
+.DS_Store

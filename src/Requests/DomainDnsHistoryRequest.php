@@ -26,9 +26,9 @@ class DomainDnsHistoryRequest extends JsonSerializableType
      * A comma-separated list of DNS record types for lookup.
      * Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, or all
      *
-     * @var array<string> $type
+     * @var ?array<string> $type
      */
-    public array $type;
+    public ?array $type;
 
     /**
      * @var ?int $page Page number for paginated results
@@ -39,8 +39,8 @@ class DomainDnsHistoryRequest extends JsonSerializableType
      * @param array{
      *   apiKey: string,
      *   hostName: string,
-     *   type: array<string>,
      *   format?: ?value-of<DomainDnsHistoryRequestFormat>,
+     *   type?: ?array<string>,
      *   page?: ?int,
      * } $values
      */
@@ -50,7 +50,7 @@ class DomainDnsHistoryRequest extends JsonSerializableType
         $this->apiKey = $values['apiKey'];
         $this->format = $values['format'] ?? null;
         $this->hostName = $values['hostName'];
-        $this->type = $values['type'];
+        $this->type = $values['type'] ?? null;
         $this->page = $values['page'] ?? null;
     }
 }

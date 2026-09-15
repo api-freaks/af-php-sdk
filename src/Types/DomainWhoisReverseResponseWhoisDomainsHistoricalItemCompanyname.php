@@ -54,7 +54,7 @@ class DomainWhoisReverseResponseWhoisDomainsHistoricalItemCompanyname extends Js
     /**
      * @var ?string $companyname
      */
-    #[JsonProperty('company_name')]
+    #[JsonProperty('companyname')]
     public ?string $companyname;
 
     /**

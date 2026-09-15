@@ -9,20 +9,20 @@ use Apifreaks\Core\Types\ArrayType;
 class BulkEmailValidateResponse extends JsonSerializableType
 {
     /**
-     * @var ?array<BulkEmailValidateResponseEmailValidationResponsesItem> $emailValidationResponses Array of SingleEmailValidationResponse objects for bulk validation
+     * @var array<BulkEmailValidateResponseEmailResponseItem> $emailResponse Array of SingleEmailValidationResponse objects for bulk validation
      */
-    #[JsonProperty('emailValidationResponses'), ArrayType([BulkEmailValidateResponseEmailValidationResponsesItem::class])]
-    public ?array $emailValidationResponses;
+    #[JsonProperty('emailResponse'), ArrayType([BulkEmailValidateResponseEmailResponseItem::class])]
+    public array $emailResponse;
 
     /**
      * @param array{
-     *   emailValidationResponses?: ?array<BulkEmailValidateResponseEmailValidationResponsesItem>,
+     *   emailResponse: array<BulkEmailValidateResponseEmailResponseItem>,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->emailValidationResponses = $values['emailValidationResponses'] ?? null;
+        $this->emailResponse = $values['emailResponse'];
     }
 
     /**

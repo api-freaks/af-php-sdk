@@ -9,28 +9,28 @@ use Apifreaks\Core\Types\ArrayType;
 class DomainSslLookupResponseSslCertificatesItemExtensionsAuthorityInfoAccess extends JsonSerializableType
 {
     /**
-     * @var ?array<string> $issuers
+     * @var array<string> $issuers
      */
     #[JsonProperty('issuers'), ArrayType(['string'])]
-    public ?array $issuers;
+    public array $issuers;
 
     /**
-     * @var ?array<string> $ocsp
+     * @var array<string> $ocsp
      */
     #[JsonProperty('ocsp'), ArrayType(['string'])]
-    public ?array $ocsp;
+    public array $ocsp;
 
     /**
      * @param array{
-     *   issuers?: ?array<string>,
-     *   ocsp?: ?array<string>,
+     *   issuers: array<string>,
+     *   ocsp: array<string>,
      * } $values
      */
     public function __construct(
         array $values,
     ) {
-        $this->issuers = $values['issuers'] ?? null;
-        $this->ocsp = $values['ocsp'] ?? null;
+        $this->issuers = $values['issuers'];
+        $this->ocsp = $values['ocsp'];
     }
 
     /**

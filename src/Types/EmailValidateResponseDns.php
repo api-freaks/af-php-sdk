@@ -9,28 +9,28 @@ use Apifreaks\Core\Types\ArrayType;
 class EmailValidateResponseDns extends JsonSerializableType
 {
     /**
-     * @var array<string> $mxRecords
+     * @var array<string> $mxRecord
      */
-    #[JsonProperty('mxRecords'), ArrayType(['string'])]
-    public array $mxRecords;
+    #[JsonProperty('mxRecord'), ArrayType(['string'])]
+    public array $mxRecord;
 
     /**
-     * @var array<string> $aRecords Collection of A (Address) records for the domain.
+     * @var ?array<string> $aRecord Collection of A (Address) records for the domain.
      */
-    #[JsonProperty('aRecords'), ArrayType(['string'])]
-    public array $aRecords;
+    #[JsonProperty('aRecord'), ArrayType(['string'])]
+    public ?array $aRecord;
 
     /**
      * @param array{
-     *   mxRecords: array<string>,
-     *   aRecords: array<string>,
+     *   mxRecord: array<string>,
+     *   aRecord?: ?array<string>,
      * } $values
      */
     public function __construct(
         array $values,
     ) {
-        $this->mxRecords = $values['mxRecords'];
-        $this->aRecords = $values['aRecords'];
+        $this->mxRecord = $values['mxRecord'];
+        $this->aRecord = $values['aRecord'] ?? null;
     }
 
     /**

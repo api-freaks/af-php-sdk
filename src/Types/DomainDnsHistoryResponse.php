@@ -9,44 +9,44 @@ use Apifreaks\Core\Types\ArrayType;
 class DomainDnsHistoryResponse extends JsonSerializableType
 {
     /**
-     * @var int $totalRecords
+     * @var ?int $totalRecords
      */
     #[JsonProperty('totalRecords')]
-    public int $totalRecords;
+    public ?int $totalRecords;
 
     /**
-     * @var int $totalPages
+     * @var ?int $totalPages
      */
     #[JsonProperty('totalPages')]
-    public int $totalPages;
+    public ?int $totalPages;
 
     /**
-     * @var int $currentPage
+     * @var ?int $currentPage
      */
     #[JsonProperty('currentPage')]
-    public int $currentPage;
+    public ?int $currentPage;
 
     /**
-     * @var array<DomainDnsHistoryResponseHistoricalDnsRecordsItem> $historicalDnsRecords
+     * @var ?array<DomainDnsHistoryResponseHistoricalDnsRecordsItem> $historicalDnsRecords
      */
     #[JsonProperty('historicalDnsRecords'), ArrayType([DomainDnsHistoryResponseHistoricalDnsRecordsItem::class])]
-    public array $historicalDnsRecords;
+    public ?array $historicalDnsRecords;
 
     /**
      * @param array{
-     *   totalRecords: int,
-     *   totalPages: int,
-     *   currentPage: int,
-     *   historicalDnsRecords: array<DomainDnsHistoryResponseHistoricalDnsRecordsItem>,
+     *   totalRecords?: ?int,
+     *   totalPages?: ?int,
+     *   currentPage?: ?int,
+     *   historicalDnsRecords?: ?array<DomainDnsHistoryResponseHistoricalDnsRecordsItem>,
      * } $values
      */
     public function __construct(
-        array $values,
+        array $values = [],
     ) {
-        $this->totalRecords = $values['totalRecords'];
-        $this->totalPages = $values['totalPages'];
-        $this->currentPage = $values['currentPage'];
-        $this->historicalDnsRecords = $values['historicalDnsRecords'];
+        $this->totalRecords = $values['totalRecords'] ?? null;
+        $this->totalPages = $values['totalPages'] ?? null;
+        $this->currentPage = $values['currentPage'] ?? null;
+        $this->historicalDnsRecords = $values['historicalDnsRecords'] ?? null;
     }
 
     /**

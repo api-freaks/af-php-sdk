@@ -19,15 +19,15 @@ class PdfUploadResourcesRequest extends JsonSerializableType
     public ?string $format;
 
     /**
-     * @var array<File> $file
+     * @var ?array<File> $file
      */
-    public array $file;
+    public ?array $file;
 
     /**
      * @param array{
      *   apiKey: string,
-     *   file: array<File>,
      *   format?: ?value-of<PdfUploadResourcesRequestFormat>,
+     *   file?: ?array<File>,
      * } $values
      */
     public function __construct(
@@ -35,6 +35,6 @@ class PdfUploadResourcesRequest extends JsonSerializableType
     ) {
         $this->apiKey = $values['apiKey'];
         $this->format = $values['format'] ?? null;
-        $this->file = $values['file'];
+        $this->file = $values['file'] ?? null;
     }
 }

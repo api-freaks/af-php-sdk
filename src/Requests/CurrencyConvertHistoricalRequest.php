@@ -29,9 +29,9 @@ class CurrencyConvertHistoricalRequest extends JsonSerializableType
     public string $to;
 
     /**
-     * @var ?string $amount The Amount to be converted
+     * @var ?float $amount The Amount to be converted
      */
-    public ?string $amount;
+    public ?float $amount;
 
     /**
      * @var DateTime $date specific date (format YYYY-MM-DD) of which exchange rates is used.
@@ -45,7 +45,7 @@ class CurrencyConvertHistoricalRequest extends JsonSerializableType
      *   to: string,
      *   date: DateTime,
      *   format?: ?value-of<CurrencyConvertHistoricalRequestFormat>,
-     *   amount?: ?string,
+     *   amount?: ?float,
      * } $values
      */
     public function __construct(
