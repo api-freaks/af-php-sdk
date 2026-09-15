@@ -28,17 +28,17 @@ class DomainDnsLookupRequest extends JsonSerializableType
     public ?string $ipAddress;
 
     /**
-     * @var array<string> $type A comma-separated list of DNS record types for lookup. Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, or all. When ipAddress is provided, type must be "all".
+     * @var ?array<string> $type A comma-separated list of DNS record types for lookup. Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, or all. When ipAddress is provided, type must be "all".
      */
-    public array $type;
+    public ?array $type;
 
     /**
      * @param array{
      *   apiKey: string,
-     *   type: array<string>,
      *   format?: ?value-of<DomainDnsLookupRequestFormat>,
      *   hostName?: ?string,
      *   ipAddress?: ?string,
+     *   type?: ?array<string>,
      * } $values
      */
     public function __construct(
@@ -48,6 +48,6 @@ class DomainDnsLookupRequest extends JsonSerializableType
         $this->format = $values['format'] ?? null;
         $this->hostName = $values['hostName'] ?? null;
         $this->ipAddress = $values['ipAddress'] ?? null;
-        $this->type = $values['type'];
+        $this->type = $values['type'] ?? null;
     }
 }

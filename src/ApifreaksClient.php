@@ -67,6 +67,33 @@ use Apifreaks\Requests\DomainAvailabilitySuggestionsRequest;
 use Apifreaks\Types\DomainAvailabilitySuggestionsResponse;
 use Apifreaks\Requests\SubdomainsLookupRequest;
 use Apifreaks\Types\SubdomainsLookupResponse;
+use Apifreaks\Requests\DomainTyposquattingRequest;
+use Apifreaks\Types\DomainTyposquattingResponse;
+use Apifreaks\Requests\DomainReputationRequest;
+use Apifreaks\Types\DomainReputationResponse;
+use Apifreaks\Requests\AstronomyLookupV2Request;
+use Apifreaks\Types\AstronomyLookupV2Response;
+use Apifreaks\Requests\TimezoneLookupV2Request;
+use Apifreaks\Types\TimezoneLookupV2Response;
+use Apifreaks\Requests\GeolocationLookupV2Request;
+use Apifreaks\Types\GeolocationLookupV2Response;
+use Apifreaks\Requests\BulkGeolocationLookupV2Request;
+use Apifreaks\Types\BulkGeolocationLookupV2ResponseItemAbuse;
+use Apifreaks\Types\BulkGeolocationLookupV2ResponseItemMessage;
+use Apifreaks\Requests\DomainWhoisLookupV2Request;
+use Apifreaks\Types\DomainWhoisLookupV2Response;
+use Apifreaks\Requests\BulkDomainWhoisLookupV2Request;
+use Apifreaks\Types\BulkDomainWhoisLookupV2Response;
+use Apifreaks\Requests\CommodityLatestRatesV2Request;
+use Apifreaks\Types\CommodityLatestRatesV2Response;
+use Apifreaks\Requests\CommodityHistoricalRatesV2Request;
+use Apifreaks\Types\CommodityHistoricalRatesV2Response;
+use Apifreaks\Requests\CommodityFluctuationV2Request;
+use Apifreaks\Types\CommodityFluctuationV2Response;
+use Apifreaks\Requests\CommodityTimeSeriesV2Request;
+use Apifreaks\Types\CommodityTimeSeriesV2Response;
+use Apifreaks\Requests\CommoditySymbolsV2Request;
+use Apifreaks\Types\CommoditySymbolsV2Response;
 use Apifreaks\Requests\PdfMergeRequest;
 use Apifreaks\Types\PdfMergeResponse;
 use Apifreaks\Core\Multipart\MultipartFormData;
@@ -263,8 +290,6 @@ class ApifreaksClient
         ?array $options = null,
     ) {
         $defaultHeaders = [
-            'X-Fern-Language' => 'PHP',
-            'X-Fern-SDK-Name' => 'Apifreaks',
         ];
 
         $this->options = $options ?? [];
@@ -1059,7 +1084,9 @@ class ApifreaksClient
         if ($request->ipAddress != null) {
             $query['ipAddress'] = $request->ipAddress;
         }
-        $query['type'] = $request->type;
+        if ($request->type != null) {
+            $query['type'] = $request->type;
+        }
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
@@ -1112,9 +1139,11 @@ class ApifreaksClient
         $options = array_merge($this->options, $options ?? []);
         $query = [];
         $query['apiKey'] = $request->apiKey;
-        $query['type'] = $request->type;
         if ($request->format != null) {
             $query['format'] = $request->format;
+        }
+        if ($request->type != null) {
+            $query['type'] = $request->type;
         }
         try {
             $response = $this->client->sendRequest(
@@ -1170,9 +1199,11 @@ class ApifreaksClient
         $query = [];
         $query['apiKey'] = $request->apiKey;
         $query['host-name'] = $request->hostName;
-        $query['type'] = $request->type;
         if ($request->format != null) {
             $query['format'] = $request->format;
+        }
+        if ($request->type != null) {
+            $query['type'] = $request->type;
         }
         if ($request->page != null) {
             $query['page'] = $request->page;
@@ -1832,9 +1863,6 @@ class ApifreaksClient
         if ($request->count != null) {
             $query['count'] = $request->count;
         }
-        if ($request->sug != null) {
-            $query['sug'] = $request->sug;
-        }
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
@@ -1919,6 +1947,822 @@ class ApifreaksClient
                     return null;
                 }
                 return SubdomainsLookupResponse::fromJson($json);
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * The Domain Typosquatting API searches for registered domains that are typo or look-alike variants of a brand keyword, or that match a wildcard pattern. Results include registration lifecycle data and drop status across 1529+ TLDs, paginated at 100 domains per page.
+     *
+     * @param DomainTyposquattingRequest $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?DomainTyposquattingResponse
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function domainTyposquatting(DomainTyposquattingRequest $request, ?array $options = null): ?DomainTyposquattingResponse
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        if ($request->keyword != null) {
+            $query['keyword'] = $request->keyword;
+        }
+        if ($request->pattern != null) {
+            $query['pattern'] = $request->pattern;
+        }
+        if ($request->pageToken != null) {
+            $query['pageToken'] = $request->pageToken;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v1.0/domain/typosquatting",
+                    method: HttpMethod::GET,
+                    query: $query,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return DomainTyposquattingResponse::fromJson($json);
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * The Domain Reputation API evaluates a domain against threat intelligence sources, DGA (domain generation algorithm) scoring, trust signals, and email deliverability configuration, returning a consolidated risk assessment with a verdict, severity, and supporting evidence.
+     *
+     * @param DomainReputationRequest $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?DomainReputationResponse
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function domainReputation(DomainReputationRequest $request, ?array $options = null): ?DomainReputationResponse
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        $query['domainName'] = $request->domainName;
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v1.0/domain/reputation",
+                    method: HttpMethod::GET,
+                    query: $query,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return DomainReputationResponse::fromJson($json);
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * Retrieve sunrise and sunset times, current position of the moon, and other related information by specifying a location address, location coordinates, IP address, or using the client IP address if no parameter is passed.
+     *
+     * @param AstronomyLookupV2Request $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?AstronomyLookupV2Response
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function astronomyLookupV2(AstronomyLookupV2Request $request, ?array $options = null): ?AstronomyLookupV2Response
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        if ($request->location != null) {
+            $query['location'] = $request->location;
+        }
+        if ($request->lat != null) {
+            $query['lat'] = $request->lat;
+        }
+        if ($request->long != null) {
+            $query['long'] = $request->long;
+        }
+        if ($request->ip != null) {
+            $query['ip'] = $request->ip;
+        }
+        if ($request->lang != null) {
+            $query['lang'] = $request->lang;
+        }
+        if ($request->date != null) {
+            $query['date'] = JsonSerializer::serializeDate($request->date);
+        }
+        if ($request->elevation != null) {
+            $query['elevation'] = $request->elevation;
+        }
+        if ($request->timeZone != null) {
+            $query['time_zone'] = $request->timeZone;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v2.0/geolocation/astronomy",
+                    method: HttpMethod::GET,
+                    query: $query,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return AstronomyLookupV2Response::fromJson($json);
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * Get current time, date, and timezone details by specifying a timezone name, location address, GPS coordinates, IP address, IATA/ICAO airport code, UN/LOCODE, or use the client IP if no parameter is provided.
+     *
+     * @param TimezoneLookupV2Request $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?TimezoneLookupV2Response
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function timezoneLookupV2(TimezoneLookupV2Request $request, ?array $options = null): ?TimezoneLookupV2Response
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        if ($request->ip != null) {
+            $query['ip'] = $request->ip;
+        }
+        if ($request->tz != null) {
+            $query['tz'] = $request->tz;
+        }
+        if ($request->location != null) {
+            $query['location'] = $request->location;
+        }
+        if ($request->lat != null) {
+            $query['lat'] = $request->lat;
+        }
+        if ($request->long != null) {
+            $query['long'] = $request->long;
+        }
+        if ($request->lang != null) {
+            $query['lang'] = $request->lang;
+        }
+        if ($request->iataCode != null) {
+            $query['iata_code'] = $request->iataCode;
+        }
+        if ($request->icaoCode != null) {
+            $query['icao_code'] = $request->icaoCode;
+        }
+        if ($request->loCode != null) {
+            $query['lo_code'] = $request->loCode;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v2.0/geolocation/timezone",
+                    method: HttpMethod::GET,
+                    query: $query,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return TimezoneLookupV2Response::fromJson($json);
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * Get detailed IP geolocation data for an IP address including country, city, timezone, currency, and optional threat intelligence and user-agent information.
+     *
+     * @param GeolocationLookupV2Request $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?GeolocationLookupV2Response
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function geolocationLookupV2(GeolocationLookupV2Request $request, ?array $options = null): ?GeolocationLookupV2Response
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        if ($request->ip != null) {
+            $query['ip'] = $request->ip;
+        }
+        if ($request->lang != null) {
+            $query['lang'] = $request->lang;
+        }
+        if ($request->fields != null) {
+            $query['fields'] = $request->fields;
+        }
+        if ($request->excludes != null) {
+            $query['excludes'] = $request->excludes;
+        }
+        if ($request->include != null) {
+            $query['include'] = $request->include;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v2.0/geolocation/lookup",
+                    method: HttpMethod::GET,
+                    query: $query,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return GeolocationLookupV2Response::fromJson($json);
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * Get detailed IP geolocation data for multiple IP addresses including country, city, timezone, currency, and optional threat intelligence information. Supports up to 50,000 IP addresses per request.
+     *
+     * @param BulkGeolocationLookupV2Request $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?array<(
+     *    BulkGeolocationLookupV2ResponseItemAbuse
+     *   |BulkGeolocationLookupV2ResponseItemMessage
+     * )>
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function bulkGeolocationLookupV2(BulkGeolocationLookupV2Request $request, ?array $options = null): ?array
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        if ($request->lang != null) {
+            $query['lang'] = $request->lang;
+        }
+        if ($request->fields != null) {
+            $query['fields'] = $request->fields;
+        }
+        if ($request->excludes != null) {
+            $query['excludes'] = $request->excludes;
+        }
+        if ($request->include != null) {
+            $query['include'] = $request->include;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v2.0/geolocation/lookup",
+                    method: HttpMethod::POST,
+                    query: $query,
+                    body: $request,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return JsonDecoder::decodeArray($json, [new Union(BulkGeolocationLookupV2ResponseItemAbuse::class, BulkGeolocationLookupV2ResponseItemMessage::class)]); // @phpstan-ignore-line
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * Returns the current WHOIS record for the specified domain, including registrar details, registrant/administrative/technical/billing/reseller contacts, name servers, status codes, and raw WHOIS text.
+     *
+     * @param DomainWhoisLookupV2Request $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?DomainWhoisLookupV2Response
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function domainWhoisLookupV2(DomainWhoisLookupV2Request $request, ?array $options = null): ?DomainWhoisLookupV2Response
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        $query['domainName'] = $request->domainName;
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v2.0/domain/whois/live",
+                    method: HttpMethod::GET,
+                    query: $query,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return DomainWhoisLookupV2Response::fromJson($json);
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * Returns the current WHOIS record for each requested domain, in request order. Supports up to 100 domain names per request; a domain that fails to resolve yields an error item instead of failing the whole batch.
+     *
+     * @param BulkDomainWhoisLookupV2Request $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?BulkDomainWhoisLookupV2Response
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function bulkDomainWhoisLookupV2(BulkDomainWhoisLookupV2Request $request, ?array $options = null): ?BulkDomainWhoisLookupV2Response
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v2.0/domain/whois/live",
+                    method: HttpMethod::POST,
+                    query: $query,
+                    body: $request,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return BulkDomainWhoisLookupV2Response::fromJson($json);
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * Returns the current live price for the requested commodity symbols. Unresolved symbols degrade to a 206 partial response instead of failing the whole request.
+     *
+     * @param CommodityLatestRatesV2Request $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?CommodityLatestRatesV2Response
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function commodityLatestRatesV2(CommodityLatestRatesV2Request $request, ?array $options = null): ?CommodityLatestRatesV2Response
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        if ($request->symbols != null) {
+            $query['symbols'] = $request->symbols;
+        }
+        if ($request->quote != null) {
+            $query['quote'] = $request->quote;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v2.0/commodity/rates/latest",
+                    method: HttpMethod::GET,
+                    query: $query,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return CommodityLatestRatesV2Response::fromJson($json);
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * Returns OHLC price data for the requested commodity symbols on a specific date. Falls back to the nearest earlier rate if none exists for the exact date. Unresolved symbols degrade to a 206 partial response instead of failing the whole request.
+     *
+     * @param CommodityHistoricalRatesV2Request $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?CommodityHistoricalRatesV2Response
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function commodityHistoricalRatesV2(CommodityHistoricalRatesV2Request $request, ?array $options = null): ?CommodityHistoricalRatesV2Response
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        $query['date'] = JsonSerializer::serializeDate($request->date);
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        if ($request->symbols != null) {
+            $query['symbols'] = $request->symbols;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v2.0/commodity/rates/historical",
+                    method: HttpMethod::GET,
+                    query: $query,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return CommodityHistoricalRatesV2Response::fromJson($json);
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * Returns price fluctuation metrics (start, end, change, percent change) for the requested commodity symbols over a date range. For monthly-updated commodities the range snaps to month boundaries. Unresolved symbols degrade to a 206 partial response instead of failing the whole request.
+     *
+     * @param CommodityFluctuationV2Request $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?CommodityFluctuationV2Response
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function commodityFluctuationV2(CommodityFluctuationV2Request $request, ?array $options = null): ?CommodityFluctuationV2Response
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        $query['startDate'] = JsonSerializer::serializeDate($request->startDate);
+        $query['endDate'] = JsonSerializer::serializeDate($request->endDate);
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        if ($request->symbols != null) {
+            $query['symbols'] = $request->symbols;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v2.0/commodity/fluctuation",
+                    method: HttpMethod::GET,
+                    query: $query,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return CommodityFluctuationV2Response::fromJson($json);
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * Returns day-by-day OHLC data for the requested commodity symbols within a date range, indexed by date. Non-trading days are excluded. Unresolved symbols degrade to a 206 partial response instead of failing the whole request.
+     *
+     * @param CommodityTimeSeriesV2Request $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?CommodityTimeSeriesV2Response
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function commodityTimeSeriesV2(CommodityTimeSeriesV2Request $request, ?array $options = null): ?CommodityTimeSeriesV2Response
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        $query['startDate'] = JsonSerializer::serializeDate($request->startDate);
+        $query['endDate'] = JsonSerializer::serializeDate($request->endDate);
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        if ($request->symbols != null) {
+            $query['symbols'] = $request->symbols;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v2.0/commodity/time-series",
+                    method: HttpMethod::GET,
+                    query: $query,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return CommodityTimeSeriesV2Response::fromJson($json);
+            }
+        } catch (JsonException $e) {
+            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
+        }
+        throw new ApifreaksApiException(
+            message: 'API request failed',
+            statusCode: $statusCode,
+            body: $response->getBody()->getContents(),
+        );
+    }
+
+    /**
+     * Returns the list of supported commodity symbols with metadata. Deprecated symbols stay listed with status "inactive" and a deprecationDate.
+     *
+     * @param CommoditySymbolsV2Request $request
+     * @param ?array{
+     *   baseUrl?: string,
+     *   maxRetries?: int,
+     *   timeout?: float,
+     *   headers?: array<string, string>,
+     *   queryParameters?: array<string, mixed>,
+     *   bodyProperties?: array<string, mixed>,
+     * } $options
+     * @return ?CommoditySymbolsV2Response
+     * @throws ApifreaksException
+     * @throws ApifreaksApiException
+     */
+    public function commoditySymbolsV2(CommoditySymbolsV2Request $request, ?array $options = null): ?CommoditySymbolsV2Response
+    {
+        $options = array_merge($this->options, $options ?? []);
+        $query = [];
+        $query['apiKey'] = $request->apiKey;
+        if ($request->format != null) {
+            $query['format'] = $request->format;
+        }
+        try {
+            $response = $this->client->sendRequest(
+                new JsonApiRequest(
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    path: "v2.0/commodity/symbols",
+                    method: HttpMethod::GET,
+                    query: $query,
+                ),
+                $options,
+            );
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 200 && $statusCode < 400) {
+                $json = $response->getBody()->getContents();
+                if (empty($json)) {
+                    return null;
+                }
+                return CommoditySymbolsV2Response::fromJson($json);
             }
         } catch (JsonException $e) {
             throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
@@ -4595,9 +5439,11 @@ class ApifreaksClient
         $query = [];
         $query['apiKey'] = $request->apiKey;
         $query['updates'] = $request->updates;
-        $query['symbols'] = $request->symbols;
         if ($request->format != null) {
             $query['format'] = $request->format;
+        }
+        if ($request->symbols != null) {
+            $query['symbols'] = $request->symbols;
         }
         if ($request->quote != null) {
             $query['quote'] = $request->quote;
@@ -4654,9 +5500,11 @@ class ApifreaksClient
         $query = [];
         $query['apiKey'] = $request->apiKey;
         $query['date'] = JsonSerializer::serializeDate($request->date);
-        $query['symbols'] = $request->symbols;
         if ($request->format != null) {
             $query['format'] = $request->format;
+        }
+        if ($request->symbols != null) {
+            $query['symbols'] = $request->symbols;
         }
         try {
             $response = $this->client->sendRequest(
@@ -4711,9 +5559,11 @@ class ApifreaksClient
         $query['apiKey'] = $request->apiKey;
         $query['startDate'] = JsonSerializer::serializeDate($request->startDate);
         $query['endDate'] = JsonSerializer::serializeDate($request->endDate);
-        $query['symbols'] = $request->symbols;
         if ($request->format != null) {
             $query['format'] = $request->format;
+        }
+        if ($request->symbols != null) {
+            $query['symbols'] = $request->symbols;
         }
         try {
             $response = $this->client->sendRequest(
@@ -4768,9 +5618,11 @@ class ApifreaksClient
         $query['apiKey'] = $request->apiKey;
         $query['startDate'] = JsonSerializer::serializeDate($request->startDate);
         $query['endDate'] = JsonSerializer::serializeDate($request->endDate);
-        $query['symbols'] = $request->symbols;
         if ($request->format != null) {
             $query['format'] = $request->format;
+        }
+        if ($request->symbols != null) {
+            $query['symbols'] = $request->symbols;
         }
         try {
             $response = $this->client->sendRequest(
@@ -7062,15 +7914,12 @@ class ApifreaksClient
         if ($request->format != null) {
             $query['format'] = $request->format;
         }
-        $headers = [];
-        $headers['User-Agent'] = $request->userAgent;
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
                     path: "v1.0/user-agent/lookup",
                     method: HttpMethod::GET,
-                    headers: $headers,
                     query: $query,
                 ),
                 $options,
@@ -7179,19 +8028,6 @@ class ApifreaksClient
         $options = array_merge($this->options, $options ?? []);
         $query = [];
         $query['apiKey'] = $request->apiKey;
-        $query['model'] = $request->model;
-        if ($request->url != null) {
-            $query['url'] = $request->url;
-        }
-        if ($request->pageRange != null) {
-            $query['page_range'] = $request->pageRange;
-        }
-        if ($request->zone != null) {
-            $query['zone'] = $request->zone;
-        }
-        if ($request->newLine != null) {
-            $query['new_line'] = $request->newLine;
-        }
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
@@ -7502,412 +8338,6 @@ class ApifreaksClient
                     return null;
                 }
                 return AstronomyLookupResponse::fromJson($json);
-            }
-        } catch (JsonException $e) {
-            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (ClientExceptionInterface $e) {
-            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
-        }
-        throw new ApifreaksApiException(
-            message: 'API request failed',
-            statusCode: $statusCode,
-            body: $response->getBody()->getContents(),
-        );
-    }
-
-    /**
-     * (v2.0) Retrieve detailed geolocation data for a single IP address, IPv6 address, or hostname.
-     *
-     * @param GeolocationLookupRequest $request
-     * @param ?array{
-     *   baseUrl?: string,
-     *   maxRetries?: int,
-     *   timeout?: float,
-     *   headers?: array<string, string>,
-     *   queryParameters?: array<string, mixed>,
-     *   bodyProperties?: array<string, mixed>,
-     * } $options
-     * @return ?GeolocationLookupResponse
-     * @throws ApifreaksException
-     * @throws ApifreaksApiException
-     */
-    public function geolocationLookupV2(GeolocationLookupRequest $request, ?array $options = null): ?GeolocationLookupResponse
-    {
-        $options = array_merge($this->options, $options ?? []);
-        $query = [];
-        $query['apiKey'] = $request->apiKey;
-        if ($request->format != null) {
-            $query['format'] = $request->format;
-        }
-        if ($request->ip != null) {
-            $query['ip'] = $request->ip;
-        }
-        if ($request->lang != null) {
-            $query['lang'] = $request->lang;
-        }
-        if ($request->fields != null) {
-            $query['fields'] = $request->fields;
-        }
-        if ($request->excludes != null) {
-            $query['excludes'] = $request->excludes;
-        }
-        if ($request->include != null) {
-            $query['include'] = $request->include;
-        }
-        try {
-            $response = $this->client->sendRequest(
-                new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
-                    path: "v2.0/geolocation/lookup",
-                    method: HttpMethod::GET,
-                    query: $query,
-                ),
-                $options,
-            );
-            $statusCode = $response->getStatusCode();
-            if ($statusCode >= 200 && $statusCode < 400) {
-                $json = $response->getBody()->getContents();
-                if (empty($json)) {
-                    return null;
-                }
-                return GeolocationLookupResponse::fromJson($json);
-            }
-        } catch (JsonException $e) {
-            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (ClientExceptionInterface $e) {
-            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
-        }
-        throw new ApifreaksApiException(
-            message: 'API request failed',
-            statusCode: $statusCode,
-            body: $response->getBody()->getContents(),
-        );
-    }
-
-    /**
-     * (v2.0) Retrieve detailed geolocation data for multiple IP addresses in a single request.
-     * Supports up to `50,000` IP-addresses/host-names per request.
-     *
-     * @param BulkGeolocationLookupRequest $request
-     * @param ?array{
-     *   baseUrl?: string,
-     *   maxRetries?: int,
-     *   timeout?: float,
-     *   headers?: array<string, string>,
-     *   queryParameters?: array<string, mixed>,
-     *   bodyProperties?: array<string, mixed>,
-     * } $options
-     * @return ?array<BulkGeolocationLookupResponseItem>
-     * @throws ApifreaksException
-     * @throws ApifreaksApiException
-     */
-    public function bulkGeolocationLookupV2(BulkGeolocationLookupRequest $request, ?array $options = null): ?array
-    {
-        $options = array_merge($this->options, $options ?? []);
-        $query = [];
-        $query['apiKey'] = $request->apiKey;
-        if ($request->format != null) {
-            $query['format'] = $request->format;
-        }
-        if ($request->lang != null) {
-            $query['lang'] = $request->lang;
-        }
-        if ($request->fields != null) {
-            $query['fields'] = $request->fields;
-        }
-        if ($request->excludes != null) {
-            $query['excludes'] = $request->excludes;
-        }
-        if ($request->include != null) {
-            $query['include'] = $request->include;
-        }
-        try {
-            $response = $this->client->sendRequest(
-                new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
-                    path: "v2.0/geolocation/lookup",
-                    method: HttpMethod::POST,
-                    query: $query,
-                    body: $request,
-                ),
-                $options,
-            );
-            $statusCode = $response->getStatusCode();
-            if ($statusCode >= 200 && $statusCode < 400) {
-                $json = $response->getBody()->getContents();
-                if (empty($json)) {
-                    return null;
-                }
-                return JsonDecoder::decodeArray($json, [BulkGeolocationLookupResponseItem::class]); // @phpstan-ignore-line
-            }
-        } catch (JsonException $e) {
-            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (ClientExceptionInterface $e) {
-            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
-        }
-        throw new ApifreaksApiException(
-            message: 'API request failed',
-            statusCode: $statusCode,
-            body: $response->getBody()->getContents(),
-        );
-    }
-
-    /**
-     * (v2.0) Retrieve current time, date, and timezone-related information by specifying a timezone name, location address, location coordinates, IP address, or use the client IP address if no parameter is passed.
-     *
-     * @param TimezoneLookupRequest $request
-     * @param ?array{
-     *   baseUrl?: string,
-     *   maxRetries?: int,
-     *   timeout?: float,
-     *   headers?: array<string, string>,
-     *   queryParameters?: array<string, mixed>,
-     *   bodyProperties?: array<string, mixed>,
-     * } $options
-     * @return ?TimezoneLookupResponse
-     * @throws ApifreaksException
-     * @throws ApifreaksApiException
-     */
-    public function timezoneLookupV2(TimezoneLookupRequest $request, ?array $options = null): ?TimezoneLookupResponse
-    {
-        $options = array_merge($this->options, $options ?? []);
-        $query = [];
-        $query['apiKey'] = $request->apiKey;
-        if ($request->format != null) {
-            $query['format'] = $request->format;
-        }
-        if ($request->ip != null) {
-            $query['ip'] = $request->ip;
-        }
-        if ($request->tz != null) {
-            $query['tz'] = $request->tz;
-        }
-        if ($request->location != null) {
-            $query['location'] = $request->location;
-        }
-        if ($request->lat != null) {
-            $query['lat'] = $request->lat;
-        }
-        if ($request->long != null) {
-            $query['long'] = $request->long;
-        }
-        if ($request->lang != null) {
-            $query['lang'] = $request->lang;
-        }
-        if ($request->iataCode != null) {
-            $query['iata_code'] = $request->iataCode;
-        }
-        if ($request->icaoCode != null) {
-            $query['icao_code'] = $request->icaoCode;
-        }
-        if ($request->loCode != null) {
-            $query['lo_code'] = $request->loCode;
-        }
-        try {
-            $response = $this->client->sendRequest(
-                new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
-                    path: "v2.0/geolocation/timezone",
-                    method: HttpMethod::GET,
-                    query: $query,
-                ),
-                $options,
-            );
-            $statusCode = $response->getStatusCode();
-            if ($statusCode >= 200 && $statusCode < 400) {
-                $json = $response->getBody()->getContents();
-                if (empty($json)) {
-                    return null;
-                }
-                return TimezoneLookupResponse::fromJson($json);
-            }
-        } catch (JsonException $e) {
-            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (ClientExceptionInterface $e) {
-            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
-        }
-        throw new ApifreaksApiException(
-            message: 'API request failed',
-            statusCode: $statusCode,
-            body: $response->getBody()->getContents(),
-        );
-    }
-
-    /**
-     * (v2.0) Retrieve sunrise and sunset times, current position of the moon, and other related information by specifying a location address, location coordinates, IP address, or using the client IP address if no parameter is passed.
-     *
-     * @param AstronomyLookupRequest $request
-     * @param ?array{
-     *   baseUrl?: string,
-     *   maxRetries?: int,
-     *   timeout?: float,
-     *   headers?: array<string, string>,
-     *   queryParameters?: array<string, mixed>,
-     *   bodyProperties?: array<string, mixed>,
-     * } $options
-     * @return ?AstronomyLookupResponse
-     * @throws ApifreaksException
-     * @throws ApifreaksApiException
-     */
-    public function astronomyLookupV2(AstronomyLookupRequest $request, ?array $options = null): ?AstronomyLookupResponse
-    {
-        $options = array_merge($this->options, $options ?? []);
-        $query = [];
-        $query['apiKey'] = $request->apiKey;
-        if ($request->format != null) {
-            $query['format'] = $request->format;
-        }
-        if ($request->location != null) {
-            $query['location'] = $request->location;
-        }
-        if ($request->lat != null) {
-            $query['lat'] = $request->lat;
-        }
-        if ($request->long != null) {
-            $query['long'] = $request->long;
-        }
-        if ($request->ip != null) {
-            $query['ip'] = $request->ip;
-        }
-        if ($request->lang != null) {
-            $query['lang'] = $request->lang;
-        }
-        if ($request->date != null) {
-            $query['date'] = JsonSerializer::serializeDate($request->date);
-        }
-        if ($request->elevation != null) {
-            $query['elevation'] = $request->elevation;
-        }
-        if ($request->timeZone != null) {
-            $query['time_zone'] = $request->timeZone;
-        }
-        try {
-            $response = $this->client->sendRequest(
-                new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
-                    path: "v2.0/geolocation/astronomy",
-                    method: HttpMethod::GET,
-                    query: $query,
-                ),
-                $options,
-            );
-            $statusCode = $response->getStatusCode();
-            if ($statusCode >= 200 && $statusCode < 400) {
-                $json = $response->getBody()->getContents();
-                if (empty($json)) {
-                    return null;
-                }
-                return AstronomyLookupResponse::fromJson($json);
-            }
-        } catch (JsonException $e) {
-            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (ClientExceptionInterface $e) {
-            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
-        }
-        throw new ApifreaksApiException(
-            message: 'API request failed',
-            statusCode: $statusCode,
-            body: $response->getBody()->getContents(),
-        );
-    }
-
-    /**
-     * (v2.0) Retrieve WHOIS registration details for a single domain name.
-     *
-     * @param DomainWhoisLookupRequest $request
-     * @param ?array{
-     *   baseUrl?: string,
-     *   maxRetries?: int,
-     *   timeout?: float,
-     *   headers?: array<string, string>,
-     *   queryParameters?: array<string, mixed>,
-     *   bodyProperties?: array<string, mixed>,
-     * } $options
-     * @return ?DomainWhoisLookupResponse
-     * @throws ApifreaksException
-     * @throws ApifreaksApiException
-     */
-    public function domainWhoisLookupV2(DomainWhoisLookupRequest $request, ?array $options = null): ?DomainWhoisLookupResponse
-    {
-        $options = array_merge($this->options, $options ?? []);
-        $query = [];
-        $query['apiKey'] = $request->apiKey;
-        $query['domainName'] = $request->domainName;
-        if ($request->format != null) {
-            $query['format'] = $request->format;
-        }
-        try {
-            $response = $this->client->sendRequest(
-                new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
-                    path: "v2.0/domain/whois/live",
-                    method: HttpMethod::GET,
-                    query: $query,
-                ),
-                $options,
-            );
-            $statusCode = $response->getStatusCode();
-            if ($statusCode >= 200 && $statusCode < 400) {
-                $json = $response->getBody()->getContents();
-                if (empty($json)) {
-                    return null;
-                }
-                return DomainWhoisLookupResponse::fromJson($json);
-            }
-        } catch (JsonException $e) {
-            throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
-        } catch (ClientExceptionInterface $e) {
-            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
-        }
-        throw new ApifreaksApiException(
-            message: 'API request failed',
-            statusCode: $statusCode,
-            body: $response->getBody()->getContents(),
-        );
-    }
-
-    /**
-     * (v2.0) Retrieve WHOIS information for `100 Domains per Request`.
-     *
-     * @param BulkDomainWhoisLookupRequest $request
-     * @param ?array{
-     *   baseUrl?: string,
-     *   maxRetries?: int,
-     *   timeout?: float,
-     *   headers?: array<string, string>,
-     *   queryParameters?: array<string, mixed>,
-     *   bodyProperties?: array<string, mixed>,
-     * } $options
-     * @return ?BulkDomainWhoisLookupResponse
-     * @throws ApifreaksException
-     * @throws ApifreaksApiException
-     */
-    public function bulkDomainWhoisLookupV2(BulkDomainWhoisLookupRequest $request, ?array $options = null): ?BulkDomainWhoisLookupResponse
-    {
-        $options = array_merge($this->options, $options ?? []);
-        $query = [];
-        $query['apiKey'] = $request->apiKey;
-        if ($request->format != null) {
-            $query['format'] = $request->format;
-        }
-        try {
-            $response = $this->client->sendRequest(
-                new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
-                    path: "v2.0/domain/whois/live",
-                    method: HttpMethod::POST,
-                    query: $query,
-                    body: $request,
-                ),
-                $options,
-            );
-            $statusCode = $response->getStatusCode();
-            if ($statusCode >= 200 && $statusCode < 400) {
-                $json = $response->getBody()->getContents();
-                if (empty($json)) {
-                    return null;
-                }
-                return BulkDomainWhoisLookupResponse::fromJson($json);
             }
         } catch (JsonException $e) {
             throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);

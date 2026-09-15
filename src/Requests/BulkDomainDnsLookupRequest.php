@@ -23,9 +23,9 @@ class BulkDomainDnsLookupRequest extends JsonSerializableType
      * A comma-separated list of DNS record types for lookup.
      * Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, or all
      *
-     * @var array<string> $type
+     * @var ?array<string> $type
      */
-    public array $type;
+    public ?array $type;
 
     /**
      * @var array<string> $domainNames List of hostnames to lookup DNS records for
@@ -34,18 +34,11 @@ class BulkDomainDnsLookupRequest extends JsonSerializableType
     public array $domainNames;
 
     /**
-     * @var ?array<string> $ipAddresses
-     */
-    #[JsonProperty('ipAddresses'), ArrayType(['string'])]
-    public ?array $ipAddresses;
-
-    /**
      * @param array{
      *   apiKey: string,
      *   domainNames: array<string>,
-     *   type: array<string>,
      *   format?: ?value-of<BulkDomainDnsLookupRequestFormat>,
-     *   ipAddresses?: ?array<string>,
+     *   type?: ?array<string>,
      * } $values
      */
     public function __construct(
@@ -53,8 +46,7 @@ class BulkDomainDnsLookupRequest extends JsonSerializableType
     ) {
         $this->apiKey = $values['apiKey'];
         $this->format = $values['format'] ?? null;
-        $this->type = $values['type'];
+        $this->type = $values['type'] ?? null;
         $this->domainNames = $values['domainNames'];
-        $this->ipAddresses = $values['ipAddresses'] ?? null;
     }
 }

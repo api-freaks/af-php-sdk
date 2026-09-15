@@ -58,7 +58,7 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemBillingContact extends
     /**
      * @var ?string $emailaddress
      */
-    #[JsonProperty('email_address')]
+    #[JsonProperty('emailaddress')]
     public ?string $emailaddress;
 
     /**
@@ -76,7 +76,7 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemBillingContact extends
     /**
      * @var ?string $mailingaddress
      */
-    #[JsonProperty('mailing_address')]
+    #[JsonProperty('mailingaddress')]
     public ?string $mailingaddress;
 
     /**

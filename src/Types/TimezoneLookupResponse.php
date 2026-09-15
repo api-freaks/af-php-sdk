@@ -20,15 +20,15 @@ class TimezoneLookupResponse extends JsonSerializableType
     public ?TimezoneLookupResponseLocation $location;
 
     /**
-     * @var ?TimezoneLookupResponseTimeZone $timeZone
+     * @var TimezoneLookupResponseTimeZone $timeZone
      */
     #[JsonProperty('time_zone')]
-    public ?TimezoneLookupResponseTimeZone $timeZone;
+    public TimezoneLookupResponseTimeZone $timeZone;
 
     /**
      * @var ?TimezoneLookupResponseAirportDetails $airportDetails
      */
-    #[JsonProperty('airport_detail')]
+    #[JsonProperty('airport_details')]
     public ?TimezoneLookupResponseAirportDetails $airportDetails;
 
     /**
@@ -39,9 +39,9 @@ class TimezoneLookupResponse extends JsonSerializableType
 
     /**
      * @param array{
+     *   timeZone: TimezoneLookupResponseTimeZone,
      *   ip?: ?string,
      *   location?: ?TimezoneLookupResponseLocation,
-     *   timeZone?: ?TimezoneLookupResponseTimeZone,
      *   airportDetails?: ?TimezoneLookupResponseAirportDetails,
      *   loCodeDetails?: ?TimezoneLookupResponseLoCodeDetails,
      * } $values
@@ -51,7 +51,7 @@ class TimezoneLookupResponse extends JsonSerializableType
     ) {
         $this->ip = $values['ip'] ?? null;
         $this->location = $values['location'] ?? null;
-        $this->timeZone = $values['timeZone'] ?? null;
+        $this->timeZone = $values['timeZone'];
         $this->airportDetails = $values['airportDetails'] ?? null;
         $this->loCodeDetails = $values['loCodeDetails'] ?? null;
     }

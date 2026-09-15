@@ -26,6 +26,12 @@ class ZipcodeLookupResponseResultsItem extends JsonSerializableType
     public ?string $region;
 
     /**
+     * @var ?string $regionCode
+     */
+    #[JsonProperty('region_code')]
+    public ?string $regionCode;
+
+    /**
      * @var ?string $city
      */
     #[JsonProperty('city')]
@@ -54,6 +60,7 @@ class ZipcodeLookupResponseResultsItem extends JsonSerializableType
      *   code?: ?string,
      *   countryCode?: ?string,
      *   region?: ?string,
+     *   regionCode?: ?string,
      *   city?: ?string,
      *   locality?: ?string,
      *   latitude?: ?float,
@@ -66,6 +73,7 @@ class ZipcodeLookupResponseResultsItem extends JsonSerializableType
         $this->code = $values['code'] ?? null;
         $this->countryCode = $values['countryCode'] ?? null;
         $this->region = $values['region'] ?? null;
+        $this->regionCode = $values['regionCode'] ?? null;
         $this->city = $values['city'] ?? null;
         $this->locality = $values['locality'] ?? null;
         $this->latitude = $values['latitude'] ?? null;

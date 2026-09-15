@@ -24,6 +24,12 @@ class DomainDnsHistoryResponseHistoricalDnsRecordsItem extends JsonSerializableT
     public string $domainName;
 
     /**
+     * @var bool $domainRegistered
+     */
+    #[JsonProperty('domainRegistered')]
+    public bool $domainRegistered;
+
+    /**
      * @var DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsTypes $dnsTypes
      */
     #[JsonProperty('dnsTypes')]
@@ -46,6 +52,7 @@ class DomainDnsHistoryResponseHistoricalDnsRecordsItem extends JsonSerializableT
      * @param array{
      *   queryTime: DateTime,
      *   domainName: string,
+     *   domainRegistered: bool,
      *   dnsTypes: DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsTypes,
      *   dnsRecords: array<(
      *    DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemAddress
@@ -62,6 +69,7 @@ class DomainDnsHistoryResponseHistoricalDnsRecordsItem extends JsonSerializableT
     ) {
         $this->queryTime = $values['queryTime'];
         $this->domainName = $values['domainName'];
+        $this->domainRegistered = $values['domainRegistered'];
         $this->dnsTypes = $values['dnsTypes'];
         $this->dnsRecords = $values['dnsRecords'];
     }
