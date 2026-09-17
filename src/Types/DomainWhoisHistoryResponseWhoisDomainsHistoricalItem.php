@@ -29,10 +29,10 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItem extends JsonSerializa
     public string $domainName;
 
     /**
-     * @var DateTime $queryTime The timestamp when the query was made.
+     * @var string $queryTime The timestamp when the query was made (format YYYY-MM-DD HH:mm:ss, not ISO 8601).
      */
-    #[JsonProperty('query_time'), Date(Date::TYPE_DATETIME)]
-    public DateTime $queryTime;
+    #[JsonProperty('query_time')]
+    public string $queryTime;
 
     /**
      * @var string $whoisServer The WHOIS server that provided the domain information.
@@ -129,7 +129,7 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItem extends JsonSerializa
      *   num: int,
      *   status: bool,
      *   domainName: string,
-     *   queryTime: DateTime,
+     *   queryTime: string,
      *   whoisServer: string,
      *   domainRegistered: value-of<DomainWhoisHistoryResponseWhoisDomainsHistoricalItemDomainRegistered>,
      *   createDate?: ?DateTime,

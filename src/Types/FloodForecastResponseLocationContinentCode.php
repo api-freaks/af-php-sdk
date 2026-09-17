@@ -80,16 +80,16 @@ class FloodForecastResponseLocationContinentCode extends JsonSerializableType
     public ?string $zipcode;
 
     /**
-     * @var float $latitude Geographic latitude in decimal degrees for the IP geolocation, ranging from -90 to +90.
+     * @var string $latitude Geographic latitude in decimal degrees for the IP geolocation, ranging from -90 to +90.
      */
     #[JsonProperty('latitude')]
-    public float $latitude;
+    public string $latitude;
 
     /**
-     * @var float $longitude Geographic longitude in decimal degrees for the IP geolocation, ranging from -180 to +180.
+     * @var string $longitude Geographic longitude in decimal degrees for the IP geolocation, ranging from -180 to +180.
      */
     #[JsonProperty('longitude')]
-    public float $longitude;
+    public string $longitude;
 
     /**
      * @var ?string $locality Specific locality, neighborhood, or small area designation within the city.
@@ -98,10 +98,10 @@ class FloodForecastResponseLocationContinentCode extends JsonSerializableType
     public ?string $locality;
 
     /**
-     * @var ?float $elevation Elevation above mean sea level in meters for the IP geolocation.
+     * @var ?string $elevation Elevation above mean sea level in meters for the IP geolocation.
      */
     #[JsonProperty('elevation')]
-    public ?float $elevation;
+    public ?string $elevation;
 
     /**
      * @var string $timezone IANA timezone database identifier for the IP location (e.g., America/Chicago, Asia/Tokyo).
@@ -125,8 +125,8 @@ class FloodForecastResponseLocationContinentCode extends JsonSerializableType
      *   countryNameOfficial: string,
      *   stateProv: string,
      *   city: string,
-     *   latitude: float,
-     *   longitude: float,
+     *   latitude: string,
+     *   longitude: string,
      *   timezone: string,
      *   timezoneAbbreviation: string,
      *   isEu?: ?bool,
@@ -134,7 +134,7 @@ class FloodForecastResponseLocationContinentCode extends JsonSerializableType
      *   district?: ?string,
      *   zipcode?: ?string,
      *   locality?: ?string,
-     *   elevation?: ?float,
+     *   elevation?: ?string,
      * } $values
      */
     public function __construct(

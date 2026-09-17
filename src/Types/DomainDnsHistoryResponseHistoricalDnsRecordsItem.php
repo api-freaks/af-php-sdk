@@ -3,19 +3,17 @@
 namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
-use DateTime;
 use Apifreaks\Core\Json\JsonProperty;
-use Apifreaks\Core\Types\Date;
 use Apifreaks\Core\Types\ArrayType;
 use Apifreaks\Core\Types\Union;
 
 class DomainDnsHistoryResponseHistoricalDnsRecordsItem extends JsonSerializableType
 {
     /**
-     * @var DateTime $queryTime
+     * @var string $queryTime Timestamp when the query was executed (format YYYY-MM-DD HH:mm:ss, not ISO 8601).
      */
-    #[JsonProperty('queryTime'), Date(Date::TYPE_DATETIME)]
-    public DateTime $queryTime;
+    #[JsonProperty('queryTime')]
+    public string $queryTime;
 
     /**
      * @var string $domainName
@@ -50,7 +48,7 @@ class DomainDnsHistoryResponseHistoricalDnsRecordsItem extends JsonSerializableT
 
     /**
      * @param array{
-     *   queryTime: DateTime,
+     *   queryTime: string,
      *   domainName: string,
      *   domainRegistered: bool,
      *   dnsTypes: DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsTypes,

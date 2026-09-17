@@ -27,10 +27,10 @@ class DomainSslLookupResponseSslCertificatesItemExtensions extends JsonSerializa
     public array $keyUsages;
 
     /**
-     * @var array<string> $extendedKeyUsages
+     * @var ?array<string> $extendedKeyUsages
      */
     #[JsonProperty('extendedKeyUsages'), ArrayType(['string'])]
-    public array $extendedKeyUsages;
+    public ?array $extendedKeyUsages;
 
     /**
      * @var ?array<string> $crlDistributionPoints
@@ -39,10 +39,10 @@ class DomainSslLookupResponseSslCertificatesItemExtensions extends JsonSerializa
     public ?array $crlDistributionPoints;
 
     /**
-     * @var DomainSslLookupResponseSslCertificatesItemExtensionsAuthorityInfoAccess $authorityInfoAccess
+     * @var ?DomainSslLookupResponseSslCertificatesItemExtensionsAuthorityInfoAccess $authorityInfoAccess
      */
     #[JsonProperty('authorityInfoAccess')]
-    public DomainSslLookupResponseSslCertificatesItemExtensionsAuthorityInfoAccess $authorityInfoAccess;
+    public ?DomainSslLookupResponseSslCertificatesItemExtensionsAuthorityInfoAccess $authorityInfoAccess;
 
     /**
      * @var ?DomainSslLookupResponseSslCertificatesItemExtensionsSubjectAlternativeNames $subjectAlternativeNames
@@ -51,21 +51,21 @@ class DomainSslLookupResponseSslCertificatesItemExtensions extends JsonSerializa
     public ?DomainSslLookupResponseSslCertificatesItemExtensionsSubjectAlternativeNames $subjectAlternativeNames;
 
     /**
-     * @var DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePolicies $certificatePolicies
+     * @var ?array<DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItem> $certificatePolicies
      */
-    #[JsonProperty('certificatePolicies')]
-    public DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePolicies $certificatePolicies;
+    #[JsonProperty('certificatePolicies'), ArrayType([DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItem::class])]
+    public ?array $certificatePolicies;
 
     /**
      * @param array{
      *   authorityKeyIdentifier: string,
      *   subjectKeyIdentifier: string,
      *   keyUsages: array<string>,
-     *   extendedKeyUsages: array<string>,
-     *   authorityInfoAccess: DomainSslLookupResponseSslCertificatesItemExtensionsAuthorityInfoAccess,
-     *   certificatePolicies: DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePolicies,
+     *   extendedKeyUsages?: ?array<string>,
      *   crlDistributionPoints?: ?array<string>,
+     *   authorityInfoAccess?: ?DomainSslLookupResponseSslCertificatesItemExtensionsAuthorityInfoAccess,
      *   subjectAlternativeNames?: ?DomainSslLookupResponseSslCertificatesItemExtensionsSubjectAlternativeNames,
+     *   certificatePolicies?: ?array<DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItem>,
      * } $values
      */
     public function __construct(
@@ -74,11 +74,11 @@ class DomainSslLookupResponseSslCertificatesItemExtensions extends JsonSerializa
         $this->authorityKeyIdentifier = $values['authorityKeyIdentifier'];
         $this->subjectKeyIdentifier = $values['subjectKeyIdentifier'];
         $this->keyUsages = $values['keyUsages'];
-        $this->extendedKeyUsages = $values['extendedKeyUsages'];
+        $this->extendedKeyUsages = $values['extendedKeyUsages'] ?? null;
         $this->crlDistributionPoints = $values['crlDistributionPoints'] ?? null;
-        $this->authorityInfoAccess = $values['authorityInfoAccess'];
+        $this->authorityInfoAccess = $values['authorityInfoAccess'] ?? null;
         $this->subjectAlternativeNames = $values['subjectAlternativeNames'] ?? null;
-        $this->certificatePolicies = $values['certificatePolicies'];
+        $this->certificatePolicies = $values['certificatePolicies'] ?? null;
     }
 
     /**

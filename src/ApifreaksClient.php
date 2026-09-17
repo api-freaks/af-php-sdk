@@ -64,7 +64,8 @@ use Apifreaks\Types\DomainAvailabilityCheckResponse;
 use Apifreaks\Requests\BulkDomainAvailabilityCheckRequest;
 use Apifreaks\Types\BulkDomainAvailabilityCheckResponse;
 use Apifreaks\Requests\DomainAvailabilitySuggestionsRequest;
-use Apifreaks\Types\DomainAvailabilitySuggestionsResponse;
+use Apifreaks\Types\DomainAvailabilitySuggestionsResponseDomain;
+use Apifreaks\Types\DomainAvailabilitySuggestionsResponseDomainAvailableResponse;
 use Apifreaks\Requests\SubdomainsLookupRequest;
 use Apifreaks\Types\SubdomainsLookupResponse;
 use Apifreaks\Requests\DomainTyposquattingRequest;
@@ -1844,11 +1845,14 @@ class ApifreaksClient
      *   queryParameters?: array<string, mixed>,
      *   bodyProperties?: array<string, mixed>,
      * } $options
-     * @return ?DomainAvailabilitySuggestionsResponse
+     * @return (
+     *    DomainAvailabilitySuggestionsResponseDomain
+     *   |DomainAvailabilitySuggestionsResponseDomainAvailableResponse
+     * )|null
      * @throws ApifreaksException
      * @throws ApifreaksApiException
      */
-    public function domainAvailabilitySuggestions(DomainAvailabilitySuggestionsRequest $request, ?array $options = null): ?DomainAvailabilitySuggestionsResponse
+    public function domainAvailabilitySuggestions(DomainAvailabilitySuggestionsRequest $request, ?array $options = null): DomainAvailabilitySuggestionsResponseDomain|DomainAvailabilitySuggestionsResponseDomainAvailableResponse|null
     {
         $options = array_merge($this->options, $options ?? []);
         $query = [];
@@ -1862,6 +1866,9 @@ class ApifreaksClient
         }
         if ($request->count != null) {
             $query['count'] = $request->count;
+        }
+        if ($request->sug != null) {
+            $query['sug'] = $request->sug;
         }
         try {
             $response = $this->client->sendRequest(
@@ -1879,7 +1886,7 @@ class ApifreaksClient
                 if (empty($json)) {
                     return null;
                 }
-                return DomainAvailabilitySuggestionsResponse::fromJson($json);
+                return JsonDecoder::decodeUnion($json, new Union(DomainAvailabilitySuggestionsResponseDomain::class, DomainAvailabilitySuggestionsResponseDomainAvailableResponse::class)); // @phpstan-ignore-line
             }
         } catch (JsonException $e) {
             throw new ApifreaksException(message: "Failed to deserialize response: {$e->getMessage()}", previous: $e);
@@ -7914,12 +7921,15 @@ class ApifreaksClient
         if ($request->format != null) {
             $query['format'] = $request->format;
         }
+        $headers = [];
+        $headers['User-Agent'] = $request->userAgent;
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
                     path: "v1.0/user-agent/lookup",
                     method: HttpMethod::GET,
+                    headers: $headers,
                     query: $query,
                 ),
                 $options,
@@ -7945,7 +7955,7 @@ class ApifreaksClient
     }
 
     /**
-     * Parse up to `50,000 User-Agent strings` at once in a single request.
+     * Parse up to `100 User-Agent strings` at once in a single request; exceeding that returns a 413, not a 400.
      *
      * @param BulkUserAgentLookupRequest $request
      * @param ?array{

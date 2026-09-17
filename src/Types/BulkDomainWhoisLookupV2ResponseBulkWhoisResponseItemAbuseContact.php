@@ -32,10 +32,10 @@ class BulkDomainWhoisLookupV2ResponseBulkWhoisResponseItemAbuseContact extends J
     public string $queryTime;
 
     /**
-     * @var string $whoisServer WHOIS or RDAP server that provided this record.
+     * @var ?string $whoisServer WHOIS or RDAP server that provided this record.
      */
     #[JsonProperty('whois_server')]
-    public string $whoisServer;
+    public ?string $whoisServer;
 
     /**
      * @var value-of<BulkDomainWhoisLookupV2ResponseBulkWhoisResponseItemAbuseContactDomainRegistered> $domainRegistered Domain registration status; 'restricted' means the registry withholds registration details.
@@ -150,8 +150,8 @@ class BulkDomainWhoisLookupV2ResponseBulkWhoisResponseItemAbuseContact extends J
      *   status: bool,
      *   domainName: string,
      *   queryTime: string,
-     *   whoisServer: string,
      *   domainRegistered: value-of<BulkDomainWhoisLookupV2ResponseBulkWhoisResponseItemAbuseContactDomainRegistered>,
+     *   whoisServer?: ?string,
      *   secureDns?: ?bool,
      *   domainHandle?: ?string,
      *   createDate?: ?DateTime,
@@ -177,7 +177,7 @@ class BulkDomainWhoisLookupV2ResponseBulkWhoisResponseItemAbuseContact extends J
         $this->status = $values['status'];
         $this->domainName = $values['domainName'];
         $this->queryTime = $values['queryTime'];
-        $this->whoisServer = $values['whoisServer'];
+        $this->whoisServer = $values['whoisServer'] ?? null;
         $this->domainRegistered = $values['domainRegistered'];
         $this->secureDns = $values['secureDns'] ?? null;
         $this->domainHandle = $values['domainHandle'] ?? null;

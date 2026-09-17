@@ -5,31 +5,34 @@ namespace Apifreaks\Types;
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
 
-class DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesPolicyQualifier extends JsonSerializableType
+/**
+ * Policy qualifier details
+ */
+class DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItemPolicyQualifier extends JsonSerializableType
 {
     /**
-     * @var ?string $oid
+     * @var ?string $oid Object identifier
      */
     #[JsonProperty('oid')]
     public ?string $oid;
 
     /**
-     * @var ?string $cpsUri
+     * @var ?string $cpsUri URI of the CPS
      */
     #[JsonProperty('cpsUri')]
     public ?string $cpsUri;
 
     /**
-     * @var ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesPolicyQualifierUserNotice $userNotice
+     * @var ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItemPolicyQualifierUserNotice $userNotice
      */
     #[JsonProperty('userNotice')]
-    public ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesPolicyQualifierUserNotice $userNotice;
+    public ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItemPolicyQualifierUserNotice $userNotice;
 
     /**
      * @param array{
      *   oid?: ?string,
      *   cpsUri?: ?string,
-     *   userNotice?: ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesPolicyQualifierUserNotice,
+     *   userNotice?: ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItemPolicyQualifierUserNotice,
      * } $values
      */
     public function __construct(

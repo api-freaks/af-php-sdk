@@ -5,24 +5,24 @@ namespace Apifreaks\Types;
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
 
-class DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesPolicyQualifierUserNotice extends JsonSerializableType
+class DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItemPolicyQualifierUserNotice extends JsonSerializableType
 {
     /**
-     * @var ?string $explicitText
+     * @var ?string $explicitText Explicit text notice
      */
     #[JsonProperty('explicitText')]
     public ?string $explicitText;
 
     /**
-     * @var ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesPolicyQualifierUserNoticeNoticeRef $noticeRef
+     * @var ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItemPolicyQualifierUserNoticeNoticeRef $noticeRef
      */
     #[JsonProperty('noticeRef')]
-    public ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesPolicyQualifierUserNoticeNoticeRef $noticeRef;
+    public ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItemPolicyQualifierUserNoticeNoticeRef $noticeRef;
 
     /**
      * @param array{
      *   explicitText?: ?string,
-     *   noticeRef?: ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesPolicyQualifierUserNoticeNoticeRef,
+     *   noticeRef?: ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItemPolicyQualifierUserNoticeNoticeRef,
      * } $values
      */
     public function __construct(

@@ -23,16 +23,16 @@ class TimezoneLookupV2ResponseAirportDetails extends JsonSerializableType
     public ?string $name;
 
     /**
-     * @var ?float $latitude The latitude coordinate of the airport.
+     * @var ?string $latitude The latitude coordinate of the airport.
      */
     #[JsonProperty('latitude')]
-    public ?float $latitude;
+    public ?string $latitude;
 
     /**
-     * @var ?float $longitude The longitude coordinate of the airport.
+     * @var ?string $longitude The longitude coordinate of the airport.
      */
     #[JsonProperty('longitude')]
-    public ?float $longitude;
+    public ?string $longitude;
 
     /**
      * @var ?int $elevationFt The elevation of the airport above sea level, measured in feet.
@@ -86,8 +86,8 @@ class TimezoneLookupV2ResponseAirportDetails extends JsonSerializableType
      * @param array{
      *   type?: ?string,
      *   name?: ?string,
-     *   latitude?: ?float,
-     *   longitude?: ?float,
+     *   latitude?: ?string,
+     *   longitude?: ?string,
      *   elevationFt?: ?int,
      *   continentCode?: ?string,
      *   countryCode?: ?string,

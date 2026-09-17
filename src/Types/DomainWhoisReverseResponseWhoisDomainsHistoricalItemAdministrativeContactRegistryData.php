@@ -17,10 +17,10 @@ class DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactR
     public ?string $domainName;
 
     /**
-     * @var ?DateTime $queryTime
+     * @var ?string $queryTime Timestamp when the WHOIS query was executed (format YYYY-MM-DD HH:mm:ss, not ISO 8601).
      */
-    #[JsonProperty('query_time'), Date(Date::TYPE_DATETIME)]
-    public ?DateTime $queryTime;
+    #[JsonProperty('query_time')]
+    public ?string $queryTime;
 
     /**
      * @var ?string $whoisServer
@@ -79,7 +79,7 @@ class DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactR
     /**
      * @param array{
      *   domainName?: ?string,
-     *   queryTime?: ?DateTime,
+     *   queryTime?: ?string,
      *   whoisServer?: ?string,
      *   domainRegistered?: ?value-of<DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactRegistryDataDomainRegistered>,
      *   createDate?: ?DateTime,

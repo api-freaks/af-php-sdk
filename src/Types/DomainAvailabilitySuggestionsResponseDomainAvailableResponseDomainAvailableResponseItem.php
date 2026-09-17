@@ -5,7 +5,7 @@ namespace Apifreaks\Types;
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
 
-class DomainAvailabilitySuggestionsResponseDomainAvailableResponseItem extends JsonSerializableType
+class DomainAvailabilitySuggestionsResponseDomainAvailableResponseDomainAvailableResponseItem extends JsonSerializableType
 {
     /**
      * @var ?string $domain

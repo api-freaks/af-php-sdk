@@ -20,10 +20,10 @@ class BulkDomainWhoisLookupV2ResponseBulkWhoisResponseItemAbuseContactRegistryDa
     public ?string $domainName;
 
     /**
-     * @var ?DateTime $queryTime Timestamp when the registry-level record was queried.
+     * @var ?string $queryTime Timestamp when the registry-level record was queried (format YYYY-MM-DD HH:mm:ss, not ISO 8601).
      */
-    #[JsonProperty('query_time'), Date(Date::TYPE_DATETIME)]
-    public ?DateTime $queryTime;
+    #[JsonProperty('query_time')]
+    public ?string $queryTime;
 
     /**
      * @var ?string $whoisServer Registry WHOIS server that returned this data.
@@ -82,7 +82,7 @@ class BulkDomainWhoisLookupV2ResponseBulkWhoisResponseItemAbuseContactRegistryDa
     /**
      * @param array{
      *   domainName?: ?string,
-     *   queryTime?: ?DateTime,
+     *   queryTime?: ?string,
      *   whoisServer?: ?string,
      *   domainRegistered?: ?value-of<BulkDomainWhoisLookupV2ResponseBulkWhoisResponseItemAbuseContactRegistryDataDomainRegistered>,
      *   createDate?: ?DateTime,

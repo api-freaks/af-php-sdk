@@ -32,10 +32,10 @@ class DomainWhoisLookupV2Response extends JsonSerializableType
     public string $queryTime;
 
     /**
-     * @var string $whoisServer WHOIS or RDAP server that provided this record.
+     * @var ?string $whoisServer WHOIS or RDAP server that provided this record.
      */
     #[JsonProperty('whois_server')]
-    public string $whoisServer;
+    public ?string $whoisServer;
 
     /**
      * @var value-of<DomainWhoisLookupV2ResponseDomainRegistered> $domainRegistered Domain registration status; 'restricted' means the registry withholds registration details.
@@ -150,8 +150,8 @@ class DomainWhoisLookupV2Response extends JsonSerializableType
      *   status: bool,
      *   domainName: string,
      *   queryTime: string,
-     *   whoisServer: string,
      *   domainRegistered: value-of<DomainWhoisLookupV2ResponseDomainRegistered>,
+     *   whoisServer?: ?string,
      *   secureDns?: ?bool,
      *   domainHandle?: ?string,
      *   createDate?: ?DateTime,
@@ -177,7 +177,7 @@ class DomainWhoisLookupV2Response extends JsonSerializableType
         $this->status = $values['status'];
         $this->domainName = $values['domainName'];
         $this->queryTime = $values['queryTime'];
-        $this->whoisServer = $values['whoisServer'];
+        $this->whoisServer = $values['whoisServer'] ?? null;
         $this->domainRegistered = $values['domainRegistered'];
         $this->secureDns = $values['secureDns'] ?? null;
         $this->domainHandle = $values['domainHandle'] ?? null;
