@@ -4,8 +4,6 @@ namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
-use DateTime;
-use Apifreaks\Core\Types\Date;
 use Apifreaks\Core\Types\ArrayType;
 
 class DomainSslChainLookupResponse extends JsonSerializableType
@@ -17,10 +15,10 @@ class DomainSslChainLookupResponse extends JsonSerializableType
     public string $domainName;
 
     /**
-     * @var DateTime $queryTime
+     * @var string $queryTime Timestamp when the query was executed (format YYYY-MM-DD HH:mm:ss, not ISO 8601).
      */
-    #[JsonProperty('queryTime'), Date(Date::TYPE_DATETIME)]
-    public DateTime $queryTime;
+    #[JsonProperty('queryTime')]
+    public string $queryTime;
 
     /**
      * @var array<DomainSslChainLookupResponseSslCertificatesItem> $sslCertificates
@@ -37,7 +35,7 @@ class DomainSslChainLookupResponse extends JsonSerializableType
     /**
      * @param array{
      *   domainName: string,
-     *   queryTime: DateTime,
+     *   queryTime: string,
      *   sslCertificates: array<DomainSslChainLookupResponseSslCertificatesItem>,
      *   sslRaw?: ?string,
      * } $values

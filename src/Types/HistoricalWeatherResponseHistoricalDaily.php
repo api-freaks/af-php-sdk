@@ -3,9 +3,7 @@
 namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
-use DateTime;
 use Apifreaks\Core\Json\JsonProperty;
-use Apifreaks\Core\Types\Date;
 
 /**
  * Daily historical data
@@ -13,10 +11,10 @@ use Apifreaks\Core\Types\Date;
 class HistoricalWeatherResponseHistoricalDaily extends JsonSerializableType
 {
     /**
-     * @var ?DateTime $timestamp ISO 8601 formatted timestamp
+     * @var ?string $timestamp Local timestamp of this reading (format YYYY-MM-DDTHH:mm, not ISO 8601).
      */
-    #[JsonProperty('timestamp'), Date(Date::TYPE_DATETIME)]
-    public ?DateTime $timestamp;
+    #[JsonProperty('timestamp')]
+    public ?string $timestamp;
 
     /**
      * @var ?int $weatherCode Weather condition code
@@ -188,7 +186,7 @@ class HistoricalWeatherResponseHistoricalDaily extends JsonSerializableType
 
     /**
      * @param array{
-     *   timestamp?: ?DateTime,
+     *   timestamp?: ?string,
      *   weatherCode?: ?int,
      *   temperature2MMean?: ?float,
      *   temperature2MMax?: ?float,

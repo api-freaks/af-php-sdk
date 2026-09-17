@@ -3,9 +3,7 @@
 namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
-use DateTime;
 use Apifreaks\Core\Json\JsonProperty;
-use Apifreaks\Core\Types\Date;
 
 /**
  * Current air quality data
@@ -13,10 +11,10 @@ use Apifreaks\Core\Types\Date;
 class AirQualityResponseCurrent extends JsonSerializableType
 {
     /**
-     * @var DateTime $timestamp ISO 8601 formatted timestamp (iso8601).
+     * @var string $timestamp Local timestamp of the observation (format YYYY-MM-DDTHH:mm, not ISO 8601).
      */
-    #[JsonProperty('timestamp'), Date(Date::TYPE_DATETIME)]
-    public DateTime $timestamp;
+    #[JsonProperty('timestamp')]
+    public string $timestamp;
 
     /**
      * @var int $europeanAqi Consolidated European Air Quality Index representing the highest value among individual pollutant indices. Ranges: 0-20 (good), 20-40 (fair), 40-60 (moderate), 60-80 (poor), 80-100 (very poor), >100 (extremely poor).
@@ -92,7 +90,7 @@ class AirQualityResponseCurrent extends JsonSerializableType
 
     /**
      * @param array{
-     *   timestamp: DateTime,
+     *   timestamp: string,
      *   europeanAqi: int,
      *   usAqi: int,
      *   pm10: float,

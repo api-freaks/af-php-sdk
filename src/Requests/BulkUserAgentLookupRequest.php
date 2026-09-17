@@ -20,7 +20,7 @@ class BulkUserAgentLookupRequest extends JsonSerializableType
     public ?string $format;
 
     /**
-     * @var array<string> $uaStrings List of user agent strings to parse
+     * @var array<string> $uaStrings Array of User-Agent strings to parse. Maximum 100 strings per request — exceeding that returns a 413.
      */
     #[JsonProperty('uaStrings'), ArrayType(['string'])]
     public array $uaStrings;

@@ -4,8 +4,6 @@ namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
-use DateTime;
-use Apifreaks\Core\Types\Date;
 use Apifreaks\Core\Types\ArrayType;
 use Apifreaks\Core\Types\Union;
 
@@ -18,10 +16,10 @@ class DomainDnsLookupResponse extends JsonSerializableType
     public bool $status;
 
     /**
-     * @var DateTime $queryTime Time at which the query was made (Format:YYYY-MM-DD HH:mm:ss).
+     * @var string $queryTime Timestamp when the query was executed (format YYYY-MM-DD HH:mm:ss, not ISO 8601).
      */
-    #[JsonProperty('queryTime'), Date(Date::TYPE_DATETIME)]
-    public DateTime $queryTime;
+    #[JsonProperty('queryTime')]
+    public string $queryTime;
 
     /**
      * @var string $domainName Queried domain.
@@ -57,7 +55,7 @@ class DomainDnsLookupResponse extends JsonSerializableType
     /**
      * @param array{
      *   status: bool,
-     *   queryTime: DateTime,
+     *   queryTime: string,
      *   domainName: string,
      *   domainRegistered: bool,
      *   dnsTypes: DomainDnsLookupResponseDnsTypes,

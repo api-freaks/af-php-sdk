@@ -69,16 +69,16 @@ class BulkScreenshotCaptureResponseResultsItemUrl extends JsonSerializableType
     public ?bool $failOnError;
 
     /**
-     * @var ?float $longitude
+     * @var ?string $longitude
      */
     #[JsonProperty('longitude')]
-    public ?float $longitude;
+    public ?string $longitude;
 
     /**
-     * @var ?float $latitude
+     * @var ?string $latitude
      */
     #[JsonProperty('latitude')]
-    public ?float $latitude;
+    public ?string $latitude;
 
     /**
      * @var ?string $proxy
@@ -440,8 +440,8 @@ class BulkScreenshotCaptureResponseResultsItemUrl extends JsonSerializableType
      *   omitBackground?: ?bool,
      *   destroyScreenshot?: ?bool,
      *   failOnError?: ?bool,
-     *   longitude?: ?float,
-     *   latitude?: ?float,
+     *   longitude?: ?string,
+     *   latitude?: ?string,
      *   proxy?: ?string,
      *   noCookieBanners?: ?bool,
      *   blockAds?: ?bool,

@@ -8,16 +8,16 @@ use Apifreaks\Core\Json\JsonProperty;
 class FloodForecastResponseLocationZero extends JsonSerializableType
 {
     /**
-     * @var float $latitude Geographic latitude coordinate in decimal degrees, ranging from -90 (South Pole) to +90 (North Pole).
+     * @var string $latitude Geographic latitude coordinate in decimal degrees, ranging from -90 (South Pole) to +90 (North Pole).
      */
     #[JsonProperty('latitude')]
-    public float $latitude;
+    public string $latitude;
 
     /**
-     * @var float $longitude Geographic longitude coordinate in decimal degrees, ranging from -180 (West) to +180 (East).
+     * @var string $longitude Geographic longitude coordinate in decimal degrees, ranging from -180 (West) to +180 (East).
      */
     #[JsonProperty('longitude')]
-    public float $longitude;
+    public string $longitude;
 
     /**
      * @var string $countryName Full name of the country corresponding to the provided coordinates.
@@ -44,10 +44,10 @@ class FloodForecastResponseLocationZero extends JsonSerializableType
     public ?string $locality;
 
     /**
-     * @var ?float $elevation Height above mean sea level in meters for the specified coordinates.
+     * @var ?string $elevation Height above mean sea level in meters for the specified coordinates.
      */
     #[JsonProperty('elevation')]
-    public ?float $elevation;
+    public ?string $elevation;
 
     /**
      * @var string $timezone IANA timezone database identifier for the location (e.g., America/New_York, Europe/London).
@@ -63,15 +63,15 @@ class FloodForecastResponseLocationZero extends JsonSerializableType
 
     /**
      * @param array{
-     *   latitude: float,
-     *   longitude: float,
+     *   latitude: string,
+     *   longitude: string,
      *   countryName: string,
      *   stateProv: string,
      *   city: string,
      *   timezone: string,
      *   timezoneAbbreviation: string,
      *   locality?: ?string,
-     *   elevation?: ?float,
+     *   elevation?: ?string,
      * } $values
      */
     public function __construct(

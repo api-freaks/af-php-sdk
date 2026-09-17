@@ -47,16 +47,16 @@ class TimezoneLookupV2ResponseLoCodeDetails extends JsonSerializableType
     public ?string $locationType;
 
     /**
-     * @var ?float $latitude The latitude coordinate of the location.
+     * @var ?string $latitude The latitude coordinate of the location.
      */
     #[JsonProperty('latitude')]
-    public ?float $latitude;
+    public ?string $latitude;
 
     /**
-     * @var ?float $longitude The longitude coordinate of the location.
+     * @var ?string $longitude The longitude coordinate of the location.
      */
     #[JsonProperty('longitude')]
-    public ?float $longitude;
+    public ?string $longitude;
 
     /**
      * @param array{
@@ -66,8 +66,8 @@ class TimezoneLookupV2ResponseLoCodeDetails extends JsonSerializableType
      *   countryCode?: ?string,
      *   countryName?: ?string,
      *   locationType?: ?string,
-     *   latitude?: ?float,
-     *   longitude?: ?float,
+     *   latitude?: ?string,
+     *   longitude?: ?string,
      * } $values
      */
     public function __construct(

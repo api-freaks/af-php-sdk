@@ -38,22 +38,22 @@ class HistoricalWeatherResponseLocationCity extends JsonSerializableType
     public ?string $locality;
 
     /**
-     * @var float $latitude Geocoded latitude coordinate in decimal degrees, ranging from -90 to +90.
+     * @var string $latitude Geocoded latitude coordinate in decimal degrees, ranging from -90 to +90.
      */
     #[JsonProperty('latitude')]
-    public float $latitude;
+    public string $latitude;
 
     /**
-     * @var float $longitude Geocoded longitude coordinate in decimal degrees, ranging from -180 to +180.
+     * @var string $longitude Geocoded longitude coordinate in decimal degrees, ranging from -180 to +180.
      */
     #[JsonProperty('longitude')]
-    public float $longitude;
+    public string $longitude;
 
     /**
-     * @var ?float $elevation Elevation above mean sea level in meters at the geocoded coordinates.
+     * @var ?string $elevation Elevation above mean sea level in meters at the geocoded coordinates.
      */
     #[JsonProperty('elevation')]
-    public ?float $elevation;
+    public ?string $elevation;
 
     /**
      * @var string $timezone IANA timezone database identifier for the geocoded location (e.g., America/Los_Angeles).
@@ -73,12 +73,12 @@ class HistoricalWeatherResponseLocationCity extends JsonSerializableType
      *   countryName: string,
      *   stateProv: string,
      *   city: string,
-     *   latitude: float,
-     *   longitude: float,
+     *   latitude: string,
+     *   longitude: string,
      *   timezone: string,
      *   timezoneAbbreviation: string,
      *   locality?: ?string,
-     *   elevation?: ?float,
+     *   elevation?: ?string,
      * } $values
      */
     public function __construct(

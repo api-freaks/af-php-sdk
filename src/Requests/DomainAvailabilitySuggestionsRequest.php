@@ -29,9 +29,14 @@ class DomainAvailabilitySuggestionsRequest extends JsonSerializableType
     public ?string $source;
 
     /**
-     * @var ?int $count Number of suggestions to retrieve.
+     * @var ?int $count Number of suggestions to retrieve. The API returns a minimum of 5 suggestions regardless of a lower value.
      */
     public ?int $count;
+
+    /**
+     * @var ?bool $sug Controls the response shape. When `false`, returns a single availability object for the queried domain only. When omitted or `true`, returns an array of suggested domains instead.
+     */
+    public ?bool $sug;
 
     /**
      * @param array{
@@ -40,6 +45,7 @@ class DomainAvailabilitySuggestionsRequest extends JsonSerializableType
      *   format?: ?value-of<DomainAvailabilitySuggestionsRequestFormat>,
      *   source?: ?value-of<DomainAvailabilitySuggestionsRequestSource>,
      *   count?: ?int,
+     *   sug?: ?bool,
      * } $values
      */
     public function __construct(
@@ -50,5 +56,6 @@ class DomainAvailabilitySuggestionsRequest extends JsonSerializableType
         $this->domain = $values['domain'];
         $this->source = $values['source'] ?? null;
         $this->count = $values['count'] ?? null;
+        $this->sug = $values['sug'] ?? null;
     }
 }

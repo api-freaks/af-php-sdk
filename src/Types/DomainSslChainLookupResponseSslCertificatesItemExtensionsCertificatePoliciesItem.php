@@ -5,24 +5,24 @@ namespace Apifreaks\Types;
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
 
-class DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePolicies extends JsonSerializableType
+class DomainSslChainLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItem extends JsonSerializableType
 {
     /**
-     * @var string $policyId
+     * @var string $policyId Policy identifier
      */
     #[JsonProperty('policyId')]
     public string $policyId;
 
     /**
-     * @var ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesPolicyQualifier $policyQualifier
+     * @var ?DomainSslChainLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItemPolicyQualifier $policyQualifier Policy qualifier details
      */
     #[JsonProperty('policyQualifier')]
-    public ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesPolicyQualifier $policyQualifier;
+    public ?DomainSslChainLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItemPolicyQualifier $policyQualifier;
 
     /**
      * @param array{
      *   policyId: string,
-     *   policyQualifier?: ?DomainSslLookupResponseSslCertificatesItemExtensionsCertificatePoliciesPolicyQualifier,
+     *   policyQualifier?: ?DomainSslChainLookupResponseSslCertificatesItemExtensionsCertificatePoliciesItemPolicyQualifier,
      * } $values
      */
     public function __construct(

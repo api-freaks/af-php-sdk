@@ -34,11 +34,18 @@ class BulkDomainDnsLookupRequest extends JsonSerializableType
     public array $domainNames;
 
     /**
+     * @var ?array<string> $ipAddresses Array of IP addresses to include in the lookup for PTR record enrichment.
+     */
+    #[JsonProperty('ipAddresses'), ArrayType(['string'])]
+    public ?array $ipAddresses;
+
+    /**
      * @param array{
      *   apiKey: string,
      *   domainNames: array<string>,
      *   format?: ?value-of<BulkDomainDnsLookupRequestFormat>,
      *   type?: ?array<string>,
+     *   ipAddresses?: ?array<string>,
      * } $values
      */
     public function __construct(
@@ -48,5 +55,6 @@ class BulkDomainDnsLookupRequest extends JsonSerializableType
         $this->format = $values['format'] ?? null;
         $this->type = $values['type'] ?? null;
         $this->domainNames = $values['domainNames'];
+        $this->ipAddresses = $values['ipAddresses'] ?? null;
     }
 }

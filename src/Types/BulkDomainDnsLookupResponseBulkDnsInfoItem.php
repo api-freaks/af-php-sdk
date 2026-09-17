@@ -4,8 +4,6 @@ namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
-use DateTime;
-use Apifreaks\Core\Types\Date;
 use Apifreaks\Core\Types\ArrayType;
 use Apifreaks\Core\Types\Union;
 
@@ -18,22 +16,28 @@ class BulkDomainDnsLookupResponseBulkDnsInfoItem extends JsonSerializableType
     public bool $status;
 
     /**
-     * @var DateTime $queryTime Time at which the query was made (Format:YYYY-MM-DD HH:mm:ss).
+     * @var string $queryTime Timestamp when the query was executed (format YYYY-MM-DD HH:mm:ss, not ISO 8601).
      */
-    #[JsonProperty('queryTime'), Date(Date::TYPE_DATETIME)]
-    public DateTime $queryTime;
+    #[JsonProperty('queryTime')]
+    public string $queryTime;
 
     /**
-     * @var string $domainName Queried domain.
+     * @var ?string $domainName Queried domain. Absent when this result is for a queried IP address instead (see `ipAddress`).
      */
     #[JsonProperty('domainName')]
-    public string $domainName;
+    public ?string $domainName;
 
     /**
-     * @var bool $domainRegistered Indicates whether the domain is registered.
+     * @var ?bool $domainRegistered Indicates whether the domain is registered. Absent when this result is for a queried IP address instead.
      */
     #[JsonProperty('domainRegistered')]
-    public bool $domainRegistered;
+    public ?bool $domainRegistered;
+
+    /**
+     * @var ?string $ipAddress Queried IP address, present when this result is for reverse DNS (PTR) enrichment instead of a domain name.
+     */
+    #[JsonProperty('ipAddress')]
+    public ?string $ipAddress;
 
     /**
      * @var BulkDomainDnsLookupResponseBulkDnsInfoItemDnsTypes $dnsTypes
@@ -57,9 +61,7 @@ class BulkDomainDnsLookupResponseBulkDnsInfoItem extends JsonSerializableType
     /**
      * @param array{
      *   status: bool,
-     *   queryTime: DateTime,
-     *   domainName: string,
-     *   domainRegistered: bool,
+     *   queryTime: string,
      *   dnsTypes: BulkDomainDnsLookupResponseBulkDnsInfoItemDnsTypes,
      *   dnsRecords: array<(
      *    BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemAddress
@@ -69,6 +71,9 @@ class BulkDomainDnsLookupResponseBulkDnsInfoItem extends JsonSerializableType
      *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemAdmin
      *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemStrings
      * )>,
+     *   domainName?: ?string,
+     *   domainRegistered?: ?bool,
+     *   ipAddress?: ?string,
      * } $values
      */
     public function __construct(
@@ -76,8 +81,9 @@ class BulkDomainDnsLookupResponseBulkDnsInfoItem extends JsonSerializableType
     ) {
         $this->status = $values['status'];
         $this->queryTime = $values['queryTime'];
-        $this->domainName = $values['domainName'];
-        $this->domainRegistered = $values['domainRegistered'];
+        $this->domainName = $values['domainName'] ?? null;
+        $this->domainRegistered = $values['domainRegistered'] ?? null;
+        $this->ipAddress = $values['ipAddress'] ?? null;
         $this->dnsTypes = $values['dnsTypes'];
         $this->dnsRecords = $values['dnsRecords'];
     }

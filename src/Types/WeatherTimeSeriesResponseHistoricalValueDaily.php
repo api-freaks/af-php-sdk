@@ -13,9 +13,9 @@ use Apifreaks\Core\Types\Date;
 class WeatherTimeSeriesResponseHistoricalValueDaily extends JsonSerializableType
 {
     /**
-     * @var ?DateTime $timestamp ISO 8601 formatted timestamp
+     * @var ?DateTime $timestamp Date of this daily entry, `YYYY-MM-DD`.
      */
-    #[JsonProperty('timestamp'), Date(Date::TYPE_DATETIME)]
+    #[JsonProperty('timestamp'), Date(Date::TYPE_DATE)]
     public ?DateTime $timestamp;
 
     /**

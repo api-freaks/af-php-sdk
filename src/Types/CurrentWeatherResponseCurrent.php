@@ -3,9 +3,7 @@
 namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
-use DateTime;
 use Apifreaks\Core\Json\JsonProperty;
-use Apifreaks\Core\Types\Date;
 
 /**
  * Current weather data
@@ -13,10 +11,10 @@ use Apifreaks\Core\Types\Date;
 class CurrentWeatherResponseCurrent extends JsonSerializableType
 {
     /**
-     * @var DateTime $timestamp ISO 8601 formatted timestamp of the current weather observation.
+     * @var string $timestamp Local timestamp of the current weather observation (format YYYY-MM-DDTHH:mm, not ISO 8601).
      */
-    #[JsonProperty('timestamp'), Date(Date::TYPE_DATETIME)]
-    public DateTime $timestamp;
+    #[JsonProperty('timestamp')]
+    public string $timestamp;
 
     /**
      * @var float $temperature2M Current air temperature (°C) measured at 2 meters above ground.
@@ -116,7 +114,7 @@ class CurrentWeatherResponseCurrent extends JsonSerializableType
 
     /**
      * @param array{
-     *   timestamp: DateTime,
+     *   timestamp: string,
      *   temperature2M: float,
      *   relativeHumidity2M: float,
      *   apparentTemperature: float,

@@ -3,17 +3,15 @@
 namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
-use DateTime;
 use Apifreaks\Core\Json\JsonProperty;
-use Apifreaks\Core\Types\Date;
 
 class HistoricalWeatherResponseHistoricalHourlyItem extends JsonSerializableType
 {
     /**
-     * @var ?DateTime $timestamp ISO 8601 formatted timestamp
+     * @var ?string $timestamp Local timestamp of this reading (format YYYY-MM-DDTHH:mm, not ISO 8601).
      */
-    #[JsonProperty('timestamp'), Date(Date::TYPE_DATETIME)]
-    public ?DateTime $timestamp;
+    #[JsonProperty('timestamp')]
+    public ?string $timestamp;
 
     /**
      * @var ?float $temperature2M Air temperature at 2 meters (°C)
@@ -143,7 +141,7 @@ class HistoricalWeatherResponseHistoricalHourlyItem extends JsonSerializableType
 
     /**
      * @param array{
-     *   timestamp?: ?DateTime,
+     *   timestamp?: ?string,
      *   temperature2M?: ?float,
      *   relativeHumidity2M?: ?float,
      *   dewPoint2M?: ?float,

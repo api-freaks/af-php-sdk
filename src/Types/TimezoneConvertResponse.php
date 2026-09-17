@@ -3,23 +3,21 @@
 namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
-use DateTime;
 use Apifreaks\Core\Json\JsonProperty;
-use Apifreaks\Core\Types\Date;
 
 class TimezoneConvertResponse extends JsonSerializableType
 {
     /**
-     * @var DateTime $originalTime Original time before conversion
+     * @var string $originalTime Original time before conversion (format YYYY-MM-DD HH:mm:ss, not ISO 8601).
      */
-    #[JsonProperty('original_time'), Date(Date::TYPE_DATETIME)]
-    public DateTime $originalTime;
+    #[JsonProperty('original_time')]
+    public string $originalTime;
 
     /**
-     * @var DateTime $convertedTime Time after conversion
+     * @var string $convertedTime Time after conversion (format YYYY-MM-DD HH:mm:ss, not ISO 8601).
      */
-    #[JsonProperty('converted_time'), Date(Date::TYPE_DATETIME)]
-    public DateTime $convertedTime;
+    #[JsonProperty('converted_time')]
+    public string $convertedTime;
 
     /**
      * @var float $diffHour Difference in hours
@@ -35,8 +33,8 @@ class TimezoneConvertResponse extends JsonSerializableType
 
     /**
      * @param array{
-     *   originalTime: DateTime,
-     *   convertedTime: DateTime,
+     *   originalTime: string,
+     *   convertedTime: string,
      *   diffHour: float,
      *   diffMin: float,
      * } $values
