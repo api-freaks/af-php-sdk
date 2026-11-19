@@ -27,10 +27,10 @@ class BulkScreenshotCaptureResponseResultsItemUrl extends JsonSerializableType
     public string $createdAt;
 
     /**
-     * @var string $format
+     * @var ?string $format
      */
     #[JsonProperty('format')]
-    public string $format;
+    public ?string $format;
 
     /**
      * @var string $ttl
@@ -433,8 +433,8 @@ class BulkScreenshotCaptureResponseResultsItemUrl extends JsonSerializableType
      *   screenshot: string,
      *   url: string,
      *   createdAt: string,
-     *   format: string,
      *   ttl: string,
+     *   format?: ?string,
      *   fileType?: ?string,
      *   extractedHtml?: ?string,
      *   omitBackground?: ?bool,
@@ -508,7 +508,7 @@ class BulkScreenshotCaptureResponseResultsItemUrl extends JsonSerializableType
         $this->screenshot = $values['screenshot'];
         $this->url = $values['url'];
         $this->createdAt = $values['createdAt'];
-        $this->format = $values['format'];
+        $this->format = $values['format'] ?? null;
         $this->ttl = $values['ttl'];
         $this->fileType = $values['fileType'] ?? null;
         $this->extractedHtml = $values['extractedHtml'] ?? null;

@@ -5,6 +5,8 @@ namespace Apifreaks\Types;
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
 use Apifreaks\Core\Types\ArrayType;
+use DateTime;
+use Apifreaks\Core\Types\Date;
 
 class IpWhoisLookupResponseOrganization extends JsonSerializableType
 {
@@ -147,6 +149,48 @@ class IpWhoisLookupResponseOrganization extends JsonSerializableType
     public ?array $remarks;
 
     /**
+     * @var ?array<string> $notify Notify email addresses for this organization object.
+     */
+    #[JsonProperty('notify'), ArrayType(['string'])]
+    public ?array $notify;
+
+    /**
+     * @var ?array<string> $refNfy Reference notification email addresses for this organization object.
+     */
+    #[JsonProperty('ref_nfy'), ArrayType(['string'])]
+    public ?array $refNfy;
+
+    /**
+     * @var ?array<string> $mntBy Maintainer handles for this organization object.
+     */
+    #[JsonProperty('mnt_by'), ArrayType(['string'])]
+    public ?array $mntBy;
+
+    /**
+     * @var ?array<string> $mntRef Referenced maintainer handles for this organization object.
+     */
+    #[JsonProperty('mnt_ref'), ArrayType(['string'])]
+    public ?array $mntRef;
+
+    /**
+     * @var ?DateTime $dateCreated Registration date of this organization object (YYYY-MM-DD).
+     */
+    #[JsonProperty('date_created'), Date(Date::TYPE_DATE)]
+    public ?DateTime $dateCreated;
+
+    /**
+     * @var ?DateTime $dateUpdated Last update date of this organization object (YYYY-MM-DD).
+     */
+    #[JsonProperty('date_updated'), Date(Date::TYPE_DATE)]
+    public ?DateTime $dateUpdated;
+
+    /**
+     * @var ?string $source WHOIS data source (RIR registry URL) for this object.
+     */
+    #[JsonProperty('source')]
+    public ?string $source;
+
+    /**
      * @param array{
      *   handle?: ?string,
      *   name?: ?string,
@@ -171,6 +215,13 @@ class IpWhoisLookupResponseOrganization extends JsonSerializableType
      *   abuseContacts?: ?array<string>,
      *   languages?: ?array<string>,
      *   remarks?: ?array<string>,
+     *   notify?: ?array<string>,
+     *   refNfy?: ?array<string>,
+     *   mntBy?: ?array<string>,
+     *   mntRef?: ?array<string>,
+     *   dateCreated?: ?DateTime,
+     *   dateUpdated?: ?DateTime,
+     *   source?: ?string,
      * } $values
      */
     public function __construct(
@@ -199,6 +250,13 @@ class IpWhoisLookupResponseOrganization extends JsonSerializableType
         $this->abuseContacts = $values['abuseContacts'] ?? null;
         $this->languages = $values['languages'] ?? null;
         $this->remarks = $values['remarks'] ?? null;
+        $this->notify = $values['notify'] ?? null;
+        $this->refNfy = $values['refNfy'] ?? null;
+        $this->mntBy = $values['mntBy'] ?? null;
+        $this->mntRef = $values['mntRef'] ?? null;
+        $this->dateCreated = $values['dateCreated'] ?? null;
+        $this->dateUpdated = $values['dateUpdated'] ?? null;
+        $this->source = $values['source'] ?? null;
     }
 
     /**

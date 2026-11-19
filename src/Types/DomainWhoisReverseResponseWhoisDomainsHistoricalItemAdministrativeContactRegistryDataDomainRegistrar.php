@@ -44,6 +44,24 @@ class DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactR
     public ?string $phoneNumber;
 
     /**
+     * @var ?string $normalizedName Normalized (lowercase, stripped) registrar name, when published.
+     */
+    #[JsonProperty('normalized_name')]
+    public ?string $normalizedName;
+
+    /**
+     * @var ?string $rdapServer RDAP (Registration Data Access Protocol) server URL of the registrar, when published.
+     */
+    #[JsonProperty('rdap_server')]
+    public ?string $rdapServer;
+
+    /**
+     * @var ?string $status Accreditation status of the registrar (e.g., 'accredited'), when published.
+     */
+    #[JsonProperty('status')]
+    public ?string $status;
+
+    /**
      * @param array{
      *   ianaId?: ?string,
      *   registrarName?: ?string,
@@ -51,6 +69,9 @@ class DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactR
      *   websiteUrl?: ?string,
      *   emailAddress?: ?string,
      *   phoneNumber?: ?string,
+     *   normalizedName?: ?string,
+     *   rdapServer?: ?string,
+     *   status?: ?string,
      * } $values
      */
     public function __construct(
@@ -62,6 +83,9 @@ class DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactR
         $this->websiteUrl = $values['websiteUrl'] ?? null;
         $this->emailAddress = $values['emailAddress'] ?? null;
         $this->phoneNumber = $values['phoneNumber'] ?? null;
+        $this->normalizedName = $values['normalizedName'] ?? null;
+        $this->rdapServer = $values['rdapServer'] ?? null;
+        $this->status = $values['status'] ?? null;
     }
 
     /**

@@ -4,6 +4,8 @@ namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
+use DateTime;
+use Apifreaks\Core\Types\Date;
 
 class CommoditySymbolsResponseSymbolsItem extends JsonSerializableType
 {
@@ -32,7 +34,7 @@ class CommoditySymbolsResponseSymbolsItem extends JsonSerializableType
     public string $status;
 
     /**
-     * @var value-of<CommoditySymbolsResponseSymbolsItemUpdateInterval> $updateInterval The rate at which this commodity's price is updated.
+     * @var value-of<CommoditySymbolsResponseSymbolsItemUpdateInterval> $updateInterval The rate at which this commodity's price is updated. New values may be added over time.
      */
     #[JsonProperty('updateInterval')]
     public string $updateInterval;
@@ -50,6 +52,48 @@ class CommoditySymbolsResponseSymbolsItem extends JsonSerializableType
     public CommoditySymbolsResponseSymbolsItemUnit $unit;
 
     /**
+     * @var ?string $description Short description of the commodity. May be an empty string for some symbols.
+     */
+    #[JsonProperty('description')]
+    public ?string $description;
+
+    /**
+     * @var ?string $exchange Data source for the symbol (e.g., World Bank). Present only for some symbols.
+     */
+    #[JsonProperty('exchange')]
+    public ?string $exchange;
+
+    /**
+     * @var ?DateTime $deprecationDate Present only when status is "inactive". Date the symbol was deprecated (YYYY-MM-DD).
+     */
+    #[JsonProperty('deprecationDate'), Date(Date::TYPE_DATE)]
+    public ?DateTime $deprecationDate;
+
+    /**
+     * @var ?string $contract Optional. Present only for dated futures contracts (for example `WTIOIL-FUT-DEC26`). Contract type, currently always `futures`.
+     */
+    #[JsonProperty('contract')]
+    public ?string $contract;
+
+    /**
+     * @var ?string $deliveryMonth Optional. Present only for dated futures contracts. Delivery month of the contract (YYYY-MM), for example `2026-12`.
+     */
+    #[JsonProperty('deliveryMonth')]
+    public ?string $deliveryMonth;
+
+    /**
+     * @var ?DateTime $expiresAt Optional. Present for most dated futures contracts. Last trading date of the contract (YYYY-MM-DD), for example `2026-11-20`.
+     */
+    #[JsonProperty('expiresAt'), Date(Date::TYPE_DATE)]
+    public ?DateTime $expiresAt;
+
+    /**
+     * @var ?string $underlying Optional. Present only for dated futures contracts. Symbol of the continuous futures series this contract belongs to (for example `WTIOIL-FUT`).
+     */
+    #[JsonProperty('underlying')]
+    public ?string $underlying;
+
+    /**
      * @param array{
      *   symbol: string,
      *   name: string,
@@ -58,6 +102,13 @@ class CommoditySymbolsResponseSymbolsItem extends JsonSerializableType
      *   updateInterval: value-of<CommoditySymbolsResponseSymbolsItemUpdateInterval>,
      *   currency: CommoditySymbolsResponseSymbolsItemCurrency,
      *   unit: CommoditySymbolsResponseSymbolsItemUnit,
+     *   description?: ?string,
+     *   exchange?: ?string,
+     *   deprecationDate?: ?DateTime,
+     *   contract?: ?string,
+     *   deliveryMonth?: ?string,
+     *   expiresAt?: ?DateTime,
+     *   underlying?: ?string,
      * } $values
      */
     public function __construct(
@@ -70,6 +121,13 @@ class CommoditySymbolsResponseSymbolsItem extends JsonSerializableType
         $this->updateInterval = $values['updateInterval'];
         $this->currency = $values['currency'];
         $this->unit = $values['unit'];
+        $this->description = $values['description'] ?? null;
+        $this->exchange = $values['exchange'] ?? null;
+        $this->deprecationDate = $values['deprecationDate'] ?? null;
+        $this->contract = $values['contract'] ?? null;
+        $this->deliveryMonth = $values['deliveryMonth'] ?? null;
+        $this->expiresAt = $values['expiresAt'] ?? null;
+        $this->underlying = $values['underlying'] ?? null;
     }
 
     /**

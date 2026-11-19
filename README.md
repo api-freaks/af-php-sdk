@@ -81,6 +81,11 @@ $client = new ApifreaksClient([
 ## Errors
 
 When the API returns a non-success status code, the SDK throws `Apifreaks\Exceptions\ApifreaksApiException`.
+If a successful response can't be decoded into the SDK's response type, the SDK throws the same exception with a
+`Failed to deserialize response` message, the HTTP status code and the raw response body. Other client-side failures
+(network errors, a request that can't be serialized) throw `Apifreaks\Exceptions\ApifreaksException`, the base class of both.
+
+Note: `getCreditsUsage` requires an organization admin API key; any other key gets a 403 `ApifreaksApiException`.
 
 ```php
 <?php

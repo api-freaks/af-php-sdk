@@ -11,13 +11,13 @@ class WeatherTimeSeriesResponse extends JsonSerializableType
 {
     /**
      * @var (
-     *    WeatherTimeSeriesResponseLocationZero
-     *   |WeatherTimeSeriesResponseLocationContinentCode
+     *    WeatherTimeSeriesResponseLocationContinentCode
      *   |WeatherTimeSeriesResponseLocationCity
+     *   |WeatherTimeSeriesResponseLocationZero
      * )|null $location Location information
      */
-    #[JsonProperty('location'), Union(WeatherTimeSeriesResponseLocationZero::class, WeatherTimeSeriesResponseLocationContinentCode::class, WeatherTimeSeriesResponseLocationCity::class, 'null')]
-    public WeatherTimeSeriesResponseLocationZero|WeatherTimeSeriesResponseLocationContinentCode|WeatherTimeSeriesResponseLocationCity|null $location;
+    #[JsonProperty('location'), Union(WeatherTimeSeriesResponseLocationContinentCode::class, WeatherTimeSeriesResponseLocationCity::class, WeatherTimeSeriesResponseLocationZero::class, 'null')]
+    public WeatherTimeSeriesResponseLocationContinentCode|WeatherTimeSeriesResponseLocationCity|WeatherTimeSeriesResponseLocationZero|null $location;
 
     /**
      * @var ?array<string, WeatherTimeSeriesResponseHistoricalValue> $historical Historical data object of the provided date range
@@ -28,9 +28,9 @@ class WeatherTimeSeriesResponse extends JsonSerializableType
     /**
      * @param array{
      *   location?: (
-     *    WeatherTimeSeriesResponseLocationZero
-     *   |WeatherTimeSeriesResponseLocationContinentCode
+     *    WeatherTimeSeriesResponseLocationContinentCode
      *   |WeatherTimeSeriesResponseLocationCity
+     *   |WeatherTimeSeriesResponseLocationZero
      * )|null,
      *   historical?: ?array<string, WeatherTimeSeriesResponseHistoricalValue>,
      * } $values

@@ -18,15 +18,15 @@ class GetSubregionsRequest extends JsonSerializableType
     public ?string $format;
 
     /**
-     * @var string $region Name of the region.
+     * @var ?string $region Name of the region. If omitted, all subregions are returned.
      */
-    public string $region;
+    public ?string $region;
 
     /**
      * @param array{
      *   apiKey: string,
-     *   region: string,
      *   format?: ?value-of<GetSubregionsRequestFormat>,
+     *   region?: ?string,
      * } $values
      */
     public function __construct(
@@ -34,6 +34,6 @@ class GetSubregionsRequest extends JsonSerializableType
     ) {
         $this->apiKey = $values['apiKey'];
         $this->format = $values['format'] ?? null;
-        $this->region = $values['region'];
+        $this->region = $values['region'] ?? null;
     }
 }

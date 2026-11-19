@@ -23,9 +23,9 @@ class ZipcodeSearchByRegionRequest extends JsonSerializableType
     public string $country;
 
     /**
-     * @var string $region Name of the region, state or province associated with the country.
+     * @var ?string $region Name of the region, state or province associated with the country. Either region or region_code is required; region_code takes priority if both are given.
      */
-    public string $region;
+    public ?string $region;
 
     /**
      * @var ?int $page Page no. to retrieve paginated results.
@@ -33,12 +33,18 @@ class ZipcodeSearchByRegionRequest extends JsonSerializableType
     public ?int $page;
 
     /**
+     * @var ?string $regionCode ISO code of the region, state, or province associated with the country. Either region or region_code is required. region_code takes priority if both are given.
+     */
+    public ?string $regionCode;
+
+    /**
      * @param array{
      *   apiKey: string,
      *   country: string,
-     *   region: string,
      *   format?: ?value-of<ZipcodeSearchByRegionRequestFormat>,
+     *   region?: ?string,
      *   page?: ?int,
+     *   regionCode?: ?string,
      * } $values
      */
     public function __construct(
@@ -47,7 +53,8 @@ class ZipcodeSearchByRegionRequest extends JsonSerializableType
         $this->apiKey = $values['apiKey'];
         $this->format = $values['format'] ?? null;
         $this->country = $values['country'];
-        $this->region = $values['region'];
+        $this->region = $values['region'] ?? null;
         $this->page = $values['page'] ?? null;
+        $this->regionCode = $values['regionCode'] ?? null;
     }
 }

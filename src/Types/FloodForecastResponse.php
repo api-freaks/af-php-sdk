@@ -11,13 +11,13 @@ class FloodForecastResponse extends JsonSerializableType
 {
     /**
      * @var (
-     *    FloodForecastResponseLocationZero
-     *   |FloodForecastResponseLocationContinentCode
+     *    FloodForecastResponseLocationContinentCode
      *   |FloodForecastResponseLocationCity
+     *   |FloodForecastResponseLocationZero
      * )|null $location Location information
      */
-    #[JsonProperty('location'), Union(FloodForecastResponseLocationZero::class, FloodForecastResponseLocationContinentCode::class, FloodForecastResponseLocationCity::class, 'null')]
-    public FloodForecastResponseLocationZero|FloodForecastResponseLocationContinentCode|FloodForecastResponseLocationCity|null $location;
+    #[JsonProperty('location'), Union(FloodForecastResponseLocationContinentCode::class, FloodForecastResponseLocationCity::class, FloodForecastResponseLocationZero::class, 'null')]
+    public FloodForecastResponseLocationContinentCode|FloodForecastResponseLocationCity|FloodForecastResponseLocationZero|null $location;
 
     /**
      * @var ?array<string, FloodForecastResponseForecastValue> $forecast Flood forecast data object
@@ -28,9 +28,9 @@ class FloodForecastResponse extends JsonSerializableType
     /**
      * @param array{
      *   location?: (
-     *    FloodForecastResponseLocationZero
-     *   |FloodForecastResponseLocationContinentCode
+     *    FloodForecastResponseLocationContinentCode
      *   |FloodForecastResponseLocationCity
+     *   |FloodForecastResponseLocationZero
      * )|null,
      *   forecast?: ?array<string, FloodForecastResponseForecastValue>,
      * } $values

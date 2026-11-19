@@ -5,23 +5,34 @@ namespace Apifreaks\Types;
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
 
+/**
+ * A selector/value pair used by fill, select, and clickButtonByValue instructions.
+ */
 class WebScrapeRequestBodyBlockUrlInstructionsItemClickButtonByValue extends JsonSerializableType
 {
     /**
-     * @var ?WebScrapeRequestBodyBlockUrlInstructionsItemClickButtonByValueClickButtonByValue $clickButtonByValue
+     * @var string $place CSS or XPath selector identifying the target element.
      */
-    #[JsonProperty('clickButtonByValue')]
-    public ?WebScrapeRequestBodyBlockUrlInstructionsItemClickButtonByValueClickButtonByValue $clickButtonByValue;
+    #[JsonProperty('place')]
+    public string $place;
+
+    /**
+     * @var string $value Value to fill, select, or match against.
+     */
+    #[JsonProperty('value')]
+    public string $value;
 
     /**
      * @param array{
-     *   clickButtonByValue?: ?WebScrapeRequestBodyBlockUrlInstructionsItemClickButtonByValueClickButtonByValue,
+     *   place: string,
+     *   value: string,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->clickButtonByValue = $values['clickButtonByValue'] ?? null;
+        $this->place = $values['place'];
+        $this->value = $values['value'];
     }
 
     /**

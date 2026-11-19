@@ -95,6 +95,18 @@ class MarineWeatherResponseCurrent extends JsonSerializableType
     public ?float $oceanCurrentDirection;
 
     /**
+     * @var ?float $swellWavePeakPeriod Peak period of swell waves in seconds. Frequently null even at locations with other wave data present.
+     */
+    #[JsonProperty('swell_wave_peak_period')]
+    public ?float $swellWavePeakPeriod;
+
+    /**
+     * @var ?float $windWavePeakPeriod Peak period of locally generated wind waves in seconds. Frequently null even at locations with other wave data present.
+     */
+    #[JsonProperty('wind_wave_peak_period')]
+    public ?float $windWavePeakPeriod;
+
+    /**
      * @param array{
      *   timestamp?: ?string,
      *   waveHeight?: ?float,
@@ -110,6 +122,8 @@ class MarineWeatherResponseCurrent extends JsonSerializableType
      *   seaSurfaceTemperature?: ?float,
      *   oceanCurrentVelocity?: ?float,
      *   oceanCurrentDirection?: ?float,
+     *   swellWavePeakPeriod?: ?float,
+     *   windWavePeakPeriod?: ?float,
      * } $values
      */
     public function __construct(
@@ -129,6 +143,8 @@ class MarineWeatherResponseCurrent extends JsonSerializableType
         $this->seaSurfaceTemperature = $values['seaSurfaceTemperature'] ?? null;
         $this->oceanCurrentVelocity = $values['oceanCurrentVelocity'] ?? null;
         $this->oceanCurrentDirection = $values['oceanCurrentDirection'] ?? null;
+        $this->swellWavePeakPeriod = $values['swellWavePeakPeriod'] ?? null;
+        $this->windWavePeakPeriod = $values['windWavePeakPeriod'] ?? null;
     }
 
     /**

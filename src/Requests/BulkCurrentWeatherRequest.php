@@ -16,7 +16,7 @@ class BulkCurrentWeatherRequest extends JsonSerializableType
     public string $apiKey;
 
     /**
-     * @var ?value-of<BulkCurrentWeatherRequestFormat> $format Response format returned by the API.
+     * @var ?value-of<BulkCurrentWeatherRequestFormat> $format Response format returned by the API. Only JSON is supported.
      */
     public ?string $format;
 

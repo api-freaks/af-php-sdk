@@ -56,6 +56,12 @@ class DomainDnsReverseResponseReverseDnsRecordsItemDnsTypes extends JsonSerializ
     public ?float $spf;
 
     /**
+     * @var ?float $ptr
+     */
+    #[JsonProperty('PTR')]
+    public ?float $ptr;
+
+    /**
      * @param array{
      *   a?: ?float,
      *   aaaa?: ?float,
@@ -65,6 +71,7 @@ class DomainDnsReverseResponseReverseDnsRecordsItemDnsTypes extends JsonSerializ
      *   soa?: ?float,
      *   txt?: ?float,
      *   spf?: ?float,
+     *   ptr?: ?float,
      * } $values
      */
     public function __construct(
@@ -78,6 +85,7 @@ class DomainDnsReverseResponseReverseDnsRecordsItemDnsTypes extends JsonSerializ
         $this->soa = $values['soa'] ?? null;
         $this->txt = $values['txt'] ?? null;
         $this->spf = $values['spf'] ?? null;
+        $this->ptr = $values['ptr'] ?? null;
     }
 
     /**

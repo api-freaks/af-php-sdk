@@ -155,6 +155,16 @@ class RawClient
                 $request->headers,
                 $options['headers'] ?? [],
             ),
+            UrlEncodedApiRequest::class => array_merge(
+                [
+                    "Content-Type" => "application/x-www-form-urlencoded",
+                    "Accept" => "*/*",
+                ],
+                $this->headers,
+                $authHeaders,
+                $request->headers,
+                $options['headers'] ?? [],
+            ),
             MultipartApiRequest::class => array_merge(
                 $this->headers,
                 $authHeaders,
@@ -177,6 +187,10 @@ class RawClient
         array          $options,
     ): ?StreamInterface {
         if ($request instanceof JsonApiRequest) {
+            if ($request->body instanceof StreamInterface) {
+                // Raw (non-JSON) body, e.g. an application/octet-stream upload: send it unchanged.
+                return $request->body;
+            }
             return $request->body === null ? null : $this->streamFactory->createStream(
                 JsonEncoder::encode(
                     $this->buildJsonBody(
@@ -185,6 +199,23 @@ class RawClient
                     ),
                 )
             );
+        }
+
+        if ($request instanceof UrlEncodedApiRequest) {
+            if ($request->body === null) {
+                return null;
+            }
+            $body = $this->buildJsonBody($request->body, $options);
+            if ($body instanceof JsonSerializable) {
+                $body = $body->jsonSerialize();
+            }
+            if (is_object($body)) {
+                $body = (array)$body;
+            }
+            if (!is_array($body)) {
+                throw new InvalidArgumentException('URL-encoded request bodies must serialize to an array.');
+            }
+            return $this->streamFactory->createStream(http_build_query($body));
         }
 
         if ($request instanceof MultipartApiRequest) {
@@ -227,6 +258,28 @@ class RawClient
     }
 
     /**
+     * Percent-encodes a value for use inside a single URL path segment. Encoding happens here,
+     * where the value is still separate from the path template, so that a value containing "/"
+     * or ".." cannot change which endpoint the request resolves to.
+     */
+    public static function encodePathParam(mixed $value): string
+    {
+        if (is_bool($value)) {
+            return $value ? 'true' : 'false';
+        }
+        if (is_null($value)) {
+            return '';
+        }
+        if (is_scalar($value)) {
+            return rawurlencode((string)$value);
+        }
+        if (is_object($value) && method_exists($value, '__toString')) {
+            return rawurlencode((string)$value);
+        }
+        return rawurlencode(JsonEncoder::encode($value));
+    }
+
+    /**
      * @param BaseApiRequest $request
      * @param array{
      *     queryParameters?: array<string, mixed>,
@@ -240,6 +293,7 @@ class RawClient
         $baseUrl = $request->baseUrl;
         $trimmedBaseUrl = rtrim($baseUrl, '/');
         $trimmedBasePath = ltrim($request->path, '/');
+        self::assertNoDotSegments($trimmedBasePath);
         $url = "{$trimmedBaseUrl}/{$trimmedBasePath}";
         $query = array_merge(
             $request->query,
@@ -249,6 +303,25 @@ class RawClient
             $url .= '?' . $this->encodeQuery($query);
         }
         return $url;
+    }
+
+    /**
+     * Rejects "." and ".." path segments, which HTTP clients and servers resolve
+     * and which would otherwise change the endpoint a request is sent to.
+     *
+     * @param string $path
+     * @throws InvalidArgumentException
+     */
+    private static function assertNoDotSegments(string $path): void
+    {
+        foreach (explode('/', $path) as $segment) {
+            $decoded = rawurldecode($segment);
+            if ($decoded === '.' || $decoded === '..') {
+                throw new InvalidArgumentException(
+                    "Invalid request path \"/{$path}\": \".\" and \"..\" path segments are not allowed."
+                );
+            }
+        }
     }
 
     /**

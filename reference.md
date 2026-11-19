@@ -1,5586 +1,13475 @@
 # Reference
-This reference lists the generated methods available on `Apifreaks\ApifreaksClient`.
-
-<details><summary><code>$client->geolocationLookup($request) -> GeolocationLookupResponse</code></summary>
+<details><summary><code>$client-&gt;geolocationLookup($request) -> ?GeolocationLookupResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Get detailed geolocation data for an IP address including country, city, timezone, currency, and optional security and user-agent information
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GeolocationLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new GeolocationLookupRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->geolocationLookup($request);
+$client->geolocationLookup(
+    new GeolocationLookupRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<GeolocationLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**ip:** `?string` — optional. IPv4, IPv6, or hostname for geolocation lookup
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**lang:** `?value-of<GeolocationLookupRequestLang>` — optional. Response language for location fields
+<dl>
+<dd>
 
-**fields:** `?string` — optional. Comma separated list of fields to include in response
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-**excludes:** `?string` — optional. Comma separated list of fields to exclude from response
+<dl>
+<dd>
 
-**include:** `?string` — optional. Additional data to include (location, network, security, currency, time_zone, user_agent, country_metadata , hostname, liveHostname, hostnameFallbackLivet)
+**$ip:** `?string` — IPv4, IPv6, or hostname for geolocation lookup
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`GeolocationLookupResponse`
+**$lang:** `?string` — Response language for location fields
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fields:** `?string` — Comma separated list of fields to include in response
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$excludes:** `?string` — Comma separated list of fields to exclude from response
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$include:** `?string` — Additional data to include (location, network, security, currency, time_zone, user_agent, country_metadata , hostname, liveHostname, hostnameFallbackLivet)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->geolocationLookupV2($request) -> GeolocationLookupResponse</code></summary>
+<details><summary><code>$client-&gt;bulkGeolocationLookup($request) -> ?array</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-(v2.0) Get detailed geolocation data for an IP address including country, city, timezone, currency, and optional security and user-agent information. Uses the `v2.0/geolocation/lookup` endpoint.
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve detailed geolocation data for multiple IP addresses in a single request.
+Supports up to `50,000` IP-addresses/host-names per request.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GeolocationLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new GeolocationLookupRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->geolocationLookupV2($request);
+$client->bulkGeolocationLookup(
+    new BulkGeolocationLookupRequest([
+        'apiKey' => 'apiKey',
+        'ips' => [
+            'ips',
+        ],
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<GeolocationLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**ip:** `?string` — optional. IPv4, IPv6, or hostname for geolocation lookup
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**lang:** `?value-of<GeolocationLookupRequestLang>` — optional. Response language for location fields
+<dl>
+<dd>
 
-**fields:** `?string` — optional. Comma separated list of fields to include in response
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-**excludes:** `?string` — optional. Comma separated list of fields to exclude from response
+<dl>
+<dd>
 
-**include:** `?string` — optional. Additional data to include (location, network, security, currency, time_zone, user_agent, country_metadata , hostname, liveHostname, hostnameFallbackLivet)
+**$lang:** `?string` — Language of the response.
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`GeolocationLookupResponse`
+**$fields:** `?string` — Comma-separated list of fields to include in the response. Can include "geo".
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$excludes:** `?string` — Comma-separated list of fields to exclude from the response (except "ip").
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$include:** `?string` — Comma-separated list of additional information to include in the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ips:** `array` — List of IP addresses or hostnames to lookup
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->bulkGeolocationLookup($request) -> array</code></summary>
+<details><summary><code>$client-&gt;ipSecurityLookup($request) -> ?IpSecurityLookupResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-Retrieve detailed geolocation data for multiple IP addresses in a single request. Supports up to `50,000` IP-addresses/host-names per request.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkGeolocationLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkGeolocationLookupRequest([
-    'apiKey' => "apiKey",
-    'ips' => ["8.8.8.8", "1.1.1.1"],
-]);
-
-$response = $client->bulkGeolocationLookup($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<BulkGeolocationLookupRequestFormat>` — optional. Format of the response.
-
-**lang:** `?string` — optional. Language of the response.
-
-**fields:** `?string` — optional. Comma-separated list of fields to include in the response. Can include "geo".
-
-**excludes:** `?string` — optional. Comma-separated list of fields to exclude from the response (except "ip").
-
-**include:** `?string` — optional. Comma-separated list of additional information to include in the response.
-
-**ips:** `array<string>` — required. List of IP addresses or hostnames to lookup
-
-#### ↩️ Response
-
-`array`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->bulkGeolocationLookupV2($request) -> array</code></summary>
 <dl>
 <dd>
 
-#### 📝 Description
-
-(v2.0) Retrieve detailed geolocation data for multiple IP addresses in a single request. Supports up to `50,000` IP-addresses/host-names per request. Uses the `v2.0/geolocation/lookup` endpoint.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkGeolocationLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkGeolocationLookupRequest([
-    'apiKey' => "apiKey",
-    'ips' => ["8.8.8.8", "1.1.1.1"],
-]);
-
-$response = $client->bulkGeolocationLookupV2($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<BulkGeolocationLookupRequestFormat>` — optional. Format of the response.
-
-**lang:** `?string` — optional. Language of the response.
-
-**fields:** `?string` — optional. Comma-separated list of fields to include in the response. Can include "geo".
-
-**excludes:** `?string` — optional. Comma-separated list of fields to exclude from the response (except "ip").
-
-**include:** `?string` — optional. Comma-separated list of additional information to include in the response.
-
-**ips:** `array<string>` — required. List of IP addresses or hostnames to lookup
-
-#### ↩️ Response
-
-`array`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->ipSecurityLookup($request) -> IpSecurityLookupResponse</code></summary>
 <dl>
 <dd>
-
-#### 📝 Description
 
 Get comprehensive security information for a given IP address. Detects VPNs, proxies, Tor nodes, and other security threats.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\IpSecurityLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new IpSecurityLookupRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->ipSecurityLookup($request);
+$client->ipSecurityLookup(
+    new IpSecurityLookupRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<IpSecurityLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**ip:** `?string` — optional. A valid IPv4 or IPv6 address to look up. If omitted, the API uses the public IP of the requesting client.
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**fields:** `?string` — optional. Comma-separated list of fields to return. Supports dot notation (e.g. security.threat_score).
+<dl>
+<dd>
 
-**excludes:** `?string` — optional. Comma-separated list of fields to remove from the response. Supports dot notation (e.g. security.is_tor).
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`IpSecurityLookupResponse`
+**$ip:** `?string` — A valid IPv4 or IPv6 address to look up. If omitted, the API uses the public IP of the requesting client.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fields:** `?string` — Comma-separated list of fields to return. Supports dot notation (e.g. security.threat_score).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$excludes:** `?string` — Comma-separated list of fields to remove from the response. Supports dot notation (e.g. security.is_tor).
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->bulkIpSecurityLookup($request) -> array</code></summary>
+<details><summary><code>$client-&gt;bulkIpSecurityLookup($request) -> ?array</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 The Bulk IP Security Lookup API allows you to retrieve security details for up to `50,000` IP-addresses in a single request.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkIpSecurityLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkIpSecurityLookupRequest([
-    'apiKey' => "apiKey",
-    'ips' => ["8.8.8.8", "1.1.1.1"],
-]);
-
-$response = $client->bulkIpSecurityLookup($request);
+$client->bulkIpSecurityLookup(
+    new BulkIpSecurityLookupRequest([
+        'apiKey' => 'apiKey',
+        'ips' => [
+            'ips',
+        ],
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<BulkIpSecurityLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**fields:** `?string` — optional. Comma-separated list of fields to return. Supports dot notation (e.g. security.threat_score).
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**excludes:** `?string` — optional. Comma-separated list of fields to remove from the response. Supports dot notation (e.g. security.is_tor).
+<dl>
+<dd>
 
-**ips:** `array<string>` — required. List of IP addresses to lookup
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`array`
+**$fields:** `?string` — Comma-separated list of fields to return. Supports dot notation (e.g. security.threat_score).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$excludes:** `?string` — Comma-separated list of fields to remove from the response. Supports dot notation (e.g. security.is_tor).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ips:** `array` — List of IP addresses to lookup
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->geocoderSearch($request) -> array</code></summary>
+<details><summary><code>$client-&gt;geocoderSearch($request) -> ?array</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Convert a given address or place name into geographic coordinates (latitude and longitude).
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GeocoderSearchRequest;
-
-$client = new ApifreaksClient();
-$request = new GeocoderSearchRequest([
-    'apiKey' => "apiKey",
-    'query' => "Wembley Stadium, London",
-]);
-
-$response = $client->geocoderSearch($request);
+$client->geocoderSearch(
+    new GeocoderSearchRequest([
+        'apiKey' => 'apiKey',
+        'query' => 'query',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<GeocoderSearchRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**query:** `string` — required. Free-form search query, e.g. Wembley Stadium, London
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**limit:** `?int` — optional. Max number of results to return (1–40). May return fewer if matches are weak.
+<dl>
+<dd>
 
-**minLat:** `?float` — optional. Minimum latitude for the viewbox. Must be ≤ max_lat and between -90 and 90.
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-**maxLat:** `?float` — optional. Maximum latitude for the viewbox. Must be ≥ min_lat and between -90 and 90.
+<dl>
+<dd>
 
-**minLon:** `?float` — optional. Minimum longitude for the viewbox. Must be ≤ max_lon and between -180 and 180.
+**$query:** `string` — Free-form search query, e.g. Wembley Stadium, London
+    
+</dd>
+</dl>
 
-**maxLon:** `?float` — optional. Maximum longitude for the viewbox. Must be ≥ min_lon and between -180 and 180.
+<dl>
+<dd>
 
-**acceptLanguage:** `?string` — optional. Preferred language order for showing search results. This may either be a simple comma-separated list of language codes or a single entry. The results will be in the 1st language which is matched from the header. As a fallback if the results are not supported in the given language, 'en' will be used.
+**$limit:** `?int` — Max number of results to return (1–40). May return fewer if matches are weak.
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`array`
+**$minLat:** `?float` — Minimum latitude for the viewbox. Must be ≤ max_lat and between -90 and 90.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$maxLat:** `?float` — Maximum latitude for the viewbox. Must be ≥ min_lat and between -90 and 90.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$minLon:** `?float` — Minimum longitude for the viewbox. Must be ≤ max_lon and between -180 and 180.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$maxLon:** `?float` — Maximum longitude for the viewbox. Must be ≥ min_lon and between -180 and 180.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$acceptLanguage:** `?string` — Preferred language order for showing search results. This may either be a simple comma-separated list of language codes or a single entry. The results will be in the 1st language which is matched from the header. As a fallback if the results are not supported in the given language, 'en' will be used.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->geocoderReverse($request) -> GeocoderReverseResponse</code></summary>
+<details><summary><code>$client-&gt;geocoderReverse($request) -> ?GeocoderReverseResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Convert geographic coordinates (latitude and longitude) into a human-readable address or place name.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GeocoderReverseRequest;
-
-$client = new ApifreaksClient();
-$request = new GeocoderReverseRequest([
-    'apiKey' => "apiKey",
-    'lat' => 40.7128,
-    'lon' => -74.0060,
-]);
-
-$response = $client->geocoderReverse($request);
+$client->geocoderReverse(
+    new GeocoderReverseRequest([
+        'apiKey' => 'apiKey',
+        'lat' => 1.1,
+        'lon' => 1.1,
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<GeocoderReverseRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**lat:** `float` — required. WGS84 latitude value ranging from -90 to 90.
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**lon:** `float` — required. WGS84 longitude value ranging from -180 to 180.
+<dl>
+<dd>
 
-**acceptLanguage:** `?string` — optional. Preferred language order for showing search results. This may either be a simple comma-separated list of language codes or a single entry. The results will be in the 1st language which is matched from the header. As a fallback if the results are not supported in the given language, en will be used.
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`GeocoderReverseResponse`
+**$lat:** `float` — WGS84 latitude value ranging from -90 to 90.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lon:** `float` — WGS84 longitude value ranging from -180 to 180.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$acceptLanguage:** `?string` — Preferred language order for showing search results. This may either be a simple comma-separated list of language codes or a single entry. The results will be in the 1st language which is matched from the header. As a fallback if the results are not supported in the given language, en will be used.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->domainWhoisLookup($request) -> DomainWhoisLookupResponse</code></summary>
+<details><summary><code>$client-&gt;domainWhoisLookup($request) -> ?DomainWhoisLookupResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-Retrieve current WHOIS information for a domain name. This endpoint provides detailed registration information including registrar details, dates, nameservers, and registrant information.
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve current WHOIS information for a domain name.
+This endpoint provides detailed registration information including registrar details,
+dates, nameservers, and registrant information.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\DomainWhoisLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new DomainWhoisLookupRequest([
-    'apiKey' => "apiKey",
-    'domainName' => "example.com",
-]);
-
-$response = $client->domainWhoisLookup($request);
+$client->domainWhoisLookup(
+    new DomainWhoisLookupRequest([
+        'apiKey' => 'apiKey',
+        'domainName' => 'domainName',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<DomainWhoisLookupRequestFormat>` — optional. Response format (defaults to json)
+<dl>
+<dd>
 
-**domainName:** `string` — required. Domain name for WHOIS lookup
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`DomainWhoisLookupResponse`
+**$format:** `?string` — Response format (defaults to json)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$domainName:** `string` — Domain name for WHOIS lookup
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->domainWhoisLookupV2($request) -> DomainWhoisLookupResponse</code></summary>
+<details><summary><code>$client-&gt;bulkDomainWhoisLookup($request) -> ?BulkDomainWhoisLookupResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-(v2.0) Retrieve current WHOIS information for a domain name. This endpoint provides detailed registration information including registrar details, dates, nameservers, and registrant information. Uses the `v2.0/domain/whois/live` endpoint.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\DomainWhoisLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new DomainWhoisLookupRequest([
-    'apiKey' => "apiKey",
-    'domainName' => "example.com",
-]);
-
-$response = $client->domainWhoisLookupV2($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<DomainWhoisLookupRequestFormat>` — optional. Response format (defaults to json)
-
-**domainName:** `string` — required. Domain name for WHOIS lookup
-
-#### ↩️ Response
-
-`DomainWhoisLookupResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->bulkDomainWhoisLookup($request) -> BulkDomainWhoisLookupResponse</code></summary>
 <dl>
 <dd>
 
-#### 📝 Description
+<dl>
+<dd>
 
 Retrieve WHOIS information for `100 Domains per Request`.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkDomainWhoisLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkDomainWhoisLookupRequest([
-    'apiKey' => "apiKey",
-    'domainNames' => ["example.com", "openai.com"],
-]);
-
-$response = $client->bulkDomainWhoisLookup($request);
+$client->bulkDomainWhoisLookup(
+    new BulkDomainWhoisLookupRequest([
+        'apiKey' => 'apiKey',
+        'domainNames' => [
+            'domainNames',
+        ],
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<BulkDomainWhoisLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**domainNames:** `array<string>` — required. A list of domain names for which WHOIS data is requested.
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`BulkDomainWhoisLookupResponse`
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$domainNames:** `array` — A list of domain names for which WHOIS data is requested.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->bulkDomainWhoisLookupV2($request) -> BulkDomainWhoisLookupResponse</code></summary>
+<details><summary><code>$client-&gt;ipWhoisLookup($request) -> ?IpWhoisLookupResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-(v2.0) Retrieve WHOIS information for `100 Domains per Request`. Uses the `v2.0/domain/whois/live` endpoint.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkDomainWhoisLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkDomainWhoisLookupRequest([
-    'apiKey' => "apiKey",
-    'domainNames' => ["example.com", "openai.com"],
-]);
-
-$response = $client->bulkDomainWhoisLookupV2($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<BulkDomainWhoisLookupRequestFormat>` — optional. Format of the response.
-
-**domainNames:** `array<string>` — required. A list of domain names for which WHOIS data is requested.
-
-#### ↩️ Response
-
-`BulkDomainWhoisLookupResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->ipWhoisLookup($request) -> IpWhoisLookupResponse</code></summary>
 <dl>
 <dd>
 
-#### 📝 Description
+<dl>
+<dd>
 
 Returns WHOIS registration details for a specified IP address (IPv4 or IPv6).
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\IpWhoisLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new IpWhoisLookupRequest([
-    'apiKey' => "apiKey",
-    'ip' => "8.8.8.8",
-]);
-
-$response = $client->ipWhoisLookup($request);
+$client->ipWhoisLookup(
+    new IpWhoisLookupRequest([
+        'apiKey' => 'apiKey',
+        'ip' => 'ip',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<IpWhoisLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**ip:** `string` — required. The IP address (IPv4 or IPv6) for which WHOIS data is requested.
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`IpWhoisLookupResponse`
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `string` — The IP address (IPv4 or IPv6) for which WHOIS data is requested.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->asnWhoisLookup($request) -> AsnWhoisLookupResponse</code></summary>
+<details><summary><code>$client-&gt;asnWhoisLookup($request) -> ?AsnWhoisLookupResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Returns WHOIS registration details for a specified ASN, with or without the 'as' prefix.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\AsnWhoisLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new AsnWhoisLookupRequest([
-    'apiKey' => "apiKey",
-    'asn' => "AS15169",
-]);
-
-$response = $client->asnWhoisLookup($request);
+$client->asnWhoisLookup(
+    new AsnWhoisLookupRequest([
+        'apiKey' => 'apiKey',
+        'asn' => 'asn',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<AsnWhoisLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**asn:** `string` — required. The Autonomous System Number (ASN) to retrieve WHOIS data for. Can be prefixed with 'as' or not.
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`AsnWhoisLookupResponse`
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$asn:** `string` — The Autonomous System Number (ASN) to retrieve WHOIS data for. Can be prefixed with 'as' or not.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->domainWhoisHistory($request) -> DomainWhoisHistoryResponse</code></summary>
+<details><summary><code>$client-&gt;domainWhoisHistory($request) -> ?DomainWhoisHistoryResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-Retrieve historical WHOIS records for a domain name. This endpoint provides a timeline of all recorded changes in domain registration information.
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve historical WHOIS records for a domain name.
+This endpoint provides a timeline of all recorded changes in domain registration information.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\DomainWhoisHistoryRequest;
-
-$client = new ApifreaksClient();
-$request = new DomainWhoisHistoryRequest([
-    'apiKey' => "apiKey",
-    'domainName' => "example.com",
-]);
-
-$response = $client->domainWhoisHistory($request);
+$client->domainWhoisHistory(
+    new DomainWhoisHistoryRequest([
+        'apiKey' => 'apiKey',
+        'domainName' => 'domainName',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<DomainWhoisHistoryRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**domainName:** `string` — required. Domain name for historical WHOIS lookup
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`DomainWhoisHistoryResponse`
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$domainName:** `string` — Domain name for historical WHOIS lookup
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->domainWhoisReverse($request) -> DomainWhoisReverseResponse</code></summary>
+<details><summary><code>$client-&gt;domainWhoisReverse($request) -> ?DomainWhoisReverseResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Performs a reverse WHOIS search using one or more search parameters like keyword, email, owner, or company.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\DomainWhoisReverseRequest;
-
-$client = new ApifreaksClient();
-$request = new DomainWhoisReverseRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->domainWhoisReverse($request);
+$client->domainWhoisReverse(
+    new DomainWhoisReverseRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<DomainWhoisReverseRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**keyword:** `?string` — optional. Keyword search term for reverse WHOIS by keyword (case-insensitive pattern matching).
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**email:** `?string` — optional. Email search term for reverse WHOIS by email address (case-insensitive exact or regex match; * wildcard supported).
+<dl>
+<dd>
 
-**owner:** `?string` — optional. Registrant or owner name for reverse WHOIS (a full-text search phrase matching technique to retrieve results).
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-**company:** `?string` — optional. Organization or company name for reverse WHOIS (full-text search phrase matching technique to retrieve results).
+<dl>
+<dd>
 
-**exact:** `?bool` — optional. Accepts 'true' or 'false'. "true" returns only records that exactly match the input (keyword, owner/registrant, or company). "false" returns all matches and is the default when omitted.
+**$keyword:** `?string` — Keyword search term for reverse WHOIS by keyword (case-insensitive pattern matching).
+    
+</dd>
+</dl>
 
-**mode:** `?value-of<DomainWhoisReverseRequestMode>` — optional
+<dl>
+<dd>
 
-**page:** `?int` — optional. Page number for paginated results.
+**$email:** `?string` — Email search term for reverse WHOIS by email address (case-insensitive exact or regex match; * wildcard supported).
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`DomainWhoisReverseResponse`
+**$owner:** `?string` — Registrant or owner name for reverse WHOIS (a full-text search phrase matching technique to retrieve results).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$company:** `?string` — Organization or company name for reverse WHOIS (full-text search phrase matching technique to retrieve results).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$exact:** `?bool` — Accepts 'true' or 'false'. "true" returns only records that exactly match the input (keyword, owner/registrant, or company). "false" returns all matches and is the default when omitted.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$mode:** `?string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$page:** `?int` — Page number for paginated results.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->domainDnsLookup($request) -> DomainDnsLookupResponse</code></summary>
+<details><summary><code>$client-&gt;domainDnsLookup($request) -> ?DomainDnsLookupResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Retrieve real-time DNS records for any hostname. Supports multiple record types including A, AAAA, MX, NS, SOA, SPF, TXT, and CNAME records.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\DomainDnsLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new DomainDnsLookupRequest([
-    'apiKey' => "apiKey",
-    'type' => ["A"],
-]);
-
-$response = $client->domainDnsLookup($request);
+$client->domainDnsLookup(
+    new DomainDnsLookupRequest([
+        'apiKey' => 'apiKey',
+        'type' => [
+            'type',
+        ],
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<DomainDnsLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**hostName:** `?string` — optional. Hostname or URL whose DNS records are required.
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**ipAddress:** `?string` — optional. The IP address for requested DNS's PTR record. 'type' parameter must be set to 'all'.
+<dl>
+<dd>
 
-**type:** `array<string>` — required. A comma-separated list of DNS record types for lookup. Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, or all. When ipAddress is provided, type must be "all".
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`DomainDnsLookupResponse`
+**$hostName:** `?string` — Hostname or URL whose DNS records are required. Give either `host-name` or `ipAddress`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ipAddress:** `?string` — The IP address whose PTR (reverse DNS) record is required. Give either `host-name` or `ipAddress`; with `ipAddress`, set `type` to `all` or `PTR`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$type:** `?array` — DNS record types to look up, sent as a comma-separated list (e.g. `A,MX`). Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, PTR, or all. When ipAddress is provided, use "all" or "PTR". Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->bulkDomainDnsLookup($request) -> BulkDomainDnsLookupResponse</code></summary>
+<details><summary><code>$client-&gt;bulkDomainDnsLookup($request) -> ?BulkDomainDnsLookupResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-Perform DNS lookups for multiple hostnames in a single request. Supports up to `100 host-names per request` and returns DNS records including A, AAAA, MX, NS, SOA, SPF, TXT, and CNAME records.
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Perform DNS lookups for multiple hostnames in a single request. Supports up to `100 host-names per request`
+and returns DNS records including A, AAAA, MX, NS, SOA, SPF, TXT, and CNAME records.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkDomainDnsLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkDomainDnsLookupRequest([
-    'apiKey' => "apiKey",
-    'domainNames' => ["example.com", "openai.com"],
-    'type' => ["A"],
-]);
-
-$response = $client->bulkDomainDnsLookup($request);
+$client->bulkDomainDnsLookup(
+    new BulkDomainDnsLookupRequest([
+        'apiKey' => 'apiKey',
+        'type' => [
+            'type',
+        ],
+        'domainNames' => [
+            'domainNames',
+        ],
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<BulkDomainDnsLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**type:** `array<string>` — required
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**domainNames:** `array<string>` — required. List of hostnames to lookup DNS records for
+<dl>
+<dd>
 
-**ipAddresses:** `?array<string>` — optional. List of IP addresses for requested DNS's PTR records. 'type' must be set to 'all'.
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`BulkDomainDnsLookupResponse`
+**$type:** `?array` — DNS record types to look up, sent as a comma-separated list (e.g. `A,MX`). Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, or all. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$domainNames:** `array` — List of hostnames to lookup DNS records for
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ipAddresses:** `?array` — Array of IP addresses to include in the lookup for PTR record enrichment.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->domainDnsHistory($request) -> DomainDnsHistoryResponse</code></summary>
+<details><summary><code>$client-&gt;domainDnsHistory($request) -> ?DomainDnsHistoryResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-Retrieve historical DNS records for any hostname. Access unique historical data for A, AAAA, MX, NS, SOA, SPF, TXT, and CNAME records, including subdomains. Results are paginated with up to 100 unique records per page.
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve historical DNS records for any hostname. Access unique historical data for A, AAAA, MX, NS, SOA, SPF, TXT, and CNAME records,
+including subdomains. Results are paginated with up to 100 unique records per page.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\DomainDnsHistoryRequest;
-
-$client = new ApifreaksClient();
-$request = new DomainDnsHistoryRequest([
-    'apiKey' => "apiKey",
-    'hostName' => "example.com",
-    'type' => ["A"],
-]);
-
-$response = $client->domainDnsHistory($request);
+$client->domainDnsHistory(
+    new DomainDnsHistoryRequest([
+        'apiKey' => 'apiKey',
+        'hostName' => 'host-name',
+        'type' => [
+            'type',
+        ],
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<DomainDnsHistoryRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**hostName:** `string` — required. Hostname or URL whose historical DNS records are required
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**type:** `array<string>` — required
+<dl>
+<dd>
 
-**page:** `?int` — optional. Page number for paginated results
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`DomainDnsHistoryResponse`
+**$hostName:** `string` — Hostname or URL whose historical DNS records are required
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$type:** `?array` — DNS record types to look up, sent as a comma-separated list (e.g. `A,MX`). Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, or all. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$page:** `?int` — Page number for paginated results
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->domainDnsReverse($request) -> DomainDnsReverseResponse</code></summary>
+<details><summary><code>$client-&gt;domainDnsReverse($request) -> ?DomainDnsReverseResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Retrieve all the hostnames associated with any particular A, AAAA, MX, NS, SOA, SPF, TXT, and CNAME DNS records. For instance, you can access all the hostnames hosted on any IP/CIDR notation, all the domain names using Cloudflare name servers, and all the domain names using Google Mailbox
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\DomainDnsReverseRequest;
-
-$client = new ApifreaksClient();
-$request = new DomainDnsReverseRequest([
-    'apiKey' => "apiKey",
-    'type' => "A",
-    'value' => "8.8.8.0/24",
-]);
-
-$response = $client->domainDnsReverse($request);
+$client->domainDnsReverse(
+    new DomainDnsReverseRequest([
+        'apiKey' => 'apiKey',
+        'type' => DomainDnsReverseRequestType::A->value,
+        'value' => 'value',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<DomainDnsReverseRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**type:** `value-of<DomainDnsReverseRequestType>` — required
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**value:** `string` — required. Provide an IP or CIDR for A/AAAA lookups, or a hostname/selector for MX, NS, SOA, SPF, TXT, and CNAME queries. Wildcard regex patterns are also supported (e.g., mail.google.com, m*.google.com, _spf.g*.com, s*.g*.com).
+<dl>
+<dd>
 
-**exact:** `?bool` — optional. Accepts 'true' or 'false'. "true" returns only records that exactly match the input (NS, MX, CNAME, SOA, SPF, TXT). "false" returns all matches (default when omitted).
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-**page:** `?int` — optional. Page number to paginate through results (defaults to 1).
+<dl>
+<dd>
 
-#### ↩️ Response
+**$type:** `string` 
 
-`DomainDnsReverseResponse`
+The type of reverse DNS lookup to perform. Determines how the value parameter is interpreted:
+- A: IPv4 CIDR block
+- AAAA: IPv6 CIDR block
+- MX: Mail provider domain
+- NS: Name server provider hostname
+- SOA: SOA record admin domain
+- SPF/TXT: Target verification strings
+- CNAME: Target hostname
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$value:** `string` — Provide an IP or CIDR for A/AAAA lookups, or a hostname/selector for MX, NS, SOA, SPF, TXT, and CNAME queries. Wildcard regex patterns are also supported (e.g., mail.google.com, m*.google.com, _spf.g*.com, s*.g*.com).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$exact:** `?bool` — Accepts 'true' or 'false'. "true" returns only records that exactly match the input (NS, MX, CNAME, SOA, SPF, TXT). "false" returns all matches (default when omitted).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$page:** `?int` — Page number to paginate through results (defaults to 1).
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->webScrape($request) -> WebScrapeResponse</code></summary>
+<details><summary><code>$client-&gt;webScrape($request) -> ?WebScrapeResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-Execute a series of web scraping instructions on a target URL. Supports various operations like form filling, clicking, data extraction, and CAPTCHA solving.
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Execute a series of web scraping instructions on a target URL. 
+Supports various operations like form filling, clicking, data extraction, and CAPTCHA solving.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\WebScrapeRequest;
-
-$client = new ApifreaksClient();
-$request = new WebScrapeRequest([
-    'apiKey' => "apiKey",
-    'url' => "https://example.com",
-    'body' => [],
-]);
-
-$response = $client->webScrape($request);
+$client->webScrape(
+    new WebScrapeRequest([
+        'apiKey' => 'apiKey',
+        'url' => 'https://example.com',
+        'body' => new WebScrapeRequestBodyBlockUrl([
+            'instructions' => [
+                new WebScrapeRequestBodyBlockUrlInstructionsItem([]),
+                new WebScrapeRequestBodyBlockUrlInstructionsItem([]),
+                new WebScrapeRequestBodyBlockUrlInstructionsItem([]),
+                new WebScrapeRequestBodyBlockUrlInstructionsItem([]),
+                new WebScrapeRequestBodyBlockUrlInstructionsItem([
+                    'extract' => [
+                        'profile' => '#profile',
+                        'welcomeMessage' => '#welcome-message',
+                        'userInfo' => '#user-info',
+                    ],
+                ]),
+                new WebScrapeRequestBodyBlockUrlInstructionsItem([]),
+                new WebScrapeRequestBodyBlockUrlInstructionsItem([]),
+            ],
+        ]),
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<WebScrapeRequestFormat>` — optional. Response format returned by the API.
+<dl>
+<dd>
 
-**url:** `string` — required. Target URL to scrape
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**text:** `?bool` — optional. Set to `true` to return the data in text format else `false` for data in html format with tags.
+<dl>
+<dd>
 
-**jsEnabled:** `?bool` — optional
+**$format:** `?string` — Response format returned by the API.
+    
+</dd>
+</dl>
 
-**proxy:** `( bool |string |array<string, mixed> )|null` — optional. Use proxy for requests
+<dl>
+<dd>
 
-**sslIgnore:** `?bool` — optional
+**$url:** `string` — Target URL to scrape
+    
+</dd>
+</dl>
 
-**windowSize:** `?string` — optional
+<dl>
+<dd>
 
-**adBlock:** `?bool` — optional
+**$text:** `?bool` — Set to `true` to return the data in text format else `false` for data in html format with tags.
+    
+</dd>
+</dl>
 
-**captcha:** `?bool` — optional
+<dl>
+<dd>
 
-**body:** `( WebScrapeRequestBodyBlockUrl |WebScrapeRequestBodyOne )` — required
+**$jsEnabled:** `?bool` 
 
-#### ↩️ Response
+Set  `true` to handle websites with JavaScript. Set `false` to handle static html websites.
 
-`WebScrapeResponse`
+
+ Default value is `true`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$proxy:** `bool|string|array|null` — Use proxy for requests
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$sslIgnore:** `?bool` 
+
+Ignore SSL certificate errors.
+
+
+ Only works if **jsEnabled** is **true**.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$windowSize:** `?string` 
+
+Specify the browser window size in the format 'width,height' (e.g., "1920w,1080h"). Default value is the default resolutions provided by web/browser.
+
+
+ Only works if **jsEnabled** is **true**.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$adBlock:** `?bool` 
+
+Set to `true` to apply ad-blocker to the specified URL else false or ignore to not apply.
+
+
+ Only works if **jsEnabled** is **true**.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$captcha:** `?bool` 
+
+if true user can provide captcha instructions in the instructions to solve image captchas.
+
+
+  Only works if **jsEnabled** is **true**.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$request:** `WebScrapeRequestBodyBlockUrl|WebScrapeRequestBodyOne` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->emailValidate($request) -> EmailValidateResponse</code></summary>
+<details><summary><code>$client-&gt;emailValidate($request) -> ?EmailValidateResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Validates a single email address and returns result.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\EmailValidateRequest;
-
-$client = new ApifreaksClient();
-$request = new EmailValidateRequest([
-    'apiKey' => "apiKey",
-    'email' => "user@example.com",
-]);
-
-$response = $client->emailValidate($request);
+$client->emailValidate(
+    new EmailValidateRequest([
+        'apiKey' => 'apiKey',
+        'email' => 'email',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<EmailValidateRequestFormat>` — optional. Format of the response
+<dl>
+<dd>
 
-**email:** `string` — required. Email address to validate
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**name:** `?string` — optional. Name of the email address
+<dl>
+<dd>
 
-**ip:** `?string` — optional. IP address of the email address
+**$format:** `?string` — Format of the response
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`EmailValidateResponse`
+**$email:** `string` — Email address to validate
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$name:** `?string` — Name of the email address
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — IP address of the email address
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->bulkEmailValidate($request) -> BulkEmailValidateResponse</code></summary>
+<details><summary><code>$client-&gt;bulkEmailValidate($request) -> ?BulkEmailValidateResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Validates a bulk of email addresses and returns result for each. Maximum `10` email addresses per request.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkEmailValidateRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkEmailValidateRequest([
-    'apiKey' => "apiKey",
-    'emailData' => [["email" => "user@example.com"]],
-]);
-
-$response = $client->bulkEmailValidate($request);
+$client->bulkEmailValidate(
+    new BulkEmailValidateRequest([
+        'apiKey' => 'apiKey',
+        'emailData' => [
+            new BulkEmailValidateRequestEmailDataItem([
+                'email' => 'email',
+            ]),
+        ],
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<BulkEmailValidateRequestFormat>` — optional. Format of the response
+<dl>
+<dd>
 
-**emailData:** `array<BulkEmailValidateRequestEmailDataItem>` — required. Array of email objects for bulk validation
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`BulkEmailValidateResponse`
+**$format:** `?string` — Format of the response
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$emailData:** `array` — Array of email objects for bulk validation
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->phoneValidate($request) -> PhoneValidateResponse</code></summary>
+<details><summary><code>$client-&gt;disposableEmailCheckV2($request) -> ?DisposableEmailCheckV2Response</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Validates email syntax and checks the domain for disposable, free, spam, and role-account signals, plus MX/A DNS records. Send the email (and optionally an ip) as a JSON request body. When an ip is included, the response also carries geolocation and security data for it.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->disposableEmailCheckV2(
+    new DisposableEmailCheckV2Request([
+        'apiKey' => 'apiKey',
+        'email' => 'test@sogetthis.com',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$email:** `string` — The email address to check.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — Optional IP address to look up for location and security data, such as the IP the signup came from.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;bulkDisposableEmailCheckV2($request) -> ?BulkDisposableEmailCheckV2Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Checks a bulk of email addresses (each with an optional ip) and returns a disposable email check result for each, in the same order as the request. Maximum `100` entries per request.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->bulkDisposableEmailCheckV2(
+    new BulkDisposableEmailCheckV2Request([
+        'apiKey' => 'apiKey',
+        'emailData' => [
+            new BulkDisposableEmailCheckV2RequestEmailDataItem([
+                'email' => 'abc',
+            ]),
+            new BulkDisposableEmailCheckV2RequestEmailDataItem([
+                'email' => 'john@microsoft.com',
+                'ip' => '8.8.8.8',
+            ]),
+            new BulkDisposableEmailCheckV2RequestEmailDataItem([
+                'email' => 'test@mailinator.com',
+            ]),
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$emailData:** `array` — Entries to check. Maximum 100 per request. Must not be empty, and must not contain null entries or entries without a valid email.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;phoneValidate($request) -> ?PhoneValidateResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Validates a single phone number and returns detailed metadata including carrier, line type, geolocation, time zones, and standardized formats.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PhoneValidateRequest;
-
-$client = new ApifreaksClient();
-$request = new PhoneValidateRequest([
-    'apiKey' => "apiKey",
-    'number' => "+14155552671",
-]);
-
-$response = $client->phoneValidate($request);
+$client->phoneValidate(
+    new PhoneValidateRequest([
+        'apiKey' => 'apiKey',
+        'number' => '+14155552671',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<PhoneValidateRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object. If not provided, the API defaults to JSON format.
+<dl>
+<dd>
 
-**number:** `string` — required. Phone number to validate. Accepts international format (+14155552671), local format (4155552671) with region, or IDD format (0014155552671) with dialer_region.
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**region:** `?string` — optional. Two-letter ISO country code (e.g., US, GB). Required when number is in local format without + prefix. Cannot be used together with dialer_region.
+<dl>
+<dd>
 
-**dialerRegion:** `?string` — optional. Two-letter ISO country code indicating the country the number is being dialed from. Required when number uses IDD exit code. Cannot be used together with region.
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object. If not provided, the API defaults to JSON format.
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`PhoneValidateResponse`
+**$number:** `string` — Phone number to validate. Accepts international format (+14155552671), local format (4155552671) with region, or IDD format (0014155552671) with dialer_region.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$region:** `?string` — Two-letter ISO country code (e.g., US, GB). Required when number is in local format without + prefix. Cannot be used together with dialer_region.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$dialerRegion:** `?string` — Two-letter ISO country code indicating the country the number is being dialed from. Required when number uses IDD exit code. Cannot be used together with region.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->bulkPhoneValidate($request) -> array</code></summary>
+<details><summary><code>$client-&gt;bulkPhoneValidate($request) -> ?array</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Validates up to 100 phone numbers in a single request. Each number is processed independently — invalid entries return per-number errors without affecting the rest of the batch.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkPhoneValidateRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkPhoneValidateRequest([
-    'apiKey' => "apiKey",
-    'numbers' => [["number" => "+14155552671"]],
-]);
-
-$response = $client->bulkPhoneValidate($request);
+$client->bulkPhoneValidate(
+    new BulkPhoneValidateRequest([
+        'apiKey' => 'apiKey',
+        'numbers' => [
+            new BulkPhoneValidateRequestNumbersItem([
+                'number' => '+14155552671',
+            ]),
+            new BulkPhoneValidateRequestNumbersItem([
+                'number' => '+447911123456',
+            ]),
+            new BulkPhoneValidateRequestNumbersItem([
+                'number' => '+919876543210',
+            ]),
+        ],
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<BulkPhoneValidateRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object. If not provided, the API defaults to JSON format.
+<dl>
+<dd>
 
-**numbers:** `array<BulkPhoneValidateRequestNumbersItem>` — required. Array of phone number objects. Maximum 100 per request.
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-#### ↩️ Response
+<dl>
+<dd>
 
-`array`
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object. If not provided, the API defaults to JSON format.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$numbers:** `array` — Array of phone number objects. Maximum 100 per request.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->domainSslLookup($request) -> DomainSslLookupResponse</code></summary>
+<details><summary><code>$client-&gt;domainSslLookup($request) -> ?DomainSslLookupResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-Retrieve comprehensive SSL certificate information without the certificate chain. This endpoint provides detailed information about the SSL certificate including expiry dates, issuer details, and encryption methods.
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve comprehensive SSL certificate information without the certificate chain.
+This endpoint provides detailed information about the SSL certificate including expiry dates, issuer details, and encryption methods.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\DomainSslLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new DomainSslLookupRequest([
-    'apiKey' => "apiKey",
-    'domainName' => "example.com",
-]);
-
-$response = $client->domainSslLookup($request);
+$client->domainSslLookup(
+    new DomainSslLookupRequest([
+        'apiKey' => 'apiKey',
+        'domainName' => 'domainName',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<DomainSslLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**domainName:** `string` — required. Domain name or URL whose SSL certificate lookup is required
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**sslRaw:** `?bool` — optional. Set to true to get the raw openSSL response of the domain
+<dl>
+<dd>
 
-#### ↩️ Response
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-`DomainSslLookupResponse`
+<dl>
+<dd>
+
+**$domainName:** `string` — Domain name or URL whose SSL certificate lookup is required
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$sslRaw:** `?bool` — Set to true to get the raw openSSL response of the domain
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->domainSslChainLookup($request) -> DomainSslChainLookupResponse</code></summary>
+<details><summary><code>$client-&gt;domainSslChainLookup($request) -> ?DomainSslChainLookupResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-Retrieve the complete SSL certificate chain from root Certificate Authority (CA) to end-user certificate. This endpoint provides comprehensive information about each certificate in the chain.
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the complete SSL certificate chain from root Certificate Authority (CA) to end-user certificate.
+This endpoint provides comprehensive information about each certificate in the chain.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\DomainSslChainLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new DomainSslChainLookupRequest([
-    'apiKey' => "apiKey",
-    'domainName' => "example.com",
-]);
-
-$response = $client->domainSslChainLookup($request);
+$client->domainSslChainLookup(
+    new DomainSslChainLookupRequest([
+        'apiKey' => 'apiKey',
+        'domainName' => 'domainName',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<DomainSslChainLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**domainName:** `string` — required. Domain name or URL whose SSL certificate chain lookup is required
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**sslRaw:** `?bool` — optional. Set to true to get the raw openSSL response for each certificate in the chain
+<dl>
+<dd>
 
-#### ↩️ Response
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-`DomainSslChainLookupResponse`
+<dl>
+<dd>
+
+**$domainName:** `string` — Domain name or URL whose SSL certificate chain lookup is required
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$sslRaw:** `?bool` — Set to true to get the raw openSSL response for each certificate in the chain
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->domainAvailabilityCheck($request) -> DomainAvailabilityCheckResponse</code></summary>
+<details><summary><code>$client-&gt;domainAvailabilityCheck($request) -> ?DomainAvailabilityCheckResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 The Domain Search API is designed to simplify the process of finding available domain names across all top-level domains (TLDs) and second-level domains (SLDs).
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\DomainAvailabilityCheckRequest;
-
-$client = new ApifreaksClient();
-$request = new DomainAvailabilityCheckRequest([
-    'apiKey' => "apiKey",
-    'domain' => "example.com",
-]);
-
-$response = $client->domainAvailabilityCheck($request);
+$client->domainAvailabilityCheck(
+    new DomainAvailabilityCheckRequest([
+        'apiKey' => 'apiKey',
+        'domain' => 'domain',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<DomainAvailabilityCheckRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**domain:** `string` — required. Domain name whose availability is to be checked.
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**source:** `?value-of<DomainAvailabilityCheckRequestSource>` — optional. Specify the data source for domain availability checks. Use "dns" for DNS-based lookups or "whois" for WHOIS-based lookups. By default, "dns" is used.
+<dl>
+<dd>
 
-#### ↩️ Response
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-`DomainAvailabilityCheckResponse`
+<dl>
+<dd>
+
+**$domain:** `string` — Domain name whose availability is to be checked.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$source:** `?string` — Specify the data source for domain availability checks. Use "dns" for DNS-based lookups or "whois" for WHOIS-based lookups. By default, "dns" is used.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->bulkDomainAvailabilityCheck($request) -> BulkDomainAvailabilityCheckResponse</code></summary>
+<details><summary><code>$client-&gt;bulkDomainAvailabilityCheck($request) -> ?BulkDomainAvailabilityCheckResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Perform Bulk Domain Availability checks using a list of domains. Supports upto `100 Domains Per Request`.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkDomainAvailabilityCheckRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkDomainAvailabilityCheckRequest([
-    'apiKey' => "apiKey",
-    'domainNames' => ["example.com", "openai.com"],
-]);
-
-$response = $client->bulkDomainAvailabilityCheck($request);
+$client->bulkDomainAvailabilityCheck(
+    new BulkDomainAvailabilityCheckRequest([
+        'apiKey' => 'apiKey',
+        'domainNames' => [
+            'domainNames',
+        ],
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<BulkDomainAvailabilityCheckRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**source:** `?value-of<BulkDomainAvailabilityCheckRequestSource>` — optional. Specify the data source for domain availability checks. Use "dns" for DNS-based lookups or "whois" for WHOIS-based lookups. By default, "dns" is used.
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**domainNames:** `array<string>` — required. List of domain names to check.
+<dl>
+<dd>
 
-#### ↩️ Response
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-`BulkDomainAvailabilityCheckResponse`
+<dl>
+<dd>
+
+**$source:** `?string` — Specify the data source for domain availability checks. Use "dns" for DNS-based lookups or "whois" for WHOIS-based lookups. By default, "dns" is used.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$domainNames:** `array` — List of domain names to check.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->domainAvailabilitySuggestions($request) -> DomainAvailabilitySuggestionsResponse</code></summary>
+<details><summary><code>$client-&gt;domainAvailabilitySuggestions($request) -> DomainAvailabilitySuggestionsResponseDomain|DomainAvailabilitySuggestionsResponseDomainAvailableResponse|null</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 The Domain Search API is designed to simplify the process of finding available domain names across all top-level domains (TLDs) and second-level domains (SLDs).
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\DomainAvailabilitySuggestionsRequest;
-
-$client = new ApifreaksClient();
-$request = new DomainAvailabilitySuggestionsRequest([
-    'apiKey' => "apiKey",
-    'domain' => "example.com",
-]);
-
-$response = $client->domainAvailabilitySuggestions($request);
+$client->domainAvailabilitySuggestions(
+    new DomainAvailabilitySuggestionsRequest([
+        'apiKey' => 'apiKey',
+        'domain' => 'domain',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<DomainAvailabilitySuggestionsRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**domain:** `string` — required. Domain name for availability and suggestions.
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**source:** `?value-of<DomainAvailabilitySuggestionsRequestSource>` — optional. Specify the data source for domain availability checks. Use "dns" for DNS-based lookups or "whois" for WHOIS-based lookups. By default, "dns" is used.
+<dl>
+<dd>
 
-**count:** `?int` — optional. Number of suggestions to retrieve.
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-**sug:** `?bool` — optional. Whether to include domain name suggestions in the response.
+<dl>
+<dd>
 
-#### ↩️ Response
+**$domain:** `string` — Domain name for availability and suggestions.
+    
+</dd>
+</dl>
 
-`DomainAvailabilitySuggestionsResponse`
+<dl>
+<dd>
+
+**$source:** `?string` — Specify the data source for domain availability checks. Use "dns" for DNS-based lookups or "whois" for WHOIS-based lookups. By default, "dns" is used.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$count:** `?int` — Number of suggestions to retrieve. The API returns a minimum of 5 suggestions regardless of a lower value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$sug:** `?bool` — Controls the response shape. When `false`, returns a single availability object for the queried domain only. When omitted or `true`, returns an array of suggested domains instead.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->subdomainsLookup($request) -> SubdomainsLookupResponse</code></summary>
+<details><summary><code>$client-&gt;subdomainsLookup($request) -> ?SubdomainsLookupResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 The Subdomain Lookup API is designed to retrieve subdomains related to the given domain name. It helps you explore subdomains that are available for registration or usage.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\SubdomainsLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new SubdomainsLookupRequest([
-    'apiKey' => "apiKey",
-    'domain' => "example.com",
-]);
-
-$response = $client->subdomainsLookup($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<SubdomainsLookupRequestFormat>` — optional. Format of the response.
-
-**domain:** `string` — required. Domain name for availability and suggestions.
-
-**after:** `?DateTime` — optional. Filter subdomains seen after this date (format YYYY-MM-DD).
-
-**before:** `?DateTime` — optional. Filter subdomains seen before this date( format YYYY-MM-DD).
-
-**status:** `?value-of<SubdomainsLookupRequestStatus>` — optional. Filter subdomains by status (active or inactive).
-
-**page:** `?string` — optional. Page number for paginated results.
-
-#### ↩️ Response
-
-`SubdomainsLookupResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfMerge($request) -> PdfMergeResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API merges multiple PDF files into a single PDF, in the order they are provided
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfMergeRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfMergeRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->pdfMerge($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfMergeRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?array<string>` — optional. An array of unique file IDs referencing PDF files previously uploaded to the API Freaks server. Use this parameter to merge existing files without re-uploading them. Provide multiple IDs to merge files in the specified order.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. Specifies the desired name for the resulting merged PDF file. If not provided, a default name will be assigned.
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?array<File>` — optional
-
-#### ↩️ Response
-
-`PdfMergeResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfRemovePages($request) -> PdfRemovePagesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API removes a selection or range of pages from a PDF file.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfRemovePagesRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfRemovePagesRequest([
-    'apiKey' => "apiKey",
-    'pages' => "1-3",
-]);
-
-$response = $client->pdfRemovePages($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfRemovePagesRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique identifier of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output PDF file after pages have been removed. If not provided, a default name will be assigned.
-
-**pages:** `string` — required. Specifies which pages to remove from the PDF. Accepts individual page numbers (e.g., '1,7') and/or ascending page ranges (e.g., '3-5'). Use commas to separate entries and hyphens for ranges. Reverse ranges (e.g., '5-3') are not allowed. Alternatively, you may provide only one of the following keywords: 'even' (removes all even-numbered pages), 'odd' (removes all odd-numbered pages), or 'last' (removes only the last page). The keyword 'all' is not supported for this operation. Examples: '1,3-5', 'even'. Mixing special keywords with specific pages/ranges is not allowed.
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfRemovePagesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfSplit($request) -> PdfSplitResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API splits a PDF into multiple parts based on specified page numbers or ranges.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfSplitRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfSplitRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->pdfSplit($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfSplitRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired base name for the output PDF files after splitting. If not provided, a default naming convention will be used.
-
-**pages:** `?array<string>` — optional
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfSplitResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfRotate($request) -> PdfRotateResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API rotates pages of a PDF by a specified angle (in multiples of 90 degrees).
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfRotateRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfRotateRequest([
-    'apiKey' => "apiKey",
-    'rotate' => 90,
-]);
-
-$response = $client->pdfRotate($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfRotateRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output PDF file after rotation. If not provided, a default name will be assigned.
-
-**pages:** `?string` — optional. Specifies which pages to rotate. Accepts individual page numbers (e.g., '1,7') and/or ascending page ranges (e.g., '3-5'). Use commas to separate entries and hyphens for ranges. Reverse ranges (e.g., '5-3') are not allowed. Alternatively, provide only one of the following keywords: 'even' (rotate all even-numbered pages), 'odd' (rotate all odd-numbered pages), 'last' (rotate only the last page), or 'all' (rotate all pages). Examples: '1,3-5', 'odd', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
-
-**rotate:** `int` — required. The angle in degrees to rotate the selected pages. Must be one of the following values: 0, 90, 180, 270, -90, -180, or -270. All rotations are applied clockwise.
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfRotateResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfCompress($request) -> PdfCompressResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API compresses a given PDF file to reduce its file size.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfCompressRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfCompressRequest([
-    'apiKey' => "apiKey",
-    'compressionLevel' => "low",
-]);
-
-$response = $client->pdfCompress($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfCompressRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file.
-
-**output:** `?string` — optional. Name of the output PDF.
-
-**compressionLevel:** `value-of<PdfCompressRequestCompressionLevel>` — required. Controls how aggressively the PDF is compressed. Lower levels preserve more quality, while higher levels reduce file size more.
-
-**destroy:** `?bool` — optional. If set to true, the input file(s) will be deleted from the server immediately after the output is generated.
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfCompressResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfExtractPages($request) -> PdfExtractPagesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API extracts specific pages or page ranges from a PDF file and returns them as a new PDF.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfExtractPagesRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfExtractPagesRequest([
-    'apiKey' => "apiKey",
-    'pages' => "1-3",
-]);
-
-$response = $client->pdfExtractPages($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfExtractPagesRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output PDF file after pages have been extracted. If not provided, a default name will be assigned.
-
-**pages:** `string` — required. Specifies which pages to extract from the PDF. You can provide individual page numbers (e.g., '2') and/or page ranges in any order, including descending (e.g., '9-5', '16-last'). Use commas to separate entries and hyphens for ranges. You may alternatively pass only one of the special keywords: 'even' (extracts all even-numbered pages), 'odd' (extracts all odd-numbered pages), 'last' (extracts only the last page), or 'all' (extracts all pages into individual files). Examples: '2,6-3', 'even', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
-
-**separated:** `?bool` — optional. If set to `true`, each of the specified pages will be extracted and returned as a separate PDF file.
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfExtractPagesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfLinearize($request) -> PdfLinearizeResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-API endpoint that linearizes any given PDF, restructuring it for faster loading and page-by-page viewing in web browsers.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfLinearizeRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfLinearizeRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->pdfLinearize($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfLinearizeRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output PDF file after pages have been extracted. If not provided, a default name will be assigned.
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfLinearizeResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfEncrypt($request) -> PdfEncryptResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API encrypts a PDF file by setting a password required to open it.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfEncryptRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfEncryptRequest([
-    'apiKey' => "apiKey",
-    'userPassword' => "password",
-]);
-
-$response = $client->pdfEncrypt($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfEncryptRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output encrypted PDF file. If not provided, a default name will be assigned.
-
-**filePassword:** `?string` — optional. The password to unlock the input file if it is already protected. Either the owner password or user password can be provided. The owner password takes precedence. Password Length should be between 6 and 128 characters.
-
-**userPassword:** `string` — required. Sets the user password required to open and view the encrypted PDF file. Password Length should be between 6 and 128 characters.
-
-**ownerPassword:** `?string` — optional. Sets the owner password for the PDF file. This password provides full access, including the ability to remove restrictions. If not provided, the `user_password` will also be used as the owner password. Password Length should be between 6 and 128 characters.
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfEncryptResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfDecrypt($request) -> PdfDecryptResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API decrypts PDF files, removing all encryption, including open passwords and permission restrictions.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfDecryptRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfDecryptRequest([
-    'apiKey' => "apiKey",
-    'filePassword' => "value",
-]);
-
-$response = $client->pdfDecrypt($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfDecryptRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output decrypted PDF file. If not provided, a default name will be assigned.
-
-**filePassword:** `string` — required. The password to unlock the input file if it is protected. Either the owner password or user password can be provided. The owner password takes precedence. Password Length should be between 6 and 128 characters.
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfDecryptResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfRestrict($request) -> PdfRestrictResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API applies permission restrictions on a PDF file, such as disabling printing, copying, or editing. This can include password protection to enforce restrictions.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfRestrictRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfRestrictRequest([
-    'apiKey' => "apiKey",
-    'userPassword' => "password",
-]);
-
-$response = $client->pdfRestrict($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfRestrictRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output restricted PDF file. If not provided, a default name will be assigned.
-
-**filePassword:** `?string` — optional. The password to unlock the input file if it is already secured. Provide the owner password if available; otherwise, the user password. The owner password takes precedence. Password Length should be between 6 and 128 characters.
-
-**userPassword:** `string` — required. Sets the password users will use to open the PDF. If this is not set, only the owner password will be configured, and anyone can open the PDF file with the provided restrictions enabled. Password Length should be between 6 and 128 characters.
-
-**ownerPassword:** `?string` — optional. Sets the password that allows full access to the PDF (e.g., removing restrictions). If not provided, the `user_password` (if set) will also be used as the owner password. Password Length should be between 6 and 128 characters.
-
-**restrictions:** `?array<value-of<PdfRestrictRequestRestrictionsItem>>` — optional
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfRestrictResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfUnrestrict($request) -> PdfUnrestrictResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API removes permission restrictions from a PDF while keeping it encrypted. If you want to remove all security (including encryption), use the `/pdf/decrypt` endpoint instead.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfUnrestrictRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfUnrestrictRequest([
-    'apiKey' => "apiKey",
-    'filePassword' => "value",
-]);
-
-$response = $client->pdfUnrestrict($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfUnrestrictRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output unrestricted PDF file. If not provided, a default name will be assigned.
-
-**filePassword:** `string` — required. The password to unlock the input file. Either the owner password or user password can be provided. The owner password takes precedence. Password Length should be between 6 and 128 characters.
-
-**userPassword:** `?string` — optional. Sets the user password for the PDF file. Password Length should be between 6 and 128 characters.
-
-**ownerPassword:** `?string` — optional. Sets the owner password for the PDF file. If the owner password is not provided, the `user_password` will also be used as the owner password. Password Length should be between 6 and 128 characters.
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfUnrestrictResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfConvertToPng($request) -> PdfConvertToPngResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API converts a given PDF file into a sequence of PNG images.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfConvertToPngRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfConvertToPngRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->pdfConvertToPng($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfConvertToPngRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output unrestricted PDF file. If not provided, a default name will be assigned.
-
-**pages:** `?string` — optional. Specifies the pages or ranges at which to split the PDF. Accepts individual page numbers (e.g., '1') and/or page ranges (e.g., '4-2', 'last'). Ranges can be ascending or descending. Use commas to separate entries and hyphens for ranges. Alternatively, provide only one of the following keywords: 'even' (split at every even-numbered page), 'odd' (split at every odd-numbered page), 'last' (split at the last page only), or 'all' (split into single pages). Examples: '1,4-2,last', 'odd', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
-
-**resolution:** `?int` — optional. Specifies the resolution (in DPI) for the output images. Acceptable Range is from 20 to 1200.
-
-**imageSmoothing:** `?string` — optional. Determines the smoothing options to apply during image conversion. Valid values are 'none', 'all' or a combination of 'text', 'line', and 'image' (comma-separated).If not provided, no smoothing will be applied.
-
-**profile:** `?value-of<PdfConvertToPngRequestProfile>` — optional. Specifies the color profile for the output PNG images. Acceptable values: bw (1-bit black & white, smallest size, no grayscale or color), gray (8-bit grayscale), rgb (24-bit RGB color, default), rgba (32-bit RGB color with alpha channel for transparency), 4-bit (4-bit indexed color, up to 16 colors, smaller size), or 8-bit (8-bit indexed color, up to 256 colors).
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfConvertToPngResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfConvertToJpg($request) -> PdfConvertToJpgResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API converts a given PDF file into a sequence of JPG images.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfConvertToJpgRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfConvertToJpgRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->pdfConvertToJpg($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfConvertToJpgRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output unrestricted PDF file. If not provided, a default name will be assigned.
-
-**quality:** `?int` — optional. Controls JPG compression quality. Higher values yield sharper images with larger file sizes.
-
-**pages:** `?string` — optional. Specifies the pages or ranges at which to split the PDF. Accepts individual page numbers (e.g., '1') and/or page ranges (e.g., '4-2', 'last'). Ranges can be ascending or descending. Use commas to separate entries and hyphens for ranges. Alternatively, provide only one of the following keywords: 'even' (split at every even-numbered page), 'odd' (split at every odd-numbered page), 'last' (split at the last page only), or 'all' (split into single pages). Examples: '1,4-2,last', 'odd', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
-
-**resolution:** `?int` — optional. Specifies the resolution (in DPI) for the output images. Acceptable Range is from 20 to 1200.
-
-**imageSmoothing:** `?string` — optional. Determines the smoothing options to apply during image conversion. Valid values are 'none', 'all' or a combination of 'text', 'line', and 'image' (comma-separated).If not provided, no smoothing will be applied.
-
-**profile:** `?value-of<PdfConvertToJpgRequestProfile>` — optional. Specifies the color profile for the output PNG images. Acceptable values: bw (1-bit black & white, smallest size, no grayscale or color), gray (8-bit grayscale), rgb (24-bit RGB color, default), rgba (32-bit RGB color with alpha channel for transparency), 4-bit (4-bit indexed color, up to 16 colors, smaller size), or 8-bit (8-bit indexed color, up to 256 colors).
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfConvertToJpgResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfConvertToTiff($request) -> PdfConvertToTiffResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API converts a given PDF file into a sequence of TIFF images. The output images can be saved as a single TIFF file, or as a sequence of TIFF files.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfConvertToTiffRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfConvertToTiffRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->pdfConvertToTiff($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfConvertToTiffRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output unrestricted PDF file. If not provided, a default name will be assigned.
-
-**pages:** `?string` — optional. Specifies the pages or ranges at which to split the PDF. Accepts individual page numbers (e.g., '1') and/or page ranges (e.g., '4-2', 'last'). Ranges can be ascending or descending. Use commas to separate entries and hyphens for ranges. Alternatively, provide only one of the following keywords: 'even' (split at every even-numbered page), 'odd' (split at every odd-numbered page), 'last' (split at the last page only), or 'all' (split into single pages). Examples: '1,4-2,last', 'odd', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
-
-**resolution:** `?int` — optional. Specifies the resolution (in DPI) for the output images. Acceptable Range is from 20 to 1200.
-
-**imageSmoothing:** `?string` — optional. Determines the smoothing options to apply during image conversion. Valid values are 'none', 'all' or a combination of 'text', 'line', and 'image' (comma-separated).If not provided, no smoothing will be applied.
-
-**profile:** `?value-of<PdfConvertToTiffRequestProfile>` — optional. Specifies the color profile for the output PNG images. Acceptable values: bw (1-bit black & white, smallest size, no grayscale or color), gray (8-bit grayscale), rgb (24-bit RGB color, default), rgba (32-bit RGB color with alpha channel for transparency), 4-bit (4-bit indexed color, up to 16 colors, smaller size), or 8-bit (8-bit indexed color, up to 256 colors).
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfConvertToTiffResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfConvertToBmp($request) -> PdfConvertToBmpResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Converts a PDF file to a BMP image.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfConvertToBmpRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfConvertToBmpRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->pdfConvertToBmp($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfConvertToBmpRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output unrestricted PDF file. If not provided, a default name will be assigned.
-
-**pages:** `?string` — optional. Specifies the pages or ranges at which to split the PDF. Accepts individual page numbers (e.g., '1') and/or page ranges (e.g., '4-2', 'last'). Ranges can be ascending or descending. Use commas to separate entries and hyphens for ranges. Alternatively, provide only one of the following keywords: 'even' (split at every even-numbered page), 'odd' (split at every odd-numbered page), 'last' (split at the last page only), or 'all' (split into single pages). Examples: '1,4-2,last', 'odd', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
-
-**resolution:** `?int` — optional. Specifies the resolution (in DPI) for the output images. Acceptable Range is from 20 to 1200.
-
-**imageSmoothing:** `?string` — optional. Determines the smoothing options to apply during image conversion. Valid values are 'none', 'all' or a combination of 'text', 'line', and 'image' (comma-separated).If not provided, no smoothing will be applied.
-
-**profile:** `?value-of<PdfConvertToBmpRequestProfile>` — optional. Specifies the color profile for the output PNG images. Acceptable values: bw (1-bit black & white, smallest size, no grayscale or color), gray (8-bit grayscale), rgb (24-bit RGB color, default), rgba (32-bit RGB color with alpha channel for transparency), 4-bit (4-bit indexed color, up to 16 colors, smaller size), or 8-bit (8-bit indexed color, up to 256 colors).
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfConvertToBmpResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfConvertToGif($request) -> PdfConvertToGifResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API converts a given PDF file into a sequence of GIF images.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfConvertToGifRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfConvertToGifRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->pdfConvertToGif($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfConvertToGifRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `?string` — optional. The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
-
-**destroy:** `?bool` — optional. If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
-
-**output:** `?string` — optional. The desired name for the output unrestricted PDF file. If not provided, a default name will be assigned.
-
-**pages:** `?string` — optional. Specifies the pages or ranges at which to split the PDF. Accepts individual page numbers (e.g., '1') and/or page ranges (e.g., '4-2', 'last'). Ranges can be ascending or descending. Use commas to separate entries and hyphens for ranges. Alternatively, provide only one of the following keywords: 'even' (split at every even-numbered page), 'odd' (split at every odd-numbered page), 'last' (split at the last page only), or 'all' (split into single pages). Examples: '1,4-2,last', 'odd', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
-
-**resolution:** `?int` — optional. Specifies the resolution (in DPI) for the output images. Acceptable Range is from 20 to 1200.
-
-**imageSmoothing:** `?string` — optional. Determines the smoothing options to apply during image conversion. Valid values are 'none', 'all' or a combination of 'text', 'line', and 'image' (comma-separated).If not provided, no smoothing will be applied.
-
-**profile:** `?value-of<PdfConvertToGifRequestProfile>` — optional. Specifies the color profile for the output PNG images. Acceptable values: bw (1-bit black & white, smallest size, no grayscale or color), gray (8-bit grayscale), rgb (24-bit RGB color, default), rgba (32-bit RGB color with alpha channel for transparency), 4-bit (4-bit indexed color, up to 16 colors, smaller size), or 8-bit (8-bit indexed color, up to 256 colors).
-
-**webhookUrl:** `?string` — optional. The URL to which the webhook notification will be sent after the task is completed.
-
-**webhookFailureNotification:** `?bool` — optional. If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
-
-**webhookAuthorization:** `?string` — optional. Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
-
-**file:** `?File` — optional
-
-#### ↩️ Response
-
-`PdfConvertToGifResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfUploadResources($request) -> PdfUploadResourcesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API uploads multiple PDF files to the API Freaks server and generates their unique file IDs.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfUploadResourcesRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfUploadResourcesRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->pdfUploadResources($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfUploadResourcesRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**file:** `array<File>` — required
-
-#### ↩️ Response
-
-`PdfUploadResourcesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfUploadBinary($request) -> PdfUploadBinaryResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API uploads PDF files to the API Freaks server in binary format.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfUploadBinaryRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfUploadBinaryRequest([
-    'apiKey' => "apiKey",
-    'fileName' => "value",
-]);
-
-$response = $client->pdfUploadBinary($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfUploadBinaryRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileName:** `string` — required
-
-#### ↩️ Response
-
-`PdfUploadBinaryResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfDownloadResource($request) -> string</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API downloads PDF files or ZIP archives from the server using their unique resource ID.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfDownloadResourceRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfDownloadResourceRequest([
-    'apiKey' => "apiKey",
-    'resourceId' => "value",
-]);
-
-$response = $client->pdfDownloadResource($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfDownloadResourceRequestFormat>` — optional
-
-**resourceId:** `string` — required. The unique identifier of the file or ZIP archive to download.
-
-#### ↩️ Response
-
-`string`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfGetTaskStatus($request) -> PdfGetTaskStatusResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API checks the status of a previously initiated PDF processing task using its unique task ID.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfGetTaskStatusRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfGetTaskStatusRequest([
-    'apiKey' => "apiKey",
-    'taskId' => "value",
-]);
-
-$response = $client->pdfGetTaskStatus($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfGetTaskStatusRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**taskId:** `string` — required. The unique ID of the PDF processing task for which the status is requested.
-
-#### ↩️ Response
-
-`PdfGetTaskStatusResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfGetFileStatus($request) -> PdfGetFileStatusResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API checks the status of a PDF file using its unique file ID, providing information about its creation and potential deletion time.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfGetFileStatusRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfGetFileStatusRequest([
-    'apiKey' => "apiKey",
-    'fileId' => "value",
-]);
-
-$response = $client->pdfGetFileStatus($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfGetFileStatusRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `string` — required. The unique ID of the file whose status is requested.
-
-#### ↩️ Response
-
-`PdfGetFileStatusResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfListFiles($request) -> PdfListFilesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API retrieves a list of all PDF files uploaded and generated by a specific user. Please note that if the user is part of an organization, only the Organization Administrator can access this endpoint. Organization Members cannot access this endpoint.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfListFilesRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfListFilesRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->pdfListFiles($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfListFilesRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-#### ↩️ Response
-
-`PdfListFilesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->pdfDeleteFile($request) -> PdfDeleteFileResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-This API deletes a PDF file using its unique file ID.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\PdfDeleteFileRequest;
-
-$client = new ApifreaksClient();
-$request = new PdfDeleteFileRequest([
-    'apiKey' => "apiKey",
-    'fileId' => "value",
-]);
-
-$response = $client->pdfDeleteFile($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<PdfDeleteFileRequestFormat>` — optional. Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
-
-**fileId:** `string` — required. The unique ID of the file to be deleted.
-
-#### ↩️ Response
-
-`PdfDeleteFileResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->screenshotCapture($request) -> string</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Capture full-page screenshots and videos of websites with advanced options like device simulation, custom code injection, cookie banner blocking, and scrollable content recording. Supports multiple output formats including JSON, image, GIF, MP4, and WebM.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\ScreenshotCaptureRequest;
-
-$client = new ApifreaksClient();
-$request = new ScreenshotCaptureRequest([
-    'apiKey' => "apiKey",
-    'url' => "https://example.com",
-]);
-
-$response = $client->screenshotCapture($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**output:** `?value-of<ScreenshotCaptureRequestOutput>` — optional. Output format for screenshot results
-
-**fileType:** `?value-of<ScreenshotCaptureRequestFileType>` — optional. File type for screenshot output
-
-**url:** `string` — required. URLs to capture screenshots of
-
-**width:** `?int` — optional. Browser viewport width in pixels
-
-**height:** `?int` — optional. Browser viewport height in pixels
-
-**fullPage:** `?bool` — optional. Capture a full-page screenshot
-
-**fresh:** `?bool` — optional. Bypass cache and take a fresh screenshot
-
-**noCookieBanners:** `?bool` — optional. Remove cookie banners from the screenshot
-
-**enableCaching:** `?bool` — optional. Enable caching for repeated requests
-
-**blockAds:** `?bool` — optional. Block advertisements on the page
-
-**blockChatWidgets:** `?bool` — optional. Block chat widget scripts from loading
-
-**extractText:** `?bool` — optional. Extract visible text from the page
-
-**extractHtml:** `?bool` — optional. Extract HTML content of the page
-
-**destroyScreenshot:** `?bool` — optional. Auto-destroy screenshot after fetch
-
-**lazyLoad:** `?bool` — optional. Enable lazy-loading content before screenshot
-
-**retina:** `?bool` — optional. Capture screenshot in high-DPI (Retina) mode
-
-**darkMode:** `?bool` — optional. Render page in dark mode
-
-**blockTracking:** `?bool` — optional. Block common user-tracking scripts
-
-**enableIncognito:** `?bool` — optional. Enable private/incognito mode for browser session
-
-**omitBackground:** `?bool` — optional. Omit background color (transparent background)
-
-**thumbnailWidth:** `?int` — optional. Thumbnail width in pixels
-
-**adjustTop:** `?int` — optional. Adjust top in pixels
-
-**waitForEvent:** `?value-of<ScreenshotCaptureRequestWaitForEvent>` — optional. Wait for a specific load event before capturing the screenshot.
-
-**grayscale:** `?int` — optional. Range:0 to 100 for grayscale filter
-
-**delay:** `?int` — optional. How many milliseconds to wait before taking the screenshot
-
-**timeout:** `?int` — optional. Maximum timeout in milliseconds. Defalut is `10,000`
-
-**ttl:** `?int` — optional. Number of seconds the screenshot should be cached
-
-**clipX:** `?int` — optional. X position of the clipping rectangle in pixels
-
-**clipY:** `?int` — optional. Y position of the clipping rectangle in pixels
-
-**clipWidth:** `?int` — optional. Width of the clipping rectangle in pixels
-
-**clipHeight:** `?int` — optional. Height of the clipping rectangle in pixels
-
-**cssUrl:** `?string` — optional. URL to CSS file
-
-**css:** `?string` — optional. Your custom CSS code
-
-**jsUrl:** `?string` — optional. URL to JS file
-
-**js:** `?string` — optional. Your JS code
-
-**blockJs:** `?bool` — optional. Block Scripts
-
-**blockStylesheets:** `?bool` — optional. Block Stylesheets
-
-**blockImages:** `?bool` — optional. Block Images
-
-**blockMedia:** `?bool` — optional. Block Media
-
-**blockFont:** `?bool` — optional. Block Fonts
-
-**blockTextTrack:** `?bool` — optional. Block Text Tracks
-
-**blockXhr:** `?bool` — optional. Block XHR Requests
-
-**blockFetch:** `?bool` — optional. Block Fetch Requests
-
-**blockEventSource:** `?bool` — optional. Block Event Source
-
-**blockWebSocket:** `?bool` — optional. Block Web Sockets
-
-**blockManifest:** `?bool` — optional. Block Manifest
-
-**blockSpecificRequests:** `?string` — optional. Comma- or newline-separated list of specific requests to block. Each line and comma are treated as separate requests for processing. Example: https://example.com, https://example.js
-
-**blurSelector:** `?string` — optional
-
-**removeSelector:** `?string` — optional
-
-**resultFileName:** `?string` — optional
-
-**scrollingScreenshot:** `?bool` — optional. **`Scrolling Screenshot`**: Capture a long scrolling screenshot. When true, disable `fullPage` and `freshScreenshot`.
-
-**scrollSpeed:** `?value-of<ScreenshotCaptureRequestScrollSpeed>` — optional. Speed of scrolling during the screenshot.
-
-**scrollBack:** `?bool` — optional. If true, the scroll will reverse back to the top after reaching the bottom.
-
-**startImmediately:** `?bool` — optional. If true, the scrolling capture will start immediately upon page load.
-
-**multipleScrolling:** `?bool` — optional. If true, multiple scrolling screenshots will be taken at different viewport sizes.
-
-**sizes:** `?array<string>` — optional. Comma-separated list of viewport sizes in the format index:XXw:YYh. Example: sizes=0:120w:300h,1:240w:500h
-
-**duration:** `?float` — optional. Duration in seconds for the scrolling capture. Acceptable range: 0 to 100 seconds.
-
-**failOnError:** `?bool` — optional
-
-**longitude:** `?float` — optional
-
-**latitude:** `?float` — optional
-
-**proxy:** `?string` — optional
-
-**headers:** `?string` — optional
-
-**cookies:** `?string` — optional
-
-**scrollToElement:** `?string` — optional
-
-**selector:** `?string` — optional
-
-**userAgent:** `?string` — optional
-
-**acceptLanguages:** `?string` — optional
-
-**customHtml:** `?string` — optional
-
-**imageQuality:** `?float` — optional
-
-#### ↩️ Response
-
-`string`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->bulkScreenshotCapture($request) -> BulkScreenshotCaptureResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Our Bulk Screenshot API allows you to capture screenshots of multiple webpages simultaneously, saving you time and effort. Instead of manually capturing each page one by one, you can batch process URLs and receive high-quality screenshots in the format you choose. Maximum `50 URLs` per request.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkScreenshotCaptureRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkScreenshotCaptureRequest([
-    'apiKey' => "apiKey",
-    'urls' => ["https://example.com"],
-]);
-
-$response = $client->bulkScreenshotCapture($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<BulkScreenshotCaptureRequestFormat>` — optional
-
-**urls:** `array<BulkScreenshotCaptureRequestUrlsItem>` — required. List of website URLs to capture screenshots of
-
-#### ↩️ Response
-
-`BulkScreenshotCaptureResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->currencyLatestRates($request) -> CurrencyLatestRatesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get live forex rates for all world currencies with customizable update frequency
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CurrencyLatestRatesRequest;
-
-$client = new ApifreaksClient();
-$request = new CurrencyLatestRatesRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->currencyLatestRates($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CurrencyLatestRatesRequestFormat>` — optional. Format of the response.
-
-**base:** `?string` — optional. Base currency for rate calculations
-
-**symbols:** `?array<string>` — optional. Comma separated list of desired currency codes
-
-**updates:** `?value-of<CurrencyLatestRatesRequestUpdates>` — optional. Exchange rates update period (1d=daily, 1h=hourly, 10m=10 minutes, 1m=1 minute)
-
-#### ↩️ Response
-
-`CurrencyLatestRatesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->currencyHistoricalRates($request) -> CurrencyHistoricalRatesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get historical exchange rates for any specific date
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CurrencyHistoricalRatesRequest;
-
-$client = new ApifreaksClient();
-$request = new CurrencyHistoricalRatesRequest([
-    'apiKey' => "apiKey",
-    'date' => "2024-01-01",
-]);
-
-$response = $client->currencyHistoricalRates($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CurrencyHistoricalRatesRequestFormat>` — optional. Format of the response.
-
-**base:** `?string` — optional. Base currency for rate calculations
-
-**symbols:** `?array<string>` — optional. Comma separated list of desired currency codes
-
-**date:** `DateTime` — required. Specific date in YYYY-MM-DD format
-
-#### ↩️ Response
-
-`CurrencyHistoricalRatesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->currencyConvertLatest($request) -> CurrencyConvertLatestResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Convert amount between currencies using the latest exchange rates
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CurrencyConvertLatestRequest;
-
-$client = new ApifreaksClient();
-$request = new CurrencyConvertLatestRequest([
-    'apiKey' => "apiKey",
-    'from' => "value",
-    'to' => "value",
-]);
-
-$response = $client->currencyConvertLatest($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CurrencyConvertLatestRequestFormat>` — optional. Format of the response.
-
-**from:** `string` — required. Source currency code
-
-**to:** `string` — required. Target currency code
-
-**amount:** `?string` — optional. Amount to convert
-
-**updates:** `?value-of<CurrencyConvertLatestRequestUpdates>` — optional. Exchange rates update period (1d=daily, 1h=hourly, 10m=10 minutes, 1m=1 minute)
-
-#### ↩️ Response
-
-`CurrencyConvertLatestResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->currencyConvertHistorical($request) -> CurrencyConvertHistoricalResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Convert amount between currencies using historical rates
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CurrencyConvertHistoricalRequest;
-
-$client = new ApifreaksClient();
-$request = new CurrencyConvertHistoricalRequest([
-    'apiKey' => "apiKey",
-    'from' => "value",
-    'to' => "value",
-    'date' => "2024-01-01",
-]);
-
-$response = $client->currencyConvertHistorical($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CurrencyConvertHistoricalRequestFormat>` — optional. Format of the response.
-
-**from:** `string` — required. From currency symbol
-
-**to:** `string` — required. To currency symbol
-
-**amount:** `?string` — optional. The Amount to be converted
-
-**date:** `DateTime` — required. specific date (format YYYY-MM-DD) of which exchange rates is used.
-
-#### ↩️ Response
-
-`CurrencyConvertHistoricalResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->currencyTimeSeries($request) -> CurrencyTimeSeriesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get exchange rates for a time range
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CurrencyTimeSeriesRequest;
-
-$client = new ApifreaksClient();
-$request = new CurrencyTimeSeriesRequest([
-    'apiKey' => "apiKey",
-    'startDate' => "2024-01-01",
-]);
-
-$response = $client->currencyTimeSeries($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CurrencyTimeSeriesRequestFormat>` — optional. Format of the response.
-
-**startDate:** `DateTime` — required. Start date (format YYYY-MM-DD) of the preferred time frame
-
-**endDate:** `?DateTime` — optional. End date (format YYYY-MM-DD) of the preferred time frame
-
-**base:** `?string` — optional. Base currency
-
-**symbols:** `?array<string>` — optional. comma separated list of desired currencies/ commodities symbols
-
-#### ↩️ Response
-
-`CurrencyTimeSeriesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->currencyFluctuation($request) -> CurrencyFluctuationResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get currency fluctuation data for a time period
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CurrencyFluctuationRequest;
-
-$client = new ApifreaksClient();
-$request = new CurrencyFluctuationRequest([
-    'apiKey' => "apiKey",
-    'startDate' => "2024-01-01",
-]);
-
-$response = $client->currencyFluctuation($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CurrencyFluctuationRequestFormat>` — optional. Format of the response.
-
-**startDate:** `DateTime` — required. Start date (format YYYY-MM-DD) of the preferred time frame
-
-**endDate:** `?DateTime` — optional. End date (format YYYY-MM-DD) of the preferred time frame
-
-**base:** `?string` — optional. Base currency
-
-**symbols:** `?array<string>` — optional. comma separated list of desired currencies/ commodities symbols
-
-#### ↩️ Response
-
-`CurrencyFluctuationResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->currencyConvertByIp($request) -> CurrencyConvertByIpResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Convert amount using user's location
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CurrencyConvertByIpRequest;
-
-$client = new ApifreaksClient();
-$request = new CurrencyConvertByIpRequest([
-    'apiKey' => "apiKey",
-    'from' => "value",
-]);
-
-$response = $client->currencyConvertByIp($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CurrencyConvertByIpRequestFormat>` — optional. Format of the response.
-
-**updates:** `?value-of<CurrencyConvertByIpRequestUpdates>` — optional. Exchange rates update period (1d=daily, 1h=hourly, 10m=10 minutes, 1m=1 minute)
-
-**from:** `string` — required. From currency symbol
-
-**ip:** `?string` — optional. IPv4 or IPv6 geolocated currency
-
-**amount:** `?string` — optional. Amount to convert
-
-#### ↩️ Response
-
-`CurrencyConvertByIpResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->currencySupported($request) -> CurrencySupportedResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get list of all supported currencies with their metadata
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CurrencySupportedRequest;
-
-$client = new ApifreaksClient();
-$request = new CurrencySupportedRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->currencySupported($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CurrencySupportedRequestFormat>` — optional. Format of the response.
-
-#### ↩️ Response
-
-`CurrencySupportedResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->currencySymbols($request) -> CurrencySymbolsResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get currency symbols and codes
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CurrencySymbolsRequest;
-
-$client = new ApifreaksClient();
-$request = new CurrencySymbolsRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->currencySymbols($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CurrencySymbolsRequestFormat>` — optional. Format of the response.
-
-#### ↩️ Response
-
-`CurrencySymbolsResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->currencyHistoricalLimits($request) -> CurrencyHistoricalLimitsResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get information about historical data availability and limits
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CurrencyHistoricalLimitsRequest;
-
-$client = new ApifreaksClient();
-$request = new CurrencyHistoricalLimitsRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->currencyHistoricalLimits($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CurrencyHistoricalLimitsRequestFormat>` — optional. Format of the response.
-
-#### ↩️ Response
-
-`CurrencyHistoricalLimitsResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->commodityLatestRates($request) -> CommodityLatestRatesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get live commodity rates with customizable update frequency
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CommodityLatestRatesRequest;
-
-$client = new ApifreaksClient();
-$request = new CommodityLatestRatesRequest([
-    'apiKey' => "apiKey",
-    'updates' => "value",
-    'symbols' => [
-        "symbols",
-    ],
-]);
-
-$response = $client->commodityLatestRates($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CommodityLatestRatesRequestFormat>` — optional. Format of the Response
-
-**symbols:** `array<string>` — required. Comma separated list of desired commodities symbols *(e.g. XAU,XAG,WTI,BRENT)* **Required**
-
-**updates:** `value-of<CommodityLatestRatesRequestUpdates>` — required. Exchange rates update period. Possible values are: (1) `10m` - 10 minute update (2) `1m` - 1 minute update **Required**
-
-**quote:** `?string` — optional. Specifies the target currency for the exchange rate; default quote currency is the market currency of commodity *(e.g. USD, EUR, INR)*
-
-#### ↩️ Response
-
-`CommodityLatestRatesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->commodityHistoricalRates($request) -> CommodityHistoricalRatesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get historical commodity rates for a specific date
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CommodityHistoricalRatesRequest;
-
-$client = new ApifreaksClient();
-$request = new CommodityHistoricalRatesRequest([
-    'apiKey' => "apiKey",
-    'date' => "2024-01-01",
-    'symbols' => [
-        "symbols",
-    ],
-]);
-
-$response = $client->commodityHistoricalRates($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CommodityHistoricalRatesRequestFormat>` — optional. Format of the response.
-
-**date:** `DateTime` — required. Historical date (YYYY-MM-DD)
-
-**symbols:** `array<string>` — required. Comma-separated list of commodity symbols
-
-#### ↩️ Response
-
-`CommodityHistoricalRatesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->commodityFluctuation($request) -> CommodityFluctuationResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get commodity price fluctuation data for a time period
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CommodityFluctuationRequest;
-
-$client = new ApifreaksClient();
-$request = new CommodityFluctuationRequest([
-    'apiKey' => "apiKey",
-    'startDate' => "2024-01-01",
-    'endDate' => "2024-01-31",
-    'symbols' => [
-        "symbols",
-    ],
-]);
-
-$response = $client->commodityFluctuation($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CommodityFluctuationRequestFormat>` — optional. Format of the response.
-
-**symbols:** `array<string>` — required. Comma-separated list of commodity symbols
-
-**startDate:** `DateTime` — required. Start date (YYYY-MM-DD)
-
-**endDate:** `DateTime` — required. End date (YYYY-MM-DD)
-
-#### ↩️ Response
-
-`CommodityFluctuationResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->commodityTimeSeries($request) -> CommodityTimeSeriesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get commodity rates for a time range
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CommodityTimeSeriesRequest;
-
-$client = new ApifreaksClient();
-$request = new CommodityTimeSeriesRequest([
-    'apiKey' => "apiKey",
-    'startDate' => "2024-01-01",
-    'endDate' => "2024-01-31",
-    'symbols' => [
-        "symbols",
-    ],
-]);
-
-$response = $client->commodityTimeSeries($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CommodityTimeSeriesRequestFormat>` — optional. Format of the response.
-
-**symbols:** `array<string>` — required. Comma-separated list of commodity symbols
-
-**startDate:** `DateTime` — required. Start date (YYYY-MM-DD)
-
-**endDate:** `DateTime` — required. End date (YYYY-MM-DD)
-
-#### ↩️ Response
-
-`CommodityTimeSeriesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->commoditySymbols($request) -> CommoditySymbolsResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get list of supported commodities
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CommoditySymbolsRequest;
-
-$client = new ApifreaksClient();
-$request = new CommoditySymbolsRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->commoditySymbols($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CommoditySymbolsRequestFormat>` — optional. Format of the response.
-
-#### ↩️ Response
-
-`CommoditySymbolsResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->vatSupportedCountries($request) -> VatSupportedCountriesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Retrieves a list of supported countries.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\VatSupportedCountriesRequest;
-
-$client = new ApifreaksClient();
-$request = new VatSupportedCountriesRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->vatSupportedCountries($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<VatSupportedCountriesRequestFormat>` — optional. Format of the response. Default is JSON.
-
-**type:** `?value-of<VatSupportedCountriesRequestType>` — optional. Type of supported country. Supported values: IBAN, SWIFT, VAT. By default, it returns all supported countries for all types.
-
-#### ↩️ Response
-
-`VatSupportedCountriesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->vatRateByIp($request) -> array</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Fetches VAT rate based on the specified or originating IP address.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\VatRateByIpRequest;
-
-$client = new ApifreaksClient();
-$request = new VatRateByIpRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->vatRateByIp($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<VatRateByIpRequestFormat>` — optional. Specify the desired response format. Options: 'json' (default) or 'xml'.
-
-**ipAddress:** `?string` — optional. IPv4 or IPv6 address to look up VAT rate for. If omitted, the originating IP address will be used.
-
-#### ↩️ Response
-
-`array`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->vatRateByCountry($request) -> array</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Fetches VAT rates for a single country or state provided via query parameters.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\VatRateByCountryRequest;
-
-$client = new ApifreaksClient();
-$request = new VatRateByCountryRequest([
-    'apiKey' => "apiKey",
-    'country' => "US",
-]);
-
-$response = $client->vatRateByCountry($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<VatRateByCountryRequestFormat>` — optional. Specify the desired response format. Options: 'json' (default) or 'xml'.
-
-**country:** `string` — required. Country identifier in Alpha-2 (PK), Alpha-3 (PAK), or full name (Pakistan). Combine with the optional "state" query for sub-national VAT; values are case-insensitive and may use underscores instead of spaces.
-
-**state:** `?string` — optional. Optional state or region in Alpha-2 (NY) or full name (New_York). Use with "country" for state-level VAT; values are case-insensitive and may use underscores.
-
-#### ↩️ Response
-
-`array`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->bulkVatRateByCountry($request) -> BulkVatRateByCountryResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Retrieves VAT details for multiple countries or country-state combinations in a single request. Maximum of `100` entries per request are allowed.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkVatRateByCountryRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkVatRateByCountryRequest([
-    'apiKey' => "apiKey",
-    'countries' => [],
-]);
-
-$response = $client->bulkVatRateByCountry($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<BulkVatRateByCountryRequestFormat>` — optional. Specify the desired response format. Options: 'json' (default) or 'xml'.
-
-**countries:** `array<BulkVatRateByCountryRequestCountriesItem>` — required
-
-#### ↩️ Response
-
-`BulkVatRateByCountryResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->vatValidate($request) -> VatValidateResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Validates an EU or UK VAT number and returns registration status details.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\VatValidateRequest;
-
-$client = new ApifreaksClient();
-$request = new VatValidateRequest([
-    'apiKey' => "apiKey",
-    'vatNumber' => "value",
-]);
-
-$response = $client->vatValidate($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<VatValidateRequestFormat>` — optional. Specify the desired response format. Options: 'json' (default) or 'xml'.
-
-**vatNumber:** `string` — required. EU or UK VAT number to validate.
-
-**requesterVatNumber:** `?string` — optional. Requester EU or UK VAT number.
-
-#### ↩️ Response
-
-`VatValidateResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->ibanValidate($request) -> IbanValidateResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Checks an IBAN for structural validity, checksum accuracy, and bank metadata.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\IbanValidateRequest;
-
-$client = new ApifreaksClient();
-$request = new IbanValidateRequest([
-    'apiKey' => "apiKey",
-    'iban' => "value",
-]);
-
-$response = $client->ibanValidate($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<IbanValidateRequestFormat>` — optional. Specify the desired response format. Options: 'json' (default) or 'xml'.
-
-**iban:** `string` — required. IBAN to validate.
-
-#### ↩️ Response
-
-`IbanValidateResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->swiftCodeFind($request) -> array</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Fetches SWIFT codes for a given country, bank, and city.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\SwiftCodeFindRequest;
-
-$client = new ApifreaksClient();
-$request = new SwiftCodeFindRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->swiftCodeFind($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<SwiftCodeFindRequestFormat>` — optional. Specify the desired response format. Options: 'json' (default) or 'xml'.
-
-**country:** `?string` — optional. Country name (accepts full name, e.g., Pakistan, United States). If only the country parameter is supplied, lists all banks in the country.
-
-**bank:** `?string` — optional. Bank name (upper case) used to filter SWIFT codes. Should be used together with the country parameter. If only country and bank are provided (without city), returns the list of cities for that bank.
-
-**city:** `?string` — optional. Gives SWIFT codes for a bank. Optionally specify the city (upper case) to narrow results to a specific city for that bank.
-
-#### ↩️ Response
-
-`array`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->swiftCodeLookup($request) -> SwiftCodeLookupResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Fetches detailed information about a SWIFT code.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\SwiftCodeLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new SwiftCodeLookupRequest([
-    'apiKey' => "apiKey",
-    'swiftCode' => "value",
-]);
-
-$response = $client->swiftCodeLookup($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<SwiftCodeLookupRequestFormat>` — optional. Specify the desired response format. Options: 'json' (default) or 'xml'.
-
-**swiftCode:** `string` — required. SWIFT/BIC code to lookup (must be 8 or 11 characters).
-
-#### ↩️ Response
-
-`SwiftCodeLookupResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->zipcodeLookup($request) -> ZipcodeLookupResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-No description provided.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\ZipcodeLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new ZipcodeLookupRequest([
-    'apiKey' => "apiKey",
-    'code' => "value",
-]);
-
-$response = $client->zipcodeLookup($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<ZipcodeLookupRequestFormat>` — optional. Format of the response.
-
-**code:** `string` — required. Comma separated list of postal / zip codes. Max. 100 values.
-
-**country:** `?string` — optional. Country code in ISO 3166-1 alpha-2 format. If not provided, search results will be returned from all countries.
-
-#### ↩️ Response
-
-`ZipcodeLookupResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->bulkZipcodeLookup($request) -> BulkZipcodeLookupResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Validates a bulk of ZIP/postal codes and returns result for each. Maximum `100` ZIP/postal codes per request.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkZipcodeLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkZipcodeLookupRequest([
-    'apiKey' => "apiKey",
-    'codes' => [],
-]);
-
-$response = $client->bulkZipcodeLookup($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<BulkZipcodeLookupRequestFormat>` — optional. Format of the response.
-
-**codes:** `array<string>` — required. Comma separated list of postal / zip codes. Max. 100 values.
-
-**country:** `?string` — optional. Country code in ISO 3166-1 alpha-2 format. If not provided, search results will be returned from all countries.
-
-#### ↩️ Response
-
-`BulkZipcodeLookupResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->zipcodeSearchByCity($request) -> ZipcodeSearchByCityResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-No description provided.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\ZipcodeSearchByCityRequest;
-
-$client = new ApifreaksClient();
-$request = new ZipcodeSearchByCityRequest([
-    'apiKey' => "apiKey",
-    'city' => "London",
-    'country' => "US",
-]);
-
-$response = $client->zipcodeSearchByCity($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<ZipcodeSearchByCityRequestFormat>` — optional. Format of the response.
-
-**city:** `string` — required. Name of the city in which we want to find zipcodes in.
-
-**country:** `string` — required. Country code in ISO 3166-1 alpha-2 format.
-
-**stateName:** `?string` — optional. Name of the state or province associated with the country.
-
-**page:** `?int` — optional. Page number to retrieve paginated results.
-
-#### ↩️ Response
-
-`ZipcodeSearchByCityResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->zipcodeSearchByRegion($request) -> ZipcodeSearchByRegionResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-No description provided.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\ZipcodeSearchByRegionRequest;
-
-$client = new ApifreaksClient();
-$request = new ZipcodeSearchByRegionRequest([
-    'apiKey' => "apiKey",
-    'country' => "US",
-    'region' => "value",
-]);
-
-$response = $client->zipcodeSearchByRegion($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<ZipcodeSearchByRegionRequestFormat>` — optional. Format of the response.
-
-**country:** `string` — required. Country code in ISO 3166-1 alpha-2 format.
-
-**region:** `string` — required. Name of the region, state or province associated with the country.
-
-**page:** `?int` — optional. Page no. to retrieve paginated results.
-
-#### ↩️ Response
-
-`ZipcodeSearchByRegionResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->zipcodeSearchByRadius($request) -> ZipcodeSearchByRadiusResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-No description provided.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\ZipcodeSearchByRadiusRequest;
-
-$client = new ApifreaksClient();
-$request = new ZipcodeSearchByRadiusRequest([
-    'apiKey' => "apiKey",
-    'radius' => 1.0,
-]);
-
-$response = $client->zipcodeSearchByRadius($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<ZipcodeSearchByRadiusRequestFormat>` — optional. Format of the response.
-
-**code:** `?string` — optional. Postal/Zip code to be used as the center point for the search.
-
-**lat:** `?float` — optional. Latitude coordinate for the base location.
-
-**long:** `?float` — optional. Longitude coordinate for the base location.
-
-**country:** `?string` — optional. Country code in ISO 3166-1 alpha-2 format. Required only when using the code parameter.
-
-**radius:** `float` — required. Search radius for the query. The maximum allowed values are: - 100 km - 100 mi - 109361 yd - 100000 m - 328084 ft - 3937007.75 in
-
-**unit:** `?value-of<ZipcodeSearchByRadiusRequestUnit>` — optional. Supported distance units are m, km, mi, ft, yd, in.
-
-**page:** `?int` — optional. Page no. to retrieve paginated results.
-
-#### ↩️ Response
-
-`ZipcodeSearchByRadiusResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->zipcodeDistance($request) -> ZipcodeDistanceResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get distance between postal codes. Maximum `100` postal codes per request.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\ZipcodeDistanceRequest;
-
-$client = new ApifreaksClient();
-$request = new ZipcodeDistanceRequest([
-    'apiKey' => "apiKey",
-    'compare' => [],
-    'country' => "US",
-]);
-
-$response = $client->zipcodeDistance($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<ZipcodeDistanceRequestFormat>` — optional. Format of the response.
-
-**compare:** `array<string>` — required. Comma separated list of postal / zip codes with which base point is compared w.r.t. Max 100 zip codes can be provided.
-
-**code:** `?string` — optional. Postal/Zip code to be used as the base point.
-
-**lat:** `?float` — optional. Latitude coordinate for the base location.
-
-**long:** `?float` — optional. Longitude coordinate for the base location.
-
-**country:** `string` — required. Country code in ISO 3166-1 alpha-2 format.
-
-**unit:** `?value-of<ZipcodeDistanceRequestUnit>` — optional. Supported distance units are m, km, mi, ft, yd, in.
-
-#### ↩️ Response
-
-`ZipcodeDistanceResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->zipcodeDistanceMatch($request) -> ZipcodeDistanceMatchResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get matching ZIP/postal code pairs within a specified distance. Maximum `100` postal codes per request.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\ZipcodeDistanceMatchRequest;
-
-$client = new ApifreaksClient();
-$request = new ZipcodeDistanceMatchRequest([
-    'apiKey' => "apiKey",
-    'codes' => [],
-    'country' => "US",
-]);
-
-$response = $client->zipcodeDistanceMatch($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<ZipcodeDistanceMatchRequestFormat>` — optional. Format of the response.
-
-**codes:** `array<string>` — required. Comma-separated list of postal/zip codes. Maximum 100 values allowed.
-
-**country:** `string` — required. Country code in ISO 3166-1 alpha-2 format.
-
-**distance:** `?float` — optional. Maximum allowed distance between postal code pairs.
-
-**unit:** `?value-of<ZipcodeDistanceMatchRequestUnit>` — optional. Supported distance units are m, km, mi, ft, yd, in.
-
-#### ↩️ Response
-
-`ZipcodeDistanceMatchResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->currentWeather($request) -> CurrentWeatherResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get current weather data including temperature, humidity, precipitation, wind conditions, atmospheric pressure, and air quality for any location. Accepts city names, coordinates, or IP addresses. Also includes astronomy data and timezone-aware timestamps.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\CurrentWeatherRequest;
-
-$client = new ApifreaksClient();
-$request = new CurrentWeatherRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->currentWeather($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<CurrentWeatherRequestFormat>` — optional. Response format returned by the API.
-
-**location:** `?string` — optional. City name, place name, or full address.
-
-**lat:** `?float` — optional. Latitude of the location.
-
-**long:** `?float` — optional. Longitude of the location.
-
-**ip:** `?string` — optional. IP(v4 or v6) address for location inference.
-
-**timezone:** `?string` — optional. Timezone for the results.
-
-#### ↩️ Response
-
-`CurrentWeatherResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->bulkCurrentWeather($request) -> BulkCurrentWeatherResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Retrieve current weather conditions for up to `50 locations` in a single request. A maximum of 50 locations (city names, IP addresses, or geographic coordinates) can be included in the request body.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkCurrentWeatherRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkCurrentWeatherRequest([
-    'apiKey' => "apiKey",
-    'locations' => [],
-]);
-
-$response = $client->bulkCurrentWeather($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<BulkCurrentWeatherRequestFormat>` — optional. Response format returned by the API.
-
-**timezone:** `?string` — optional. Timezone for the results.
-
-**locations:** `array<BulkCurrentWeatherRequestLocationsItem>` — required. Array of locations to fetch weather data for
-
-#### ↩️ Response
-
-`BulkCurrentWeatherResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->weatherForecast($request) -> WeatherForecastResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Access comprehensive weather forecasts with customizable precision - choose from daily overviews, hourly breakdowns, or even minute-by-minute data. Configure your date ranges or use the default 7-day forecast for standard weather planning.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\WeatherForecastRequest;
-
-$client = new ApifreaksClient();
-$request = new WeatherForecastRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->weatherForecast($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<WeatherForecastRequestFormat>` — optional. Response format returned by the API.
-
-**startDate:** `?DateTime` — optional. Start date for the forecast in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between startDate and endDate must not exceed 16 days.
-
-**endDate:** `?DateTime` — optional. End date for the forecast in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between startDate and endDate must not exceed 16 days.
-
-**forecastDays:** `?int` — optional. Number of days for the forecast, from 1 to 16. Default is 7. Maximum value is 16.
-
-**location:** `?string` — optional. City name, place name, or full address.
-
-**lat:** `?float` — optional. Latitude of the location.
-
-**long:** `?float` — optional. Longitude of the location.
-
-**ip:** `?string` — optional. IP(v4 or v6) address for location inference.
-
-**precision:** `?value-of<WeatherForecastRequestPrecision>` — optional. Precision of the forecast data.
-
-**timezone:** `?string` — optional. Timezone for the results.
-
-#### ↩️ Response
-
-`WeatherForecastResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->historicalWeather($request) -> HistoricalWeatherResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Access past weather conditions for specific dates with records going back to 1940. Retrieve comprehensive historical data with both daily and hourly precision options.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\HistoricalWeatherRequest;
-
-$client = new ApifreaksClient();
-$request = new HistoricalWeatherRequest([
-    'apiKey' => "apiKey",
-    'date' => "2024-01-01",
-]);
-
-$response = $client->historicalWeather($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<HistoricalWeatherRequestFormat>` — optional. Response format returned by the API.
-
-**date:** `DateTime` — required. Specific date for which to fetch weather data in YYYY-MM-DD format. Historical dates must be past dates only. Current or future dates are not allowed for historical data. Data available from 1940 onwards.
-
-**location:** `?string` — optional. City name, place name, or full address.
-
-**lat:** `?float` — optional. Latitude of the location.
-
-**long:** `?float` — optional. Longitude of the location.
-
-**ip:** `?string` — optional. IP(v4 or v6) address for location inference.
-
-**precision:** `?value-of<HistoricalWeatherRequestPrecision>` — optional. Precision of the historical data. **Note:** 'daily' returns daily aggregates, 'hourly' returns hourly data.
-
-**timezone:** `?string` — optional. Timezone for the results.
-
-#### ↩️ Response
-
-`HistoricalWeatherResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->weatherTimeSeries($request) -> WeatherTimeSeriesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Pull historical weather information for date ranges up to 90 days (daily data) or 7 days (hourly data). Get consistent formatting across your specified date range with reliable historical weather patterns.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\WeatherTimeSeriesRequest;
-
-$client = new ApifreaksClient();
-$request = new WeatherTimeSeriesRequest([
-    'apiKey' => "apiKey",
-    'startDate' => "2024-01-01",
-    'endDate' => "2024-01-31",
-]);
-
-$response = $client->weatherTimeSeries($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<WeatherTimeSeriesRequestFormat>` — optional. Response format returned by the API.
-
-**startDate:** `DateTime` — required. Starting date for the data in YYYY-MM-DD format. Historical dates must be past dates only. Current or future dates are not allowed for historical data. Data available from 1940 onwards. For precision=daily, the difference between endDate and startDate must not exceed 90 days. For precision=hourly, the difference must not exceed 7 days.
-
-**endDate:** `DateTime` — required. End date for the data in YYYY-MM-DD format. Historical dates must be past dates only. Current or future dates are not allowed for historical data. Data available from 1940 onwards. For precision=daily, the difference between endDate and startDate must not exceed 90 days. For precision=hourly, the difference must not exceed 7 days.
-
-**location:** `?string` — optional. City name, place name, or full address.
-
-**lat:** `?float` — optional. Latitude of the location.
-
-**long:** `?float` — optional. Longitude of the location.
-
-**ip:** `?string` — optional. IP(v4 or v6) address for location inference.
-
-**precision:** `?value-of<WeatherTimeSeriesRequestPrecision>` — optional. Precision of the data.
-
-**timezone:** `?string` — optional. Timezone for the results.
-
-#### ↩️ Response
-
-`WeatherTimeSeriesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->marineWeather($request) -> MarineWeatherResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Provides hourly forecasts of marine conditions including wave heights, wave directions, wave periods, swell info, sea surface temperatures, and ocean currents. Supports multiple geographical points and returns daily max wave statistics for up to 7 days. Ideal for maritime planning, navigation, and coastal activities.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\MarineWeatherRequest;
-
-$client = new ApifreaksClient();
-$request = new MarineWeatherRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->marineWeather($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<MarineWeatherRequestFormat>` — optional. Response format returned by the API.
-
-**startDate:** `?DateTime` — optional. Starting date for marine forecast data in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between endDate and startDate must not exceed 16 days.
-
-**endDate:** `?DateTime` — optional. End date for marine forecast data in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between endDate and startDate must not exceed 16 days.
-
-**location:** `?string` — optional. City name, place name, or full address.
-
-**lat:** `?float` — optional. Latitude of the location.
-
-**long:** `?float` — optional. Longitude of the location.
-
-**ip:** `?string` — optional. IP(v4 or v6) address for location inference.
-
-**precision:** `?value-of<MarineWeatherRequestPrecision>` — optional. Precision of the marine data.
-
-**timezone:** `?string` — optional. Timezone for the results.
-
-#### ↩️ Response
-
-`MarineWeatherResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->airQuality($request) -> AirQualityResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Monitor and predict air quality conditions using European and US AQI standards. Track pollutant concentrations including PM10, PM2.5, carbon monoxide, nitrogen dioxide, sulfur dioxide, ozone, and dust particles. Get current readings plus hourly forecasts up to 5 days ahead, complete with UV index and aerosol measurements for comprehensive air quality assessment.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\AirQualityRequest;
-
-$client = new ApifreaksClient();
-$request = new AirQualityRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->airQuality($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<AirQualityRequestFormat>` — optional. Response format returned by the API.
-
-**startDate:** `?DateTime` — optional. Starting date for AQI forecast data in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between endDate and startDate must not exceed 5 days.
-
-**endDate:** `?DateTime` — optional. End date for AQI forecast data in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between endDate and startDate must not exceed 5 days.
-
-**location:** `?string` — optional. City name, place name, or full address.
-
-**lat:** `?float` — optional. Latitude of the location.
-
-**long:** `?float` — optional. Longitude of the location.
-
-**ip:** `?string` — optional. IP(v4 or v6) address for location inference.
-
-**precision:** `?value-of<AirQualityRequestPrecision>` — optional. Only hourly precision is supported; returns hourly AQI data for the selected date range.
-
-**timezone:** `?string` — optional. Timezone for the results.
-
-#### ↩️ Response
-
-`AirQualityResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->floodForecast($request) -> FloodForecastResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Provides flood forecast data for a given location, including river discharge metrics such as mean, median, maximum, minimum, and percentile values (p25, p75). Requires a startDate and endDate, with the date range limited to 16 days. Location can be specified using city name, latitude/longitude, or IP address.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\FloodForecastRequest;
-
-$client = new ApifreaksClient();
-$request = new FloodForecastRequest([
-    'apiKey' => "apiKey",
-    'startDate' => "2024-01-01",
-    'endDate' => "2024-01-31",
-]);
-
-$response = $client->floodForecast($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<FloodForecastRequestFormat>` — optional. Response format returned by the API.
-
-**startDate:** `DateTime` — required. Starting date for flood forecast data in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between endDate and startDate must not exceed 16 days.
-
-**endDate:** `DateTime` — required. End date for flood forecast data in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between endDate and startDate must not exceed 16 days.
-
-**location:** `?string` — optional. City name, place name, or full address.
-
-**lat:** `?float` — optional. Latitude of the location.
-
-**long:** `?float` — optional. Longitude of the location.
-
-**ip:** `?string` — optional. IP(v4 or v6) address for location inference.
-
-**precision:** `?value-of<FloodForecastRequestPrecision>` — optional. Only daily precision is supported; returns flood forecast data for the selected date range.
-
-**timezone:** `?string` — optional. Timezone for the results.
-
-#### ↩️ Response
-
-`FloodForecastResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->getCountries($request) -> GetCountriesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Retrieve countries, optionally filtered by region or subregion.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GetCountriesRequest;
-
-$client = new ApifreaksClient();
-$request = new GetCountriesRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->getCountries($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<GetCountriesRequestFormat>` — optional. Format of the response
-
-**region:** `?string` — optional. Optional filter to return countries within a specific region from the region endpoint.
-
-**subregion:** `?string` — optional. Optional filter to return countries within a specific subregion from the subregion endpoint.
-
-#### ↩️ Response
-
-`GetCountriesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->getCountryDetails($request) -> GetCountryDetailsResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-No description provided.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GetCountryDetailsRequest;
-
-$client = new ApifreaksClient();
-$request = new GetCountryDetailsRequest([
-    'apiKey' => "apiKey",
-    'country' => "US",
-]);
-
-$response = $client->getCountryDetails($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<GetCountryDetailsRequestFormat>` — optional. Format of the response
-
-**country:** `string` — required. Country code in ISO 3166-1 alpha-2 format.
-
-#### ↩️ Response
-
-`GetCountryDetailsResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->getRegions($request) -> GetRegionsResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-No description provided.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GetRegionsRequest;
-
-$client = new ApifreaksClient();
-$request = new GetRegionsRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->getRegions($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<GetRegionsRequestFormat>` — optional. Format of the response
-
-#### ↩️ Response
-
-`GetRegionsResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->getSubregions($request) -> GetSubregionsResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-No description provided.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GetSubregionsRequest;
-
-$client = new ApifreaksClient();
-$request = new GetSubregionsRequest([
-    'apiKey' => "apiKey",
-    'region' => "value",
-]);
-
-$response = $client->getSubregions($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<GetSubregionsRequestFormat>` — optional. Format of the response
-
-**region:** `string` — required. Name of the region.
-
-#### ↩️ Response
-
-`GetSubregionsResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->getAdminLevels($request) -> GetAdminLevelsResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Retrieve administrative units based on ISO 3166-1 alpha-2 country code.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GetAdminLevelsRequest;
-
-$client = new ApifreaksClient();
-$request = new GetAdminLevelsRequest([
-    'apiKey' => "apiKey",
-    'country' => "US",
-]);
-
-$response = $client->getAdminLevels($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<GetAdminLevelsRequestFormat>` — optional. Format of the response
-
-**country:** `string` — required. Country code in ISO 3166-1 alpha-2 format
-
-#### ↩️ Response
-
-`GetAdminLevelsResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->getAdminUnits($request) -> GetAdminUnitsResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Retrieve administrative divisions for a given country using ISO 3166-1 alpha-2 country codes. You can optionally filter by administrative levels.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GetAdminUnitsRequest;
-
-$client = new ApifreaksClient();
-$request = new GetAdminUnitsRequest([
-    'apiKey' => "apiKey",
-    'country' => "US",
-]);
-
-$response = $client->getAdminUnits($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<GetAdminUnitsRequestFormat>` — optional. Format of the response.
-
-**country:** `string` — required. Country code in ISO 3166-1 alpha-2 format.
-
-**adminLevels:** `?array<string>` — optional. Comma-separated list to filter results by one or more administrative levels.
-
-#### ↩️ Response
-
-`GetAdminUnitsResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->getAdminUnitDetails($request) -> GetAdminUnitDetailsResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Retrieve detailed administrative unit information by country and optionally filtered by admin code.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GetAdminUnitDetailsRequest;
-
-$client = new ApifreaksClient();
-$request = new GetAdminUnitDetailsRequest([
-    'apiKey' => "apiKey",
-    'country' => "US",
-    'adminUnit' => "value",
-]);
-
-$response = $client->getAdminUnitDetails($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<GetAdminUnitDetailsRequestFormat>` — optional. Format of the response.
-
-**country:** `string` — required. Country code in ISO 3166-1 alpha-2 format.
-
-**adminUnit:** `string` — required. Optional admin code to fetch details for a specific administrative unit.
-
-#### ↩️ Response
-
-`GetAdminUnitDetailsResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->getCities($request) -> GetCitiesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Retrieve a list of cities within a country, optionally filtered by an administrative unit code.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GetCitiesRequest;
-
-$client = new ApifreaksClient();
-$request = new GetCitiesRequest([
-    'apiKey' => "apiKey",
-    'country' => "US",
-]);
-
-$response = $client->getCities($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<GetCitiesRequestFormat>` — optional. Format of the response.
-
-**country:** `string` — required. Country code in ISO 3166-1 alpha-2 format.
-
-**adminUnit:** `?string` — optional. Administrative unit code used to filter cities within a specific region.
-
-#### ↩️ Response
-
-`GetCitiesResponse`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->getSupportedFlags($request) -> array</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Get list of all supported flags with their metadata
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GetSupportedFlagsRequest;
-
-$client = new ApifreaksClient();
-$request = new GetSupportedFlagsRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->getSupportedFlags($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-#### ↩️ Response
-
-`array`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->getFlags($request) -> string</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Retrieve the flag for a specific country
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GetFlagsRequest;
-
-$client = new ApifreaksClient();
-$request = new GetFlagsRequest([
-    'apiKey' => "apiKey",
-    'name' => "value",
-    'shape' => "value",
-    'type' => "A",
-]);
-
-$response = $client->getFlags($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**name:** `string` — required. Country code in ISO 3166-1 alpha-2 format.
-
-**shape:** `value-of<GetFlagsRequestShape>` — required. Flag shape. One of: `'flat'` or `'round'`.
-
-**format:** `?value-of<GetFlagsRequestFormat>` — optional. Flag format. Applicable only for PNG or WEBP formats. Default is png.
-
-**size:** `?value-of<GetFlagsRequestSize>` — optional. Flag size in pixels. Valid options: `16px`, `24px`, `32px`, `48px`, `64px`. Applicable only for PNG or WEBP formats.
-
-**type:** `value-of<GetFlagsRequestType>` — required. Type of flag. One of: `country` or `organization`.
-
-#### ↩️ Response
-
-`string`
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>$client->timezoneLookup($request) -> TimezoneLookupResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-Retrieve current time, date, and timezone-related information by specifying a timezone name, location address, location coordinates, IP address, or use the client IP address if no parameter is passed.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\TimezoneLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new TimezoneLookupRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->timezoneLookup($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<TimezoneLookupRequestFormat>` — optional. Format of the response
-
-**ip:** `?string` — optional. IPv4 or IPv6 address to extract timezone information.
-
-**tz:** `?string` — optional. Timezone name (e.g., "Asia/Kolkata") to retrieve information directly.
-
-**location:** `?string` — optional. Location string (preferably city and country) to extract timezone.
-
-**lat:** `?float` — optional. Latitude for geolocation lookup.
-
-**long:** `?float` — optional. Longitude for geolocation lookup.
-
-**lang:** `?value-of<TimezoneLookupRequestLang>` — optional. Language code for response localization (default is "en").
-
-**iataCode:** `?string` — optional. 3-letter IATA airport code (e.g., JFK).
-
-**icaoCode:** `?string` — optional. 4-letter ICAO airport code (e.g., KJFK).
-
-**loCode:** `?string` — optional. 5-letter UN/LO city code.
-
-#### ↩️ Response
-
-`TimezoneLookupResponse`
-
 </dd>
 </dl>
-</details>
+</dd>
+</dl>
 
-<details><summary><code>$client->timezoneLookupV2($request) -> TimezoneLookupResponse</code></summary>
+#### 🔌 Usage
+
 <dl>
 <dd>
-
-#### 📝 Description
 
-(v2.0) Retrieve current time, date, and timezone-related information by specifying a timezone name, location address, location coordinates, IP address, or use the client IP address if no parameter is passed. Uses the `v2.0/geolocation/timezone` endpoint.
-
-#### 🔌 Usage
+<dl>
+<dd>
 
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\TimezoneLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new TimezoneLookupRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->timezoneLookupV2($request);
+$client->subdomainsLookup(
+    new SubdomainsLookupRequest([
+        'apiKey' => 'apiKey',
+        'domain' => 'domain',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<TimezoneLookupRequestFormat>` — optional. Format of the response
-
-**ip:** `?string` — optional. IPv4 or IPv6 address to extract timezone information.
-
-**tz:** `?string` — optional. Timezone name (e.g., "Asia/Kolkata") to retrieve information directly.
-
-**location:** `?string` — optional. Location string (preferably city and country) to extract timezone.
 
-**lat:** `?float` — optional. Latitude for geolocation lookup.
-
-**long:** `?float` — optional. Longitude for geolocation lookup.
-
-**lang:** `?value-of<TimezoneLookupRequestLang>` — optional. Language code for response localization (default is "en").
-
-**iataCode:** `?string` — optional. 3-letter IATA airport code (e.g., JFK).
-
-**icaoCode:** `?string` — optional. 4-letter ICAO airport code (e.g., KJFK).
-
-**loCode:** `?string` — optional. 5-letter UN/LO city code.
-
-#### ↩️ Response
+<dl>
+<dd>
 
-`TimezoneLookupResponse`
+<dl>
+<dd>
 
+**$apiKey:** `string` — Your API key
+    
 </dd>
 </dl>
-</details>
 
-<details><summary><code>$client->timezoneConvert($request) -> TimezoneConvertResponse</code></summary>
 <dl>
 <dd>
-
-#### 📝 Description
-
-Converts a given time from one timezone to another using various input types like timezone name, coordinates, location, or codes.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\TimezoneConvertRequest;
-
-$client = new ApifreaksClient();
-$request = new TimezoneConvertRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->timezoneConvert($request);
-```
-
-#### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<TimezoneConvertRequestFormat>` — optional. Format of the response .
-
-**time:** `?string` — optional. Time to convert in `yyyy-MM-dd HH:mm` or `yyyy-MM-dd HH:mm:ss` format.
-
-**tzFrom:** `?string` — optional. Source timezone name (e.g., `Asia/Kolkata`).
-
-**tzTo:** `?string` — optional. Target timezone name (e.g., `America/New_York`).
-
-**latFrom:** `?float` — optional. Latitude of source location.
-
-**longFrom:** `?float` — optional. Longitude of source location.
-
-**latTo:** `?float` — optional. Latitude of target location.
-
-**longTo:** `?float` — optional. Longitude of target location.
-
-**locationFrom:** `?string` — optional. From location (city/country).
-
-**locationTo:** `?string` — optional. To location (city/country).
-
-**iataFrom:** `?string` — optional. From IATA airport code (e.g., JFK).
-
-**iataTo:** `?string` — optional. To IATA airport code.
-
-**icaoFrom:** `?string` — optional. From ICAO airport code (e.g., KJFK).
-
-**icaoTo:** `?string` — optional. To ICAO airport code.
-
-**locodeFrom:** `?string` — optional. From UN/LO CODE.
-
-**locodeTo:** `?string` — optional. To UN/LO CODE.
-
-#### ↩️ Response
-
-`TimezoneConvertResponse`
-
+**$format:** `?string` — Format of the response.
+    
 </dd>
 </dl>
-</details>
 
-<details><summary><code>$client->userAgentLookup($request) -> UserAgentLookupResponse</code></summary>
 <dl>
 <dd>
-
-#### 📝 Description
-
-Parse User Agent string to get detailed browser, device, and operating system information
-
-#### 🔌 Usage
 
-```php
-<?php
+**$domain:** `string` — Domain name for availability and suggestions.
+    
+</dd>
+</dl>
 
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\UserAgentLookupRequest;
+<dl>
+<dd>
 
-$client = new ApifreaksClient();
-$request = new UserAgentLookupRequest([
-    'apiKey' => "apiKey",
-    'userAgent' => "userAgent",
-]);
+**$after:** `?DateTime` — Filter subdomains seen after this date (format YYYY-MM-DD).
+    
+</dd>
+</dl>
 
-$response = $client->userAgentLookup($request);
-```
+<dl>
+<dd>
 
-#### ⚙️ Parameters
+**$before:** `?DateTime` — Filter subdomains seen before this date( format YYYY-MM-DD).
+    
+</dd>
+</dl>
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**userAgent:** `string` — required. The User-Agent string to parse, sent as the `User-Agent` HTTP header.
+**$status:** `?string` — Filter subdomains by status (active or inactive).
+    
+</dd>
+</dl>
 
-**format:** `?value-of<UserAgentLookupRequestFormat>` — optional. Format of the response
+<dl>
+<dd>
 
-#### ↩️ Response
+**$page:** `?string` — Page number for paginated results.
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-`UserAgentLookupResponse`
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->bulkUserAgentLookup($request) -> array</code></summary>
+<details><summary><code>$client-&gt;domainTyposquatting($request) -> ?DomainTyposquattingResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-Parse up to `50,000 User-Agent strings` at once in a single request.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\BulkUserAgentLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new BulkUserAgentLookupRequest([
-    'apiKey' => "apiKey",
-    'uaStrings' => [],
-]);
-
-$response = $client->bulkUserAgentLookup($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**format:** `?value-of<BulkUserAgentLookupRequestFormat>` — optional. Format of the response
-
-**uaStrings:** `array<string>` — required. List of user agent strings to parse
-
-#### ↩️ Response
+<dl>
+<dd>
 
-`array`
+<dl>
+<dd>
 
+The Domain Typosquatting API searches for registered domains that are typo or look-alike variants of a brand keyword, or that match a wildcard pattern. Results include registration lifecycle data and drop status across 1529+ TLDs, paginated at 100 domains per page.
 </dd>
 </dl>
-</details>
+</dd>
+</dl>
+
+#### 🔌 Usage
 
-<details><summary><code>$client->ocrPredict($request) -> OcrPredictResponse</code></summary>
 <dl>
 <dd>
-
-#### 📝 Description
-
-Perform Optical Character Recognition (OCR) on images, PDFs, or ZIP archives. Supports two models: `mini-ocr-v1` for CAPTCHA-optimized OCR and `ocr-v1` for general-purpose document text extraction. Supports zonal OCR to extract text from specific regions of an image. **Notes:** - The `zone` query parameter cannot be given with .pdf and .zip types as it can only be applied to single image query. - The `page_range` query parameter cannot be given in any other type except .pdf types. - PDFs containing images in them are allowed only for processing. - The `mini-ocr-v1` model doesn’t support the following query parameters: - `page_range` (.pdf types) - `zone`
 
-#### 🔌 Usage
+<dl>
+<dd>
 
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\OcrPredictRequest;
-
-$client = new ApifreaksClient();
-$request = new OcrPredictRequest([
-    'apiKey' => "apiKey",
-    'model' => "value",
-    'ocrPredictRequestModel' => "value",
-]);
-
-$response = $client->ocrPredict($request);
+$client->domainTyposquatting(
+    new DomainTyposquattingRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**url:** `?string` — optional. URL of the image or PDF (required if `file` not provided)
-
-**model:** `value-of<OcrPredictRequestModel>` — required. OCR model to use.
-
-**pageRange:** `?string` — optional. Specify page range for multi-page PDFs (e.g., '1,3,5-10' or 'allpages'). **Note:** This parameter can only be used with .pdf file types.
-
-**zone:** `?string` — optional. Define OCR zones using coordinates (top:left:height:width). Multiple zones can be defined using commas. Only available for model 'ocr-v1'. **Note:** This parameter cannot be used with .pdf and .zip file types as it can only be applied to single image queries.
-
-**newLine:** `?int` — optional. Set to 1 to split output text into individual lines (default: 0)
-
-**ocrPredictRequestUrl:** `?string` — optional. URL of the image or PDF (required if `file` not provided)
 
-**ocrPredictRequestModel:** `value-of<OcrPredictRequestModel>` — required. OCR model to use. `mini-ocr-v1` for CAPTCHA OCR, `ocr-v1` for general OCR
-
-**ocrPredictRequestPageRange:** `?string` — optional. Specify page range for multi-page PDFs (e.g., '1,3,5-10' or 'allpages'). **Note:** This parameter can only be used with .pdf file types.
-
-**ocrPredictRequestZone:** `?string` — optional. Define OCR zones using coordinates (top:left:height:width). Multiple zones can be defined using commas. Only available for model 'ocr-v1'. **Note:** This parameter cannot be used with .pdf and .zip file types as it can only be applied to single image queries.
-
-**ocrPredictRequestNewLine:** `?int` — optional. Set to 1 to split output text into individual lines (default: 0)
-
-#### ↩️ Response
+<dl>
+<dd>
 
-`OcrPredictResponse`
+<dl>
+<dd>
 
+**$apiKey:** `string` — Your API key
+    
 </dd>
 </dl>
-</details>
 
-<details><summary><code>$client->grammarDetect($request) -> GrammarDetectResponse</code></summary>
 <dl>
 <dd>
-
-#### 📝 Description
-
-Analyze text for grammar errors and return the exact words flagged as grammatically incorrect with zero-based word positions.
-
-#### 🔌 Usage
-
-```php
-<?php
 
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GrammarDetectRequest;
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-$client = new ApifreaksClient();
-$request = new GrammarDetectRequest([
-    'apiKey' => "apiKey",
-    'text' => "Example text to analyze.",
-]);
+<dl>
+<dd>
 
-$response = $client->grammarDetect($request);
-```
+**$keyword:** `?string` — Brand or label to find typo variants for. 3-63 characters, letters, digits, or hyphens, a single label with no dots. Case-insensitive. Use either keyword or pattern, never both.
+    
+</dd>
+</dl>
 
-#### ⚙️ Parameters
+<dl>
+<dd>
 
-**apiKey:** `string` — required. Your API key
+**$pattern:** `?string` — Wildcard search string that combines fuzzy matching with * wildcards. 3-63 characters total, * is the only supported wildcard and each one matches zero or more characters, maximum 3 asterisks per request. Use either keyword or pattern, never both.
+    
+</dd>
+</dl>
 
-**text:** `string` — required. Text to analyze for grammar errors
+<dl>
+<dd>
 
-#### ↩️ Response
+**$pageToken:** `?string` — Token from nextPageToken in the previous response. Required to retrieve page 2 and onward. The original keyword or pattern must be passed alongside the token on every page request. Results page at 100 domains per page.
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-`GrammarDetectResponse`
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->grammarCorrect($request) -> GrammarCorrectResponse</code></summary>
+<details><summary><code>$client-&gt;domainReputation($request) -> ?DomainReputationResponse</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
-
-Submit text with grammatical issues and receive a clean grammar-corrected result for proofreading and content workflows.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\GrammarCorrectRequest;
 
-$client = new ApifreaksClient();
-$request = new GrammarCorrectRequest([
-    'apiKey' => "apiKey",
-    'text' => "Example text to analyze.",
-]);
-
-$response = $client->grammarCorrect($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
-
-**text:** `string` — required. Text to correct
-
-#### ↩️ Response
+<dl>
+<dd>
 
-`GrammarCorrectResponse`
+<dl>
+<dd>
 
+The Domain Reputation API evaluates a domain against threat intelligence sources, DGA (domain generation algorithm) scoring, trust signals, and email deliverability configuration, returning a consolidated risk assessment with a verdict, severity, and supporting evidence.
 </dd>
 </dl>
-</details>
+</dd>
+</dl>
+
+#### 🔌 Usage
 
-<details><summary><code>$client->weakWordsDetect($request) -> WeakWordsDetectResponse</code></summary>
 <dl>
 <dd>
 
-#### 📝 Description
-
-Analyze text and return weak, vague, or filler words with zero-based word positions to help writers produce clearer and more concise content.
-
-#### 🔌 Usage
+<dl>
+<dd>
 
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\WeakWordsDetectRequest;
-
-$client = new ApifreaksClient();
-$request = new WeakWordsDetectRequest([
-    'apiKey' => "apiKey",
-    'text' => "Example text to analyze.",
-]);
-
-$response = $client->weakWordsDetect($request);
+$client->domainReputation(
+    new DomainReputationRequest([
+        'apiKey' => 'apiKey',
+        'domainName' => 'domainName',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
 
-**text:** `string` — required. Text to analyze for weak words
-
-#### ↩️ Response
+<dl>
+<dd>
 
-`WeakWordsDetectResponse`
+<dl>
+<dd>
 
+**$apiKey:** `string` — Your API key
+    
 </dd>
 </dl>
-</details>
 
-<details><summary><code>$client->readabilityScore($request) -> ReadabilityScoreResponse</code></summary>
 <dl>
 <dd>
-
-#### 📝 Description
-
-Analyze text readability using industry-standard formulas including Flesch Reading Ease, Flesch-Kincaid Grade Level, Gunning Fog Index, SMOG Index, Coleman-Liau Index, and Automated Readability Index.
-
-#### 🔌 Usage
-
-```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\ReadabilityScoreRequest;
-
-$client = new ApifreaksClient();
-$request = new ReadabilityScoreRequest([
-    'apiKey' => "apiKey",
-    'text' => "Example text to analyze.",
-]);
-
-$response = $client->readabilityScore($request);
-```
-
-#### ⚙️ Parameters
-
-**apiKey:** `string` — required. Your API key
 
-**target:** `?value-of<ReadabilityScoreRequestTarget>` — optional. Target audience used to tune sentence difficulty levels
-
-**exclude:** `?string` — optional. Comma-separated response sections to omit. Possible values are readability_scores, sentence_readability, readability_grade
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
 
-**text:** `string` — required. Text to analyze for readability
+<dl>
+<dd>
 
-#### ↩️ Response
+**$domainName:** `string` — The domain name to assess (e.g. example.com). Must contain at least one dot and be at most 253 characters. Automatically lowercased.
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-`ReadabilityScoreResponse`
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->astronomyLookup($request) -> AstronomyLookupResponse</code></summary>
+<details><summary><code>$client-&gt;astronomyLookupV2($request) -> ?AstronomyLookupV2Response</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
 
 Retrieve sunrise and sunset times, current position of the moon, and other related information by specifying a location address, location coordinates, IP address, or using the client IP address if no parameter is passed.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\AstronomyLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new AstronomyLookupRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->astronomyLookup($request);
+$client->astronomyLookupV2(
+    new AstronomyLookupV2Request([
+        'apiKey' => 'apiKey',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<AstronomyLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**location:** `?string` — optional. Location name or address
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**lat:** `?float` — optional. Latitude for location coordinates
+<dl>
+<dd>
 
-**long:** `?float` — optional. Longitude for location coordinates
+**$format:** `?string` — Format of the response. Can be "json" or "xml".
+    
+</dd>
+</dl>
 
-**ip:** `?string` — optional. IP address for location detection
+<dl>
+<dd>
 
-**lang:** `?string` — optional
+**$location:** `?string` — Extract astronomy information using location (preferably city)
+    
+</dd>
+</dl>
 
-**date:** `?DateTime` — optional. Date for astronomy data (YYYY-MM-DD)
+<dl>
+<dd>
 
-**elevation:** `?float` — optional. Timezone of the location for which astronomy data is required
+**$lat:** `?float` — Latitude to extract astronomy information using location coordinates
+    
+</dd>
+</dl>
 
-**timeZone:** `?string` — optional
+<dl>
+<dd>
 
-#### ↩️ Response
+**$long:** `?float` — Longitude to extract astronomy information using location coordinates
+    
+</dd>
+</dl>
 
-`AstronomyLookupResponse`
+<dl>
+<dd>
+
+**$ip:** `?string` — IPv4 or IPv6 address to extract astronomy information using IP address
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lang:** `?string` — Response language of "location" field in case of lookup through IP address only.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$date:** `?DateTime` — Specific date (format YYYY-MM-DD) for which astronomy data is required
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$elevation:** `?float` — Elevation above sea level at the location, in meters. The value should be between 0 meter and a maximum value of 10,000 meters. Negative value is set to 0.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$timeZone:** `?string` — Time zone to receive all time-based data in your preferred local time.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>$client->astronomyLookupV2($request) -> AstronomyLookupResponse</code></summary>
+<details><summary><code>$client-&gt;timezoneLookupV2($request) -> ?TimezoneLookupV2Response</code></summary>
 <dl>
 <dd>
 
 #### 📝 Description
 
-(v2.0) Retrieve sunrise and sunset times, current position of the moon, and other related information by specifying a location address, location coordinates, IP address, or using the client IP address if no parameter is passed. Uses the `v2.0/geolocation/astronomy` endpoint.
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get current time, date, and timezone details by specifying a timezone name, location address, GPS coordinates, IP address, IATA/ICAO airport code, UN/LOCODE, or use the client IP if no parameter is provided.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
+<dl>
+<dd>
+
+<dl>
+<dd>
+
 ```php
-<?php
-
-use Apifreaks\ApifreaksClient;
-use Apifreaks\Requests\AstronomyLookupRequest;
-
-$client = new ApifreaksClient();
-$request = new AstronomyLookupRequest([
-    'apiKey' => "apiKey",
-]);
-
-$response = $client->astronomyLookupV2($request);
+$client->timezoneLookupV2(
+    new TimezoneLookupV2Request([
+        'apiKey' => 'apiKey',
+    ]),
+);
 ```
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### ⚙️ Parameters
 
-**apiKey:** `string` — required. Your API key
+<dl>
+<dd>
 
-**format:** `?value-of<AstronomyLookupRequestFormat>` — optional. Format of the response.
+<dl>
+<dd>
 
-**location:** `?string` — optional. Location name or address
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
 
-**lat:** `?float` — optional. Latitude for location coordinates
+<dl>
+<dd>
 
-**long:** `?float` — optional. Longitude for location coordinates
+**$format:** `?string` — Format of the response. Possible values: json, xml.
+    
+</dd>
+</dl>
 
-**ip:** `?string` — optional. IP address for location detection
+<dl>
+<dd>
 
-**lang:** `?string` — optional
+**$ip:** `?string` — IPv4 or IPv6 address to extract timezone information.
+    
+</dd>
+</dl>
 
-**date:** `?DateTime` — optional. Date for astronomy data (YYYY-MM-DD)
+<dl>
+<dd>
 
-**elevation:** `?float` — optional. Timezone of the location for which astronomy data is required
+**$tz:** `?string` — Timezone name in IANA format (e.g., Asia/Kolkata) to retrieve information directly.
+    
+</dd>
+</dl>
 
-**timeZone:** `?string` — optional
+<dl>
+<dd>
 
-#### ↩️ Response
+**$location:** `?string` — Location string (preferably city and country) to extract timezone.
+    
+</dd>
+</dl>
 
-`AstronomyLookupResponse`
+<dl>
+<dd>
+
+**$lat:** `?float` — Latitude for geolocation-based timezone lookup. Only time_zone is returned for this mode; no location object is included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$long:** `?float` — Longitude for geolocation-based timezone lookup. Only time_zone is returned for this mode; no location object is included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lang:** `?string` — Response language for location fields. Default: en.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$iataCode:** `?string` — 3-letter IATA airport code (e.g., LHR) to extract timezone.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$icaoCode:** `?string` — 4-letter ICAO airport code (e.g., KJFK) to extract timezone.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$loCode:** `?string` — 5-letter UN/LOCODE city code to extract timezone.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
+
+<details><summary><code>$client-&gt;geolocationLookupV2($request) -> ?GeolocationLookupV2Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get detailed IP geolocation data for an IP address including country, city, timezone, currency, and optional threat intelligence and user-agent information.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->geolocationLookupV2(
+    new GeolocationLookupV2Request([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — IPv4, IPv6, or hostname for geolocation lookup.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lang:** `?string` — Response language for location fields. Default: en.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fields:** `?string` — Comma-separated list of fields to include in response. For example, `location` includes all location fields, `location.city` is a specific field.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$excludes:** `?string` — Comma-separated list of fields to exclude from response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$include:** `?string` — Comma-separated list of additional data modules to include. Possible values: security (threat intelligence), hostname (IP-Hostname lookup), liveHostname (live hostname lookup), hostnameFallbackLive (hostname with live fallback), user_agent (parse User-Agent header), abuse (abuse contact info), dma_code (DMA code), geo_accuracy (accuracy_radius, confidence, locality), * (all modules).
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;bulkGeolocationLookupV2($request) -> ?array</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get detailed IP geolocation data for multiple IP addresses including country, city, timezone, currency, and optional threat intelligence information. Supports up to 50,000 IP addresses per request.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->bulkGeolocationLookupV2(
+    new BulkGeolocationLookupV2Request([
+        'apiKey' => 'apiKey',
+        'ips' => [
+            'ips',
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lang:** `?string` — Response language for location fields. Default: en.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fields:** `?string` — Comma-separated list of fields to include in the response. For example, `location` includes all location fields, `location.city` is a specific field.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$excludes:** `?string` — Comma-separated list of fields to exclude from response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$include:** `?string` — Comma-separated list of additional data modules to include. Possible values: security (threat intelligence), hostname (IP-Hostname lookup), liveHostname (live hostname lookup), user_agent (parse User-Agent header), abuse (abuse contact info), * (all modules).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ips:** `array` — List of IP addresses or hostnames to lookup.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;domainWhoisLookupV2($request) -> ?DomainWhoisLookupV2Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the current WHOIS record for the specified domain, including registrar details, registrant/administrative/technical/billing/reseller contacts, name servers, status codes, and raw WHOIS text.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->domainWhoisLookupV2(
+    new DomainWhoisLookupV2Request([
+        'apiKey' => 'apiKey',
+        'domainName' => 'domainName',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$domainName:** `string` — Domain name to retrieve WHOIS data for (e.g. example.com).
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;bulkDomainWhoisLookupV2($request) -> ?BulkDomainWhoisLookupV2Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the current WHOIS record for each requested domain, in request order. Supports up to 100 domain names per request; a domain that fails to resolve yields an error item instead of failing the whole batch.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->bulkDomainWhoisLookupV2(
+    new BulkDomainWhoisLookupV2Request([
+        'apiKey' => 'apiKey',
+        'domainNames' => [
+            'domainNames',
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$domainNames:** `array` — List of domain names to retrieve WHOIS data for.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;commodityLatestRatesV2($request) -> ?CommodityLatestRatesV2Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the current live price for the requested commodity symbols. Unresolved symbols degrade to a 206 partial response instead of failing the whole request.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->commodityLatestRatesV2(
+    new CommodityLatestRatesV2Request([
+        'apiKey' => 'apiKey',
+        'symbols' => [
+            'symbols',
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format. Currently only `json` is supported.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `?array` — Comma-separated list of commodity symbols (e.g., XAU, WTIOIL-SPOT). Case-insensitive; duplicates are deduplicated server-side, with one response entry and one credit charge per unique symbol. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$quote:** `?string` — Target currency for the exchange rate. If omitted (or set to `default`), the default quote currency of each commodity is used. Requires a premium plan; ignored on lower-tier plans.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;commodityHistoricalRatesV2($request) -> ?CommodityHistoricalRatesV2Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns OHLC price data for the requested commodity symbols on a specific date. Falls back to the nearest earlier rate if none exists for the exact date. Unresolved symbols degrade to a 206 partial response instead of failing the whole request.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->commodityHistoricalRatesV2(
+    new CommodityHistoricalRatesV2Request([
+        'apiKey' => 'apiKey',
+        'symbols' => [
+            'symbols',
+        ],
+        'date' => new DateTime('2023-01-15'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format. Currently only `json` is supported.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `?array` — Comma-separated list of commodity symbols. Case-insensitive; duplicates are deduplicated server-side, with one response entry and one credit charge per unique symbol. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$date:** `DateTime` — Date in YYYY-MM-DD format. Data available from 1990 onwards.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;commodityFluctuationV2($request) -> ?CommodityFluctuationV2Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns price fluctuation metrics (start, end, change, percent change) for the requested commodity symbols over a date range. For monthly-updated commodities the range snaps to month boundaries. Unresolved symbols degrade to a 206 partial response instead of failing the whole request.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->commodityFluctuationV2(
+    new CommodityFluctuationV2Request([
+        'apiKey' => 'apiKey',
+        'symbols' => [
+            'symbols',
+        ],
+        'startDate' => new DateTime('2023-01-15'),
+        'endDate' => new DateTime('2023-01-15'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format. Currently only `json` is supported.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `?array` — Comma-separated list of commodity symbols. Case-insensitive; duplicates are deduplicated server-side, with one response entry and one credit charge per unique symbol. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startDate:** `DateTime` — Start date (YYYY-MM-DD)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$endDate:** `DateTime` — End date (YYYY-MM-DD)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;commodityTimeSeriesV2($request) -> ?CommodityTimeSeriesV2Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns day-by-day OHLC data for the requested commodity symbols within a date range, indexed by date. Non-trading days are excluded. Unresolved symbols degrade to a 206 partial response instead of failing the whole request.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->commodityTimeSeriesV2(
+    new CommodityTimeSeriesV2Request([
+        'apiKey' => 'apiKey',
+        'symbols' => [
+            'symbols',
+        ],
+        'startDate' => new DateTime('2023-01-15'),
+        'endDate' => new DateTime('2023-01-15'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format. Currently only `json` is supported.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `?array` — Comma-separated list of commodity symbols. Case-insensitive; duplicates are deduplicated server-side, with one response entry and one credit charge per unique symbol. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startDate:** `DateTime` — Start date (YYYY-MM-DD)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$endDate:** `DateTime` — End date (YYYY-MM-DD). Maximum range is 365 days.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;commoditySymbolsV2($request) -> ?CommoditySymbolsV2Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the list of supported commodity symbols with metadata. Deprecated symbols stay listed with status "inactive" and a deprecationDate.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->commoditySymbolsV2(
+    new CommoditySymbolsV2Request([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format. Currently only `json` is supported.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;commodityIntradayRatesV2($request) -> ?CommodityIntradayRatesV2Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the prices of one commodity through a UTC day at the requested interval, keyed by UTC timestamp. Each request costs a flat 50 credits however many points it returns.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->commodityIntradayRatesV2(
+    new CommodityIntradayRatesV2Request([
+        'apiKey' => 'apiKey',
+        'symbols' => 'symbols',
+        'interval' => CommodityIntradayRatesV2RequestInterval::OneM->value,
+        'date' => new DateTime('2023-01-15'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `string` — Exactly one commodity symbol. Case-insensitive. Sending two or more returns a 400. Only symbols updated every second, every minute, or every 10 minutes have intraday rates; symbols updated hourly or less often return a 400. Use the Commodity Symbols endpoint for all valid values.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$interval:** `string` — Spacing between points. Case-insensitive. Symbols updated every 10 minutes accept only `10m`, `30m`, `1h`, `2h`, `4h`, `8h`, `12h`, `1d`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$date:** `DateTime` — The UTC day to read, in `YYYY-MM-DD` format. Cannot be in the future. For today, points stop at the current UTC minute.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startTime:** `?string` — First mark of the window, as a 24-hour UTC time in `HH:mm`. Must fall on a mark of the interval (for example, `14:30` works for `5m` or `30m`, but not for `1h`). For `1d` it can only be `00:00`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$metadata:** `?bool` — Whether to include the `metadata` object. Pass `false` to receive only the prices.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfMerge($request) -> ?PdfMergeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API merges multiple PDF files into a single PDF, in the order they are provided
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfMerge(
+    new PdfMergeRequest([
+        'apiKey' => 'apiKey',
+        'file' => [
+            File::createFromString("example_file", "example_file"),
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?array` — An array of unique file IDs referencing PDF files previously uploaded to the API Freaks server. Use this parameter to merge existing files without re-uploading them. Provide multiple IDs to merge files in the specified order. Pass an array; each value is sent as a repeated query parameter.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — Specifies the desired name for the resulting merged PDF file. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?array` — One or more files to upload, each an `Apifreaks\Utils\File` (e.g. `File::createFromFilepath('a.pdf')`). Sent as multipart/form-data parts named `file`, in order.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfRemovePages($request) -> ?PdfRemovePagesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API removes a selection or range of pages from a PDF file.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfRemovePages(
+    new PdfRemovePagesRequest([
+        'apiKey' => 'apiKey',
+        'pages' => 'pages',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique identifier of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output PDF file after pages have been removed. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pages:** `string` — Specifies which pages to remove from the PDF. Accepts individual page numbers (e.g., '1,7') and/or ascending page ranges (e.g., '3-5'). Use commas to separate entries and hyphens for ranges. Reverse ranges (e.g., '5-3') are not allowed. Alternatively, you may provide only one of the following keywords: 'even' (removes all even-numbered pages), 'odd' (removes all odd-numbered pages), or 'last' (removes only the last page). The keyword 'all' is not supported for this operation. Examples: '1,3-5', 'even'. Mixing special keywords with specific pages/ranges is not allowed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfSplit($request) -> ?PdfSplitResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API splits a PDF into multiple parts based on specified page numbers or ranges.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfSplit(
+    new PdfSplitRequest([
+        'apiKey' => 'apiKey',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired base name for the output PDF files after splitting. If not provided, a default naming convention will be used.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pages:** `?array` 
+
+Defines the page numbers or ranges where the PDF should be split. Provide individual pages and/or ranges in any order (for example: "1-4,9-5,16-last"). Separate entries with commas and use hyphens for ranges.
+
+Special keywords (use alone):
+
+• `even` — split at every even-numbered page
+
+• `odd` — split at every odd-numbered page
+
+• `all` — split the PDF into single-page files
+
+The keyword `last` can be used anywhere in the string, in combination with page numbers or ranges (for example: "5-last", "last-2", "1,last,9").
+
+Examples:
+- "1,4-2,last"
+- "odd"
+- "all"
+- "last,2-5"
+
+Invalid example: "1,odd" (mixing a keyword other than "last" with specific pages/ranges is not allowed). You can pass multiple pages entries to produce multiple output files.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfRotate($request) -> ?PdfRotateResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API rotates pages of a PDF by a specified angle (in multiples of 90 degrees).
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfRotate(
+    new PdfRotateRequest([
+        'apiKey' => 'apiKey',
+        'rotate' => 1,
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output PDF file after rotation. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pages:** `?string` — Specifies which pages to rotate. Accepts individual page numbers (e.g., '1,7') and/or ascending page ranges (e.g., '3-5'). Use commas to separate entries and hyphens for ranges. Reverse ranges (e.g., '5-3') are not allowed. Alternatively, provide only one of the following keywords: 'even' (rotate all even-numbered pages), 'odd' (rotate all odd-numbered pages), 'last' (rotate only the last page), or 'all' (rotate all pages). Examples: '1,3-5', 'odd', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$rotate:** `int` — The angle in degrees to rotate the selected pages. Must be one of the following values: 0, 90, 180, 270, -90, -180, or -270. All rotations are applied clockwise.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfCompress($request) -> ?PdfCompressResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API compresses a given PDF file to reduce its file size.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfCompress(
+    new PdfCompressRequest([
+        'apiKey' => 'apiKey',
+        'compressionLevel' => PdfCompressRequestCompressionLevel::Low->value,
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — Name of the output PDF.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$compressionLevel:** `string` — Controls how aggressively the PDF is compressed. Lower levels preserve more quality, while higher levels reduce file size more.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to true, the input file(s) will be deleted from the server immediately after the output is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfExtractPages($request) -> ?PdfExtractPagesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API extracts specific pages or page ranges from a PDF file and returns them as a new PDF.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfExtractPages(
+    new PdfExtractPagesRequest([
+        'apiKey' => 'apiKey',
+        'pages' => 'pages',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output PDF file after pages have been extracted. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pages:** `string` — Specifies which pages to extract from the PDF. You can provide individual page numbers (e.g., '2') and/or page ranges in any order, including descending (e.g., '9-5', '16-last'). Use commas to separate entries and hyphens for ranges. You may alternatively pass only one of the special keywords: 'even' (extracts all even-numbered pages), 'odd' (extracts all odd-numbered pages), 'last' (extracts only the last page), or 'all' (extracts all pages into individual files). Examples: '2,6-3', 'even', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$separated:** `?bool` — If set to `true`, each of the specified pages will be extracted and returned as a separate PDF file.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfLinearize($request) -> ?PdfLinearizeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+API endpoint that linearizes any given PDF, restructuring it for faster loading and page-by-page viewing in web browsers.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfLinearize(
+    new PdfLinearizeRequest([
+        'apiKey' => 'apiKey',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output PDF file after pages have been extracted. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfEncrypt($request) -> ?PdfEncryptResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API encrypts a PDF file by setting a password required to open it.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfEncrypt(
+    new PdfEncryptRequest([
+        'apiKey' => 'apiKey',
+        'userPassword' => 'user_password',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output encrypted PDF file. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$filePassword:** `?string` — The password to unlock the input file if it is already protected. Either the owner password or user password can be provided. The owner password takes precedence. Password Length should be between 6 and 128 characters.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$userPassword:** `string` — Sets the user password required to open and view the encrypted PDF file. Password Length should be between 6 and 128 characters.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ownerPassword:** `?string` — Sets the owner password for the PDF file. This password provides full access, including the ability to remove restrictions. If not provided, the `user_password` will also be used as the owner password. Password Length should be between 6 and 128 characters.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfDecrypt($request) -> ?PdfDecryptResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API decrypts PDF files, removing all encryption, including open passwords and permission restrictions.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfDecrypt(
+    new PdfDecryptRequest([
+        'apiKey' => 'apiKey',
+        'filePassword' => 'file_password',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output decrypted PDF file. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$filePassword:** `string` — The password to unlock the input file if it is protected. Either the owner password or user password can be provided. The owner password takes precedence. Password Length should be between 6 and 128 characters.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfRestrict($request) -> ?PdfRestrictResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API applies permission restrictions on a PDF file, such as disabling printing, copying, or editing. This can include password protection to enforce restrictions.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfRestrict(
+    new PdfRestrictRequest([
+        'apiKey' => 'apiKey',
+        'userPassword' => 'user_password',
+        'restrictions' => [
+            PdfRestrictRequestRestrictionsItem::PrintHigh->value,
+        ],
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output restricted PDF file. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$filePassword:** `?string` — The password to unlock the input file if it is already secured. Provide the owner password if available; otherwise, the user password. The owner password takes precedence. Password Length should be between 6 and 128 characters.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$userPassword:** `string` — Sets the password users will use to open the PDF. If this is not set, only the owner password will be configured, and anyone can open the PDF file with the provided restrictions enabled. Password Length should be between 6 and 128 characters.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ownerPassword:** `?string` — Sets the password that allows full access to the PDF (e.g., removing restrictions). If not provided, the `user_password` (if set) will also be used as the owner password. Password Length should be between 6 and 128 characters.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$restrictions:** `?array` 
+
+A comma-separated list of restrictions to apply to the PDF. These define what the end-user is *not* allowed to do with the PDF. Available options are:
+
+
+* **print_high** – Disables high-quality printing.
+* **print_low** – Disables low-resolution printing.
+* **edit_document_assembly** – Prevents reordering or inserting pages.
+* **fill_form_fields** – Disallows filling in PDF form fields.
+* **edit_annotations** – Disables adding or modifying annotations or comments.
+* **modify_content** – Prevents modifying existing content in the PDF.
+* **copy_and_extract_content** – Disables copying text or images from the PDF.
+* **use_accessibility** – Prevents screen readers or accessibility tools from accessing content.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfUnrestrict($request) -> ?PdfUnrestrictResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API removes permission restrictions from a PDF while keeping it encrypted. If you want to remove all security (including encryption), use the `/pdf/decrypt` endpoint instead.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfUnrestrict(
+    new PdfUnrestrictRequest([
+        'apiKey' => 'apiKey',
+        'filePassword' => 'file_password',
+        'userPassword' => 'user_password',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output unrestricted PDF file. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$filePassword:** `string` — The password to unlock the input file. Either the owner password or user password can be provided. The owner password takes precedence. Password Length should be between 6 and 128 characters.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$userPassword:** `string` — Sets the user password for the PDF file. Password Length should be between 6 and 128 characters.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ownerPassword:** `?string` — Sets the owner password for the PDF file. If the owner password is not provided, the `user_password` will also be used as the owner password. Password Length should be between 6 and 128 characters.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfConvertToPng($request) -> ?PdfConvertToPngResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API converts a given PDF file into a sequence of PNG images.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfConvertToPng(
+    new PdfConvertToPngRequest([
+        'apiKey' => 'apiKey',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output unrestricted PDF file. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pages:** `?string` — Specifies the pages or ranges at which to split the PDF. Accepts individual page numbers (e.g., '1') and/or page ranges (e.g., '4-2', 'last'). Ranges can be ascending or descending. Use commas to separate entries and hyphens for ranges. Alternatively, provide only one of the following keywords: 'even' (split at every even-numbered page), 'odd' (split at every odd-numbered page), 'last' (split at the last page only), or 'all' (split into single pages). Examples: '1,4-2,last', 'odd', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$resolution:** `?int` — Specifies the resolution (in DPI) for the output images. Acceptable Range is from 20 to 1200.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$imageSmoothing:** `?string` — Determines the smoothing options to apply during image conversion. Valid values are 'none', 'all' or a combination of 'text', 'line', and 'image' (comma-separated).If not provided, no smoothing will be applied.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$profile:** `?string` — Specifies the color profile for the output PNG images. Acceptable values: bw (1-bit black & white, smallest size, no grayscale or color), gray (8-bit grayscale), rgb (24-bit RGB color, default), rgba (32-bit RGB color with alpha channel for transparency), 4-bit (4-bit indexed color, up to 16 colors, smaller size), or 8-bit (8-bit indexed color, up to 256 colors).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfConvertToJpg($request) -> ?PdfConvertToJpgResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API converts a given PDF file into a sequence of JPG images.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfConvertToJpg(
+    new PdfConvertToJpgRequest([
+        'apiKey' => 'apiKey',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output unrestricted PDF file. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$quality:** `?int` — Controls JPG compression quality. Higher values yield sharper images with larger file sizes.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pages:** `?string` — Specifies the pages or ranges at which to split the PDF. Accepts individual page numbers (e.g., '1') and/or page ranges (e.g., '4-2', 'last'). Ranges can be ascending or descending. Use commas to separate entries and hyphens for ranges. Alternatively, provide only one of the following keywords: 'even' (split at every even-numbered page), 'odd' (split at every odd-numbered page), 'last' (split at the last page only), or 'all' (split into single pages). Examples: '1,4-2,last', 'odd', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$resolution:** `?int` — Specifies the resolution (in DPI) for the output images. Acceptable Range is from 20 to 1200.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$imageSmoothing:** `?string` — Determines the smoothing options to apply during image conversion. Valid values are 'none', 'all' or a combination of 'text', 'line', and 'image' (comma-separated).If not provided, no smoothing will be applied.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$profile:** `?string` — Specifies the color profile for the output PNG images. Acceptable values: bw (1-bit black & white, smallest size, no grayscale or color), gray (8-bit grayscale), rgb (24-bit RGB color, default), rgba (32-bit RGB color with alpha channel for transparency), 4-bit (4-bit indexed color, up to 16 colors, smaller size), or 8-bit (8-bit indexed color, up to 256 colors).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfConvertToTiff($request) -> ?PdfConvertToTiffResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API converts a given PDF file into a sequence of TIFF images. The output images can be saved as a single TIFF file, or as a sequence of TIFF files.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfConvertToTiff(
+    new PdfConvertToTiffRequest([
+        'apiKey' => 'apiKey',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output unrestricted PDF file. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pages:** `?string` — Specifies the pages or ranges at which to split the PDF. Accepts individual page numbers (e.g., '1') and/or page ranges (e.g., '4-2', 'last'). Ranges can be ascending or descending. Use commas to separate entries and hyphens for ranges. Alternatively, provide only one of the following keywords: 'even' (split at every even-numbered page), 'odd' (split at every odd-numbered page), 'last' (split at the last page only), or 'all' (split into single pages). Examples: '1,4-2,last', 'odd', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$resolution:** `?int` — Specifies the resolution (in DPI) for the output images. Acceptable Range is from 20 to 1200.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$imageSmoothing:** `?string` — Determines the smoothing options to apply during image conversion. Valid values are 'none', 'all' or a combination of 'text', 'line', and 'image' (comma-separated).If not provided, no smoothing will be applied.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$profile:** `?string` — Specifies the color profile for the output PNG images. Acceptable values: bw (1-bit black & white, smallest size, no grayscale or color), gray (8-bit grayscale), rgb (24-bit RGB color, default), rgba (32-bit RGB color with alpha channel for transparency), 4-bit (4-bit indexed color, up to 16 colors, smaller size), or 8-bit (8-bit indexed color, up to 256 colors).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfConvertToBmp($request) -> ?PdfConvertToBmpResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Converts a PDF file to a BMP image.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfConvertToBmp(
+    new PdfConvertToBmpRequest([
+        'apiKey' => 'apiKey',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output unrestricted PDF file. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pages:** `?string` — Specifies the pages or ranges at which to split the PDF. Accepts individual page numbers (e.g., '1') and/or page ranges (e.g., '4-2', 'last'). Ranges can be ascending or descending. Use commas to separate entries and hyphens for ranges. Alternatively, provide only one of the following keywords: 'even' (split at every even-numbered page), 'odd' (split at every odd-numbered page), 'last' (split at the last page only), or 'all' (split into single pages). Examples: '1,4-2,last', 'odd', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$resolution:** `?int` — Specifies the resolution (in DPI) for the output images. Acceptable Range is from 20 to 1200.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$imageSmoothing:** `?string` — Determines the smoothing options to apply during image conversion. Valid values are 'none', 'all' or a combination of 'text', 'line', and 'image' (comma-separated).If not provided, no smoothing will be applied.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$profile:** `?string` — Specifies the color profile for the output PNG images. Acceptable values: bw (1-bit black & white, smallest size, no grayscale or color), gray (8-bit grayscale), rgb (24-bit RGB color, default), rgba (32-bit RGB color with alpha channel for transparency), 4-bit (4-bit indexed color, up to 16 colors, smaller size), or 8-bit (8-bit indexed color, up to 256 colors).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfConvertToGif($request) -> ?PdfConvertToGifResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API converts a given PDF file into a sequence of GIF images.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfConvertToGif(
+    new PdfConvertToGifRequest([
+        'apiKey' => 'apiKey',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `?string` — The unique ID of a PDF file already uploaded to the API Freaks server. Use this as an alternative to uploading a new file directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroy:** `?bool` — If set to `true`, the input file(s) will be permanently deleted from the server immediately after the output PDF is generated.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — The desired name for the output unrestricted PDF file. If not provided, a default name will be assigned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pages:** `?string` — Specifies the pages or ranges at which to split the PDF. Accepts individual page numbers (e.g., '1') and/or page ranges (e.g., '4-2', 'last'). Ranges can be ascending or descending. Use commas to separate entries and hyphens for ranges. Alternatively, provide only one of the following keywords: 'even' (split at every even-numbered page), 'odd' (split at every odd-numbered page), 'last' (split at the last page only), or 'all' (split into single pages). Examples: '1,4-2,last', 'odd', 'all'. Mixing special keywords with specific pages/ranges is not allowed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$resolution:** `?int` — Specifies the resolution (in DPI) for the output images. Acceptable Range is from 20 to 1200.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$imageSmoothing:** `?string` — Determines the smoothing options to apply during image conversion. Valid values are 'none', 'all' or a combination of 'text', 'line', and 'image' (comma-separated).If not provided, no smoothing will be applied.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$profile:** `?string` — Specifies the color profile for the output PNG images. Acceptable values: bw (1-bit black & white, smallest size, no grayscale or color), gray (8-bit grayscale), rgb (24-bit RGB color, default), rgba (32-bit RGB color with alpha channel for transparency), 4-bit (4-bit indexed color, up to 16 colors, smaller size), or 8-bit (8-bit indexed color, up to 256 colors).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookUrl:** `?string` — The URL to which the webhook notification will be sent after the task is completed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookFailureNotification:** `?bool` — If true, a notification will also be sent by email in case the webhook request fails all the retries.  The email notification will be sent to the requesting user or their organization’s admin if part of one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$webhookAuthorization:** `?string` — Optional custom header for webhook requests. Format: `Key:Value` (e.g., `Authorization:Bearer token123`). This will be sent as an HTTP header in the webhook call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfUploadResources($request) -> ?PdfUploadResourcesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API uploads multiple PDF files to the API Freaks server and generates their unique file IDs.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfUploadResources(
+    new PdfUploadResourcesRequest([
+        'apiKey' => 'apiKey',
+        'file' => [
+            File::createFromString("example_file", "example_file"),
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?array` — One or more files to upload, each an `Apifreaks\Utils\File` (e.g. `File::createFromFilepath('a.pdf')`). Sent as multipart/form-data parts named `file`, in order.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfUploadBinary($request) -> ?PdfUploadBinaryResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API uploads PDF files to the API Freaks server in binary format.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfUploadBinary(
+    new PdfUploadBinaryRequest([
+        'apiKey' => 'apiKey',
+        'fileName' => 'document.pdf',
+        'body' => file_get_contents('document.pdf'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileName:** `string` 
+
+The desired name for the uploaded PDF file. This name will be used for storage on the server.
+
+
+ **NOTE**: Please ensure file_name has extension `.pdf`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$body:** `string|StreamInterface` — The PDF to upload: its raw bytes (e.g. `file_get_contents('document.pdf')`) or a PSR-7 `StreamInterface`. Sent as the application/octet-stream request body.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfDownloadResource($request) -> string</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API downloads PDF files or ZIP archives from the server using their unique resource ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfDownloadResource(
+    new PdfDownloadResourceRequest([
+        'apiKey' => 'apiKey',
+        'resourceId' => 'resource_id',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$resourceId:** `string` — The unique identifier of the file or ZIP archive to download.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfGetTaskStatus($request) -> ?PdfGetTaskStatusResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API checks the status of a previously initiated PDF processing task using its unique task ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfGetTaskStatus(
+    new PdfGetTaskStatusRequest([
+        'apiKey' => 'apiKey',
+        'taskId' => 'task_id',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$taskId:** `string` — The unique ID of the PDF processing task for which the status is requested.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfGetFileStatus($request) -> ?PdfGetFileStatusResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API checks the status of a PDF file using its unique file ID, providing information about its creation and potential deletion time.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfGetFileStatus(
+    new PdfGetFileStatusRequest([
+        'apiKey' => 'apiKey',
+        'fileId' => 'file_id',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `string` — The unique ID of the file whose status is requested.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfListFiles($request) -> ?PdfListFilesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API retrieves a list of all PDF files uploaded and generated by a specific user. Please note that if the user is part of an organization, only the Organization Administrator can access this endpoint. Organization Members cannot access this endpoint.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfListFiles(
+    new PdfListFilesRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfDeleteFile($request) -> ?PdfDeleteFileResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API deletes a PDF file using its unique file ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfDeleteFile(
+    new PdfDeleteFileRequest([
+        'apiKey' => 'apiKey',
+        'fileId' => 'file_id',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specifies the desired format for the API response. Choose 'json' for a JSON object or 'xml' for an XML structure.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileId:** `string` — The unique ID of the file to be deleted.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;pdfGenerateFromTemplate($request) -> ?PdfGenerateFromTemplateResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Renders the template identified by template_id with the JSON data supplied in the request body (or fetched from data_url). Returns a hosted URL for the generated PDF. Provide either a request body or a data_url; one of the two is required. The keys of the data object are the fields you bound when you designed the template in the APIFreaks PDF Template Builder, so the exact shape is up to you. Pin the version parameter to a specific template version (e.g. version=v2) so later design changes never touch what is already live; omit it to use the latest version.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->pdfGenerateFromTemplate(
+    new PdfGenerateFromTemplateRequest([
+        'apiKey' => 'apiKey',
+        'templateId' => 'template_id',
+        'body' => [
+            'candidate_name' => "Ava Thompson",
+            'candidate_title' => "Senior Operations Analyst",
+            'email' => "ava.thompson@example.com",
+            'phone' => "+1 (555) 381-2048",
+            'city' => "Austin, TX",
+            'portfolio_url' => "portfolio.example.com",
+            'profile_summary' => "Analytical operations professional with 8+ years of experience improving reporting pipelines, streamlining process documentation, and coordinating cross-functional delivery for distributed teams across multiple time zones.",
+            'company_name' => "Northwind Logistics",
+            'job_title' => "Operations Analyst",
+            'employment_period' => "2021 - Present",
+            'job_achievement_1' => "Led weekly KPI reporting for finance, fulfillment, and customer success stakeholders across three business units.",
+            'job_achievement_2' => "Reduced manual reconciliation work by 35% through workflow redesign and documentation automation.",
+            'job_achievement_3' => "Spearheaded a cross-team initiative that improved on-time delivery metrics by 18% within six months.",
+            'skills' => [
+                [
+                    'skill' => "Process Improvement",
+                    'level' => "Advanced",
+                    'years' => "7",
+                ],
+                [
+                    'skill' => "Stakeholder Reporting",
+                    'level' => "Expert",
+                    'years' => "8",
+                ],
+                [
+                    'skill' => "Cross-functional Coordination",
+                    'level' => "Advanced",
+                    'years' => "5",
+                ],
+                [
+                    'skill' => "Workflow Documentation",
+                    'level' => "Advanced",
+                    'years' => "6",
+                ],
+            ],
+            'degree' => "B.S. in Information Systems",
+            'institution' => "University of Texas",
+            'graduation_year' => "2018",
+            'certification_1' => "Certified Business Analysis Professional (CBAP)",
+            'certification_2' => "Six Sigma Green Belt",
+            'languages' => "English (Native), Spanish (Professional)",
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$templateId:** `string` — The template to render, from the APIFreaks PDF Template Builder. Copy it from your dashboard when you save the template.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$version:** `?string` — Template version to render, e.g. v2. Must start with v. Omit this parameter entirely to use the latest version; the literal value 'latest' is not accepted by the API.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$dataUrl:** `?string` — A URL the API fetches your JSON data from, instead of the request body. Provide this when you are not sending a request body.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$request:** `array` — Free-form JSON object whose keys map to the fields bound in the template.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;bulkPdfGenerateFromTemplate($request) -> ?array</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Upload a CSV file where each row is one record. The API generates one PDF per row and returns an array of results, each with its own pdf_url. Rows are processed independently, so a failure in one row does not block the rest of the batch. The response gives a row-by-row breakdown of which PDFs succeeded and which failed.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->bulkPdfGenerateFromTemplate(
+    new BulkPdfGenerateFromTemplateRequest([
+        'apiKey' => 'apiKey',
+        'templateId' => 'template_id',
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$templateId:** `string` — The template to render, from the APIFreaks PDF Template Builder. Copy it from your dashboard when you save the template.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$version:** `?string` — Template version to render, e.g. v2. Must start with v. Omit this parameter entirely to use the latest version; the literal value 'latest' is not accepted by the API.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;screenshotCapture($request) -> ?ScreenshotCaptureResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Capture full-page screenshots and videos of websites with advanced options like device simulation, custom code injection, cookie banner blocking, and scrollable content recording.
+Supports multiple output formats including JSON, image, GIF, MP4, and WebM.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->screenshotCapture(
+    new ScreenshotCaptureRequest([
+        'apiKey' => 'apiKey',
+        'url' => 'url',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$output:** `?string` — Output format for screenshot results. The SDKs support only `json`, which returns metadata with the captured file's URL in `screenshot`; download the file from that URL. (The API's `output=image`, which returns the raw file, is not supported by the SDK methods.)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fileType:** `?string` — File type for screenshot output
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$url:** `string` — URLs to capture screenshots of
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$width:** `?int` — Browser viewport width in pixels
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$height:** `?int` — Browser viewport height in pixels
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fullPage:** `?bool` — Capture a full-page screenshot
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$fresh:** `?bool` — Bypass cache and take a fresh screenshot
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$noCookieBanners:** `?bool` — Remove cookie banners from the screenshot
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$enableCaching:** `?bool` — Enable caching for repeated requests
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockAds:** `?bool` — Block advertisements on the page
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockChatWidgets:** `?bool` — Block chat widget scripts from loading
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$extractText:** `?bool` — Extract visible text from the page
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$extractHtml:** `?bool` — Extract HTML content of the page
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$destroyScreenshot:** `?bool` — Auto-destroy screenshot after fetch
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lazyLoad:** `?bool` — Enable lazy-loading content before screenshot
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$retina:** `?bool` — Capture screenshot in high-DPI (Retina) mode
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$darkMode:** `?bool` — Render page in dark mode
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockTracking:** `?bool` — Block common user-tracking scripts
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$enableIncognito:** `?bool` — Enable private/incognito mode for browser session
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$omitBackground:** `?bool` — Omit background color (transparent background)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$thumbnailWidth:** `?int` — Thumbnail width in pixels
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$adjustTop:** `?int` — Adjust top in pixels
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$waitForEvent:** `?string` — Wait for a specific load event before capturing the screenshot.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$grayscale:** `?int` — Range:0 to 100 for grayscale filter
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$delay:** `?int` — How many milliseconds to wait before taking the screenshot
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$timeout:** `?int` — Maximum timeout in milliseconds. Defalut is `10,000`
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ttl:** `?int` — Number of seconds the screenshot should be cached
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$clipX:** `?int` — X position of the clipping rectangle in pixels
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$clipY:** `?int` — Y position of the clipping rectangle in pixels
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$clipWidth:** `?int` — Width of the clipping rectangle in pixels
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$clipHeight:** `?int` — Height of the clipping rectangle in pixels
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$cssUrl:** `?string` — URL to CSS file
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$css:** `?string` — Your custom CSS code
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$jsUrl:** `?string` — URL to JS file
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$js:** `?string` — Your JS code
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockJs:** `?bool` — Block Scripts
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockStylesheets:** `?bool` — Block Stylesheets
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockImages:** `?bool` — Block Images
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockMedia:** `?bool` — Block Media
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockFont:** `?bool` — Block Fonts
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockTextTrack:** `?bool` — Block Text Tracks
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockXhr:** `?bool` — Block XHR Requests
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockFetch:** `?bool` — Block Fetch Requests
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockEventSource:** `?bool` — Block Event Source
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockWebSocket:** `?bool` — Block Web Sockets
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockManifest:** `?bool` — Block Manifest
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blockSpecificRequests:** `?string` — Comma- or newline-separated list of specific requests to block. Each line and comma are treated as separate requests for processing. Example: https://example.com, https://example.js
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$blurSelector:** `?string` 
+
+Comma-separated list of indexed CSS selectors to blur.
+Format: `index:<selector>`, e.g., `0:.banner,1:#ads`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$removeSelector:** `?string` 
+
+Comma-separated list of indexed CSS selectors to blur.
+Format: `index:<selector>`, e.g., `0:.banner,1:#ads`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$resultFileName:** `?string` 
+
+Specify a meaningful & unique file name to easily identify the screenshot result.
+Avoid using spaces or special characters; use hyphens or underscores to separate words.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$scrollingScreenshot:** `?bool` — **`Scrolling Screenshot`**: Capture a long scrolling screenshot. When true, disable `fullPage` and `freshScreenshot`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$scrollSpeed:** `?string` — Speed of scrolling during the screenshot.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$scrollBack:** `?bool` — If true, the scroll will reverse back to the top after reaching the bottom.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startImmediately:** `?bool` — If true, the scrolling capture will start immediately upon page load.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$multipleScrolling:** `?bool` — If true, multiple scrolling screenshots will be taken at different viewport sizes.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$sizes:** `?array` — Comma-separated list of viewport sizes in the format index:XXw:YYh. Example: sizes=0:120w:300h,1:240w:500h. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$duration:** `?float` — Duration in seconds for the scrolling capture. Acceptable range: 0 to 100 seconds.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$failOnError:** `?bool` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$longitude:** `?float` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$latitude:** `?float` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$proxy:** `?string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$headers:** `?string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$cookies:** `?string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$scrollToElement:** `?string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$selector:** `?string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$userAgent:** `?string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$acceptLanguages:** `?string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$customHtml:** `?string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$imageQuality:** `?float` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$captchaError:** `?string` — CSS selector of the message shown for a wrong answer. While it is visible, the solver tries again.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$captchaImage:** `?string` — CSS selector of the captcha picture. Required when solve_captcha is true.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$captchaInput:** `?string` — CSS selector of the box the answer is typed into. Required when solve_captcha is true.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$captchaRefresh:** `?string` — CSS selector of the control that loads a new captcha picture before the next try.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$captchaRetries:** `?int` — Number of guesses the solver makes, from 1 to 5.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$captchaSubmit:** `?string` — CSS selector of the button to click after the answer is typed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$classicProxy:** `?bool` — Loads the page through a datacenter proxy. Adds 20 credits per request. Ignored when premium_proxy is true or a custom proxy is set.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$clickRecursion:** `?int` — Number of times to click the selector (when set via `selector_to_click`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `?string` — Two-letter country code, such as US or DE, for the exit address of classic_proxy or premium_proxy. Ignored when you send your own proxy. Any two-letter code is sent, including one that is not listed. Classic proxy countries: BG, GE, DE, HN, MD, UA, GB, US. Premium proxy countries: AF, AL, DZ, AO, AG, AR, AM, AW, AU, AT, AZ, BS, BH, BD, BB, BY, BE, BZ, BJ, BT, BO, BQ, BA, BW, BR, BN, BG, BF, BI, CV, KH, CM, CA, KY, CF, TD, CL, CN, CO, KM, CG, CR, CI, HR, CU, CW, CY, CZ, CD, DK, DJ, DM, DO, EC, EG, SV, GQ, EE, SZ, ET, FO, FJ, FI, FR, GF, PF, GA, GM, GE, DE, GH, GI, GR, GL, GD, GP, GU, GT, GG, GN, GW, GY, HT, HN, HK, HU, IS, IN, ID, IR, IQ, IE, IL, IT, JM, JP, JE, JO, KZ, KE, XK, KW, KG, LA, LV, LB, LS, LR, LY, LT, MO, MG, MW, MY, MV, ML, MT, MQ, MR, MU, YT, MX, MD, MN, ME, MA, MZ, MM, NA, NP, NL, NC, NZ, NI, NE, NG, MK, NO, OM, PK, PS, PA, PG, PY, PE, PH, PL, PT, PR, QA, RE, RO, RU, RW, KN, LC, VC, WS, SA, SN, RS, SC, SL, SG, SK, SI, SB, SO, ZA, KR, SS, ES, LK, SD, SR, SE, CH, SY, TW, TJ, TZ, TH, TL, TG, TO, TT, TN, TR, TM, UG, UA, AE, GB, US, UY, UZ, VE, VN, YE, ZM, ZW.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$extractMarkdown:** `?bool` — Extracts rendered page content as a structured .md (Markdown) file. Preserves headings, lists, links. Only with output=json.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format: json (default).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$getImageUrls:** `?bool` — Extracts all image URLs from the rendered DOM and returns them in structured format. Only with output=json.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$gpu:** `?bool` — Renders the page with a GPU, including WebGL and canvas content. Adds 20 credits per request.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$markdown:** `?string` — Markdown to render instead of loading a URL. Works like custom_html, so you can capture a README or notes without hosting a page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ocrModel:** `?string` — Recognition model used by the captcha solver: mini-ocr-v1 (default) or ocr-v1.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pdfOptionsFormat:** `?string` — Paper size of the PDF. Applies when file_type is PDF. Without it, width and height are used if set, otherwise the page renders as one long page: A0, A1, A2, A3, A4, A5, A6, Letter, Legal, Tabloid, or Ledger.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pdfOptionsLandscape:** `?bool` — Renders the PDF in landscape orientation, swapping the width and height of the paper size. Applies when file_type is PDF.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pdfOptionsMedia:** `?string` — CSS media type used to render the PDF: print or screen.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pdfOptionsPageRange:** `?string` — Pages to keep in the PDF, as start-end, for example 1-3 or 5-5. Pages are rendered first and then trimmed. Has no effect on a single-page PDF. Applies when file_type is PDF.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pdfOptionsPrintBackground:** `?bool` — Includes background colors and images in the PDF. Applies when file_type is PDF.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$premiumProxy:** `?bool` — Loads the page through a residential proxy. Adds 200 credits per request. Used instead of classic_proxy.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$scrollDelay:** `?int` — Delay in milliseconds between scroll steps when `lazy_load` is enabled. Use higher values for heavy pages.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$selectorToClick:** `?string` — CSS selector for an element to click before capturing the screenshot. Useful for opening dropdowns, modals, or triggering content.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$solveCaptcha:** `?bool` — Solves a captcha made of text drawn in a picture, then takes the screenshot. Requires captcha_image and captcha_input. Adds 20 credits per request.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$stealth:** `?bool` — Makes the browser look like a regular visitor for pages that block automated traffic. No extra credits.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$timezone:** `?string` — IANA timezone the browser uses while rendering, such as Asia/Karachi or Europe/London. Useful for clocks and localized dates.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$video:** `?bool` — Records visible viewport only for a specified duration. Use with `duration` parameter. Ideal for dashboards and animations.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;bulkScreenshotCapture($request) -> ?BulkScreenshotCaptureResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Our Bulk Screenshot API allows you to capture screenshots of multiple webpages simultaneously, saving you time and effort. Instead of manually capturing each page one by one, you can batch process URLs and receive high-quality screenshots in the format you choose.
+ Maximum `50 URLs` per request.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->bulkScreenshotCapture(
+    new BulkScreenshotCaptureRequest([
+        'apiKey' => 'apiKey',
+        'urls' => [
+            new BulkScreenshotCaptureRequestUrlsItem([
+                'url' => 'url',
+            ]),
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$urls:** `array` — List of website URLs to capture screenshots of
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;currencyLatestRates($request) -> ?CurrencyLatestRatesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get live forex rates for all world currencies with customizable update frequency
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->currencyLatestRates(
+    new CurrencyLatestRatesRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$base:** `?string` — Base currency for rate calculations
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `?array` — Comma separated list of desired currency codes. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$updates:** `?string` — Exchange rates update period (1d=daily, 1h=hourly, 10m=10 minutes, 1m=1 minute)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;currencyHistoricalRates($request) -> ?CurrencyHistoricalRatesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get historical exchange rates for any specific date
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->currencyHistoricalRates(
+    new CurrencyHistoricalRatesRequest([
+        'apiKey' => 'apiKey',
+        'date' => new DateTime('2023-01-15'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$base:** `?string` — Base currency for rate calculations
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `?array` — Comma separated list of desired currency codes. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$date:** `DateTime` — Specific date in YYYY-MM-DD format
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;currencyConvertLatest($request) -> ?CurrencyConvertLatestResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Convert amount between currencies using the latest exchange rates
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->currencyConvertLatest(
+    new CurrencyConvertLatestRequest([
+        'apiKey' => 'apiKey',
+        'from' => 'from',
+        'to' => 'to',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$from:** `string` — Source currency code
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$to:** `string` — Target currency code
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$amount:** `?float` — Amount to convert
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$updates:** `?string` — Exchange rates update period (1d=daily, 1h=hourly, 10m=10 minutes, 1m=1 minute)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;currencyConvertHistorical($request) -> ?CurrencyConvertHistoricalResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Convert amount between currencies using historical rates
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->currencyConvertHistorical(
+    new CurrencyConvertHistoricalRequest([
+        'apiKey' => 'apiKey',
+        'from' => 'from',
+        'to' => 'to',
+        'date' => new DateTime('2023-01-15'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$from:** `string` — From currency symbol
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$to:** `string` — To currency symbol
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$amount:** `?float` — The Amount to be converted
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$date:** `DateTime` — specific date (format YYYY-MM-DD) of which exchange rates is used.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;currencyTimeSeries($request) -> ?CurrencyTimeSeriesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get exchange rates for a time range
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->currencyTimeSeries(
+    new CurrencyTimeSeriesRequest([
+        'apiKey' => 'apiKey',
+        'startDate' => new DateTime('2023-01-15'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startDate:** `DateTime` — Start date (format YYYY-MM-DD) of the preferred time frame
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$endDate:** `?DateTime` — End date (format YYYY-MM-DD) of the preferred time frame
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$base:** `?string` — Base currency
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `?array` — comma separated list of desired currencies/ commodities symbols. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;currencyFluctuation($request) -> ?CurrencyFluctuationResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get currency fluctuation data for a time period
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->currencyFluctuation(
+    new CurrencyFluctuationRequest([
+        'apiKey' => 'apiKey',
+        'startDate' => new DateTime('2023-01-15'),
+        'base' => 'USD',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startDate:** `DateTime` — Start date (format YYYY-MM-DD) of the preferred time frame
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$endDate:** `?DateTime` — End date (format YYYY-MM-DD) of the preferred time frame
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$base:** `?string` — Base currency
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `?array` — comma separated list of desired currencies/ commodities symbols. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;currencyConvertByIp($request) -> ?CurrencyConvertByIpResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Convert amount using user's location
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->currencyConvertByIp(
+    new CurrencyConvertByIpRequest([
+        'apiKey' => 'apiKey',
+        'from' => 'from',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$updates:** `?string` — Exchange rates update period (1d=daily, 1h=hourly, 10m=10 minutes, 1m=1 minute)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$from:** `string` — From currency symbol
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — IPv4 or IPv6 geolocated currency
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$amount:** `?float` — Amount to convert
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;currencySupported($request) -> ?CurrencySupportedResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get list of all supported currencies with their metadata
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->currencySupported(
+    new CurrencySupportedRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;currencySymbols($request) -> ?CurrencySymbolsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get currency symbols and codes
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->currencySymbols(
+    new CurrencySymbolsRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;currencyHistoricalLimits($request) -> ?CurrencyHistoricalLimitsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get information about historical data availability and limits
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->currencyHistoricalLimits(
+    new CurrencyHistoricalLimitsRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;commodityLatestRates($request) -> ?CommodityLatestRatesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get live commodity rates with customizable update frequency
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->commodityLatestRates(
+    new CommodityLatestRatesRequest([
+        'apiKey' => 'apiKey',
+        'symbols' => [
+            'symbols',
+        ],
+        'updates' => CommodityLatestRatesRequestUpdates::TenM->value,
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the Response
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `?array` — Comma separated list of desired commodities symbols *(e.g. XAU,XAG,WTI,BRENT)* **Required**. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$updates:** `string` — Exchange rates update period. Possible values are: (1) `10m` - 10 minute update (2) `1m` - 1 minute update **Required**
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$quote:** `?string` — Specifies the target currency for the exchange rate; default quote currency is the market currency of commodity *(e.g. USD, EUR, INR)*
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;commodityHistoricalRates($request) -> ?CommodityHistoricalRatesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get historical commodity rates for a specific date
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->commodityHistoricalRates(
+    new CommodityHistoricalRatesRequest([
+        'apiKey' => 'apiKey',
+        'date' => new DateTime('2023-01-15'),
+        'symbols' => [
+            'symbols',
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$date:** `DateTime` — Historical date (YYYY-MM-DD)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `?array` — Comma-separated list of commodity symbols. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;commodityFluctuation($request) -> ?CommodityFluctuationResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get commodity price fluctuation data for a time period
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->commodityFluctuation(
+    new CommodityFluctuationRequest([
+        'apiKey' => 'apiKey',
+        'symbols' => [
+            'symbols',
+        ],
+        'startDate' => new DateTime('2023-01-15'),
+        'endDate' => new DateTime('2023-01-15'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `?array` — Comma-separated list of commodity symbols. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startDate:** `DateTime` — Start date (YYYY-MM-DD)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$endDate:** `DateTime` — End date (YYYY-MM-DD)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;commodityTimeSeries($request) -> ?CommodityTimeSeriesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get commodity rates for a time range
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->commodityTimeSeries(
+    new CommodityTimeSeriesRequest([
+        'apiKey' => 'apiKey',
+        'symbols' => [
+            'symbols',
+        ],
+        'startDate' => new DateTime('2023-01-15'),
+        'endDate' => new DateTime('2023-01-15'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$symbols:** `?array` — Comma-separated list of commodity symbols. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startDate:** `DateTime` — Start date (YYYY-MM-DD)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$endDate:** `DateTime` — End date (YYYY-MM-DD)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;commoditySymbols($request) -> ?CommoditySymbolsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get list of supported commodities
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->commoditySymbols(
+    new CommoditySymbolsRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;vatSupportedCountries($request) -> ?VatSupportedCountriesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a list of supported countries.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->vatSupportedCountries(
+    new VatSupportedCountriesRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response. Default is JSON.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$type:** `?string` — Which list to return: VAT (`VAT_Supported_Countries_And_States`), IBAN (`IBAN_Supported_Countries`) or SWIFT (`SWIFT_Supported_Countries`). Each value returns only its own list. If omitted (or unknown), all three lists are returned.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;vatRateByIp($request) -> ?array</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Fetches VAT rate based on the specified or originating IP address.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->vatRateByIp(
+    new VatRateByIpRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specify the desired response format. Options: 'json' (default) or 'xml'.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ipAddress:** `?string` — IPv4 or IPv6 address to look up VAT rate for. If omitted, the originating IP address will be used.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;vatRateByCountry($request) -> ?array</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Fetches VAT rates for a single country or state provided via query parameters.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->vatRateByCountry(
+    new VatRateByCountryRequest([
+        'apiKey' => 'apiKey',
+        'country' => 'country',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specify the desired response format. Options: 'json' (default) or 'xml'.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `string` — Country identifier in Alpha-2 (PK), Alpha-3 (PAK), or full name (Pakistan). Combine with the optional "state" query for sub-national VAT; values are case-insensitive and may use underscores instead of spaces.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$state:** `?string` — Optional state or region in Alpha-2 (NY) or full name (New_York). Use with "country" for state-level VAT; values are case-insensitive and may use underscores.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;bulkVatRateByCountry($request) -> ?array</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves VAT details for multiple countries or country-state combinations in a single request. Maximum of `100` entries per request are allowed.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->bulkVatRateByCountry(
+    new BulkVatRateByCountryRequest([
+        'apiKey' => 'apiKey',
+        'countries' => [
+            new BulkVatRateByCountryRequestCountriesItem([
+                'country' => 'PAK',
+            ]),
+            new BulkVatRateByCountryRequestCountriesItem([
+                'country' => 'United_States',
+                'state' => 'New_York',
+            ]),
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specify the desired response format. Options: 'json' (default) or 'xml'.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$countries:** `array` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;vatValidate($request) -> ?VatValidateResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Validates an EU or UK VAT number and returns registration status details.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->vatValidate(
+    new VatValidateRequest([
+        'apiKey' => 'apiKey',
+        'vatNumber' => 'vatNumber',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specify the desired response format. Options: 'json' (default) or 'xml'.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$vatNumber:** `string` — EU or UK VAT number to validate.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$requesterVatNumber:** `?string` — Requester EU or UK VAT number.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;ibanValidate($request) -> ?IbanValidateResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Checks an IBAN for structural validity, checksum accuracy, and bank metadata.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->ibanValidate(
+    new IbanValidateRequest([
+        'apiKey' => 'apiKey',
+        'iban' => 'iban',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specify the desired response format. Options: 'json' (default) or 'xml'.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$iban:** `string` — IBAN to validate.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;swiftCodeFind($request) -> ?array</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Fetches SWIFT codes for a given country, bank, and city.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->swiftCodeFind(
+    new SwiftCodeFindRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specify the desired response format. Options: 'json' (default) or 'xml'.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `?string` — Country name (accepts full name, e.g., Pakistan, United States). If only the country parameter is supplied, lists all banks in the country.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$bank:** `?string` — Bank name (upper case) used to filter SWIFT codes. Should be used together with the country parameter. If only country and bank are provided (without city), returns the list of cities for that bank.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$city:** `?string` — Gives SWIFT codes for a bank. Optionally specify the city (upper case) to narrow results to a specific city for that bank.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;swiftCodeLookup($request) -> ?SwiftCodeLookupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Fetches detailed information about a SWIFT code.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->swiftCodeLookup(
+    new SwiftCodeLookupRequest([
+        'apiKey' => 'apiKey',
+        'swiftCode' => 'swiftCode',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Specify the desired response format. Options: 'json' (default) or 'xml'.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$swiftCode:** `string` — SWIFT/BIC code to lookup (must be 8 or 11 characters).
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;zipcodeLookup($request) -> ?ZipcodeLookupResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->zipcodeLookup(
+    new ZipcodeLookupRequest([
+        'apiKey' => 'apiKey',
+        'code' => 'code',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$code:** `string` — Comma separated list of postal / zip codes. Max. 100 values.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `?string` — Country code in ISO 3166-1 alpha-2 format. If not provided, search results will be returned from all countries.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;bulkZipcodeLookup($request) -> ?BulkZipcodeLookupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Validates a bulk of ZIP/postal codes and returns result for each. Maximum `100` ZIP/postal codes per request.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->bulkZipcodeLookup(
+    new BulkZipcodeLookupRequest([
+        'apiKey' => 'apiKey',
+        'codes' => [
+            'codes',
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$codes:** `array` — Comma separated list of postal / zip codes. Max. 100 values.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `?string` — Country code in ISO 3166-1 alpha-2 format. If not provided, search results will be returned from all countries.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;zipcodeSearchByCity($request) -> ?ZipcodeSearchByCityResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->zipcodeSearchByCity(
+    new ZipcodeSearchByCityRequest([
+        'apiKey' => 'apiKey',
+        'city' => 'city',
+        'country' => 'country',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$city:** `string` — Name of the city in which we want to find zipcodes in.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `string` — Country code in ISO 3166-1 alpha-2 format.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$stateName:** `?string` — Name of the state or province associated with the country.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$page:** `?int` — Page number to retrieve paginated results.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;zipcodeSearchByRegion($request) -> ?ZipcodeSearchByRegionResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->zipcodeSearchByRegion(
+    new ZipcodeSearchByRegionRequest([
+        'apiKey' => 'apiKey',
+        'country' => 'country',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `string` — Country code in ISO 3166-1 alpha-2 format.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$region:** `?string` — Name of the region, state or province associated with the country. Either region or region_code is required; region_code takes priority if both are given.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$page:** `?int` — Page no. to retrieve paginated results.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$regionCode:** `?string` — ISO code of the region, state, or province associated with the country. Either region or region_code is required. region_code takes priority if both are given.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;zipcodeSearchByRadius($request) -> ?ZipcodeSearchByRadiusResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->zipcodeSearchByRadius(
+    new ZipcodeSearchByRadiusRequest([
+        'apiKey' => 'apiKey',
+        'radius' => 1.1,
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$code:** `?string` — Postal/Zip code to be used as the center point for the search.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lat:** `?float` — Latitude coordinate for the base location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$long:** `?float` — Longitude coordinate for the base location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `?string` — Country code in ISO 3166-1 alpha-2 format. Required only when using the code parameter.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$radius:** `float` — Search radius for the query. The maximum allowed values are: - 100 km - 100 mi - 109361 yd - 100000 m - 328084 ft - 3937007.75 in
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$unit:** `?string` — Supported distance units are m, km, mi, ft, yd, in.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$page:** `?int` — Page no. to retrieve paginated results.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;zipcodeDistance($request) -> ?ZipcodeDistanceResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get distance between postal codes. Maximum `100` postal codes per request.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->zipcodeDistance(
+    new ZipcodeDistanceRequest([
+        'apiKey' => 'apiKey',
+        'compare' => [
+            'compare',
+        ],
+        'country' => 'country',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$compare:** `array` — Comma separated list of postal / zip codes with which base point is compared w.r.t. Max 100 zip codes can be provided.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$code:** `?string` — Postal/Zip code to be used as the base point.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lat:** `?float` — Latitude coordinate for the base location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$long:** `?float` — Longitude coordinate for the base location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `string` — Country code in ISO 3166-1 alpha-2 format.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$unit:** `?string` — Supported distance units are m, km, mi, ft, yd, in.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;zipcodeDistanceMatch($request) -> ?ZipcodeDistanceMatchResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get matching ZIP/postal code pairs within a specified distance. Maximum `100` postal codes per request.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->zipcodeDistanceMatch(
+    new ZipcodeDistanceMatchRequest([
+        'apiKey' => 'apiKey',
+        'codes' => [
+            'codes',
+        ],
+        'country' => 'country',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$codes:** `array` — Comma-separated list of postal/zip codes. Maximum 100 values allowed.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `string` — Country code in ISO 3166-1 alpha-2 format.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$distance:** `?float` — Maximum allowed distance between postal code pairs.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$unit:** `?string` — Supported distance units are m, km, mi, ft, yd, in.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;currentWeather($request) -> ?CurrentWeatherResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get current weather data including temperature, humidity, precipitation, wind conditions, atmospheric pressure, and air quality for any location. Accepts city names, coordinates, or IP addresses. Also includes astronomy data and timezone-aware timestamps.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->currentWeather(
+    new CurrentWeatherRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format returned by the API. Only JSON is supported.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$location:** `?string` — City name, place name, or full address.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lat:** `?float` — Latitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$long:** `?float` — Longitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — IP(v4 or v6) address for location inference.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$timezone:** `?string` — Timezone for the results.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;bulkCurrentWeather($request) -> ?BulkCurrentWeatherResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve current weather conditions for up to `50 locations` in a single request. A maximum of 50 locations (city names, IP addresses, or geographic coordinates) can be included in the request body.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->bulkCurrentWeather(
+    new BulkCurrentWeatherRequest([
+        'apiKey' => 'apiKey',
+        'locations' => [
+            new BulkCurrentWeatherRequestLocationsItem([
+                'location' => 'lahore',
+            ]),
+            new BulkCurrentWeatherRequestLocationsItem([
+                'lat' => 32.5,
+                'long' => 74.5,
+            ]),
+            new BulkCurrentWeatherRequestLocationsItem([
+                'ip' => '8.8.8.8',
+            ]),
+            new BulkCurrentWeatherRequestLocationsItem([
+                'location' => 'seoul',
+            ]),
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format returned by the API. Only JSON is supported.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$timezone:** `?string` — Timezone for the results.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$locations:** `array` — Array of locations to fetch weather data for
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;weatherForecast($request) -> ?WeatherForecastResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Access comprehensive weather forecasts with customizable precision - choose from daily overviews, hourly breakdowns, or even minute-by-minute data. Configure your date ranges or use the default 7-day forecast for standard weather planning.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->weatherForecast(
+    new WeatherForecastRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format returned by the API. Only JSON is supported.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startDate:** `?DateTime` — Start date for the forecast in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between startDate and endDate must not exceed 16 days.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$endDate:** `?DateTime` — End date for the forecast in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between startDate and endDate must not exceed 16 days.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$forecastDays:** `?int` — Number of days for the forecast, from 1 to 16. Default is 7. Maximum value is 16.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$location:** `?string` — City name, place name, or full address.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lat:** `?float` — Latitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$long:** `?float` — Longitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — IP(v4 or v6) address for location inference.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$precision:** `?string` — Precision of the forecast data.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$timezone:** `?string` — Timezone for the results.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;historicalWeather($request) -> ?HistoricalWeatherResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Access past weather conditions for specific dates with records going back to 1940. Retrieve comprehensive historical data with both daily and hourly precision options.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->historicalWeather(
+    new HistoricalWeatherRequest([
+        'apiKey' => 'apiKey',
+        'date' => new DateTime('2023-01-15'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format returned by the API. Only JSON is supported.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$date:** `DateTime` — Specific date for which to fetch weather data in YYYY-MM-DD format. Historical dates must be past dates only. Current or future dates are not allowed for historical data. Data available from 1940 onwards.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$location:** `?string` — City name, place name, or full address.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lat:** `?float` — Latitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$long:** `?float` — Longitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — IP(v4 or v6) address for location inference.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$precision:** `?string` — Precision of the historical data. **Note:** 'daily' returns daily aggregates, 'hourly' returns hourly data.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$timezone:** `?string` — Timezone for the results.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;weatherTimeSeries($request) -> ?WeatherTimeSeriesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Pull historical weather information for date ranges up to 90 days (daily data) or 7 days (hourly data). Get consistent formatting across your specified date range with reliable historical weather patterns.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->weatherTimeSeries(
+    new WeatherTimeSeriesRequest([
+        'apiKey' => 'apiKey',
+        'startDate' => new DateTime('2023-01-15'),
+        'endDate' => new DateTime('2023-01-15'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format returned by the API. Only JSON is supported.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startDate:** `DateTime` — Starting date for the data in YYYY-MM-DD format. Historical dates must be past dates only. Current or future dates are not allowed for historical data. Data available from 1940 onwards. For precision=daily, the difference between endDate and startDate must not exceed 90 days. For precision=hourly, the difference must not exceed 7 days.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$endDate:** `DateTime` — End date for the data in YYYY-MM-DD format. Historical dates must be past dates only. Current or future dates are not allowed for historical data. Data available from 1940 onwards. For precision=daily, the difference between endDate and startDate must not exceed 90 days. For precision=hourly, the difference must not exceed 7 days.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$location:** `?string` — City name, place name, or full address.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lat:** `?float` — Latitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$long:** `?float` — Longitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — IP(v4 or v6) address for location inference.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$precision:** `?string` — Precision of the data.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$timezone:** `?string` — Timezone for the results.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;marineWeather($request) -> ?MarineWeatherResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Provides hourly forecasts of marine conditions including wave heights, wave directions, wave periods, swell info, sea surface temperatures, and ocean currents. Supports multiple geographical points and returns daily max wave statistics for up to 7 days. Ideal for maritime planning, navigation, and coastal activities.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->marineWeather(
+    new MarineWeatherRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format returned by the API. Only JSON is supported.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startDate:** `?DateTime` — Starting date for marine forecast data in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between endDate and startDate must not exceed 16 days.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$endDate:** `?DateTime` — End date for marine forecast data in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between endDate and startDate must not exceed 16 days.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$location:** `?string` — City name, place name, or full address.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lat:** `?float` — Latitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$long:** `?float` — Longitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — IP(v4 or v6) address for location inference.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$precision:** `?string` — Precision of the marine data.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$timezone:** `?string` — Timezone for the results.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;airQuality($request) -> ?AirQualityResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Monitor and predict air quality conditions using European and US AQI standards. Track pollutant concentrations including PM10, PM2.5, carbon monoxide, nitrogen dioxide, sulfur dioxide, ozone, and dust particles. Get current readings plus hourly forecasts up to 5 days ahead, complete with UV index and aerosol measurements for comprehensive air quality assessment.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->airQuality(
+    new AirQualityRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format returned by the API. Only JSON is supported.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startDate:** `?DateTime` — Starting date for AQI forecast data in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between endDate and startDate must not exceed 5 days.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$endDate:** `?DateTime` — End date for AQI forecast data in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between endDate and startDate must not exceed 5 days.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$location:** `?string` — City name, place name, or full address.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lat:** `?float` — Latitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$long:** `?float` — Longitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — IP(v4 or v6) address for location inference.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$precision:** `?string` — Only hourly precision is supported; returns hourly AQI data for the selected date range.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$timezone:** `?string` — Timezone for the results.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;floodForecast($request) -> ?FloodForecastResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Provides flood forecast data for a given location, including river discharge metrics such as mean, median, maximum, minimum, and percentile values (p25, p75). Requires a startDate and endDate, with the date range limited to 16 days. Location can be specified using city name, latitude/longitude, or IP address.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->floodForecast(
+    new FloodForecastRequest([
+        'apiKey' => 'apiKey',
+        'startDate' => new DateTime('2023-01-15'),
+        'endDate' => new DateTime('2023-01-15'),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Response format returned by the API. Only JSON is supported.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$startDate:** `DateTime` — Starting date for flood forecast data in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between endDate and startDate must not exceed 16 days.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$endDate:** `DateTime` — End date for flood forecast data in YYYY-MM-DD format. Forecast dates must be current or future dates only. Past dates are not allowed for forecast data. The difference between endDate and startDate must not exceed 16 days.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$location:** `?string` — City name, place name, or full address.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lat:** `?float` — Latitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$long:** `?float` — Longitude of the location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — IP(v4 or v6) address for location inference.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$precision:** `?string` — Only daily precision is supported; returns flood forecast data for the selected date range.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$timezone:** `?string` — Timezone for the results.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;getCountries($request) -> ?GetCountriesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve countries, optionally filtered by region or subregion.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->getCountries(
+    new GetCountriesRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$region:** `?string` — Optional filter to return countries within a specific region from the region endpoint.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$subregion:** `?string` — Optional filter to return countries within a specific subregion from the subregion endpoint.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;getCountryDetails($request) -> ?GetCountryDetailsResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->getCountryDetails(
+    new GetCountryDetailsRequest([
+        'apiKey' => 'apiKey',
+        'country' => 'country',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `string` — Country code in ISO 3166-1 alpha-2 format.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;getRegions($request) -> ?GetRegionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->getRegions(
+    new GetRegionsRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;getSubregions($request) -> ?GetSubregionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->getSubregions(
+    new GetSubregionsRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$region:** `?string` — Name of the region. If omitted, all subregions are returned.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;getAdminLevels($request) -> ?GetAdminLevelsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve administrative units based on ISO 3166-1 alpha-2 country code.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->getAdminLevels(
+    new GetAdminLevelsRequest([
+        'apiKey' => 'apiKey',
+        'country' => 'country',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `string` — Country code in ISO 3166-1 alpha-2 format
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;getAdminUnits($request) -> ?GetAdminUnitsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve administrative divisions for a given country using ISO 3166-1 alpha-2 country codes. You can optionally filter by administrative levels.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->getAdminUnits(
+    new GetAdminUnitsRequest([
+        'apiKey' => 'apiKey',
+        'country' => 'country',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `string` — Country code in ISO 3166-1 alpha-2 format.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$adminLevel:** `?array` — Filter results by one or more administrative level names (e.g. `land`, `state`, `province`), sent as a comma-separated list. Use the admin levels endpoint to list the levels a country has. Pass an array; the SDK sends it as one comma-separated value.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;getAdminUnitDetails($request) -> ?GetAdminUnitDetailsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve detailed administrative unit information by country and optionally filtered by admin code.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->getAdminUnitDetails(
+    new GetAdminUnitDetailsRequest([
+        'apiKey' => 'apiKey',
+        'country' => 'country',
+        'adminUnit' => 'admin_unit',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `string` — Country code in ISO 3166-1 alpha-2 format.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$adminUnit:** `string` — Optional admin code to fetch details for a specific administrative unit.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;getCities($request) -> ?GetCitiesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a list of cities within a country, optionally filtered by an administrative unit code.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->getCities(
+    new GetCitiesRequest([
+        'apiKey' => 'apiKey',
+        'country' => 'country',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$country:** `string` — Country code in ISO 3166-1 alpha-2 format.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$adminUnit:** `?string` — Administrative unit code used to filter cities within a specific region.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;getSupportedFlags($request) -> ?GetSupportedFlagsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get list of all supported flags with their metadata
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->getSupportedFlags(
+    new GetSupportedFlagsRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;getFlags($request) -> string</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the flag for a specific country
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->getFlags(
+    new GetFlagsRequest([
+        'apiKey' => 'apiKey',
+        'name' => 'name',
+        'shape' => GetFlagsRequestShape::Flat->value,
+        'type' => GetFlagsRequestType::Country->value,
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$name:** `string` — Country code in ISO 3166-1 alpha-2 format.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$shape:** `string` — Flag shape. One of: `'flat'` or `'round'`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Flag format. Applicable only for PNG or WEBP formats. Default is png.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$size:** `?string` — Flag size in pixels. Valid options: `16px`, `24px`, `32px`, `48px`, `64px`. Applicable only for PNG or WEBP formats.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$type:** `string` — Type of flag. One of: `country` or `organization`.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;timezoneLookup($request) -> ?TimezoneLookupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve current time, date, and timezone-related information by specifying a timezone name, location address, location coordinates, IP address, or use the client IP address if no parameter is passed.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->timezoneLookup(
+    new TimezoneLookupRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — IPv4 or IPv6 address to extract timezone information.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$tz:** `?string` — Timezone name (e.g., "Asia/Kolkata") to retrieve information directly.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$location:** `?string` — Location string (preferably city and country) to extract timezone.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lat:** `?float` — Latitude for geolocation lookup.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$long:** `?float` — Longitude for geolocation lookup.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lang:** `?string` — Language code for response localization (default is "en").
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$iataCode:** `?string` — 3-letter IATA airport code (e.g., JFK).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$icaoCode:** `?string` — 4-letter ICAO airport code (e.g., KJFK).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$loCode:** `?string` — 5-letter UN/LO city code.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;timezoneConvert($request) -> ?TimezoneConvertResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Converts a given time from one timezone to another using various input types like timezone name, coordinates, location, or codes.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->timezoneConvert(
+    new TimezoneConvertRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response .
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$time:** `?string` — Time to convert in `yyyy-MM-dd HH:mm` or `yyyy-MM-dd HH:mm:ss` format.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$tzFrom:** `?string` — Source timezone name (e.g., `Asia/Kolkata`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$tzTo:** `?string` — Target timezone name (e.g., `America/New_York`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$latFrom:** `?float` — Latitude of source location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$longFrom:** `?float` — Longitude of source location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$latTo:** `?float` — Latitude of target location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$longTo:** `?float` — Longitude of target location.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$locationFrom:** `?string` — From location (city/country).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$locationTo:** `?string` — To location (city/country).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$iataFrom:** `?string` — From IATA airport code (e.g., JFK).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$iataTo:** `?string` — To IATA airport code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$icaoFrom:** `?string` — From ICAO airport code (e.g., KJFK).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$icaoTo:** `?string` — To ICAO airport code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$locodeFrom:** `?string` — From UN/LO CODE.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$locodeTo:** `?string` — To UN/LO CODE.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;userAgentLookup($request) -> ?UserAgentLookupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Parse User Agent string to get detailed browser, device, and operating system information
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->userAgentLookup(
+    new UserAgentLookupRequest([
+        'apiKey' => 'apiKey',
+        'userAgent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$userAgent:** `string` — The User-Agent string to parse. Sent as the `User-Agent` HTTP header.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;bulkUserAgentLookup($request) -> ?array</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Parse up to `20000 User-Agent strings` at once in a single request; exceeding that returns a 413, not a 400.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->bulkUserAgentLookup(
+    new BulkUserAgentLookupRequest([
+        'apiKey' => 'apiKey',
+        'uaStrings' => [
+            'uaStrings',
+        ],
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$uaStrings:** `array` — Array of User-Agent strings to parse. Maximum 20000 strings per request — exceeding that returns a 413.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;ocrPredict($request) -> ?OcrPredictResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Perform Optical Character Recognition (OCR) on images, PDFs, or ZIP archives. Supports two models: `mini-ocr-v1` for CAPTCHA-optimized OCR and `ocr-v1` for general-purpose document text extraction. Supports zonal OCR to extract text from specific regions of an image.
+
+**Notes:**
+- The `zone` query parameter cannot be given with .pdf and .zip types as it can only be applied to single image query.
+- The `page_range` query parameter cannot be given in any other type except .pdf types.
+- PDFs containing images in them are allowed only for processing.
+- The `mini-ocr-v1` model doesn’t support the following query parameters:
+    - `page_range` (.pdf types)
+    - `zone`
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->ocrPredict(
+    new OcrPredictRequest([
+        'apiKey' => 'apiKey',
+        'model' => OcrPredictRequestModel::MiniOcrV1->value,
+        'file' => File::createFromString("example_file", "example_file"),
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$model:** `string` — OCR model to use. `mini-ocr-v1` for CAPTCHA OCR, `ocr-v1` for general OCR.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$url:** `?string` — URL of the image or PDF (required if `file` is not uploaded).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$pageRange:** `?string` — Specify page range for multi-page PDFs (e.g., '1,3,5-10' or 'allpages'). **Note:** This parameter can only be used with .pdf file types.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$zone:** `?string` — Define OCR zones using coordinates (top:left:height:width). Multiple zones can be defined using commas. Only available for model 'ocr-v1'. **Note:** This parameter cannot be used with .pdf and .zip file types as it can only be applied to single image queries.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$newLine:** `?int` — Set to 1 to split output text into individual lines (default: 0). This changes the shape of `OCRText` (see the response).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$file:** `?File` — The file to upload, e.g. `File::createFromFilepath('document.pdf')` (`Apifreaks\Utils\File`). Sent as multipart/form-data.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;grammarDetect($request) -> ?GrammarDetectResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Analyze text for grammar errors and return the exact words flagged as grammatically incorrect with zero-based word positions.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->grammarDetect(
+    new GrammarDetectRequest([
+        'apiKey' => 'apiKey',
+        'text' => 'The global mental is health crisis is now a serious and compelex problem. It need quick and ongoing action from policymakers, healthcare workers, and the whole society.',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$text:** `string` — Text to analyze for grammar errors
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;grammarCorrect($request) -> ?GrammarCorrectResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Submit text with grammatical issues and receive a clean grammar-corrected result for proofreading and content workflows.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->grammarCorrect(
+    new GrammarCorrectRequest([
+        'apiKey' => 'apiKey',
+        'text' => 'The global mental is health crisis is now a serious and compelex problem. It need quick and ongoing action from policymakers, healthcare workers, and the whole society.',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$text:** `string` — Text to correct
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;weakWordsDetect($request) -> ?WeakWordsDetectResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Analyze text and return weak, vague, or filler words with zero-based word positions to help writers produce clearer and more concise content.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->weakWordsDetect(
+    new WeakWordsDetectRequest([
+        'apiKey' => 'apiKey',
+        'text' => 'Many people cannot get the support they need to handle their conditions well.',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$text:** `string` — Text to analyze for weak words
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;readabilityScore($request) -> ?ReadabilityScoreResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Analyze text readability using industry-standard formulas including Flesch Reading Ease, Flesch-Kincaid Grade Level, Gunning Fog Index, SMOG Index, Coleman-Liau Index, and Automated Readability Index.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->readabilityScore(
+    new ReadabilityScoreRequest([
+        'apiKey' => 'apiKey',
+        'text' => 'The global mental is health crisis is now a serious and compelex problem. It needs quick and ongoing action from policymakers, healthcare workers, and the whole society.',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$target:** `?string` — Target audience used to tune sentence difficulty levels
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$exclude:** `?string` — Comma-separated response sections to omit. Possible values are readability_scores, sentence_readability, readability_grade
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$text:** `string` — Text to analyze for readability
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;astronomyLookup($request) -> ?AstronomyLookupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve sunrise and sunset times, current position of the moon, and other related information by specifying a location address, location coordinates, IP address, or using the client IP address if no parameter is passed.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->astronomyLookup(
+    new AstronomyLookupRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$location:** `?string` — Location name or address
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lat:** `?float` — Latitude for location coordinates
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$long:** `?float` — Longitude for location coordinates
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$ip:** `?string` — IP address for location detection
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$lang:** `?string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$date:** `?DateTime` — Date for astronomy data (YYYY-MM-DD)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$elevation:** `?float` — Timezone of the location for which astronomy data is required
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$timeZone:** `?string` — 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>$client-&gt;getCreditsUsage($request) -> ?GetCreditsUsageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns subscription, subscription-surcharge, and one-off credit balances for the authenticated organization's account.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```php
+$client->getCreditsUsage(
+    new GetCreditsUsageRequest([
+        'apiKey' => 'apiKey',
+    ]),
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**$apiKey:** `string` — Your API key
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$format:** `?string` — Format of the response. Possible values: json, xml.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+

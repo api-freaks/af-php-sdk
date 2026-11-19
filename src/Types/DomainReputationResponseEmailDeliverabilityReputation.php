@@ -17,10 +17,10 @@ class DomainReputationResponseEmailDeliverabilityReputation extends JsonSerializ
     public bool $spamBlacklisted;
 
     /**
-     * @var bool $newlyRegistered Indicates whether the domain was registered recently.
+     * @var ?bool $newlyRegistered Indicates whether the domain was registered recently.
      */
     #[JsonProperty('newly_registered')]
-    public bool $newlyRegistered;
+    public ?bool $newlyRegistered;
 
     /**
      * @var ?int $domainAgeDays Age of the domain in days since registration.
@@ -31,7 +31,7 @@ class DomainReputationResponseEmailDeliverabilityReputation extends JsonSerializ
     /**
      * @param array{
      *   spamBlacklisted: bool,
-     *   newlyRegistered: bool,
+     *   newlyRegistered?: ?bool,
      *   domainAgeDays?: ?int,
      * } $values
      */
@@ -39,7 +39,7 @@ class DomainReputationResponseEmailDeliverabilityReputation extends JsonSerializ
         array $values,
     ) {
         $this->spamBlacklisted = $values['spamBlacklisted'];
-        $this->newlyRegistered = $values['newlyRegistered'];
+        $this->newlyRegistered = $values['newlyRegistered'] ?? null;
         $this->domainAgeDays = $values['domainAgeDays'] ?? null;
     }
 

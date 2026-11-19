@@ -65,7 +65,7 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemRegistryData extends J
     public ?array $domainStatus;
 
     /**
-     * @var ?string $whoisRawRegistry
+     * @var ?string $whoisRawRegistry Deprecated: the API returns this field as `whois_raw_registery`; read `whois_raw_registery` instead.
      */
     #[JsonProperty('whois_raw_registry')]
     public ?string $whoisRawRegistry;
@@ -75,6 +75,12 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemRegistryData extends J
      */
     #[JsonProperty('domain_registrar')]
     public ?DomainWhoisHistoryResponseWhoisDomainsHistoricalItemRegistryDataDomainRegistrar $domainRegistrar;
+
+    /**
+     * @var ?string $whoisRawRegistery
+     */
+    #[JsonProperty('whois_raw_registery')]
+    public ?string $whoisRawRegistery;
 
     /**
      * @param array{
@@ -89,6 +95,7 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemRegistryData extends J
      *   domainStatus?: ?array<string>,
      *   whoisRawRegistry?: ?string,
      *   domainRegistrar?: ?DomainWhoisHistoryResponseWhoisDomainsHistoricalItemRegistryDataDomainRegistrar,
+     *   whoisRawRegistery?: ?string,
      * } $values
      */
     public function __construct(
@@ -105,6 +112,7 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemRegistryData extends J
         $this->domainStatus = $values['domainStatus'] ?? null;
         $this->whoisRawRegistry = $values['whoisRawRegistry'] ?? null;
         $this->domainRegistrar = $values['domainRegistrar'] ?? null;
+        $this->whoisRawRegistery = $values['whoisRawRegistery'] ?? null;
     }
 
     /**

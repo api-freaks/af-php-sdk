@@ -78,6 +78,18 @@ class DomainReputationResponse extends JsonSerializableType
     public array $errors;
 
     /**
+     * @var ?DomainReputationResponseBacklinks $backlinks Backlink profile of the domain.
+     */
+    #[JsonProperty('backlinks')]
+    public ?DomainReputationResponseBacklinks $backlinks;
+
+    /**
+     * @var ?DomainReputationResponseRegistration $registration Current registration status of the domain.
+     */
+    #[JsonProperty('registration')]
+    public ?DomainReputationResponseRegistration $registration;
+
+    /**
      * @param array{
      *   input: DomainReputationResponseInput,
      *   assessedAt: string,
@@ -90,6 +102,8 @@ class DomainReputationResponse extends JsonSerializableType
      *   intelligence: DomainReputationResponseIntelligence,
      *   evidenceSummary: DomainReputationResponseEvidenceSummary,
      *   errors: array<string>,
+     *   backlinks?: ?DomainReputationResponseBacklinks,
+     *   registration?: ?DomainReputationResponseRegistration,
      * } $values
      */
     public function __construct(
@@ -106,6 +120,8 @@ class DomainReputationResponse extends JsonSerializableType
         $this->intelligence = $values['intelligence'];
         $this->evidenceSummary = $values['evidenceSummary'];
         $this->errors = $values['errors'];
+        $this->backlinks = $values['backlinks'] ?? null;
+        $this->registration = $values['registration'] ?? null;
     }
 
     /**

@@ -152,6 +152,18 @@ class TimezoneLookupResponseTimeZone extends JsonSerializableType
     public ?TimezoneLookupResponseTimeZoneDstEnd $dstEnd;
 
     /**
+     * @var ?string $dstTzAbbreviation Abbreviation of the DST time zone. Always present as a key; holds an empty string when dst_exists is false.
+     */
+    #[JsonProperty('dst_tz_abbreviation')]
+    public ?string $dstTzAbbreviation;
+
+    /**
+     * @var ?string $dstTzFullName Full name of the DST time zone. Always present as a key; holds an empty string when dst_exists is false.
+     */
+    #[JsonProperty('dst_tz_full_name')]
+    public ?string $dstTzFullName;
+
+    /**
      * @param array{
      *   name: string,
      *   offset: float,
@@ -177,6 +189,8 @@ class TimezoneLookupResponseTimeZone extends JsonSerializableType
      *   dstExists: bool,
      *   dstStart?: ?TimezoneLookupResponseTimeZoneDstStart,
      *   dstEnd?: ?TimezoneLookupResponseTimeZoneDstEnd,
+     *   dstTzAbbreviation?: ?string,
+     *   dstTzFullName?: ?string,
      * } $values
      */
     public function __construct(
@@ -206,6 +220,8 @@ class TimezoneLookupResponseTimeZone extends JsonSerializableType
         $this->dstExists = $values['dstExists'];
         $this->dstStart = $values['dstStart'] ?? null;
         $this->dstEnd = $values['dstEnd'] ?? null;
+        $this->dstTzAbbreviation = $values['dstTzAbbreviation'] ?? null;
+        $this->dstTzFullName = $values['dstTzFullName'] ?? null;
     }
 
     /**

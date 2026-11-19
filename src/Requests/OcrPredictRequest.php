@@ -3,8 +3,8 @@
 namespace Apifreaks\Requests;
 
 use Apifreaks\Core\Json\JsonSerializableType;
-use Apifreaks\Core\Json\JsonProperty;
 use Apifreaks\Types\OcrPredictRequestModel;
+use Apifreaks\Utils\File;
 
 class OcrPredictRequest extends JsonSerializableType
 {
@@ -14,34 +14,34 @@ class OcrPredictRequest extends JsonSerializableType
     public string $apiKey;
 
     /**
-     * @var ?string $url URL of the image or PDF (required if `file` not provided)
+     * @var value-of<OcrPredictRequestModel> $model OCR model to use. `mini-ocr-v1` for CAPTCHA OCR, `ocr-v1` for general OCR.
      */
-    #[JsonProperty('url')]
-    public ?string $url;
+    public string $model;
 
     /**
-     * @var value-of<OcrPredictRequestModel> $model OCR model to use. `mini-ocr-v1` for CAPTCHA OCR, `ocr-v1` for general OCR
+     * @var ?string $url URL of the image or PDF (required if `file` is not uploaded).
      */
-    #[JsonProperty('model')]
-    public string $model;
+    public ?string $url;
 
     /**
      * @var ?string $pageRange Specify page range for multi-page PDFs (e.g., '1,3,5-10' or 'allpages'). **Note:** This parameter can only be used with .pdf file types.
      */
-    #[JsonProperty('page_range')]
     public ?string $pageRange;
 
     /**
      * @var ?string $zone Define OCR zones using coordinates (top:left:height:width). Multiple zones can be defined using commas. Only available for model 'ocr-v1'. **Note:** This parameter cannot be used with .pdf and .zip file types as it can only be applied to single image queries.
      */
-    #[JsonProperty('zone')]
     public ?string $zone;
 
     /**
-     * @var ?int $newLine Set to 1 to split output text into individual lines (default: 0)
+     * @var ?int $newLine Set to 1 to split output text into individual lines (default: 0). This changes the shape of `OCRText` (see the response).
      */
-    #[JsonProperty('new_line')]
     public ?int $newLine;
+
+    /**
+     * @var ?File $file
+     */
+    public ?File $file;
 
     /**
      * @param array{
@@ -51,16 +51,18 @@ class OcrPredictRequest extends JsonSerializableType
      *   pageRange?: ?string,
      *   zone?: ?string,
      *   newLine?: ?int,
+     *   file?: ?File,
      * } $values
      */
     public function __construct(
         array $values,
     ) {
         $this->apiKey = $values['apiKey'];
-        $this->url = $values['url'] ?? null;
         $this->model = $values['model'];
+        $this->url = $values['url'] ?? null;
         $this->pageRange = $values['pageRange'] ?? null;
         $this->zone = $values['zone'] ?? null;
         $this->newLine = $values['newLine'] ?? null;
+        $this->file = $values['file'] ?? null;
     }
 }

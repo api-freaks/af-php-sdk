@@ -17,30 +17,30 @@ class DomainReputationResponseEmailDeliverabilityAuthenticationSpf extends JsonS
     public bool $present;
 
     /**
-     * @var string $policy SPF enforcement policy qualifier found in the record (e.g. ~all, -all).
+     * @var ?string $policy SPF enforcement policy qualifier found in the record (e.g. ~all, -all).
      */
     #[JsonProperty('policy')]
-    public string $policy;
+    public ?string $policy;
 
     /**
-     * @var string $record Raw SPF DNS TXT record string.
+     * @var ?string $record Raw SPF DNS TXT record string.
      */
     #[JsonProperty('record')]
-    public string $record;
+    public ?string $record;
 
     /**
      * @param array{
      *   present: bool,
-     *   policy: string,
-     *   record: string,
+     *   policy?: ?string,
+     *   record?: ?string,
      * } $values
      */
     public function __construct(
         array $values,
     ) {
         $this->present = $values['present'];
-        $this->policy = $values['policy'];
-        $this->record = $values['record'];
+        $this->policy = $values['policy'] ?? null;
+        $this->record = $values['record'] ?? null;
     }
 
     /**

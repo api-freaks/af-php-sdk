@@ -5,7 +5,6 @@ namespace Apifreaks\Types;
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
 use Apifreaks\Core\Types\ArrayType;
-use Apifreaks\Core\Types\Union;
 
 class WebScrapeRequestBodyBlockUrl extends JsonSerializableType
 {
@@ -22,58 +21,14 @@ class WebScrapeRequestBodyBlockUrl extends JsonSerializableType
     public ?array $cookies;
 
     /**
-     * @var array<(
-     *    WebScrapeRequestBodyBlockUrlInstructionsItemFill
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemClick
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemClickIfExist
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemEnter
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemNewTab
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemMoveToRelativeTab
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemWait
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemWaitFor
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemSelect
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemJsExe
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemConditionalCheck
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemClickButtonByValue
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemGeneralImageCaptcha
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemBlockElement
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemExtract
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemFillImageCaptcha
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemSwitchToIframe
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemSwitchToParentFrame
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemResolveAudioCaptcha
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemScreenshot
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemSaveimage
-     * )> $instructions An ordered list of step-by-step scraping instructions to be executed in the browser.
+     * @var array<WebScrapeRequestBodyBlockUrlInstructionsItem> $instructions An ordered list of step-by-step scraping instructions to be executed in the browser. Each item is one Instruction object, with exactly one action field set.
      */
-    #[JsonProperty('instructions'), ArrayType([new Union(WebScrapeRequestBodyBlockUrlInstructionsItemFill::class, WebScrapeRequestBodyBlockUrlInstructionsItemClick::class, WebScrapeRequestBodyBlockUrlInstructionsItemClickIfExist::class, WebScrapeRequestBodyBlockUrlInstructionsItemEnter::class, WebScrapeRequestBodyBlockUrlInstructionsItemNewTab::class, WebScrapeRequestBodyBlockUrlInstructionsItemMoveToRelativeTab::class, WebScrapeRequestBodyBlockUrlInstructionsItemWait::class, WebScrapeRequestBodyBlockUrlInstructionsItemWaitFor::class, WebScrapeRequestBodyBlockUrlInstructionsItemSelect::class, WebScrapeRequestBodyBlockUrlInstructionsItemJsExe::class, WebScrapeRequestBodyBlockUrlInstructionsItemConditionalCheck::class, WebScrapeRequestBodyBlockUrlInstructionsItemClickButtonByValue::class, WebScrapeRequestBodyBlockUrlInstructionsItemGeneralImageCaptcha::class, WebScrapeRequestBodyBlockUrlInstructionsItemBlockElement::class, WebScrapeRequestBodyBlockUrlInstructionsItemExtract::class, WebScrapeRequestBodyBlockUrlInstructionsItemFillImageCaptcha::class, WebScrapeRequestBodyBlockUrlInstructionsItemSwitchToIframe::class, WebScrapeRequestBodyBlockUrlInstructionsItemSwitchToParentFrame::class, WebScrapeRequestBodyBlockUrlInstructionsItemResolveAudioCaptcha::class, WebScrapeRequestBodyBlockUrlInstructionsItemScreenshot::class, WebScrapeRequestBodyBlockUrlInstructionsItemSaveimage::class)])]
+    #[JsonProperty('instructions'), ArrayType([WebScrapeRequestBodyBlockUrlInstructionsItem::class])]
     public array $instructions;
 
     /**
      * @param array{
-     *   instructions: array<(
-     *    WebScrapeRequestBodyBlockUrlInstructionsItemFill
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemClick
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemClickIfExist
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemEnter
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemNewTab
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemMoveToRelativeTab
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemWait
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemWaitFor
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemSelect
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemJsExe
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemConditionalCheck
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemClickButtonByValue
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemGeneralImageCaptcha
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemBlockElement
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemExtract
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemFillImageCaptcha
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemSwitchToIframe
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemSwitchToParentFrame
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemResolveAudioCaptcha
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemScreenshot
-     *   |WebScrapeRequestBodyBlockUrlInstructionsItemSaveimage
-     * )>,
+     *   instructions: array<WebScrapeRequestBodyBlockUrlInstructionsItem>,
      *   blockUrl?: ?array<string>,
      *   cookies?: ?array<WebScrapeRequestBodyBlockUrlCookiesItem>,
      * } $values

@@ -11,4 +11,5 @@ enum CommoditySymbolsV2ResponseSymbolsItemUpdateInterval: string
     case PerDay = "PER_DAY";
     case PerWeek = "PER_WEEK";
     case PerMonth = "PER_MONTH";
+    case Per6Months = "PER_6_MONTHS";
 }

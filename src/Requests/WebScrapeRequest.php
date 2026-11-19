@@ -43,10 +43,9 @@ class WebScrapeRequest extends JsonSerializableType
      * @var (
      *    bool
      *   |string
-     *   |array<string, mixed>
-     * )|null $proxy Use proxy for requests
+     * )|null $proxy Use a proxy for the request. Pass true/false to toggle the default proxy pool, or a proxy URL string to use a specific proxy.
      */
-    public bool|string|array|null $proxy;
+    public bool|string|null $proxy;
 
     /**
      * Ignore SSL certificate errors.
@@ -110,7 +109,6 @@ class WebScrapeRequest extends JsonSerializableType
      *   proxy?: (
      *    bool
      *   |string
-     *   |array<string, mixed>
      * )|null,
      *   sslIgnore?: ?bool,
      *   windowSize?: ?string,

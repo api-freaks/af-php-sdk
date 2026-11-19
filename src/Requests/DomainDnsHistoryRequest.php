@@ -23,10 +23,7 @@ class DomainDnsHistoryRequest extends JsonSerializableType
     public string $hostName;
 
     /**
-     * A comma-separated list of DNS record types for lookup.
-     * Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, or all
-     *
-     * @var ?array<string> $type
+     * @var ?array<string> $type DNS record types to look up, sent as a comma-separated list (e.g. `A,MX`). Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, or all.
      */
     public ?array $type;
 

@@ -10,30 +10,30 @@ use Apifreaks\Core\Types\Union;
 class DomainWhoisReverseResponse extends JsonSerializableType
 {
     /**
-     * @var ?int $totalResult
+     * @var ?int $totalResult Total results found across the query.
      */
-    #[JsonProperty('totalResult')]
+    #[JsonProperty('total_Result')]
     public ?int $totalResult;
 
     /**
-     * @var ?int $totalPages
+     * @var ?int $totalPages Total number of pages (50 records per page in default mode, 100 in mini mode).
      */
-    #[JsonProperty('totalPages')]
+    #[JsonProperty('total_Pages')]
     public ?int $totalPages;
 
     /**
-     * @var ?int $currentPage
+     * @var ?int $currentPage Current page number.
      */
-    #[JsonProperty('currentPage')]
+    #[JsonProperty('current_Page')]
     public ?int $currentPage;
 
     /**
      * @var ?array<(
      *    DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContact
-     *   |DomainWhoisReverseResponseWhoisDomainsHistoricalItemCompanyname
+     *   |DomainWhoisReverseResponseWhoisDomainsHistoricalItemCompanyName
      * )> $whoisDomainsHistorical
      */
-    #[JsonProperty('whois_domains_historical'), ArrayType([new Union(DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContact::class, DomainWhoisReverseResponseWhoisDomainsHistoricalItemCompanyname::class)])]
+    #[JsonProperty('whois_domains_historical'), ArrayType([new Union(DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContact::class, DomainWhoisReverseResponseWhoisDomainsHistoricalItemCompanyName::class)])]
     public ?array $whoisDomainsHistorical;
 
     /**
@@ -43,7 +43,7 @@ class DomainWhoisReverseResponse extends JsonSerializableType
      *   currentPage?: ?int,
      *   whoisDomainsHistorical?: ?array<(
      *    DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContact
-     *   |DomainWhoisReverseResponseWhoisDomainsHistoricalItemCompanyname
+     *   |DomainWhoisReverseResponseWhoisDomainsHistoricalItemCompanyName
      * )>,
      * } $values
      */

@@ -19,7 +19,7 @@ class VatSupportedCountriesRequest extends JsonSerializableType
     public ?string $format;
 
     /**
-     * @var ?value-of<VatSupportedCountriesRequestType> $type Type of supported country. Supported values: IBAN, SWIFT, VAT. By default, it returns all supported countries for all types.
+     * @var ?value-of<VatSupportedCountriesRequestType> $type Which list to return: VAT (`VAT_Supported_Countries_And_States`), IBAN (`IBAN_Supported_Countries`) or SWIFT (`SWIFT_Supported_Countries`). Each value returns only its own list. If omitted (or unknown), all three lists are returned.
      */
     public ?string $type;
 

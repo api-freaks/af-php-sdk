@@ -17,10 +17,10 @@ class DomainReputationResponseEmailDeliverabilityAuthenticationDmarc extends Jso
     public bool $present;
 
     /**
-     * @var string $policy DMARC enforcement policy applied to failing messages (e.g. none, quarantine, reject).
+     * @var ?string $policy DMARC enforcement policy applied to failing messages (e.g. none, quarantine, reject).
      */
     #[JsonProperty('policy')]
-    public string $policy;
+    public ?string $policy;
 
     /**
      * @var bool $reportingConfigured Indicates whether DMARC aggregate / forensic reporting addresses are configured.
@@ -31,15 +31,15 @@ class DomainReputationResponseEmailDeliverabilityAuthenticationDmarc extends Jso
     /**
      * @param array{
      *   present: bool,
-     *   policy: string,
      *   reportingConfigured: bool,
+     *   policy?: ?string,
      * } $values
      */
     public function __construct(
         array $values,
     ) {
         $this->present = $values['present'];
-        $this->policy = $values['policy'];
+        $this->policy = $values['policy'] ?? null;
         $this->reportingConfigured = $values['reportingConfigured'];
     }
 

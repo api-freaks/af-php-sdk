@@ -39,12 +39,19 @@ class CommodityLatestRatesV2Response extends JsonSerializableType
     public ?string $warning;
 
     /**
+     * @var ?array<string, CommodityLatestRatesV2ResponseUnresolvedValue> $unresolved Present only on a 206 Partial Content response, when some requested symbols could not be resolved. Map of each unresolved symbol to a detail message and optional close-match suggestions.
+     */
+    #[JsonProperty('unresolved'), ArrayType(['string' => CommodityLatestRatesV2ResponseUnresolvedValue::class])]
+    public ?array $unresolved;
+
+    /**
      * @param array{
      *   success: bool,
      *   timestamp: int,
      *   rates: array<string, float>,
      *   metadata: array<string, CommodityLatestRatesV2ResponseMetadataValue>,
      *   warning?: ?string,
+     *   unresolved?: ?array<string, CommodityLatestRatesV2ResponseUnresolvedValue>,
      * } $values
      */
     public function __construct(
@@ -55,6 +62,7 @@ class CommodityLatestRatesV2Response extends JsonSerializableType
         $this->rates = $values['rates'];
         $this->metadata = $values['metadata'];
         $this->warning = $values['warning'] ?? null;
+        $this->unresolved = $values['unresolved'] ?? null;
     }
 
     /**

@@ -71,6 +71,24 @@ class IbanValidateResponseBankData extends JsonSerializableType
     public bool $sepa;
 
     /**
+     * @var ?string $branchName Name of the branch or office. Null when not resolvable.
+     */
+    #[JsonProperty('branch_name')]
+    public ?string $branchName;
+
+    /**
+     * @var ?string $institType Type of institution: "FIIN" (financial institution) or "NFIN" (non-financial institution). Null when not resolvable.
+     */
+    #[JsonProperty('instit_type')]
+    public ?string $institType;
+
+    /**
+     * @var ?string $postalCode Postal/ZIP code of the bank branch. Null when not resolvable.
+     */
+    #[JsonProperty('postal_code')]
+    public ?string $postalCode;
+
+    /**
      * @param array{
      *   country: string,
      *   countryIso2: string,
@@ -82,6 +100,9 @@ class IbanValidateResponseBankData extends JsonSerializableType
      *   city?: ?string,
      *   address?: ?string,
      *   account?: ?string,
+     *   branchName?: ?string,
+     *   institType?: ?string,
+     *   postalCode?: ?string,
      * } $values
      */
     public function __construct(
@@ -97,6 +118,9 @@ class IbanValidateResponseBankData extends JsonSerializableType
         $this->address = $values['address'] ?? null;
         $this->account = $values['account'] ?? null;
         $this->sepa = $values['sepa'];
+        $this->branchName = $values['branchName'] ?? null;
+        $this->institType = $values['institType'] ?? null;
+        $this->postalCode = $values['postalCode'] ?? null;
     }
 
     /**

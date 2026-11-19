@@ -32,10 +32,10 @@ class AsnWhoisLookupResponseRouteObjectsItem extends JsonSerializableType
     public string $isp;
 
     /**
-     * @var int $numberOfIps
+     * @var float $numberOfIps Number of IP addresses in the route. IPv6 routes exceed the 64-bit integer range, so this is a floating-point number.
      */
     #[JsonProperty('numberOfIps')]
-    public int $numberOfIps;
+    public float $numberOfIps;
 
     /**
      * @param array{
@@ -43,7 +43,7 @@ class AsnWhoisLookupResponseRouteObjectsItem extends JsonSerializableType
      *   origin: string,
      *   originName: string,
      *   isp: string,
-     *   numberOfIps: int,
+     *   numberOfIps: float,
      * } $values
      */
     public function __construct(

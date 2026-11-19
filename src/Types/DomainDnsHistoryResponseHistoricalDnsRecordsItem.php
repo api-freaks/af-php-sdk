@@ -22,10 +22,10 @@ class DomainDnsHistoryResponseHistoricalDnsRecordsItem extends JsonSerializableT
     public string $domainName;
 
     /**
-     * @var bool $domainRegistered
+     * @var ?bool $domainRegistered
      */
     #[JsonProperty('domainRegistered')]
-    public bool $domainRegistered;
+    public ?bool $domainRegistered;
 
     /**
      * @var DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsTypes $dnsTypes
@@ -36,30 +36,30 @@ class DomainDnsHistoryResponseHistoricalDnsRecordsItem extends JsonSerializableT
     /**
      * @var array<(
      *    DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemAddress
-     *   |DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemOne
      *   |DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemPriority
+     *   |DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemOne
      *   |DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemSingleName
      *   |DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemAdmin
      *   |DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemStrings
      * )> $dnsRecords
      */
-    #[JsonProperty('dnsRecords'), ArrayType([new Union(DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemAddress::class, DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemOne::class, DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemPriority::class, DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemSingleName::class, DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemAdmin::class, DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemStrings::class)])]
+    #[JsonProperty('dnsRecords'), ArrayType([new Union(DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemAddress::class, DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemPriority::class, DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemOne::class, DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemSingleName::class, DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemAdmin::class, DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemStrings::class)])]
     public array $dnsRecords;
 
     /**
      * @param array{
      *   queryTime: string,
      *   domainName: string,
-     *   domainRegistered: bool,
      *   dnsTypes: DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsTypes,
      *   dnsRecords: array<(
      *    DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemAddress
-     *   |DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemOne
      *   |DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemPriority
+     *   |DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemOne
      *   |DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemSingleName
      *   |DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemAdmin
      *   |DomainDnsHistoryResponseHistoricalDnsRecordsItemDnsRecordsItemStrings
      * )>,
+     *   domainRegistered?: ?bool,
      * } $values
      */
     public function __construct(
@@ -67,7 +67,7 @@ class DomainDnsHistoryResponseHistoricalDnsRecordsItem extends JsonSerializableT
     ) {
         $this->queryTime = $values['queryTime'];
         $this->domainName = $values['domainName'];
-        $this->domainRegistered = $values['domainRegistered'];
+        $this->domainRegistered = $values['domainRegistered'] ?? null;
         $this->dnsTypes = $values['dnsTypes'];
         $this->dnsRecords = $values['dnsRecords'];
     }

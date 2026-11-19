@@ -11,13 +11,13 @@ class MarineWeatherResponse extends JsonSerializableType
 {
     /**
      * @var (
-     *    MarineWeatherResponseLocationZero
-     *   |MarineWeatherResponseLocationContinentCode
+     *    MarineWeatherResponseLocationContinentCode
      *   |MarineWeatherResponseLocationCity
+     *   |MarineWeatherResponseLocationZero
      * )|null $location Location information
      */
-    #[JsonProperty('location'), Union(MarineWeatherResponseLocationZero::class, MarineWeatherResponseLocationContinentCode::class, MarineWeatherResponseLocationCity::class, 'null')]
-    public MarineWeatherResponseLocationZero|MarineWeatherResponseLocationContinentCode|MarineWeatherResponseLocationCity|null $location;
+    #[JsonProperty('location'), Union(MarineWeatherResponseLocationContinentCode::class, MarineWeatherResponseLocationCity::class, MarineWeatherResponseLocationZero::class, 'null')]
+    public MarineWeatherResponseLocationContinentCode|MarineWeatherResponseLocationCity|MarineWeatherResponseLocationZero|null $location;
 
     /**
      * @var ?MarineWeatherResponseCurrent $current Current marine data
@@ -34,9 +34,9 @@ class MarineWeatherResponse extends JsonSerializableType
     /**
      * @param array{
      *   location?: (
-     *    MarineWeatherResponseLocationZero
-     *   |MarineWeatherResponseLocationContinentCode
+     *    MarineWeatherResponseLocationContinentCode
      *   |MarineWeatherResponseLocationCity
+     *   |MarineWeatherResponseLocationZero
      * )|null,
      *   current?: ?MarineWeatherResponseCurrent,
      *   forecast?: ?array<string, MarineWeatherResponseForecastValue>,

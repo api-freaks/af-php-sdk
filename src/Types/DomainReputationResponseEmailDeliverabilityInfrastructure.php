@@ -24,10 +24,10 @@ class DomainReputationResponseEmailDeliverabilityInfrastructure extends JsonSeri
     public array $mxRecords;
 
     /**
-     * @var string $mxProvider Email hosting provider inferred from the MX records.
+     * @var ?string $mxProvider Email hosting provider inferred from the MX records.
      */
     #[JsonProperty('mx_provider')]
-    public string $mxProvider;
+    public ?string $mxProvider;
 
     /**
      * @var bool $nullMx Indicates whether the domain explicitly declines email via a null MX record.
@@ -39,8 +39,8 @@ class DomainReputationResponseEmailDeliverabilityInfrastructure extends JsonSeri
      * @param array{
      *   mxCount: int,
      *   mxRecords: array<string>,
-     *   mxProvider: string,
      *   nullMx: bool,
+     *   mxProvider?: ?string,
      * } $values
      */
     public function __construct(
@@ -48,7 +48,7 @@ class DomainReputationResponseEmailDeliverabilityInfrastructure extends JsonSeri
     ) {
         $this->mxCount = $values['mxCount'];
         $this->mxRecords = $values['mxRecords'];
-        $this->mxProvider = $values['mxProvider'];
+        $this->mxProvider = $values['mxProvider'] ?? null;
         $this->nullMx = $values['nullMx'];
     }
 

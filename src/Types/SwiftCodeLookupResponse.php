@@ -50,6 +50,24 @@ class SwiftCodeLookupResponse extends JsonSerializableType
     public string $country;
 
     /**
+     * @var ?string $branchName Name of the branch or office. Null when not resolvable.
+     */
+    #[JsonProperty('branchName')]
+    public ?string $branchName;
+
+    /**
+     * @var ?string $institType Type of institution: "FIIN" (financial institution) or "NFIN" (non-financial institution).
+     */
+    #[JsonProperty('institType')]
+    public ?string $institType;
+
+    /**
+     * @var ?string $postalCode Postal/ZIP code of the bank branch. Null when not resolvable.
+     */
+    #[JsonProperty('postalCode')]
+    public ?string $postalCode;
+
+    /**
      * @param array{
      *   swiftCode: string,
      *   countryCode: string,
@@ -58,6 +76,9 @@ class SwiftCodeLookupResponse extends JsonSerializableType
      *   bankName: string,
      *   city: string,
      *   country: string,
+     *   branchName?: ?string,
+     *   institType?: ?string,
+     *   postalCode?: ?string,
      * } $values
      */
     public function __construct(
@@ -70,6 +91,9 @@ class SwiftCodeLookupResponse extends JsonSerializableType
         $this->bankName = $values['bankName'];
         $this->city = $values['city'];
         $this->country = $values['country'];
+        $this->branchName = $values['branchName'] ?? null;
+        $this->institType = $values['institType'] ?? null;
+        $this->postalCode = $values['postalCode'] ?? null;
     }
 
     /**

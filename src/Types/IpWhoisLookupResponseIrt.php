@@ -165,6 +165,30 @@ class IpWhoisLookupResponseIrt extends JsonSerializableType
     public ?string $source;
 
     /**
+     * @var ?array<IpWhoisLookupResponseIrtAbuseContactsItem> $abuseContacts Abuse contacts linked to this IRT.
+     */
+    #[JsonProperty('abuse_contacts'), ArrayType([IpWhoisLookupResponseIrtAbuseContactsItem::class])]
+    public ?array $abuseContacts;
+
+    /**
+     * @var ?array<IpWhoisLookupResponseIrtAdministrativeContactsItem> $administrativeContacts Administrative contacts linked to this IRT.
+     */
+    #[JsonProperty('administrative_contacts'), ArrayType([IpWhoisLookupResponseIrtAdministrativeContactsItem::class])]
+    public ?array $administrativeContacts;
+
+    /**
+     * @var ?IpWhoisLookupResponseIrtOrganization $organization Organization object containing the registrant's handle, name, address, contact details, and linked admin/tech/abuse contacts.
+     */
+    #[JsonProperty('organization')]
+    public ?IpWhoisLookupResponseIrtOrganization $organization;
+
+    /**
+     * @var ?array<IpWhoisLookupResponseIrtTechnicalContactsItem> $technicalContacts Technical contacts linked to this IRT.
+     */
+    #[JsonProperty('technical_contacts'), ArrayType([IpWhoisLookupResponseIrtTechnicalContactsItem::class])]
+    public ?array $technicalContacts;
+
+    /**
      * @param array{
      *   handle?: ?string,
      *   address?: ?array<string>,
@@ -192,6 +216,10 @@ class IpWhoisLookupResponseIrt extends JsonSerializableType
      *   dateCreated?: ?string,
      *   dateUpdated?: ?string,
      *   source?: ?string,
+     *   abuseContacts?: ?array<IpWhoisLookupResponseIrtAbuseContactsItem>,
+     *   administrativeContacts?: ?array<IpWhoisLookupResponseIrtAdministrativeContactsItem>,
+     *   organization?: ?IpWhoisLookupResponseIrtOrganization,
+     *   technicalContacts?: ?array<IpWhoisLookupResponseIrtTechnicalContactsItem>,
      * } $values
      */
     public function __construct(
@@ -223,6 +251,10 @@ class IpWhoisLookupResponseIrt extends JsonSerializableType
         $this->dateCreated = $values['dateCreated'] ?? null;
         $this->dateUpdated = $values['dateUpdated'] ?? null;
         $this->source = $values['source'] ?? null;
+        $this->abuseContacts = $values['abuseContacts'] ?? null;
+        $this->administrativeContacts = $values['administrativeContacts'] ?? null;
+        $this->organization = $values['organization'] ?? null;
+        $this->technicalContacts = $values['technicalContacts'] ?? null;
     }
 
     /**

@@ -14,10 +14,10 @@ class SubdomainsLookupResponseSubdomainsItem extends JsonSerializableType
     public string $subdomain;
 
     /**
-     * @var string $firstSeen
+     * @var ?string $firstSeen
      */
     #[JsonProperty('first_seen')]
-    public string $firstSeen;
+    public ?string $firstSeen;
 
     /**
      * @var ?string $lastSeen
@@ -34,7 +34,7 @@ class SubdomainsLookupResponseSubdomainsItem extends JsonSerializableType
     /**
      * @param array{
      *   subdomain: string,
-     *   firstSeen: string,
+     *   firstSeen?: ?string,
      *   lastSeen?: ?string,
      *   inactiveFrom?: ?string,
      * } $values
@@ -43,7 +43,7 @@ class SubdomainsLookupResponseSubdomainsItem extends JsonSerializableType
         array $values,
     ) {
         $this->subdomain = $values['subdomain'];
-        $this->firstSeen = $values['firstSeen'];
+        $this->firstSeen = $values['firstSeen'] ?? null;
         $this->lastSeen = $values['lastSeen'] ?? null;
         $this->inactiveFrom = $values['inactiveFrom'] ?? null;
     }

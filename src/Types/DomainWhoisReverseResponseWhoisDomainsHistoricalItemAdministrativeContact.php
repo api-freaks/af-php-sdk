@@ -29,22 +29,22 @@ class DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContact 
     public string $domainName;
 
     /**
-     * @var string $queryTime Timestamp when the WHOIS query was executed (format YYYY-MM-DD HH:mm:ss, not ISO 8601).
+     * @var ?string $queryTime Timestamp when the WHOIS query was executed (format YYYY-MM-DD HH:mm:ss, not ISO 8601).
      */
     #[JsonProperty('query_time')]
-    public string $queryTime;
+    public ?string $queryTime;
 
     /**
-     * @var string $whoisServer
+     * @var ?string $whoisServer
      */
     #[JsonProperty('whois_server')]
-    public string $whoisServer;
+    public ?string $whoisServer;
 
     /**
-     * @var value-of<DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactDomainRegistered> $domainRegistered
+     * @var ?value-of<DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactDomainRegistered> $domainRegistered
      */
     #[JsonProperty('domain_registered')]
-    public string $domainRegistered;
+    public ?string $domainRegistered;
 
     /**
      * @var ?DateTime $createDate
@@ -129,9 +129,9 @@ class DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContact 
      *   num: int,
      *   status: bool,
      *   domainName: string,
-     *   queryTime: string,
-     *   whoisServer: string,
-     *   domainRegistered: value-of<DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactDomainRegistered>,
+     *   queryTime?: ?string,
+     *   whoisServer?: ?string,
+     *   domainRegistered?: ?value-of<DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactDomainRegistered>,
      *   createDate?: ?DateTime,
      *   updateDate?: ?DateTime,
      *   expiryDate?: ?DateTime,
@@ -153,9 +153,9 @@ class DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContact 
         $this->num = $values['num'];
         $this->status = $values['status'];
         $this->domainName = $values['domainName'];
-        $this->queryTime = $values['queryTime'];
-        $this->whoisServer = $values['whoisServer'];
-        $this->domainRegistered = $values['domainRegistered'];
+        $this->queryTime = $values['queryTime'] ?? null;
+        $this->whoisServer = $values['whoisServer'] ?? null;
+        $this->domainRegistered = $values['domainRegistered'] ?? null;
         $this->createDate = $values['createDate'] ?? null;
         $this->updateDate = $values['updateDate'] ?? null;
         $this->expiryDate = $values['expiryDate'] ?? null;

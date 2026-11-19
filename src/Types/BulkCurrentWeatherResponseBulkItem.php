@@ -10,13 +10,13 @@ class BulkCurrentWeatherResponseBulkItem extends JsonSerializableType
 {
     /**
      * @var (
-     *    BulkCurrentWeatherResponseBulkItemLocationZero
-     *   |BulkCurrentWeatherResponseBulkItemLocationContinentCode
+     *    BulkCurrentWeatherResponseBulkItemLocationContinentCode
      *   |BulkCurrentWeatherResponseBulkItemLocationCity
+     *   |BulkCurrentWeatherResponseBulkItemLocationZero
      * ) $location Location information
      */
-    #[JsonProperty('location'), Union(BulkCurrentWeatherResponseBulkItemLocationZero::class, BulkCurrentWeatherResponseBulkItemLocationContinentCode::class, BulkCurrentWeatherResponseBulkItemLocationCity::class)]
-    public BulkCurrentWeatherResponseBulkItemLocationZero|BulkCurrentWeatherResponseBulkItemLocationContinentCode|BulkCurrentWeatherResponseBulkItemLocationCity $location;
+    #[JsonProperty('location'), Union(BulkCurrentWeatherResponseBulkItemLocationContinentCode::class, BulkCurrentWeatherResponseBulkItemLocationCity::class, BulkCurrentWeatherResponseBulkItemLocationZero::class)]
+    public BulkCurrentWeatherResponseBulkItemLocationContinentCode|BulkCurrentWeatherResponseBulkItemLocationCity|BulkCurrentWeatherResponseBulkItemLocationZero $location;
 
     /**
      * @var BulkCurrentWeatherResponseBulkItemCurrent $current Current weather data
@@ -27,9 +27,9 @@ class BulkCurrentWeatherResponseBulkItem extends JsonSerializableType
     /**
      * @param array{
      *   location: (
-     *    BulkCurrentWeatherResponseBulkItemLocationZero
-     *   |BulkCurrentWeatherResponseBulkItemLocationContinentCode
+     *    BulkCurrentWeatherResponseBulkItemLocationContinentCode
      *   |BulkCurrentWeatherResponseBulkItemLocationCity
+     *   |BulkCurrentWeatherResponseBulkItemLocationZero
      * ),
      *   current: BulkCurrentWeatherResponseBulkItemCurrent,
      * } $values
