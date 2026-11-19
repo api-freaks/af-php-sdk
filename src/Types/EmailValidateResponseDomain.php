@@ -32,10 +32,10 @@ class EmailValidateResponseDomain extends JsonSerializableType
     public bool $free;
 
     /**
-     * @var bool $catchAll
+     * @var ?bool $catchAll
      */
     #[JsonProperty('catchAll')]
-    public bool $catchAll;
+    public ?bool $catchAll;
 
     /**
      * @var bool $validDomain
@@ -49,8 +49,8 @@ class EmailValidateResponseDomain extends JsonSerializableType
      *   disposable: bool,
      *   spam: bool,
      *   free: bool,
-     *   catchAll: bool,
      *   validDomain: bool,
+     *   catchAll?: ?bool,
      * } $values
      */
     public function __construct(
@@ -60,7 +60,7 @@ class EmailValidateResponseDomain extends JsonSerializableType
         $this->disposable = $values['disposable'];
         $this->spam = $values['spam'];
         $this->free = $values['free'];
-        $this->catchAll = $values['catchAll'];
+        $this->catchAll = $values['catchAll'] ?? null;
         $this->validDomain = $values['validDomain'];
     }
 

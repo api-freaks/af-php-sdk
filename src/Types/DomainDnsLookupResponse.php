@@ -22,16 +22,16 @@ class DomainDnsLookupResponse extends JsonSerializableType
     public string $queryTime;
 
     /**
-     * @var string $domainName Queried domain.
+     * @var ?string $domainName Queried domain.
      */
     #[JsonProperty('domainName')]
-    public string $domainName;
+    public ?string $domainName;
 
     /**
-     * @var bool $domainRegistered Indicates whether the domain is registered.
+     * @var ?bool $domainRegistered Indicates whether the domain is registered.
      */
     #[JsonProperty('domainRegistered')]
-    public bool $domainRegistered;
+    public ?bool $domainRegistered;
 
     /**
      * @var DomainDnsLookupResponseDnsTypes $dnsTypes
@@ -42,31 +42,38 @@ class DomainDnsLookupResponse extends JsonSerializableType
     /**
      * @var array<(
      *    DomainDnsLookupResponseDnsRecordsItemAddress
-     *   |DomainDnsLookupResponseDnsRecordsItemOne
      *   |DomainDnsLookupResponseDnsRecordsItemPriority
+     *   |DomainDnsLookupResponseDnsRecordsItemOne
      *   |DomainDnsLookupResponseDnsRecordsItemSingleName
      *   |DomainDnsLookupResponseDnsRecordsItemAdmin
      *   |DomainDnsLookupResponseDnsRecordsItemStrings
      * )> $dnsRecords List of DNS records, each based on its type.
      */
-    #[JsonProperty('dnsRecords'), ArrayType([new Union(DomainDnsLookupResponseDnsRecordsItemAddress::class, DomainDnsLookupResponseDnsRecordsItemOne::class, DomainDnsLookupResponseDnsRecordsItemPriority::class, DomainDnsLookupResponseDnsRecordsItemSingleName::class, DomainDnsLookupResponseDnsRecordsItemAdmin::class, DomainDnsLookupResponseDnsRecordsItemStrings::class)])]
+    #[JsonProperty('dnsRecords'), ArrayType([new Union(DomainDnsLookupResponseDnsRecordsItemAddress::class, DomainDnsLookupResponseDnsRecordsItemPriority::class, DomainDnsLookupResponseDnsRecordsItemOne::class, DomainDnsLookupResponseDnsRecordsItemSingleName::class, DomainDnsLookupResponseDnsRecordsItemAdmin::class, DomainDnsLookupResponseDnsRecordsItemStrings::class)])]
     public array $dnsRecords;
+
+    /**
+     * @var ?string $ipAddress IP address queried (present when ipAddress parameter is used instead of host-name).
+     */
+    #[JsonProperty('ipAddress')]
+    public ?string $ipAddress;
 
     /**
      * @param array{
      *   status: bool,
      *   queryTime: string,
-     *   domainName: string,
-     *   domainRegistered: bool,
      *   dnsTypes: DomainDnsLookupResponseDnsTypes,
      *   dnsRecords: array<(
      *    DomainDnsLookupResponseDnsRecordsItemAddress
-     *   |DomainDnsLookupResponseDnsRecordsItemOne
      *   |DomainDnsLookupResponseDnsRecordsItemPriority
+     *   |DomainDnsLookupResponseDnsRecordsItemOne
      *   |DomainDnsLookupResponseDnsRecordsItemSingleName
      *   |DomainDnsLookupResponseDnsRecordsItemAdmin
      *   |DomainDnsLookupResponseDnsRecordsItemStrings
      * )>,
+     *   domainName?: ?string,
+     *   domainRegistered?: ?bool,
+     *   ipAddress?: ?string,
      * } $values
      */
     public function __construct(
@@ -74,10 +81,11 @@ class DomainDnsLookupResponse extends JsonSerializableType
     ) {
         $this->status = $values['status'];
         $this->queryTime = $values['queryTime'];
-        $this->domainName = $values['domainName'];
-        $this->domainRegistered = $values['domainRegistered'];
+        $this->domainName = $values['domainName'] ?? null;
+        $this->domainRegistered = $values['domainRegistered'] ?? null;
         $this->dnsTypes = $values['dnsTypes'];
         $this->dnsRecords = $values['dnsRecords'];
+        $this->ipAddress = $values['ipAddress'] ?? null;
     }
 
     /**

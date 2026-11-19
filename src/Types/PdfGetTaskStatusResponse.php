@@ -4,8 +4,6 @@ namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
-use DateTime;
-use Apifreaks\Core\Types\Date;
 use Apifreaks\Core\Types\ArrayType;
 
 class PdfGetTaskStatusResponse extends JsonSerializableType
@@ -23,13 +21,13 @@ class PdfGetTaskStatusResponse extends JsonSerializableType
     public string $status;
 
     /**
-     * @var DateTime $createdAt The timestamp when the task status was created, formatted as 'yyyy-MM-dd HH:mm:ss'.
+     * @var string $createdAt The timestamp when the task status was created, formatted as 'yyyy-MM-dd HH:mm:ss'.
      */
-    #[JsonProperty('createdAt'), Date(Date::TYPE_DATETIME)]
-    public DateTime $createdAt;
+    #[JsonProperty('createdAt')]
+    public string $createdAt;
 
     /**
-     * @var ?string $zipOutputUrl The URL to download all output files as a single ZIP archive. This is present only when the task status is 'COMPLETED'.
+     * @var ?string $zipOutputUrl Deprecated: the API returns this field as `zipFileUrl`; read `zipFileUrl` instead.
      */
     #[JsonProperty('zipOutputUrl')]
     public ?string $zipOutputUrl;
@@ -71,16 +69,22 @@ class PdfGetTaskStatusResponse extends JsonSerializableType
     public ?string $message;
 
     /**
-     * @var ?DateTime $expiresAt The timestamp when the task status will expire and be removed from the system, formatted as 'yyyy-MM-dd HH:mm:ss'.
+     * @var ?string $expiresAt The timestamp when the task status will expire and be removed from the system, formatted as 'yyyy-MM-dd HH:mm:ss'.
      */
-    #[JsonProperty('expiresAt'), Date(Date::TYPE_DATETIME)]
-    public ?DateTime $expiresAt;
+    #[JsonProperty('expiresAt')]
+    public ?string $expiresAt;
+
+    /**
+     * @var ?string $zipFileUrl URL to download all output files as a ZIP archive; present only on completed tasks.
+     */
+    #[JsonProperty('zipFileUrl')]
+    public ?string $zipFileUrl;
 
     /**
      * @param array{
      *   taskId: string,
      *   status: string,
-     *   createdAt: DateTime,
+     *   createdAt: string,
      *   zipOutputUrl?: ?string,
      *   zipFileId?: ?string,
      *   outputUrls?: ?array<string>,
@@ -88,7 +92,8 @@ class PdfGetTaskStatusResponse extends JsonSerializableType
      *   inputIds?: ?array<string>,
      *   error?: ?string,
      *   message?: ?string,
-     *   expiresAt?: ?DateTime,
+     *   expiresAt?: ?string,
+     *   zipFileUrl?: ?string,
      * } $values
      */
     public function __construct(
@@ -105,6 +110,7 @@ class PdfGetTaskStatusResponse extends JsonSerializableType
         $this->error = $values['error'] ?? null;
         $this->message = $values['message'] ?? null;
         $this->expiresAt = $values['expiresAt'] ?? null;
+        $this->zipFileUrl = $values['zipFileUrl'] ?? null;
     }
 
     /**

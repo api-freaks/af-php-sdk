@@ -12,7 +12,7 @@ use Apifreaks\Core\Types\ArrayType;
 class DomainReputationResponseRiskCategory extends JsonSerializableType
 {
     /**
-     * @var value-of<DomainReputationResponseRiskCategoryVerdict> $verdict Final verdict of the risk assessment.
+     * @var value-of<DomainReputationResponseRiskCategoryVerdict> $verdict Final verdict of the risk assessment. `unknown` is returned when there is not enough data (e.g. the domain is not registered).
      */
     #[JsonProperty('verdict')]
     public string $verdict;

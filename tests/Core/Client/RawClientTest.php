@@ -2,6 +2,7 @@
 
 namespace Apifreaks\Tests\Core\Client;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\RequestInterface;
@@ -104,6 +105,72 @@ class RawClientTest extends TestCase
             'https://api.example.com/test?param1=value1&param2=a&param2=b&param3=true',
             (string)$lastRequest->getUri()
         );
+    }
+
+    public function testEncodePathParam(): void
+    {
+        $this->assertEquals('..%2Fconnections', RawClient::encodePathParam('../connections'));
+        $this->assertEquals('user%20id%3F', RawClient::encodePathParam('user id?'));
+        $this->assertEquals('user_1', RawClient::encodePathParam('user_1'));
+        $this->assertEquals('42', RawClient::encodePathParam(42));
+        $this->assertEquals('true', RawClient::encodePathParam(true));
+        $this->assertEquals('false', RawClient::encodePathParam(false));
+        $this->assertEquals('', RawClient::encodePathParam(null));
+    }
+
+    /**
+     * @throws ClientExceptionInterface
+     */
+    public function testEncodedPathParamDoesNotTraverse(): void
+    {
+        $this->mockClient->append(self::createResponse(200));
+
+        $request = new JsonApiRequest(
+            $this->baseUrl,
+            '/users/' . RawClient::encodePathParam('../connections'),
+            HttpMethod::GET
+        );
+
+        $this->rawClient->sendRequest($request);
+
+        $lastRequest = $this->mockClient->getLastRequest();
+        $this->assertInstanceOf(RequestInterface::class, $lastRequest);
+        $this->assertEquals(
+            'https://api.example.com/users/..%2Fconnections',
+            (string)$lastRequest->getUri()
+        );
+    }
+
+    /**
+     * @throws ClientExceptionInterface
+     */
+    public function testRejectsDotSegmentPaths(): void
+    {
+        foreach (['/plants/..', '/plants/./leaves', '/plants/../leaves/L1', '/plants/%2e%2E/leaves'] as $path) {
+            $request = new JsonApiRequest($this->baseUrl, $path, HttpMethod::DELETE);
+            try {
+                $this->rawClient->sendRequest($request);
+                $this->fail("Expected InvalidArgumentException for path {$path}");
+            } catch (InvalidArgumentException $e) {
+                $this->assertStringContainsString('path segments are not allowed', $e->getMessage());
+            }
+        }
+        $this->assertNull($this->mockClient->getLastRequest());
+    }
+
+    /**
+     * @throws ClientExceptionInterface
+     */
+    public function testAllowsPathSegmentsContainingDots(): void
+    {
+        $this->mockClient->append(self::createResponse(200));
+
+        $request = new JsonApiRequest($this->baseUrl, '/plants/v1.2/...', HttpMethod::GET);
+        $this->rawClient->sendRequest($request);
+
+        $lastRequest = $this->mockClient->getLastRequest();
+        $this->assertInstanceOf(RequestInterface::class, $lastRequest);
+        $this->assertEquals('https://api.example.com/plants/v1.2/...', (string)$lastRequest->getUri());
     }
 
     /**

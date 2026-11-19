@@ -18,17 +18,17 @@ class DomainDnsLookupRequest extends JsonSerializableType
     public ?string $format;
 
     /**
-     * @var ?string $hostName Hostname or URL whose DNS records are required.
+     * @var ?string $hostName Hostname or URL whose DNS records are required. Give either `host-name` or `ipAddress`.
      */
     public ?string $hostName;
 
     /**
-     * @var ?string $ipAddress The IP address for requested DNS's PTR record. 'type' parameter must be set to 'all'.
+     * @var ?string $ipAddress The IP address whose PTR (reverse DNS) record is required. Give either `host-name` or `ipAddress`; with `ipAddress`, set `type` to `all` or `PTR`.
      */
     public ?string $ipAddress;
 
     /**
-     * @var ?array<string> $type A comma-separated list of DNS record types for lookup. Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, or all. When ipAddress is provided, type must be "all".
+     * @var ?array<string> $type DNS record types to look up, sent as a comma-separated list (e.g. `A,MX`). Possible values: A, AAAA, MX, NS, SOA, SPF, TXT, CNAME, PTR, or all. When ipAddress is provided, use "all" or "PTR".
      */
     public ?array $type;
 

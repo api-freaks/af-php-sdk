@@ -45,6 +45,24 @@ class AsnWhoisLookupResponseParsedWhoisResponse extends JsonSerializableType
     public array $abuseContacts;
 
     /**
+     * @var ?string $queryTime Timestamp when the WHOIS query was executed, in `YYYY-MM-DD HH:mm:ss` format — not ISO 8601 (no `T` separator, no milliseconds, no `Z`).
+     */
+    #[JsonProperty('query_time')]
+    public ?string $queryTime;
+
+    /**
+     * @var ?string $rWhoisRawResponse Raw referral WHOIS (rwhois) text, when the registry delegates to a referral server.
+     */
+    #[JsonProperty('r_whois_raw_response')]
+    public ?string $rWhoisRawResponse;
+
+    /**
+     * @var ?string $whoisRawResponse Unparsed raw WHOIS text, when returned separately from whoisResponse.
+     */
+    #[JsonProperty('whois_raw_response')]
+    public ?string $whoisRawResponse;
+
+    /**
      * @param array{
      *   status: bool,
      *   whoisServer: string,
@@ -52,6 +70,9 @@ class AsnWhoisLookupResponseParsedWhoisResponse extends JsonSerializableType
      *   organization: AsnWhoisLookupResponseParsedWhoisResponseOrganization,
      *   technicalContacts: array<AsnWhoisLookupResponseParsedWhoisResponseTechnicalContactsItem>,
      *   abuseContacts: array<AsnWhoisLookupResponseParsedWhoisResponseAbuseContactsItem>,
+     *   queryTime?: ?string,
+     *   rWhoisRawResponse?: ?string,
+     *   whoisRawResponse?: ?string,
      * } $values
      */
     public function __construct(
@@ -63,6 +84,9 @@ class AsnWhoisLookupResponseParsedWhoisResponse extends JsonSerializableType
         $this->organization = $values['organization'];
         $this->technicalContacts = $values['technicalContacts'];
         $this->abuseContacts = $values['abuseContacts'];
+        $this->queryTime = $values['queryTime'] ?? null;
+        $this->rWhoisRawResponse = $values['rWhoisRawResponse'] ?? null;
+        $this->whoisRawResponse = $values['whoisRawResponse'] ?? null;
     }
 
     /**

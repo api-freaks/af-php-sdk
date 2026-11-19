@@ -40,7 +40,7 @@ class CommoditySymbolsV2ResponseSymbolsItem extends JsonSerializableType
     public string $status;
 
     /**
-     * @var value-of<CommoditySymbolsV2ResponseSymbolsItemUpdateInterval> $updateInterval The rate at which this commodity's price is updated.
+     * @var value-of<CommoditySymbolsV2ResponseSymbolsItemUpdateInterval> $updateInterval The rate at which this commodity's price is updated. New values may be added over time.
      */
     #[JsonProperty('updateInterval')]
     public string $updateInterval;
@@ -70,6 +70,30 @@ class CommoditySymbolsV2ResponseSymbolsItem extends JsonSerializableType
     public CommoditySymbolsV2ResponseSymbolsItemUnit $unit;
 
     /**
+     * @var ?string $contract Optional. Present only for dated futures contracts (for example `WTIOIL-FUT-DEC26`). Contract type, currently always `futures`.
+     */
+    #[JsonProperty('contract')]
+    public ?string $contract;
+
+    /**
+     * @var ?string $deliveryMonth Optional. Present only for dated futures contracts. Delivery month of the contract (YYYY-MM), for example `2026-12`.
+     */
+    #[JsonProperty('deliveryMonth')]
+    public ?string $deliveryMonth;
+
+    /**
+     * @var ?DateTime $expiresAt Optional. Present for most dated futures contracts. Last trading date of the contract (YYYY-MM-DD), for example `2026-11-20`.
+     */
+    #[JsonProperty('expiresAt'), Date(Date::TYPE_DATE)]
+    public ?DateTime $expiresAt;
+
+    /**
+     * @var ?string $underlying Optional. Present only for dated futures contracts. Symbol of the continuous futures series this contract belongs to (for example `WTIOIL-FUT`).
+     */
+    #[JsonProperty('underlying')]
+    public ?string $underlying;
+
+    /**
      * @param array{
      *   symbol: string,
      *   name: string,
@@ -81,6 +105,10 @@ class CommoditySymbolsV2ResponseSymbolsItem extends JsonSerializableType
      *   description?: ?string,
      *   exchange?: ?string,
      *   deprecationDate?: ?DateTime,
+     *   contract?: ?string,
+     *   deliveryMonth?: ?string,
+     *   expiresAt?: ?DateTime,
+     *   underlying?: ?string,
      * } $values
      */
     public function __construct(
@@ -96,6 +124,10 @@ class CommoditySymbolsV2ResponseSymbolsItem extends JsonSerializableType
         $this->deprecationDate = $values['deprecationDate'] ?? null;
         $this->currency = $values['currency'];
         $this->unit = $values['unit'];
+        $this->contract = $values['contract'] ?? null;
+        $this->deliveryMonth = $values['deliveryMonth'] ?? null;
+        $this->expiresAt = $values['expiresAt'] ?? null;
+        $this->underlying = $values['underlying'] ?? null;
     }
 
     /**

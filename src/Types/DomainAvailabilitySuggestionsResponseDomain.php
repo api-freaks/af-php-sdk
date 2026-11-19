@@ -11,28 +11,28 @@ use Apifreaks\Core\Json\JsonProperty;
 class DomainAvailabilitySuggestionsResponseDomain extends JsonSerializableType
 {
     /**
-     * @var ?string $domain
+     * @var string $domain
      */
     #[JsonProperty('domain')]
-    public ?string $domain;
+    public string $domain;
 
     /**
-     * @var ?bool $domainAvailability
+     * @var bool $domainAvailability
      */
     #[JsonProperty('domainAvailability')]
-    public ?bool $domainAvailability;
+    public bool $domainAvailability;
 
     /**
      * @param array{
-     *   domain?: ?string,
-     *   domainAvailability?: ?bool,
+     *   domain: string,
+     *   domainAvailability: bool,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->domain = $values['domain'] ?? null;
-        $this->domainAvailability = $values['domainAvailability'] ?? null;
+        $this->domain = $values['domain'];
+        $this->domainAvailability = $values['domainAvailability'];
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Apifreaks\Requests;
 
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Types\PdfUploadBinaryRequestFormat;
+use Psr\Http\Message\StreamInterface;
 
 class PdfUploadBinaryRequest extends JsonSerializableType
 {
@@ -28,9 +29,15 @@ class PdfUploadBinaryRequest extends JsonSerializableType
     public string $fileName;
 
     /**
+     * @var string|StreamInterface $body The PDF file to upload: its raw bytes (e.g. file_get_contents('doc.pdf')) or a PSR-7 stream. Sent as the application/octet-stream request body.
+     */
+    public string|StreamInterface $body;
+
+    /**
      * @param array{
      *   apiKey: string,
      *   fileName: string,
+     *   body: string|StreamInterface,
      *   format?: ?value-of<PdfUploadBinaryRequestFormat>,
      * } $values
      */
@@ -40,5 +47,6 @@ class PdfUploadBinaryRequest extends JsonSerializableType
         $this->apiKey = $values['apiKey'];
         $this->format = $values['format'] ?? null;
         $this->fileName = $values['fileName'];
+        $this->body = $values['body'];
     }
 }

@@ -39,10 +39,10 @@ class VatRateByCountryResponseItem extends JsonSerializableType
     public float $standardRate;
 
     /**
-     * @var array<float> $reducedRate
+     * @var ?array<float> $reducedRate
      */
     #[JsonProperty('reduced_rate'), ArrayType(['float'])]
-    public array $reducedRate;
+    public ?array $reducedRate;
 
     /**
      * @var ?array<float> $superReducedRate Optional super-reduced VAT rates applicable in specific categories.
@@ -57,10 +57,10 @@ class VatRateByCountryResponseItem extends JsonSerializableType
     public ?float $parkingRate;
 
     /**
-     * @var array<string, float> $categories
+     * @var ?array<string, float> $categories
      */
     #[JsonProperty('categories'), ArrayType(['string' => 'float'])]
-    public array $categories;
+    public ?array $categories;
 
     /**
      * @param array{
@@ -68,11 +68,11 @@ class VatRateByCountryResponseItem extends JsonSerializableType
      *   type: string,
      *   currency: string,
      *   standardRate: float,
-     *   reducedRate: array<float>,
-     *   categories: array<string, float>,
      *   state?: ?string,
+     *   reducedRate?: ?array<float>,
      *   superReducedRate?: ?array<float>,
      *   parkingRate?: ?float,
+     *   categories?: ?array<string, float>,
      * } $values
      */
     public function __construct(
@@ -83,10 +83,10 @@ class VatRateByCountryResponseItem extends JsonSerializableType
         $this->type = $values['type'];
         $this->currency = $values['currency'];
         $this->standardRate = $values['standardRate'];
-        $this->reducedRate = $values['reducedRate'];
+        $this->reducedRate = $values['reducedRate'] ?? null;
         $this->superReducedRate = $values['superReducedRate'] ?? null;
         $this->parkingRate = $values['parkingRate'] ?? null;
-        $this->categories = $values['categories'];
+        $this->categories = $values['categories'] ?? null;
     }
 
     /**

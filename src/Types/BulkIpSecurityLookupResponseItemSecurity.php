@@ -123,6 +123,72 @@ class BulkIpSecurityLookupResponseItemSecurity extends JsonSerializableType
     public ?string $cloudProviderName;
 
     /**
+     * @var ?float $botConfidenceScore Bot detection confidence from 0 to 100. 0 unless is_bot is true.
+     */
+    #[JsonProperty('bot_confidence_score')]
+    public ?float $botConfidenceScore;
+
+    /**
+     * @var ?string $botLastSeen Last observed bot activity date in YYYY-MM-DD, when available.
+     */
+    #[JsonProperty('bot_last_seen')]
+    public ?string $botLastSeen;
+
+    /**
+     * @var ?string $botOperatorName Organization running the bot, when known (mostly declared bots).
+     */
+    #[JsonProperty('bot_operator_name')]
+    public ?string $botOperatorName;
+
+    /**
+     * @var ?string $botType Kind of bot activity, when known. Declared bots (is_known_good_bot true): search_engine, ai_crawler, ai_assistant, seo_crawler, site_monitor, link_preview, feed_fetcher, archiver, ad_verification, scanner. Undeclared bots (is_known_good_bot false): scanner, scraper, exploit, credential_stuffing, brute_force, worm. New values can be added over time, so treat it as a plain string.
+     */
+    #[JsonProperty('bot_type')]
+    public ?string $botType;
+
+    /**
+     * @var ?string $corporateGatewayProviderName Corporate gateway provider name, when known.
+     */
+    #[JsonProperty('corporate_gateway_provider_name')]
+    public ?string $corporateGatewayProviderName;
+
+    /**
+     * @var ?string $corporateGatewayType Kind of corporate gateway, when known. Known values: secure_web_gateway, browser_isolation.
+     */
+    #[JsonProperty('corporate_gateway_type')]
+    public ?string $corporateGatewayType;
+
+    /**
+     * @var ?bool $isCorporateGateway true if the IP is an outbound address of a corporate security gateway (SWG, SSE, or SASE).
+     */
+    #[JsonProperty('is_corporate_gateway')]
+    public ?bool $isCorporateGateway;
+
+    /**
+     * @var ?bool $isKnownGoodBot true if the bot is a declared bot with a verifiable operator (e.g. a search engine crawler or uptime monitor).
+     */
+    #[JsonProperty('is_known_good_bot')]
+    public ?bool $isKnownGoodBot;
+
+    /**
+     * @var ?int $proxyDaysSeen30D Number of days in the last 30 days on which the IP was seen acting as a proxy. `0` when no proxy activity was observed.
+     */
+    #[JsonProperty('proxy_days_seen_30d')]
+    public ?int $proxyDaysSeen30D;
+
+    /**
+     * @var ?int $proxyDaysSeen7D Number of days in the last 7 days on which the IP was seen acting as a proxy. `0` when no proxy activity was observed.
+     */
+    #[JsonProperty('proxy_days_seen_7d')]
+    public ?int $proxyDaysSeen7D;
+
+    /**
+     * @var ?int $proxyProviderCount30D Number of distinct proxy providers that offered the IP in the last 30 days. `0` when no proxy activity was observed.
+     */
+    #[JsonProperty('proxy_provider_count_30d')]
+    public ?int $proxyProviderCount30D;
+
+    /**
      * @param array{
      *   threatScore?: ?float,
      *   isTor?: ?bool,
@@ -143,6 +209,17 @@ class BulkIpSecurityLookupResponseItemSecurity extends JsonSerializableType
      *   isSpam?: ?bool,
      *   isCloudProvider?: ?bool,
      *   cloudProviderName?: ?string,
+     *   botConfidenceScore?: ?float,
+     *   botLastSeen?: ?string,
+     *   botOperatorName?: ?string,
+     *   botType?: ?string,
+     *   corporateGatewayProviderName?: ?string,
+     *   corporateGatewayType?: ?string,
+     *   isCorporateGateway?: ?bool,
+     *   isKnownGoodBot?: ?bool,
+     *   proxyDaysSeen30D?: ?int,
+     *   proxyDaysSeen7D?: ?int,
+     *   proxyProviderCount30D?: ?int,
      * } $values
      */
     public function __construct(
@@ -167,6 +244,17 @@ class BulkIpSecurityLookupResponseItemSecurity extends JsonSerializableType
         $this->isSpam = $values['isSpam'] ?? null;
         $this->isCloudProvider = $values['isCloudProvider'] ?? null;
         $this->cloudProviderName = $values['cloudProviderName'] ?? null;
+        $this->botConfidenceScore = $values['botConfidenceScore'] ?? null;
+        $this->botLastSeen = $values['botLastSeen'] ?? null;
+        $this->botOperatorName = $values['botOperatorName'] ?? null;
+        $this->botType = $values['botType'] ?? null;
+        $this->corporateGatewayProviderName = $values['corporateGatewayProviderName'] ?? null;
+        $this->corporateGatewayType = $values['corporateGatewayType'] ?? null;
+        $this->isCorporateGateway = $values['isCorporateGateway'] ?? null;
+        $this->isKnownGoodBot = $values['isKnownGoodBot'] ?? null;
+        $this->proxyDaysSeen30D = $values['proxyDaysSeen30D'] ?? null;
+        $this->proxyDaysSeen7D = $values['proxyDaysSeen7D'] ?? null;
+        $this->proxyProviderCount30D = $values['proxyProviderCount30D'] ?? null;
     }
 
     /**

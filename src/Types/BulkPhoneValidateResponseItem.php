@@ -93,6 +93,18 @@ class BulkPhoneValidateResponseItem extends JsonSerializableType
     public ?bool $canBeInternationallyDialled;
 
     /**
+     * @var ?string $error Short error category. Present only when this item failed validation (e.g. malformed number, conflicting region parameters).
+     */
+    #[JsonProperty('error')]
+    public ?string $error;
+
+    /**
+     * @var ?string $message Human-readable reason for failure. Present only when this item failed validation.
+     */
+    #[JsonProperty('message')]
+    public ?string $message;
+
+    /**
      * @param array{
      *   rawInput?: ?BulkPhoneValidateResponseItemRawInput,
      *   possible?: ?bool,
@@ -108,6 +120,8 @@ class BulkPhoneValidateResponseItem extends JsonSerializableType
      *   areaCodeLength?: ?int,
      *   ndcLength?: ?int,
      *   canBeInternationallyDialled?: ?bool,
+     *   error?: ?string,
+     *   message?: ?string,
      * } $values
      */
     public function __construct(
@@ -127,6 +141,8 @@ class BulkPhoneValidateResponseItem extends JsonSerializableType
         $this->areaCodeLength = $values['areaCodeLength'] ?? null;
         $this->ndcLength = $values['ndcLength'] ?? null;
         $this->canBeInternationallyDialled = $values['canBeInternationallyDialled'] ?? null;
+        $this->error = $values['error'] ?? null;
+        $this->message = $values['message'] ?? null;
     }
 
     /**

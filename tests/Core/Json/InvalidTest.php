@@ -31,7 +31,7 @@ class InvalidTest extends TestCase
 {
     public function testInvalidJsonThrowsException(): void
     {
-        $this->expectException(\TypeError::class);
+        $this->expectException(\JsonException::class);
         $json = JsonEncoder::encode(
             [
                 'integer_property' => 'not_an_integer'

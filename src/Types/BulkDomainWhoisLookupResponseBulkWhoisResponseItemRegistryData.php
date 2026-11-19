@@ -65,10 +65,16 @@ class BulkDomainWhoisLookupResponseBulkWhoisResponseItemRegistryData extends Jso
     public ?array $domainStatus;
 
     /**
-     * @var ?string $whoisRawRegistry
+     * @var ?string $whoisRawRegistry Deprecated: the API never returns this key; the raw registry WHOIS text is in `whois_raw_registery`.
      */
     #[JsonProperty('whois_raw_registry')]
     public ?string $whoisRawRegistry;
+
+    /**
+     * @var ?string $whoisRawRegistery Raw WHOIS text returned by the registry's WHOIS server (the key is spelled `whois_raw_registery` by the API).
+     */
+    #[JsonProperty('whois_raw_registery')]
+    public ?string $whoisRawRegistery;
 
     /**
      * @var ?BulkDomainWhoisLookupResponseBulkWhoisResponseItemRegistryDataDomainRegistrar $domainRegistrar
@@ -88,6 +94,7 @@ class BulkDomainWhoisLookupResponseBulkWhoisResponseItemRegistryData extends Jso
      *   nameServers?: ?array<string>,
      *   domainStatus?: ?array<string>,
      *   whoisRawRegistry?: ?string,
+     *   whoisRawRegistery?: ?string,
      *   domainRegistrar?: ?BulkDomainWhoisLookupResponseBulkWhoisResponseItemRegistryDataDomainRegistrar,
      * } $values
      */
@@ -104,6 +111,7 @@ class BulkDomainWhoisLookupResponseBulkWhoisResponseItemRegistryData extends Jso
         $this->nameServers = $values['nameServers'] ?? null;
         $this->domainStatus = $values['domainStatus'] ?? null;
         $this->whoisRawRegistry = $values['whoisRawRegistry'] ?? null;
+        $this->whoisRawRegistery = $values['whoisRawRegistery'] ?? null;
         $this->domainRegistrar = $values['domainRegistrar'] ?? null;
     }
 

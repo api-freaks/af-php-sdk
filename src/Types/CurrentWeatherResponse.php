@@ -10,13 +10,13 @@ class CurrentWeatherResponse extends JsonSerializableType
 {
     /**
      * @var (
-     *    CurrentWeatherResponseLocationZero
-     *   |CurrentWeatherResponseLocationContinentCode
+     *    CurrentWeatherResponseLocationContinentCode
      *   |CurrentWeatherResponseLocationCity
+     *   |CurrentWeatherResponseLocationZero
      * ) $location Location information
      */
-    #[JsonProperty('location'), Union(CurrentWeatherResponseLocationZero::class, CurrentWeatherResponseLocationContinentCode::class, CurrentWeatherResponseLocationCity::class)]
-    public CurrentWeatherResponseLocationZero|CurrentWeatherResponseLocationContinentCode|CurrentWeatherResponseLocationCity $location;
+    #[JsonProperty('location'), Union(CurrentWeatherResponseLocationContinentCode::class, CurrentWeatherResponseLocationCity::class, CurrentWeatherResponseLocationZero::class)]
+    public CurrentWeatherResponseLocationContinentCode|CurrentWeatherResponseLocationCity|CurrentWeatherResponseLocationZero $location;
 
     /**
      * @var CurrentWeatherResponseCurrent $current Current weather data
@@ -27,9 +27,9 @@ class CurrentWeatherResponse extends JsonSerializableType
     /**
      * @param array{
      *   location: (
-     *    CurrentWeatherResponseLocationZero
-     *   |CurrentWeatherResponseLocationContinentCode
+     *    CurrentWeatherResponseLocationContinentCode
      *   |CurrentWeatherResponseLocationCity
+     *   |CurrentWeatherResponseLocationZero
      * ),
      *   current: CurrentWeatherResponseCurrent,
      * } $values

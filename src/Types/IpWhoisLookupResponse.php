@@ -75,6 +75,18 @@ class IpWhoisLookupResponse extends JsonSerializableType
     public ?string $whoisRawResponse;
 
     /**
+     * @var ?array<IpWhoisLookupResponseRoutesItem> $routes BGP route objects announced by this IP's network.
+     */
+    #[JsonProperty('routes'), ArrayType([IpWhoisLookupResponseRoutesItem::class])]
+    public ?array $routes;
+
+    /**
+     * @var ?string $rWhoisRawResponse WHOIS response from the rwhois server, if available.
+     */
+    #[JsonProperty('r_whois_raw_response')]
+    public ?string $rWhoisRawResponse;
+
+    /**
      * @param array{
      *   status?: ?bool,
      *   ipAddress?: ?string,
@@ -87,6 +99,8 @@ class IpWhoisLookupResponse extends JsonSerializableType
      *   abuseContacts?: ?array<IpWhoisLookupResponseAbuseContactsItem>,
      *   administrativeContacts?: ?array<IpWhoisLookupResponseAdministrativeContactsItem>,
      *   whoisRawResponse?: ?string,
+     *   routes?: ?array<IpWhoisLookupResponseRoutesItem>,
+     *   rWhoisRawResponse?: ?string,
      * } $values
      */
     public function __construct(
@@ -103,6 +117,8 @@ class IpWhoisLookupResponse extends JsonSerializableType
         $this->abuseContacts = $values['abuseContacts'] ?? null;
         $this->administrativeContacts = $values['administrativeContacts'] ?? null;
         $this->whoisRawResponse = $values['whoisRawResponse'] ?? null;
+        $this->routes = $values['routes'] ?? null;
+        $this->rWhoisRawResponse = $values['rWhoisRawResponse'] ?? null;
     }
 
     /**

@@ -56,7 +56,7 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemAdministrativeContact 
     public ?string $countryCode;
 
     /**
-     * @var ?string $emailaddress
+     * @var ?string $emailaddress Deprecated: the API returns this field as `email_address`; read `email_address` instead.
      */
     #[JsonProperty('emailaddress')]
     public ?string $emailaddress;
@@ -74,10 +74,22 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemAdministrativeContact 
     public ?string $fax;
 
     /**
-     * @var ?string $mailingaddress
+     * @var ?string $mailingaddress Deprecated: the API returns this field as `mailing_address`; read `mailing_address` instead.
      */
     #[JsonProperty('mailingaddress')]
     public ?string $mailingaddress;
+
+    /**
+     * @var ?string $emailAddress
+     */
+    #[JsonProperty('email_address')]
+    public ?string $emailAddress;
+
+    /**
+     * @var ?string $mailingAddress
+     */
+    #[JsonProperty('mailing_address')]
+    public ?string $mailingAddress;
 
     /**
      * @param array{
@@ -93,6 +105,8 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemAdministrativeContact 
      *   phone?: ?string,
      *   fax?: ?string,
      *   mailingaddress?: ?string,
+     *   emailAddress?: ?string,
+     *   mailingAddress?: ?string,
      * } $values
      */
     public function __construct(
@@ -110,6 +124,8 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemAdministrativeContact 
         $this->phone = $values['phone'] ?? null;
         $this->fax = $values['fax'] ?? null;
         $this->mailingaddress = $values['mailingaddress'] ?? null;
+        $this->emailAddress = $values['emailAddress'] ?? null;
+        $this->mailingAddress = $values['mailingAddress'] ?? null;
     }
 
     /**

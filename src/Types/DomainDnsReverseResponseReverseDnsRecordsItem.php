@@ -22,10 +22,10 @@ class DomainDnsReverseResponseReverseDnsRecordsItem extends JsonSerializableType
     public string $domainName;
 
     /**
-     * @var bool $domainRegistered
+     * @var ?bool $domainRegistered
      */
     #[JsonProperty('domainRegistered')]
-    public bool $domainRegistered;
+    public ?bool $domainRegistered;
 
     /**
      * @var DomainDnsReverseResponseReverseDnsRecordsItemDnsTypes $dnsTypes
@@ -36,30 +36,30 @@ class DomainDnsReverseResponseReverseDnsRecordsItem extends JsonSerializableType
     /**
      * @var array<(
      *    DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemAddress
-     *   |DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemOne
      *   |DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemPriority
+     *   |DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemOne
      *   |DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemSingleName
      *   |DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemAdmin
      *   |DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemStrings
      * )> $dnsRecords
      */
-    #[JsonProperty('dnsRecords'), ArrayType([new Union(DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemAddress::class, DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemOne::class, DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemPriority::class, DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemSingleName::class, DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemAdmin::class, DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemStrings::class)])]
+    #[JsonProperty('dnsRecords'), ArrayType([new Union(DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemAddress::class, DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemPriority::class, DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemOne::class, DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemSingleName::class, DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemAdmin::class, DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemStrings::class)])]
     public array $dnsRecords;
 
     /**
      * @param array{
      *   queryTime: string,
      *   domainName: string,
-     *   domainRegistered: bool,
      *   dnsTypes: DomainDnsReverseResponseReverseDnsRecordsItemDnsTypes,
      *   dnsRecords: array<(
      *    DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemAddress
-     *   |DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemOne
      *   |DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemPriority
+     *   |DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemOne
      *   |DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemSingleName
      *   |DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemAdmin
      *   |DomainDnsReverseResponseReverseDnsRecordsItemDnsRecordsItemStrings
      * )>,
+     *   domainRegistered?: ?bool,
      * } $values
      */
     public function __construct(
@@ -67,7 +67,7 @@ class DomainDnsReverseResponseReverseDnsRecordsItem extends JsonSerializableType
     ) {
         $this->queryTime = $values['queryTime'];
         $this->domainName = $values['domainName'];
-        $this->domainRegistered = $values['domainRegistered'];
+        $this->domainRegistered = $values['domainRegistered'] ?? null;
         $this->dnsTypes = $values['dnsTypes'];
         $this->dnsRecords = $values['dnsRecords'];
     }

@@ -13,7 +13,7 @@ class CurrentWeatherRequest extends JsonSerializableType
     public string $apiKey;
 
     /**
-     * @var ?value-of<CurrentWeatherRequestFormat> $format Response format returned by the API.
+     * @var ?value-of<CurrentWeatherRequestFormat> $format Response format returned by the API. Only JSON is supported.
      */
     public ?string $format;
 

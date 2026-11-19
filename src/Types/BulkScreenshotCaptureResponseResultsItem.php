@@ -14,7 +14,7 @@ class BulkScreenshotCaptureResponseResultsItem extends JsonSerializableType
     public string $status;
 
     /**
-     * @var ?string $errorMessage
+     * @var ?string $errorMessage Error details for a failed URL; null when the capture succeeded.
      */
     #[JsonProperty('error_message')]
     public ?string $errorMessage;

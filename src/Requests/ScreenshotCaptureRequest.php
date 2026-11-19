@@ -7,6 +7,10 @@ use Apifreaks\Types\ScreenshotCaptureRequestOutput;
 use Apifreaks\Types\ScreenshotCaptureRequestFileType;
 use Apifreaks\Types\ScreenshotCaptureRequestWaitForEvent;
 use Apifreaks\Types\ScreenshotCaptureRequestScrollSpeed;
+use Apifreaks\Types\ScreenshotCaptureRequestFormat;
+use Apifreaks\Types\ScreenshotCaptureRequestOcrModel;
+use Apifreaks\Types\ScreenshotCaptureRequestPdfOptionsFormat;
+use Apifreaks\Types\ScreenshotCaptureRequestPdfOptionsMedia;
 
 class ScreenshotCaptureRequest extends JsonSerializableType
 {
@@ -16,7 +20,7 @@ class ScreenshotCaptureRequest extends JsonSerializableType
     public string $apiKey;
 
     /**
-     * @var ?value-of<ScreenshotCaptureRequestOutput> $output Output format for screenshot results
+     * @var ?value-of<ScreenshotCaptureRequestOutput> $output Output format for screenshot results. The SDKs support only `json`, which returns metadata with the captured file's URL in `screenshot`; download the file from that URL. (The API's `output=image`, which returns the raw file, is not supported by the SDK methods.)
      */
     public ?string $output;
 
@@ -370,6 +374,141 @@ class ScreenshotCaptureRequest extends JsonSerializableType
     public ?float $imageQuality;
 
     /**
+     * @var ?string $captchaError CSS selector of the message shown for a wrong answer. While it is visible, the solver tries again.
+     */
+    public ?string $captchaError;
+
+    /**
+     * @var ?string $captchaImage CSS selector of the captcha picture. Required when solve_captcha is true.
+     */
+    public ?string $captchaImage;
+
+    /**
+     * @var ?string $captchaInput CSS selector of the box the answer is typed into. Required when solve_captcha is true.
+     */
+    public ?string $captchaInput;
+
+    /**
+     * @var ?string $captchaRefresh CSS selector of the control that loads a new captcha picture before the next try.
+     */
+    public ?string $captchaRefresh;
+
+    /**
+     * @var ?int $captchaRetries Number of guesses the solver makes, from 1 to 5.
+     */
+    public ?int $captchaRetries;
+
+    /**
+     * @var ?string $captchaSubmit CSS selector of the button to click after the answer is typed.
+     */
+    public ?string $captchaSubmit;
+
+    /**
+     * @var ?bool $classicProxy Loads the page through a datacenter proxy. Adds 20 credits per request. Ignored when premium_proxy is true or a custom proxy is set.
+     */
+    public ?bool $classicProxy;
+
+    /**
+     * @var ?int $clickRecursion Number of times to click the selector (when set via `selector_to_click`).
+     */
+    public ?int $clickRecursion;
+
+    /**
+     * @var ?string $country Two-letter country code, such as US or DE, for the exit address of classic_proxy or premium_proxy. Ignored when you send your own proxy. Any two-letter code is sent, including one that is not listed. Classic proxy countries: BG, GE, DE, HN, MD, UA, GB, US. Premium proxy countries: AF, AL, DZ, AO, AG, AR, AM, AW, AU, AT, AZ, BS, BH, BD, BB, BY, BE, BZ, BJ, BT, BO, BQ, BA, BW, BR, BN, BG, BF, BI, CV, KH, CM, CA, KY, CF, TD, CL, CN, CO, KM, CG, CR, CI, HR, CU, CW, CY, CZ, CD, DK, DJ, DM, DO, EC, EG, SV, GQ, EE, SZ, ET, FO, FJ, FI, FR, GF, PF, GA, GM, GE, DE, GH, GI, GR, GL, GD, GP, GU, GT, GG, GN, GW, GY, HT, HN, HK, HU, IS, IN, ID, IR, IQ, IE, IL, IT, JM, JP, JE, JO, KZ, KE, XK, KW, KG, LA, LV, LB, LS, LR, LY, LT, MO, MG, MW, MY, MV, ML, MT, MQ, MR, MU, YT, MX, MD, MN, ME, MA, MZ, MM, NA, NP, NL, NC, NZ, NI, NE, NG, MK, NO, OM, PK, PS, PA, PG, PY, PE, PH, PL, PT, PR, QA, RE, RO, RU, RW, KN, LC, VC, WS, SA, SN, RS, SC, SL, SG, SK, SI, SB, SO, ZA, KR, SS, ES, LK, SD, SR, SE, CH, SY, TW, TJ, TZ, TH, TL, TG, TO, TT, TN, TR, TM, UG, UA, AE, GB, US, UY, UZ, VE, VN, YE, ZM, ZW.
+     */
+    public ?string $country;
+
+    /**
+     * @var ?bool $extractMarkdown Extracts rendered page content as a structured .md (Markdown) file. Preserves headings, lists, links. Only with output=json.
+     */
+    public ?bool $extractMarkdown;
+
+    /**
+     * @var ?value-of<ScreenshotCaptureRequestFormat> $format Response format: json (default).
+     */
+    public ?string $format;
+
+    /**
+     * @var ?bool $getImageUrls Extracts all image URLs from the rendered DOM and returns them in structured format. Only with output=json.
+     */
+    public ?bool $getImageUrls;
+
+    /**
+     * @var ?bool $gpu Renders the page with a GPU, including WebGL and canvas content. Adds 20 credits per request.
+     */
+    public ?bool $gpu;
+
+    /**
+     * @var ?string $markdown Markdown to render instead of loading a URL. Works like custom_html, so you can capture a README or notes without hosting a page.
+     */
+    public ?string $markdown;
+
+    /**
+     * @var ?value-of<ScreenshotCaptureRequestOcrModel> $ocrModel Recognition model used by the captcha solver: mini-ocr-v1 (default) or ocr-v1.
+     */
+    public ?string $ocrModel;
+
+    /**
+     * @var ?value-of<ScreenshotCaptureRequestPdfOptionsFormat> $pdfOptionsFormat Paper size of the PDF. Applies when file_type is PDF. Without it, width and height are used if set, otherwise the page renders as one long page: A0, A1, A2, A3, A4, A5, A6, Letter, Legal, Tabloid, or Ledger.
+     */
+    public ?string $pdfOptionsFormat;
+
+    /**
+     * @var ?bool $pdfOptionsLandscape Renders the PDF in landscape orientation, swapping the width and height of the paper size. Applies when file_type is PDF.
+     */
+    public ?bool $pdfOptionsLandscape;
+
+    /**
+     * @var ?value-of<ScreenshotCaptureRequestPdfOptionsMedia> $pdfOptionsMedia CSS media type used to render the PDF: print or screen.
+     */
+    public ?string $pdfOptionsMedia;
+
+    /**
+     * @var ?string $pdfOptionsPageRange Pages to keep in the PDF, as start-end, for example 1-3 or 5-5. Pages are rendered first and then trimmed. Has no effect on a single-page PDF. Applies when file_type is PDF.
+     */
+    public ?string $pdfOptionsPageRange;
+
+    /**
+     * @var ?bool $pdfOptionsPrintBackground Includes background colors and images in the PDF. Applies when file_type is PDF.
+     */
+    public ?bool $pdfOptionsPrintBackground;
+
+    /**
+     * @var ?bool $premiumProxy Loads the page through a residential proxy. Adds 200 credits per request. Used instead of classic_proxy.
+     */
+    public ?bool $premiumProxy;
+
+    /**
+     * @var ?int $scrollDelay Delay in milliseconds between scroll steps when `lazy_load` is enabled. Use higher values for heavy pages.
+     */
+    public ?int $scrollDelay;
+
+    /**
+     * @var ?string $selectorToClick CSS selector for an element to click before capturing the screenshot. Useful for opening dropdowns, modals, or triggering content.
+     */
+    public ?string $selectorToClick;
+
+    /**
+     * @var ?bool $solveCaptcha Solves a captcha made of text drawn in a picture, then takes the screenshot. Requires captcha_image and captcha_input. Adds 20 credits per request.
+     */
+    public ?bool $solveCaptcha;
+
+    /**
+     * @var ?bool $stealth Makes the browser look like a regular visitor for pages that block automated traffic. No extra credits.
+     */
+    public ?bool $stealth;
+
+    /**
+     * @var ?string $timezone IANA timezone the browser uses while rendering, such as Asia/Karachi or Europe/London. Useful for clocks and localized dates.
+     */
+    public ?string $timezone;
+
+    /**
+     * @var ?bool $video Records visible viewport only for a specified duration. Use with `duration` parameter. Ideal for dashboards and animations.
+     */
+    public ?bool $video;
+
+    /**
      * @param array{
      *   apiKey: string,
      *   url: string,
@@ -441,6 +580,33 @@ class ScreenshotCaptureRequest extends JsonSerializableType
      *   acceptLanguages?: ?string,
      *   customHtml?: ?string,
      *   imageQuality?: ?float,
+     *   captchaError?: ?string,
+     *   captchaImage?: ?string,
+     *   captchaInput?: ?string,
+     *   captchaRefresh?: ?string,
+     *   captchaRetries?: ?int,
+     *   captchaSubmit?: ?string,
+     *   classicProxy?: ?bool,
+     *   clickRecursion?: ?int,
+     *   country?: ?string,
+     *   extractMarkdown?: ?bool,
+     *   format?: ?value-of<ScreenshotCaptureRequestFormat>,
+     *   getImageUrls?: ?bool,
+     *   gpu?: ?bool,
+     *   markdown?: ?string,
+     *   ocrModel?: ?value-of<ScreenshotCaptureRequestOcrModel>,
+     *   pdfOptionsFormat?: ?value-of<ScreenshotCaptureRequestPdfOptionsFormat>,
+     *   pdfOptionsLandscape?: ?bool,
+     *   pdfOptionsMedia?: ?value-of<ScreenshotCaptureRequestPdfOptionsMedia>,
+     *   pdfOptionsPageRange?: ?string,
+     *   pdfOptionsPrintBackground?: ?bool,
+     *   premiumProxy?: ?bool,
+     *   scrollDelay?: ?int,
+     *   selectorToClick?: ?string,
+     *   solveCaptcha?: ?bool,
+     *   stealth?: ?bool,
+     *   timezone?: ?string,
+     *   video?: ?bool,
      * } $values
      */
     public function __construct(
@@ -516,5 +682,32 @@ class ScreenshotCaptureRequest extends JsonSerializableType
         $this->acceptLanguages = $values['acceptLanguages'] ?? null;
         $this->customHtml = $values['customHtml'] ?? null;
         $this->imageQuality = $values['imageQuality'] ?? null;
+        $this->captchaError = $values['captchaError'] ?? null;
+        $this->captchaImage = $values['captchaImage'] ?? null;
+        $this->captchaInput = $values['captchaInput'] ?? null;
+        $this->captchaRefresh = $values['captchaRefresh'] ?? null;
+        $this->captchaRetries = $values['captchaRetries'] ?? null;
+        $this->captchaSubmit = $values['captchaSubmit'] ?? null;
+        $this->classicProxy = $values['classicProxy'] ?? null;
+        $this->clickRecursion = $values['clickRecursion'] ?? null;
+        $this->country = $values['country'] ?? null;
+        $this->extractMarkdown = $values['extractMarkdown'] ?? null;
+        $this->format = $values['format'] ?? null;
+        $this->getImageUrls = $values['getImageUrls'] ?? null;
+        $this->gpu = $values['gpu'] ?? null;
+        $this->markdown = $values['markdown'] ?? null;
+        $this->ocrModel = $values['ocrModel'] ?? null;
+        $this->pdfOptionsFormat = $values['pdfOptionsFormat'] ?? null;
+        $this->pdfOptionsLandscape = $values['pdfOptionsLandscape'] ?? null;
+        $this->pdfOptionsMedia = $values['pdfOptionsMedia'] ?? null;
+        $this->pdfOptionsPageRange = $values['pdfOptionsPageRange'] ?? null;
+        $this->pdfOptionsPrintBackground = $values['pdfOptionsPrintBackground'] ?? null;
+        $this->premiumProxy = $values['premiumProxy'] ?? null;
+        $this->scrollDelay = $values['scrollDelay'] ?? null;
+        $this->selectorToClick = $values['selectorToClick'] ?? null;
+        $this->solveCaptcha = $values['solveCaptcha'] ?? null;
+        $this->stealth = $values['stealth'] ?? null;
+        $this->timezone = $values['timezone'] ?? null;
+        $this->video = $values['video'] ?? null;
     }
 }

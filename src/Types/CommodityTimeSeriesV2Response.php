@@ -33,11 +33,18 @@ class CommodityTimeSeriesV2Response extends JsonSerializableType
     public array $rates;
 
     /**
+     * @var ?array<string, CommodityTimeSeriesV2ResponseUnresolvedValue> $unresolved Present only on a 206 Partial Content response, when some requested symbols could not be resolved on any date in the range. Map of each unresolved symbol to a detail message and optional close-match suggestions.
+     */
+    #[JsonProperty('unresolved'), ArrayType(['string' => CommodityTimeSeriesV2ResponseUnresolvedValue::class])]
+    public ?array $unresolved;
+
+    /**
      * @param array{
      *   success: bool,
      *   startDate: string,
      *   endDate: string,
      *   rates: array<string, array<string, CommodityTimeSeriesV2ResponseRatesValueValue>>,
+     *   unresolved?: ?array<string, CommodityTimeSeriesV2ResponseUnresolvedValue>,
      * } $values
      */
     public function __construct(
@@ -47,6 +54,7 @@ class CommodityTimeSeriesV2Response extends JsonSerializableType
         $this->startDate = $values['startDate'];
         $this->endDate = $values['endDate'];
         $this->rates = $values['rates'];
+        $this->unresolved = $values['unresolved'] ?? null;
     }
 
     /**

@@ -4,25 +4,35 @@ namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
-use Apifreaks\Core\Types\ArrayType;
 
+/**
+ * Selectors for locating and solving a single audio CAPTCHA challenge.
+ */
 class WebScrapeRequestBodyBlockUrlInstructionsItemResolveAudioCaptcha extends JsonSerializableType
 {
     /**
-     * @var ?array<string, mixed> $resolveAudioCaptcha Solves audio CAPTCHA challenges.
+     * @var ?string $audioPath Selector for the audio CAPTCHA element.
      */
-    #[JsonProperty('resolveAudioCaptcha'), ArrayType(['string' => 'mixed'])]
-    public ?array $resolveAudioCaptcha;
+    #[JsonProperty('audioPath')]
+    public ?string $audioPath;
+
+    /**
+     * @var ?string $textField Selector for the field where the resolved audio CAPTCHA text is entered.
+     */
+    #[JsonProperty('textField')]
+    public ?string $textField;
 
     /**
      * @param array{
-     *   resolveAudioCaptcha?: ?array<string, mixed>,
+     *   audioPath?: ?string,
+     *   textField?: ?string,
      * } $values
      */
     public function __construct(
         array $values = [],
     ) {
-        $this->resolveAudioCaptcha = $values['resolveAudioCaptcha'] ?? null;
+        $this->audioPath = $values['audioPath'] ?? null;
+        $this->textField = $values['textField'] ?? null;
     }
 
     /**

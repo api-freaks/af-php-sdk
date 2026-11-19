@@ -5,29 +5,18 @@ namespace Apifreaks\Types;
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
 use Apifreaks\Core\Types\ArrayType;
-use Apifreaks\Core\Types\Union;
 
 class WebScrapeRequestBodyOne extends JsonSerializableType
 {
     /**
-     * @var array<(
-     *    WebScrapeRequestBodyOneInstructionsItemPostForm
-     *   |WebScrapeRequestBodyOneInstructionsItemGetForm
-     *   |WebScrapeRequestBodyOneInstructionsItemExtract
-     *   |WebScrapeRequestBodyOneInstructionsItemGetPage
-     * )> $instructions A list of sequential instructions to execute after receiving the static HTML response. Supported methods include `postForm`, `getForm`, and `extract`.
+     * @var array<WebScrapeRequestBodyOneInstructionsItem> $instructions A list of sequential instructions to execute against the static HTML response. Each item is one StaticInstruction object, with exactly one action field set.
      */
-    #[JsonProperty('instructions'), ArrayType([new Union(WebScrapeRequestBodyOneInstructionsItemPostForm::class, WebScrapeRequestBodyOneInstructionsItemGetForm::class, WebScrapeRequestBodyOneInstructionsItemExtract::class, WebScrapeRequestBodyOneInstructionsItemGetPage::class)])]
+    #[JsonProperty('instructions'), ArrayType([WebScrapeRequestBodyOneInstructionsItem::class])]
     public array $instructions;
 
     /**
      * @param array{
-     *   instructions: array<(
-     *    WebScrapeRequestBodyOneInstructionsItemPostForm
-     *   |WebScrapeRequestBodyOneInstructionsItemGetForm
-     *   |WebScrapeRequestBodyOneInstructionsItemExtract
-     *   |WebScrapeRequestBodyOneInstructionsItemGetPage
-     * )>,
+     *   instructions: array<WebScrapeRequestBodyOneInstructionsItem>,
      * } $values
      */
     public function __construct(

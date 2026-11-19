@@ -80,6 +80,18 @@ class DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactT
     public ?string $mailingAddress;
 
     /**
+     * @var ?string $handle Registry handle for the contact, when published.
+     */
+    #[JsonProperty('handle')]
+    public ?string $handle;
+
+    /**
+     * @var ?string $id Contact identifier.
+     */
+    #[JsonProperty('id')]
+    public ?string $id;
+
+    /**
      * @param array{
      *   name?: ?string,
      *   company?: ?string,
@@ -93,6 +105,8 @@ class DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactT
      *   phone?: ?string,
      *   fax?: ?string,
      *   mailingAddress?: ?string,
+     *   handle?: ?string,
+     *   id?: ?string,
      * } $values
      */
     public function __construct(
@@ -110,6 +124,8 @@ class DomainWhoisReverseResponseWhoisDomainsHistoricalItemAdministrativeContactT
         $this->phone = $values['phone'] ?? null;
         $this->fax = $values['fax'] ?? null;
         $this->mailingAddress = $values['mailingAddress'] ?? null;
+        $this->handle = $values['handle'] ?? null;
+        $this->id = $values['id'] ?? null;
     }
 
     /**

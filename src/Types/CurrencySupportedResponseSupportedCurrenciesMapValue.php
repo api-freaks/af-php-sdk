@@ -14,22 +14,22 @@ class CurrencySupportedResponseSupportedCurrenciesMapValue extends JsonSerializa
     public string $currencyCode;
 
     /**
-     * @var string $currencyName
+     * @var ?string $currencyName Currency name; null for some entries (e.g. crypto tokens).
      */
     #[JsonProperty('currencyName')]
-    public string $currencyName;
+    public ?string $currencyName;
 
     /**
-     * @var string $countryCode
+     * @var ?string $countryCode Country code; null for currencies not tied to a country.
      */
     #[JsonProperty('countryCode')]
-    public string $countryCode;
+    public ?string $countryCode;
 
     /**
-     * @var string $countryName
+     * @var ?string $countryName Country name; null for currencies not tied to a country.
      */
     #[JsonProperty('countryName')]
-    public string $countryName;
+    public ?string $countryName;
 
     /**
      * @var value-of<CurrencySupportedResponseSupportedCurrenciesMapValueStatus> $status
@@ -58,22 +58,22 @@ class CurrencySupportedResponseSupportedCurrenciesMapValue extends JsonSerializa
     /**
      * @param array{
      *   currencyCode: string,
-     *   currencyName: string,
-     *   countryCode: string,
-     *   countryName: string,
      *   status: value-of<CurrencySupportedResponseSupportedCurrenciesMapValueStatus>,
      *   availableFrom: string,
      *   availableUntil: string,
      *   icon: string,
+     *   currencyName?: ?string,
+     *   countryCode?: ?string,
+     *   countryName?: ?string,
      * } $values
      */
     public function __construct(
         array $values,
     ) {
         $this->currencyCode = $values['currencyCode'];
-        $this->currencyName = $values['currencyName'];
-        $this->countryCode = $values['countryCode'];
-        $this->countryName = $values['countryName'];
+        $this->currencyName = $values['currencyName'] ?? null;
+        $this->countryCode = $values['countryCode'] ?? null;
+        $this->countryName = $values['countryName'] ?? null;
         $this->status = $values['status'];
         $this->availableFrom = $values['availableFrom'];
         $this->availableUntil = $values['availableUntil'];

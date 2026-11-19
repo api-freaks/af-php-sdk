@@ -23,16 +23,16 @@ class GetAdminUnitsRequest extends JsonSerializableType
     public string $country;
 
     /**
-     * @var ?array<string> $adminLevels Comma-separated list to filter results by one or more administrative levels.
+     * @var ?array<string> $adminLevel Filter results by one or more administrative level names (e.g. `land`, `state`, `province`), sent as a comma-separated list. Use the admin levels endpoint to list the levels a country has.
      */
-    public ?array $adminLevels;
+    public ?array $adminLevel;
 
     /**
      * @param array{
      *   apiKey: string,
      *   country: string,
      *   format?: ?value-of<GetAdminUnitsRequestFormat>,
-     *   adminLevels?: ?array<string>,
+     *   adminLevel?: ?array<string>,
      * } $values
      */
     public function __construct(
@@ -41,6 +41,6 @@ class GetAdminUnitsRequest extends JsonSerializableType
         $this->apiKey = $values['apiKey'];
         $this->format = $values['format'] ?? null;
         $this->country = $values['country'];
-        $this->adminLevels = $values['adminLevels'] ?? null;
+        $this->adminLevel = $values['adminLevel'] ?? null;
     }
 }

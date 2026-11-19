@@ -15,7 +15,7 @@ class MarineWeatherRequest extends JsonSerializableType
     public string $apiKey;
 
     /**
-     * @var ?value-of<MarineWeatherRequestFormat> $format Response format returned by the API.
+     * @var ?value-of<MarineWeatherRequestFormat> $format Response format returned by the API. Only JSON is supported.
      */
     public ?string $format;
 

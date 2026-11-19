@@ -11,13 +11,13 @@ class WeatherForecastResponse extends JsonSerializableType
 {
     /**
      * @var (
-     *    WeatherForecastResponseLocationZero
-     *   |WeatherForecastResponseLocationContinentCode
+     *    WeatherForecastResponseLocationContinentCode
      *   |WeatherForecastResponseLocationCity
+     *   |WeatherForecastResponseLocationZero
      * )|null $location Location information
      */
-    #[JsonProperty('location'), Union(WeatherForecastResponseLocationZero::class, WeatherForecastResponseLocationContinentCode::class, WeatherForecastResponseLocationCity::class, 'null')]
-    public WeatherForecastResponseLocationZero|WeatherForecastResponseLocationContinentCode|WeatherForecastResponseLocationCity|null $location;
+    #[JsonProperty('location'), Union(WeatherForecastResponseLocationContinentCode::class, WeatherForecastResponseLocationCity::class, WeatherForecastResponseLocationZero::class, 'null')]
+    public WeatherForecastResponseLocationContinentCode|WeatherForecastResponseLocationCity|WeatherForecastResponseLocationZero|null $location;
 
     /**
      * @var ?array<string, WeatherForecastResponseForecastValue> $forecast Forecast data object of the provided date range
@@ -28,9 +28,9 @@ class WeatherForecastResponse extends JsonSerializableType
     /**
      * @param array{
      *   location?: (
-     *    WeatherForecastResponseLocationZero
-     *   |WeatherForecastResponseLocationContinentCode
+     *    WeatherForecastResponseLocationContinentCode
      *   |WeatherForecastResponseLocationCity
+     *   |WeatherForecastResponseLocationZero
      * )|null,
      *   forecast?: ?array<string, WeatherForecastResponseForecastValue>,
      * } $values

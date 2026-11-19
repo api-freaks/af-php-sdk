@@ -39,9 +39,9 @@ class PdfUnrestrictRequest extends JsonSerializableType
     public string $filePassword;
 
     /**
-     * @var ?string $userPassword Sets the user password for the PDF file. Password Length should be between 6 and 128 characters.
+     * @var string $userPassword Sets the user password for the PDF file. Password Length should be between 6 and 128 characters.
      */
-    public ?string $userPassword;
+    public string $userPassword;
 
     /**
      * @var ?string $ownerPassword Sets the owner password for the PDF file. If the owner password is not provided, the `user_password` will also be used as the owner password. Password Length should be between 6 and 128 characters.
@@ -72,11 +72,11 @@ class PdfUnrestrictRequest extends JsonSerializableType
      * @param array{
      *   apiKey: string,
      *   filePassword: string,
+     *   userPassword: string,
      *   format?: ?value-of<PdfUnrestrictRequestFormat>,
      *   fileId?: ?string,
      *   destroy?: ?bool,
      *   output?: ?string,
-     *   userPassword?: ?string,
      *   ownerPassword?: ?string,
      *   webhookUrl?: ?string,
      *   webhookFailureNotification?: ?bool,
@@ -93,7 +93,7 @@ class PdfUnrestrictRequest extends JsonSerializableType
         $this->destroy = $values['destroy'] ?? null;
         $this->output = $values['output'] ?? null;
         $this->filePassword = $values['filePassword'];
-        $this->userPassword = $values['userPassword'] ?? null;
+        $this->userPassword = $values['userPassword'];
         $this->ownerPassword = $values['ownerPassword'] ?? null;
         $this->webhookUrl = $values['webhookUrl'] ?? null;
         $this->webhookFailureNotification = $values['webhookFailureNotification'] ?? null;

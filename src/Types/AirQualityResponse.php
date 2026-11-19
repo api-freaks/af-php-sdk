@@ -11,13 +11,13 @@ class AirQualityResponse extends JsonSerializableType
 {
     /**
      * @var (
-     *    AirQualityResponseLocationZero
-     *   |AirQualityResponseLocationContinentCode
+     *    AirQualityResponseLocationContinentCode
      *   |AirQualityResponseLocationCity
+     *   |AirQualityResponseLocationZero
      * )|null $location Location information
      */
-    #[JsonProperty('location'), Union(AirQualityResponseLocationZero::class, AirQualityResponseLocationContinentCode::class, AirQualityResponseLocationCity::class, 'null')]
-    public AirQualityResponseLocationZero|AirQualityResponseLocationContinentCode|AirQualityResponseLocationCity|null $location;
+    #[JsonProperty('location'), Union(AirQualityResponseLocationContinentCode::class, AirQualityResponseLocationCity::class, AirQualityResponseLocationZero::class, 'null')]
+    public AirQualityResponseLocationContinentCode|AirQualityResponseLocationCity|AirQualityResponseLocationZero|null $location;
 
     /**
      * @var ?AirQualityResponseCurrent $current Current air quality data
@@ -34,9 +34,9 @@ class AirQualityResponse extends JsonSerializableType
     /**
      * @param array{
      *   location?: (
-     *    AirQualityResponseLocationZero
-     *   |AirQualityResponseLocationContinentCode
+     *    AirQualityResponseLocationContinentCode
      *   |AirQualityResponseLocationCity
+     *   |AirQualityResponseLocationZero
      * )|null,
      *   current?: ?AirQualityResponseCurrent,
      *   forecast?: ?array<string, AirQualityResponseForecastValue>,

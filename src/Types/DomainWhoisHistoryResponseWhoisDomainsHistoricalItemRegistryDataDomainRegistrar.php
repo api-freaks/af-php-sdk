@@ -44,6 +44,12 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemRegistryDataDomainRegi
     public ?string $phoneNumber;
 
     /**
+     * @var ?string $handle Registrar handle as published in the snapshot, when present (for example `292`, usually the same as `iana_id`).
+     */
+    #[JsonProperty('handle')]
+    public ?string $handle;
+
+    /**
      * @param array{
      *   ianaId?: ?string,
      *   registrarName?: ?string,
@@ -51,6 +57,7 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemRegistryDataDomainRegi
      *   websiteUrl?: ?string,
      *   emailAddress?: ?string,
      *   phoneNumber?: ?string,
+     *   handle?: ?string,
      * } $values
      */
     public function __construct(
@@ -62,6 +69,7 @@ class DomainWhoisHistoryResponseWhoisDomainsHistoricalItemRegistryDataDomainRegi
         $this->websiteUrl = $values['websiteUrl'] ?? null;
         $this->emailAddress = $values['emailAddress'] ?? null;
         $this->phoneNumber = $values['phoneNumber'] ?? null;
+        $this->handle = $values['handle'] ?? null;
     }
 
     /**

@@ -4,24 +4,36 @@ namespace Apifreaks\Types;
 
 use Apifreaks\Core\Json\JsonSerializableType;
 use Apifreaks\Core\Json\JsonProperty;
+use Apifreaks\Core\Types\ArrayType;
 
+/**
+ * Form selector and field values to submit via postForm or getForm.
+ */
 class WebScrapeRequestBodyOneInstructionsItemPostForm extends JsonSerializableType
 {
     /**
-     * @var ?WebScrapeRequestBodyOneInstructionsItemPostFormPostForm $postForm Submits a form using POST method. Provide the form's XPath/CSS selector and input values.
+     * @var ?string $selector CSS or XPath selector identifying the form element.
      */
-    #[JsonProperty('postForm')]
-    public ?WebScrapeRequestBodyOneInstructionsItemPostFormPostForm $postForm;
+    #[JsonProperty('selector')]
+    public ?string $selector;
+
+    /**
+     * @var ?array<string, string> $data Form field name/value pairs to submit.
+     */
+    #[JsonProperty('data'), ArrayType(['string' => 'string'])]
+    public ?array $data;
 
     /**
      * @param array{
-     *   postForm?: ?WebScrapeRequestBodyOneInstructionsItemPostFormPostForm,
+     *   selector?: ?string,
+     *   data?: ?array<string, string>,
      * } $values
      */
     public function __construct(
         array $values = [],
     ) {
-        $this->postForm = $values['postForm'] ?? null;
+        $this->selector = $values['selector'] ?? null;
+        $this->data = $values['data'] ?? null;
     }
 
     /**

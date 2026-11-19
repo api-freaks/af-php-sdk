@@ -48,14 +48,14 @@ class BulkDomainDnsLookupResponseBulkDnsInfoItem extends JsonSerializableType
     /**
      * @var array<(
      *    BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemAddress
-     *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemOne
      *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemPriority
+     *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemOne
      *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemSingleName
      *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemAdmin
      *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemStrings
      * )> $dnsRecords List of DNS records, each based on its type.
      */
-    #[JsonProperty('dnsRecords'), ArrayType([new Union(BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemAddress::class, BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemOne::class, BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemPriority::class, BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemSingleName::class, BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemAdmin::class, BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemStrings::class)])]
+    #[JsonProperty('dnsRecords'), ArrayType([new Union(BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemAddress::class, BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemPriority::class, BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemOne::class, BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemSingleName::class, BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemAdmin::class, BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemStrings::class)])]
     public array $dnsRecords;
 
     /**
@@ -65,8 +65,8 @@ class BulkDomainDnsLookupResponseBulkDnsInfoItem extends JsonSerializableType
      *   dnsTypes: BulkDomainDnsLookupResponseBulkDnsInfoItemDnsTypes,
      *   dnsRecords: array<(
      *    BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemAddress
-     *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemOne
      *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemPriority
+     *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemOne
      *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemSingleName
      *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemAdmin
      *   |BulkDomainDnsLookupResponseBulkDnsInfoItemDnsRecordsItemStrings
