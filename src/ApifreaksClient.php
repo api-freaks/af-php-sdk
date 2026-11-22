@@ -258,8 +258,6 @@ use Apifreaks\Requests\UserAgentLookupRequest;
 use Apifreaks\Types\UserAgentLookupResponse;
 use Apifreaks\Requests\BulkUserAgentLookupRequest;
 use Apifreaks\Types\BulkUserAgentLookupResponseItem;
-use Apifreaks\Requests\OcrPredictRequest;
-use Apifreaks\Types\OcrPredictResponse;
 use Apifreaks\Requests\GrammarDetectRequest;
 use Apifreaks\Types\GrammarDetectResponse;
 use Apifreaks\Requests\GrammarCorrectRequest;
@@ -10253,97 +10251,6 @@ class ApifreaksClient
                     return null;
                 }
                 return JsonDecoder::decodeArray($json, [BulkUserAgentLookupResponseItem::class]); // @phpstan-ignore-line
-            }
-        } catch (JsonException $e) {
-            if (!isset($statusCode)) {
-                // Raised before any response arrived: the request body could not be serialized.
-                throw new ApifreaksException(message: "Failed to serialize request: {$e->getMessage()}", previous: $e);
-            }
-            throw new ApifreaksApiException(message: "Failed to deserialize response: {$e->getMessage()}", statusCode: $statusCode, body: $json ?? null, previous: $e);
-        } catch (ClientExceptionInterface $e) {
-            throw new ApifreaksException(message: $e->getMessage(), previous: $e);
-        }
-        throw new ApifreaksApiException(
-            message: 'API request failed',
-            statusCode: $statusCode,
-            body: $response->getBody()->getContents(),
-        );
-    }
-
-    /**
-     * Perform Optical Character Recognition (OCR) on images, PDFs, or ZIP archives. Supports two models: `mini-ocr-v1` for CAPTCHA-optimized OCR and `ocr-v1` for general-purpose document text extraction. Supports zonal OCR to extract text from specific regions of an image.
-     *
-     * **Notes:**
-     * - The `zone` query parameter cannot be given with .pdf and .zip types as it can only be applied to single image query.
-     * - The `page_range` query parameter cannot be given in any other type except .pdf types.
-     * - PDFs containing images in them are allowed only for processing.
-     * - The `mini-ocr-v1` model doesn’t support the following query parameters:
-     *     - `page_range` (.pdf types)
-     *     - `zone`
-     *
-     * Example:
-     * ```php
-     * $client->ocrPredict(
-     *     new OcrPredictRequest([
-     *         'apiKey' => 'apiKey',
-     *         'model' => OcrPredictRequestModel::MiniOcrV1->value,
-     *         'file' => File::createFromString("example_file", "example_file"),
-     *     ]),
-     * );
-     * ```
-     *
-     * @param OcrPredictRequest $request
-     * @param ?array{
-     *   baseUrl?: string,
-     *   maxRetries?: int,
-     *   timeout?: float,
-     *   headers?: array<string, string>,
-     *   queryParameters?: array<string, mixed>,
-     * } $options
-     * @return ?OcrPredictResponse
-     * @throws ApifreaksException
-     * @throws ApifreaksApiException
-     */
-    public function ocrPredict(OcrPredictRequest $request, ?array $options = null): ?OcrPredictResponse
-    {
-        $options = array_merge($this->options, $options ?? []);
-        $query = [];
-        $query['apiKey'] = $request->apiKey;
-        $query['model'] = $request->model;
-        if ($request->url !== null) {
-            $query['url'] = $request->url;
-        }
-        if ($request->pageRange !== null) {
-            $query['page_range'] = $request->pageRange;
-        }
-        if ($request->zone !== null) {
-            $query['zone'] = $request->zone;
-        }
-        if ($request->newLine !== null) {
-            $query['new_line'] = $request->newLine;
-        }
-        $body = new MultipartFormData();
-        if ($request->file !== null) {
-            $body->addPart($request->file->toMultipartFormDataPart('file'));
-        }
-        try {
-            $response = $this->client->sendRequest(
-                new MultipartApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
-                    path: "v1.0/ocr/predict",
-                    method: HttpMethod::POST,
-                    query: $query,
-                    body: $body,
-                ),
-                $options,
-            );
-            $statusCode = $response->getStatusCode();
-            if ($statusCode >= 200 && $statusCode < 400) {
-                $json = $response->getBody()->getContents();
-                if (empty($json)) {
-                    return null;
-                }
-                return OcrPredictResponse::fromJson($json);
             }
         } catch (JsonException $e) {
             if (!isset($statusCode)) {
